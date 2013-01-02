@@ -131,6 +131,8 @@ enum loc_eng_msg_ids_t {
 
     /* Message is sent by HAL to LOC API to select A-GLONASS protocol */
     LOC_ENG_MSG_A_GLONASS_PROTOCOL,
+
+    LOC_ENG_MSG_PRIVACY,
 };
 
 #ifdef __cplusplus

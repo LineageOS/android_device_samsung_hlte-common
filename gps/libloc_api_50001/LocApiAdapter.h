@@ -230,6 +230,21 @@ public:
 
     inline bool isInSession() { return navigating; }
     inline virtual void setInSession(bool inSession) { navigating = inSession; }
+
+private:
+    // Pad out virtual method table so that the setPrivacy entry corresponds to
+    // the same as LocApiV02Adapter.
+    inline virtual void unknownVirtualMethod26() {}
+    inline virtual void unknownVirtualMethod27() {}
+    inline virtual void unknownVirtualMethod28() {}
+    inline virtual void unknownVirtualMethod29() {}
+    inline virtual void unknownVirtualMethod30() {}
+    inline virtual void unknownVirtualMethod31() {}
+
+public:
+    inline virtual enum loc_api_adapter_err
+        setPrivacy(int8_t privacy_setting)
+    {LOC_LOGW("%s: default implementation invoked", __func__); return LOC_API_ADAPTER_ERR_SUCCESS;}
 };
 
 extern "C" LocApiAdapter* getLocApiAdapter(LocEng &locEng);

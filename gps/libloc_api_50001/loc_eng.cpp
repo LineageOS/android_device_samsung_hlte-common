@@ -46,6 +46,7 @@
 
 #include "LocApiAdapter.h"
 
+#include <cutils/properties.h>
 #include <cutils/sched_policy.h>
 #include <utils/SystemClock.h>
 #include <utils/Log.h>
@@ -232,6 +233,8 @@ static void loc_eng_process_conn_request(loc_eng_data_s_type &loc_eng_data,
 static void loc_eng_agps_close_status(loc_eng_data_s_type &loc_eng_data, int is_succ);
 static void loc_eng_handle_engine_down(loc_eng_data_s_type &loc_eng_data) ;
 static void loc_eng_handle_engine_up(loc_eng_data_s_type &loc_eng_data) ;
+static int loc_eng_set_privacy(loc_eng_data_s_type &loc_eng_data,
+                               int8_t privacy_setting);
 
 static char extra_data[100];
 /*********************************************************************
@@ -299,6 +302,12 @@ int loc_eng_init(loc_eng_data_s_type &loc_eng_data, LocCallbacks* callbacks,
         return ret_val;
     }
 
+    if (NULL != loc_eng_data.context) {
+        // Current loc_eng_cleanup keeps context initialized, so must enable
+        // here too.
+        loc_eng_set_privacy(loc_eng_data, 1);
+    }
+
     STATE_CHECK((NULL == loc_eng_data.context),
                 "instance already initialized", return 0);
 
@@ -353,6 +362,10 @@ int loc_eng_init(loc_eng_data_s_type &loc_eng_data, LocCallbacks* callbacks,
            LOC_LOGD("loc_eng_init client open failed, %d more tries", tries);
            sleep(1);
        }
+
+        if (LOC_API_ADAPTER_ERR_SUCCESS == ret_val) {
+            loc_eng_set_privacy(loc_eng_data, 1);
+        }
     }
 
     EXIT_LOG(%d, ret_val);
@@ -477,6 +490,8 @@ void loc_eng_cleanup(loc_eng_data_s_type &loc_eng_data)
         LOC_LOGD("loc_eng_cleanup: fix not stopped. stop it now.");
         loc_eng_stop(loc_eng_data);
     }
+
+    loc_eng_set_privacy(loc_eng_data, 0);
 
 #if 0 // can't afford to actually clean up, for many reason.
 
@@ -1979,6 +1994,13 @@ static void loc_eng_deferred_action_thread(void* arg)
             }
         break;
 
+        case LOC_ENG_MSG_PRIVACY:
+        {
+            loc_eng_msg_privacy *privacyMsg = (loc_eng_msg_privacy*)msg;
+            loc_eng_data_p->client_handle->setPrivacy(privacyMsg->privacy_setting);
+        }
+        break;
+
         default:
             LOC_LOGE("unsupported msgid = %d\n", msg->msgid);
             break;
@@ -2304,6 +2326,48 @@ int loc_eng_read_config(void)
     } else {
       LOC_LOGV("GPS Config file has already been read\n");
     }
+
+    EXIT_LOG(%d, 0);
+    return 0;
+}
+
+/*===========================================================================
+FUNCTION    loc_eng_set_privacy
+
+DESCRIPTION
+   Sets the privacy lock setting (1. GPS on, 0. GPS off).
+
+DEPENDENCIES
+   ro.gps.set_privacy system property must be "1" to set privacy lock.
+
+RETURN VALUE
+   0: success
+
+SIDE EFFECTS
+   N/A
+
+===========================================================================*/
+static int loc_eng_set_privacy(loc_eng_data_s_type &loc_eng_data,
+                               int8_t privacy_setting)
+{
+    //static const char SET_PRIVACY_PROP[] = "ro.gps.set_privacy";
+   // char value[PROPERTY_VALUE_MAX];
+
+    ENTRY_LOG();
+    INIT_CHECK(loc_eng_data.context, return -1);
+  //  property_get(SET_PRIVACY_PROP, value, "");
+
+   // if (strcmp(value, "1") == 0) {
+        LOC_LOGI("%s: Dispatch setPrivacy", __func__);
+
+        loc_eng_msg_privacy *msg(
+            new loc_eng_msg_privacy(&loc_eng_data, privacy_setting));
+        msg_q_snd((void*)((LocEngContext*)(loc_eng_data.context))->deferred_q,
+                  msg, loc_eng_free_msg);
+    //} else {
+      //  LOC_LOGD("%s: Drop setPrivacy, %s=\"%s\" != \"1\".\n", __func__,
+      //           SET_PRIVACY_PROP, value);
+   // }
 
     EXIT_LOG(%d, 0);
     return 0;

@@ -947,6 +947,16 @@ struct ulp_msg_report_quipc_position : public loc_eng_msg {
     }
 };
 
+struct loc_eng_msg_privacy : public loc_eng_msg {
+    const int8_t privacy_setting;
+    inline loc_eng_msg_privacy(void* instance, int8_t privacy_setting) :
+        loc_eng_msg(instance, LOC_ENG_MSG_PRIVACY),
+        privacy_setting(privacy_setting)
+        {
+            LOC_LOGV("privacy_setting: %d", privacy_setting);
+        }
+};
+
 void loc_eng_msg_sender(void* loc_eng_data_p, void* msg);
 int loc_eng_msgget(int * p_req_msgq);
 int loc_eng_msgremove(int req_msgq);
