@@ -46,7 +46,7 @@ TARGET_BOOTLOADER_BOARD_NAME := MSM8974
 # Graphics
 TARGET_USES_QCOM_BSP := true
 COMMON_GLOBAL_CFLAGS += -DQCOM_BSP
-BOARD_EGL_CFG := device/samsung/hltexx/rootdir/system/lib/egl/egl.cfg
+BOARD_EGL_CFG := device/samsung/hltexx/egl.cfg
 
 
 

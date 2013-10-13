@@ -29,4 +29,4 @@
 # Assert
 TARGET_OTA_ASSERT_DEVICE := hltexx,hltetmo,SM-N900T,hltespr,SM-N900P
 
-TARGET_KERNEL_VARIANT_CONFIG := msm8974_sec_hltetmo_defconfig
+TARGET_KERNEL_VARIANT_CONFIG := msm8974_sec_hltespr_defconfig
