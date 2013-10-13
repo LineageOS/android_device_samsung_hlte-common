@@ -81,7 +81,7 @@ for FILE in `egrep -v '(^#|^$)' ../hltexx/proprietary-files.txt`; do
   fi
 done
 
-BASE=../../../vendor/$VENDOR/hltexx/proprietary
+BASE=../../../vendor/$VENDOR/hlte-common/proprietary
 rm -rf $BASE/*
 for FILE in `egrep -v '(^#|^$)' ../hltexx/common-proprietary-files.txt`; do
   echo "Extracting /system/$FILE ..."
