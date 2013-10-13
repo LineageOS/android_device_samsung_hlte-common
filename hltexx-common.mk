@@ -46,7 +46,7 @@ PRODUCT_COPY_FILES += \
 
 # GPS
 PRODUCT_PACKAGES += \
-    gps.msm8960
+    gps.msm8974
 
 ifeq ($(NEEDS_GPS_MSB_DISABLED),true)
     GPS_CONF := device/samsung/hltexx/gps/gps-nomsb.conf
@@ -90,7 +90,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libnfc-nci \
     libnfc_nci_jni \
-    nfc_nci.msm8960 \
+    nfc_nci.msm8974 \
     NfcNci \
     Tag \
     com.android.nfc_extras
@@ -106,10 +106,10 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=mtp
 
 # Lights
-PRODUCT_PACKAGES += lights.msm8960
+PRODUCT_PACKAGES += lights.msm8974
 
 # Irda
-PRODUCT_PACKAGES += irda.msm8960
+PRODUCT_PACKAGES += irda.msm8974
 
 # QC Perf
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -150,7 +150,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.omh.enabled=1 \
     persist.data_netmgrd_nint=16 \
     lpa.decode=true \
-    rild.libpath=/system/lib/libril-qc-qmi-1.so \
+    rild.libpath=/system/lib/libsec-ril.so \
     ril.subscription.types=NV,RUIM \
     ro.cdma.subscribe_on_ruim_ready=true \
     persist.radio.no_wait_for_card=0 \
