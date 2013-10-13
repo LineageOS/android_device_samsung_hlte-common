@@ -21,4 +21,4 @@
 DEVICE_PACKAGE_OVERLAYS += device/samsung/hltexx/overlay-gsm
 
 # Inherit from hltexx
-$(call inherit-product, device/samsung/hltexx/hltexx.mk)
+$(call inherit-product, device/samsung/hltexx/hltexx-common.mk)
