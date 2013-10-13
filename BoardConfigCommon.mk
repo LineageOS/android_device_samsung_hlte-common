@@ -25,16 +25,30 @@
 
 TARGET_SPECIFIC_HEADER_PATH := device/samsung/hltexx/include
 
-# Kernel
-TARGET_KERNEL_SOURCE         := kernel/samsung/jf
-BOARD_KERNEL_CMDLINE         := androidboot.hardware=qcom user_debug=31 zcache
-BOARD_KERNEL_BASE            := 0x80200000
-BOARD_MKBOOTIMG_ARGS         := --ramdisk_offset 0x02000000
-BOARD_KERNEL_PAGESIZE        := 2048
-TARGET_KERNEL_VARIANT_CONFIG := cyanogen_jf_defconfig
-TARGET_KERNEL_SELINUX_CONFIG := jfselinux_defconfig
+# overrides  msm8960
+TARGET_BOARD_PLATFORM := msm8974
+TARGET_BOOTLOADER_BOARD_NAME := MSM8974
 
-TARGET_BOOTLOADER_BOARD_NAME := MSM8960
+TARGET_KERNEL_SOURCE := kernel/samsung/msm8974
+TARGET_KERNEL_CONFIG := msm8974_sec_defconfig
+TARGET_KERNEL_SELINUX_CONFIG := selinux_defconfig
+
+# Kernel
+TARGET_KERNEL_SOURCE         := kernel/samsung/hlte
+BOARD_KERNEL_CMDLINE := console=null androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x3F
+BOARD_KERNEL_BASE := 0x00000000
+BOARD_KERNEL_PAGESIZE := 2048
+BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000 --dt device/samsung/hltexx/dtb.img --tags_offset 0x01e00000
+BOARD_KERNEL_SEPARATED_DT := true
+
+TARGET_BOOTLOADER_BOARD_NAME := MSM8974
+
+# Graphics
+TARGET_USES_QCOM_BSP := true
+COMMON_GLOBAL_CFLAGS += -DQCOM_BSP
+BOARD_EGL_CFG := device/samsung/hltexx/rootdir/system/lib/egl/egl.cfg
+
+
 
 # Recovery
 BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/hltexx/recovery/recovery_keys.c
@@ -58,7 +72,7 @@ BOARD_BLUEDROID_VENDOR_CONF := device/samsung/hltexx/bluetooth/vnd_jf.txt
 BOARD_BLUETOOTH_USES_HCIATTACH_PROPERTY := false
 
 # NFC
-BOARD_NFC_HAL_SUFFIX := msm8960
+BOARD_NFC_HAL_SUFFIX := msm8974
 
 # Disable initlogo, Samsungs framebuffer is weird
 TARGET_NO_INITLOGO := true

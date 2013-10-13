@@ -20,14 +20,13 @@
 # definition file).
 #
 
-# inherit from common JF
+# inherit from common hlte
 -include device/samsung/hltexx/BoardConfigCommon.mk
 
 # inherit from the proprietary version
 -include vendor/samsung/hltexx/BoardConfigVendor.mk
 
 # Assert
-TARGET_OTA_ASSERT_DEVICE := jflte,hltexx,i9505,GT-I9505,jgedlte,i9505g,GT-I9505G
+TARGET_OTA_ASSERT_DEVICE := hltexx,hltetmo,SM-N900T,hltespr,SM-N900P
 
-# Kernel
-TARGET_KERNEL_CONFIG         := jf_eur_defconfig
+TARGET_KERNEL_VARIANT_CONFIG := msm8974_sec_hltetmo_defconfig
