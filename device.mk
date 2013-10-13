@@ -15,10 +15,10 @@
 #
 
 ## (2) Also get non-open-source specific aspects if available
-$(call inherit-product-if-exists, vendor/samsung/jfltexx/jfltexx-vendor.mk)
+#$(call inherit-product-if-exists, vendor/samsung/hltexx/hltexx-vendor.mk)
 
 ## common overlays
-DEVICE_PACKAGE_OVERLAYS += device/samsung/jf-common/overlay-gsm
+DEVICE_PACKAGE_OVERLAYS += device/samsung/hltexx/overlay-gsm
 
-# Inherit from jf-common
-$(call inherit-product, device/samsung/jf-common/jf-common.mk)
+# Inherit from hltexx
+$(call inherit-product, device/samsung/hltexx/hltexx.mk)

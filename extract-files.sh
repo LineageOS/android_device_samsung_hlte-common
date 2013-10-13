@@ -51,7 +51,7 @@ for FILE in `egrep -v '(^#|^$)' ../$DEVICE/device-proprietary-files.txt`; do
   fi
 done
 
-for FILE in `egrep -v '(^#|^$)' ../jf-common/proprietary-files.txt`; do
+for FILE in `egrep -v '(^#|^$)' ../hltexx/proprietary-files.txt`; do
   echo "Extracting /system/$FILE ..."
   OLDIFS=$IFS IFS=":" PARSING_ARRAY=($FILE) IFS=$OLDIFS
   FILE=${PARSING_ARRAY[0]}
@@ -81,9 +81,9 @@ for FILE in `egrep -v '(^#|^$)' ../jf-common/proprietary-files.txt`; do
   fi
 done
 
-BASE=../../../vendor/$VENDOR/jf-common/proprietary
+BASE=../../../vendor/$VENDOR/hltexx/proprietary
 rm -rf $BASE/*
-for FILE in `egrep -v '(^#|^$)' ../jf-common/common-proprietary-files.txt`; do
+for FILE in `egrep -v '(^#|^$)' ../hltexx/common-proprietary-files.txt`; do
   echo "Extracting /system/$FILE ..."
   OLDIFS=$IFS IFS=":" PARSING_ARRAY=($FILE) IFS=$OLDIFS
   FILE=${PARSING_ARRAY[0]}
@@ -113,4 +113,4 @@ for FILE in `egrep -v '(^#|^$)' ../jf-common/common-proprietary-files.txt`; do
   fi
 done
 
-./../jf-common/setup-makefiles.sh
+./../hltexx/setup-makefiles.sh
