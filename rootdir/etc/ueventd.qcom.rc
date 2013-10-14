@@ -1,4 +1,4 @@
-# Copyright (c) 2012, The Linux Foundation. All rights reserved.
+# Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -38,8 +38,10 @@
 /dev/smd0                 0660   system     system
 /dev/smd4                 0660   system     system
 /dev/smd_cxm_qmi          0640   radio      radio
+/dev/smd5                 0660   system     system
+/dev/smd6                 0660   system     system
 /dev/smd7                 0660   bluetooth  bluetooth
-/dev/radio0               0640   fm_radio   fm_radio
+/dev/radio0               0640   system     system
 /dev/rfcomm0              0660   bluetooth  bluetooth
 /dev/smdcntl0             0640   radio      radio
 /dev/smdcntl1             0640   radio      radio
@@ -64,8 +66,6 @@
 /dev/hsicctl1             0640   radio      radio
 /dev/hsicctl2             0640   radio      radio
 /dev/hsicctl3             0640   radio      radio
-/dev/ks_bridge		  0660   system     system
-/dev/efs_bridge           0660   system     system
 /dev/video*               0660   system     camera
 /dev/media*               0660   system     camera
 /dev/v4l-subdev*          0660   system     camera
@@ -81,8 +81,9 @@
 /dev/msm_vidc_dec         0660   system     audio
 /dev/msm_vidc_dec_sec     0660   system     audio
 /dev/msm_vidc_enc         0660   system     audio
-/dev/msm_rotator          0664   system     system
+/dev/msm_rotator          0660   system     system
 /dev/hw_random            0660   system     system
+/dev/adsprpc-smd          0664   system     system
 
 #permissions for audio
 /dev/msm_qcelp            0660   system     audio
@@ -91,6 +92,7 @@
 /dev/msm_wmapro           0660   system     audio
 /dev/msm_amrnb            0660   system     audio
 /dev/msm_amrwb            0660   system     audio
+/dev/msm_amrwbplus        0660   system     audio
 /dev/msm_aac              0660   system     audio
 /dev/msm_multi_aac        0660   system     audio
 /dev/msm_aac_in           0660   system     audio
@@ -110,7 +112,8 @@
 /dev/radio0               0640   fm_radio   fm_radio
 /dev/smd3                 0660   bluetooth  bluetooth
 /dev/smd2                 0660   bluetooth  bluetooth
-/dev/ttyHSL1              0660   system     system
+# JPN Felica Temporary Workaround
+#/dev/ttyHSL1              0660   system     system
 /dev/mdm                  0660   system     radio
 /sys/devices/virtual/smdpkt/smdcntl*       open_timeout   0664 radio radio
 /dev/sdio_tty_ciq_00      0660   system     system
@@ -123,16 +126,5 @@
 /dev/dvb/adapter0/dvr*    0664   media       media
 /dev/dvb/adapter0/video*  0664   media       media
 
-# native sensors
+# sensors
 /sys/devices/i2c-12/12-*  pollrate_ms 0664 system system
-/sys/devices/i2c-12/12-*  enable  0664 system system
-/sys/devices/i2c-12/12-*  poll_delay 0664 system system
-
-# MDM devices
-/dev/block/mmcblk0p13     0660	system	    radio
-/dev/block/mmcblk0p14     0660	system	    radio
-/dev/block/mmcblk0p15     0660	system	    radio
-# Not sure if this will work properly
-/dev/block/platform/msm_sdcc.1/by-name/m9kefs1     0660	system	    radio
-/dev/block/platform/msm_sdcc.1/by-name/m9kefs2     0660	system	    radio
-/dev/block/platform/msm_sdcc.1/by-name/m9kefs3     0660	system	    radio
