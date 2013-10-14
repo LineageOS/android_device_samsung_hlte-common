@@ -7,10 +7,8 @@ bin/thermald
 bin/thermal-engine
 
 # Bluetooth firmware
-vendor/firmware/bcm4335.hcd
-vendor/firmware/bcm4335_A0.hcd
-vendor/firmware/bcm4335_murata.hcd
-vendor/firmware/bcm4335_semco.hcd
+vendor/firmware/bcm2079xB4_firmware.ncd
+vendor/firmware/bcm2079xB4_pre_firmware.ncd
 vendor/firmware/bcm4339.hcd
 vendor/firmware/bcm4339_A0.hcd
 vendor/firmware/bcm4339_murata.hcd
@@ -46,6 +44,7 @@ vendor/lib/libC2D2.so
 vendor/lib/libOpenVG.so
 vendor/lib/libOpenCL.so
 #lib/libsc-a2xx.so
+vendor/lib/libadreno_utils.so
 vendor/lib/libsc-a3xx.so
 #etc/firmware/a225p5_pm4.fw
 #etc/firmware/a225_pfp.fw
@@ -102,7 +101,7 @@ vendor/lib/libgeofence.so
 lib/libloc_api_v02.so
 
 # Sensors
-#vendor/lib/libsensirion_j1.so
+lib/libsensirion_h_6.so
 #vendor/lib/libsam.so
 lib/hw/sensors.msm8974.so
 lib/hw/sensorhubs.msm8974.so
