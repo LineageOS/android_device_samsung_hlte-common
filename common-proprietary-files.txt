@@ -49,8 +49,8 @@ vendor/lib/libsc-a3xx.so
 #etc/firmware/a225p5_pm4.fw
 #etc/firmware/a225_pfp.fw
 #etc/firmware/a225_pm4.fw
-etc/firmware/a300_pfp.fw
-etc/firmware/a300_pm4.fw
+etc/firmware/a330_pfp.fw
+etc/firmware/a330_pm4.fw
 #etc/firmware/leia_pfp_470.fw
 #etc/firmware/leia_pm4_470.fw
 #vendor/etc/firmware/vidc_1080p.fw
