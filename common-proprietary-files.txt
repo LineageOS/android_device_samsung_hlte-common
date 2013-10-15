@@ -66,6 +66,7 @@ bin/efsks
 bin/ks
 #vendor/bin/netmgrd
 #vendor/bin/sec-ril
+lib/libsec-ril.so
 bin/qcks
 bin/qmiproxy
 bin/qmuxd
