@@ -77,6 +77,15 @@ PRODUCT_PACKAGES += \
     init.qcom.usb.rc \
     init.target.rc \
     ueventd.qcom.rc
+# HAL
+PRODUCT_PACKAGES += \
+    copybit.msm8974 \
+    gralloc.msm8974 \
+    hwcomposer.msm8974 \
+    power.msm8974
+PRODUCT_PACKAGES += \
+    audio_policy.msm8974 \
+    audio.primary.msm8974
 
 # Torch
 PRODUCT_PACKAGES += Torch
