@@ -134,3 +134,7 @@ BOARD_SEPOLICY_UNION += \
 	thermald.te \
 	ueventd.te \
 	wpa_supplicant.te
+    
+    
+# Use retire fence from MDP driver
+TARGET_DISPLAY_USE_RETIRE_FENCE :=
