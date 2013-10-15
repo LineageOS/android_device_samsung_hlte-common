@@ -116,6 +116,12 @@ bin/mm-qcamera-daemon
 cameradata/datapattern_420sp.yuv
 cameradata/datapattern_front_420sp.yuv
 lib/hw/camera.msm8974.so
+lib/libmmcamera_interface.so
+lib/libqomx_core.so
+lib/libqomx_jpegenc.so
+lib/libliveframework.so
+# loading full library causes the boot process to hang
+#lib//libarcsoft_nighthawk.so 
 lib/libchromatix_imx134_common.so
 lib/libchromatix_imx134_common_720p_b.so
 lib/libchromatix_imx134_common_720p_s.so
