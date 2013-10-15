@@ -1,5 +1,5 @@
 #!/system/bin/sh
-# Copyright (c) 2011-2012, The Linux Foundation. All rights reserved.
+# Copyright (c) 2012, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
@@ -38,15 +38,13 @@ cd /firmware/image
 # Get the list of files in /firmware/image
 # for which sym links have to be created
 
-fwfiles=`ls modem* q6* wcnss* dsps* tima* lkmauth* tzapps* gss* mobicore*`
-modem_fwfiles=`ls modem_fw.mdt`
+fwfiles=`ls modem* adsp* wcnss* mba* tima_* venus* widevine* playread* dtcpip* skm* keymaste* sshdcpap* sec_stor* mc_v2*`
 
 # Check if the links with similar names
 # have been created in /system/etc/firmware
 
 cd /system/etc/firmware
 linksNeeded=0
-fixModemFirmware=0
 
 # For everyfile in fwfiles check if
 # the corresponding file exists
@@ -72,64 +70,30 @@ for fwfile in $fwfiles; do
 
 done
 
-case `ls $modem_fwfiles` in
-   $modem_fwfiles)
-      break;;
-   *)
-      # file with $fwfile does not exist
-      # need to rename the right set of firmware based on chip version
-      fixModemFirmware=1
-      break;;
-esac
-
 case $linksNeeded in
    1)
       cd /firmware/image
-
-      # Check if need to select modem firmware and do rename in first boot
-      case $fixModemFirmware in
-      1)
-        # Check chip version
-        case `cat /sys/devices/system/soc/soc0/version 2>/dev/null` in
-          "1.0" | "1.1")
-            for file in modem_f1.* ; do
-              newname=modem_fw.${file##*.}
-              ln -s /firmware/image/$file /system/etc/firmware/$newname 2>/dev/null
-            done
-            break;;
-
-          *)
-            for file in modem_f2.* ; do
-              newname=modem_fw.${file##*.}
-              ln -s /firmware/image/$file /system/etc/firmware/$newname 2>/dev/null
-            done
-         esac;;
-
-      *)
-        # Nothing to do.
-        break;;
-      esac
 
       case `ls modem.mdt 2>/dev/null` in
          modem.mdt)
             for imgfile in modem*; do
                ln -s /firmware/image/$imgfile /system/etc/firmware/$imgfile 2>/dev/null
             done
-            break;;
+            ;;
         *)
             # trying to log here but nothing will be logged since it is
             # early in the boot process. Is there a way to log this message?
-            log -p w -t PIL 8960 device but no modem image found;;
+            log -p w -t PIL no modem image found;;
       esac
 
-      case `ls q6.mdt 2>/dev/null` in
-         q6.mdt)
-            for imgfile in q6*; do
+      case `ls adsp.mdt 2>/dev/null` in
+         adsp.mdt)
+            for imgfile in adsp*; do
                ln -s /firmware/image/$imgfile /system/etc/firmware/$imgfile 2>/dev/null
             done
-            break;;
+            ;;
          *)
-            log -p w -t PIL 8960 device but no q6 image found;;
+            log -p w -t PIL no adsp image found;;
       esac
 
       case `ls wcnss.mdt 2>/dev/null` in
@@ -137,86 +101,158 @@ case $linksNeeded in
             for imgfile in wcnss*; do
                ln -s /firmware/image/$imgfile /system/etc/firmware/$imgfile 2>/dev/null
             done
-            break;;
+            ;;
          *)
-            log -p w -t PIL 8960 device but no wcnss image found;;
+            log -p w -t PIL no wcnss image found;;
       esac
 
-      case `ls dsps.mdt 2>/dev/null` in
-         dsps.mdt)
-            for imgfile in dsps*; do
+      case `ls mba.mdt 2>/dev/null` in
+         mba.mdt)
+            for imgfile in mba*; do
                ln -s /firmware/image/$imgfile /system/etc/firmware/$imgfile 2>/dev/null
             done
-            break;;
+            ;;
          *)
-            log -p w -t PIL 8960 device but no dsps image found;;
+            log -p w -t PIL no mba image found;;
       esac
 
-      case `ls tzapps.mdt 2>/dev/null` in
-         tzapps.mdt)
-            for imgfile in tzapps*; do
+      case `ls venus.mdt 2>/dev/null` in
+         venus.mdt)
+            for imgfile in venus*; do
                ln -s /firmware/image/$imgfile /system/etc/firmware/$imgfile 2>/dev/null
             done
-            break;;
+            ;;
          *)
-            log -p w -t PIL 8960 device but no tzapps image found;;
-      esac
-      case `ls tima.mdt 2>/dev/null` in
-         tima.mdt)
-            for imgfile in tima*; do
+            log -p w -t PIL no venus image found;;
+      esac  
+
+      case `ls skm.mdt 2>/dev/null` in
+         skm.mdt)
+            for imgfile in skm*; do
                ln -s /firmware/image/$imgfile /system/etc/firmware/$imgfile 2>/dev/null
             done
-            break;;
+            ;;
          *)
-            log -p w -t PIL 8960 device but no tima image found;;
-      esac
-	case `ls lkmauth.mdt 2>/dev/null` in
-         lkmauth.mdt)
-            for imgfile in lkmauth*; do
-               ln -s /firmware/image/$imgfile /system/etc/firmware/$imgfile 2>/dev/null
-            done
-            break;;
-         *)
-            log -p w -t PIL 8960 device but no lkmauth image found;;
-      esac
-      case `ls mobicore.mdt 2>/dev/null` in
-         mobicore.mdt)
-            for imgfile in mobicore*; do
-               ln -s /firmware/image/$imgfile /system/etc/firmware/$imgfile 2>/dev/null
-            done
-            break;;
-         *)
-            log -p w -t PIL 8960 device but no mobicore image found;;
+            log -p w -t PIL no skm image found;;
       esac
 
-      case `ls gss.mdt 2>/dev/null` in
-         gss.mdt)
-            for imgfile in gss*; do
+      case `ls keymaste.mdt 2>/dev/null` in
+         keymaste.mdt)
+            rm  /system/etc/firmware/keymaste.*
+            for imgfile in keymaste*; do
+               ln -s /firmware/image/$imgfile /system/etc/firmware/$imgfile 2>/dev/null
+            done
+            rm  /system/etc/firmware/keymaster.*
+            ;;
+         *)
+            log -p w -t PIL no keymaste image found;;
+      esac
+
+      case `ls sec_stor.mdt 2>/dev/null` in
+         sec_stor.mdt)
+            for imgfile in sec_stor*; do
+               ln -s /firmware/image/$imgfile /system/etc/firmware/$imgfile 2>/dev/null
+            done
+            ;;
+         *)
+            log -p w -t PIL no sec_stor image found;;
+      esac
+
+      case `ls widevine.mdt 2>/dev/null` in
+         widevine.mdt)
+            for imgfile in widevine*; do
+               ln -s /firmware/image/$imgfile /system/etc/firmware/$imgfile 2>/dev/null
+            done
+            ;;
+         *)
+            log -p w -t PIL no widevine image found;;
+      esac
+
+      case `ls sshdcpap.mdt 2>/dev/null` in
+         sshdcpap.mdt)
+            for imgfile in sshdcpap*; do
+               ln -s /firmware/image/$imgfile /system/etc/firmware/$imgfile 2>/dev/null
+            done
+            ;;
+         *)
+            log -p w -t PIL no sshdcpap image found;;
+      esac
+
+      case `ls playread.mdt 2>/dev/null` in
+         playread.mdt)
+            for imgfile in playread*; do
+               ln -s /firmware/image/$imgfile /system/etc/firmware/$imgfile 2>/dev/null
+            done
+            ;;
+         *)
+            log -p w -t PIL no playread image found;;
+      esac  
+
+      case `ls tima_pkm.mdt 2>/dev/null` in
+         tima_pkm.mdt)
+            for imgfile in tima_pkm*; do
+               ln -s /firmware/image/$imgfile /system/etc/firmware/$imgfile 2>/dev/null
+            done
+            ;;
+         *)
+            log -p w -t PIL 8974 device but no tima_pkm image found;;
+      esac
+
+      case `ls tima_lkm.mdt 2>/dev/null` in
+         tima_lkm.mdt)
+            for imgfile in tima_lkm*; do
+               ln -s /firmware/image/$imgfile /system/etc/firmware/$imgfile 2>/dev/null
+            done
+            ;;
+         *)
+            log -p w -t PIL 8974 device but no tima_lkm image found;;
+      esac
+
+      case `ls tima_atn.mdt 2>/dev/null` in
+         tima_atn.mdt)
+            for imgfile in tima_atn*; do
+               ln -s /firmware/image/$imgfile /system/etc/firmware/$imgfile 2>/dev/null
+            done
+            ;;
+         *)
+            log -p w -t PIL 8974 device but no tima_atn image found;;
+      esac
+
+      case `ls dtcpip.mdt 2>/dev/null` in
+         dtcpip.mdt)
+            for imgfile in dtcpip*; do
+               ln -s /firmware/image/$imgfile /system/etc/firmware/$imgfile 2>/dev/null
+            done
+            ;;
+         *)
+            log -p w -t PIL 8974 device but no dtcpip image found;;
+      esac  
+ 
+      case `ls mc_v2.mdt 2>/dev/null` in
+         mc_v2.mdt)
+            for imgfile in mc_v2*; do
                ln -s /firmware/image/$imgfile /system/etc/firmware/$imgfile 2>/dev/null
             done
             break;;
          *)
-            log -p w -t No gss image found;;
+            log -p w -t PIL 8974 device but no mc_v2 image found;;
       esac
 
-      case `ls vidc.mdt 2>/dev/null` in
-         vidc.mdt)
-            ln -s /firmware/image/vidc.mdt /system/etc/firmware/vidc.mdt 2>/dev/null
-            ln -s /firmware/image/vidc.b00 /system/etc/firmware/vidc.b00 2>/dev/null
-            ln -s /firmware/image/vidc.b01 /system/etc/firmware/vidc.b01 2>/dev/null
-            ln -s /firmware/image/vidc.b02 /system/etc/firmware/vidc.b02 2>/dev/null
-            ln -s /firmware/image/vidc.b03 /system/etc/firmware/vidc.b03 2>/dev/null
-            break;;
+      case `ls tima_key.mdt 2>/dev/null` in
+         tima_key.mdt)
+            for imgfile in tima_key*; do
+               ln -s /firmware/image/$imgfile /system/etc/firmware/$imgfile 2>/dev/null
+            done
+            ;;
          *)
-            log -p w -t PIL 8960 device but no vidc image found;;
+            log -p w -t PIL 8974 device but no tima_key image found;;
       esac
 
-      break;;
+      ;;
 
    *)
       # Nothing to do. No links needed
-      break;;
+      ;;
 esac
 
 cd /
-
