@@ -138,3 +138,4 @@ BOARD_SEPOLICY_UNION += \
     
 # Use retire fence from MDP driver
 TARGET_DISPLAY_USE_RETIRE_FENCE :=
+WIFI_DRIVER_FW_PATH_P2P     := 
