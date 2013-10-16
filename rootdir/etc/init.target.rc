@@ -57,16 +57,6 @@ on fs
     chmod 0771 /efs
     restorecon -R /efs
 
-on fs_selinux
-    wait /dev/block/platform/msm_sdcc.1/by-name/apnhlos
-    mount vfat /dev/block/platform/msm_sdcc.1/by-name/apnhlos /firmware ro shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337,context=u:object_r:firmware:s0
-
-    wait /dev/block/platform/msm_sdcc.1/by-name/modem
-    mount vfat /dev/block/platform/msm_sdcc.1/by-name/modem /firmware-modem ro shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337,context=u:object_r:firmware:s0
-   write /sys/kernel/boot_adsp/boot 1
-
-
-on fs_selinux_disable
     wait /dev/block/platform/msm_sdcc.1/by-name/apnhlos
     mount vfat /dev/block/platform/msm_sdcc.1/by-name/apnhlos /firmware ro shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337
 
