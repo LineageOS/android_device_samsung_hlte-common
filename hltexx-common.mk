@@ -36,7 +36,14 @@ PRODUCT_COPY_FILES += \
 
 # Audio configuration
 PRODUCT_COPY_FILES += \
-    device/samsung/hltexx/audio/snd_soc_msm_2x_Fusion3:system/etc/snd_soc_msm/snd_soc_msm_2x_Fusion3 \
+    device/samsung/hltexx/audio/snd_soc_msm:system/etc/snd_soc_msm/snd_soc_msm \
+     device/samsung/hltexx/audio/snd_soc_msm_2x:system/etc/snd_soc_msm/snd_soc_msm_2x \
+     device/samsung/hltexx/audio/snd_soc_msm_2x_auxpcm:system/etc/snd_soc_msm/snd_soc_msm_2x_auxpcm \
+     device/samsung/hltexx/audio/snd_soc_msm_auxpcm:system/etc/snd_soc_msm/snd_soc_msm_auxpcm \
+     device/samsung/hltexx/audio/snd_soc_msm_Sitar:system/etc/snd_soc_msm/snd_soc_msm_Sitar \
+    device/samsung/hltexx/audio/snd_soc_msm_Sitar_auxpcm:system/etc/snd_soc_msm/snd_soc_msm_Sitar_auxpcm \
+    device/samsung/hltexx/audio/snd_soc_msm_Taiko_CDP:system/etc/snd_soc_msm/snd_soc_msm_Taiko_CDP \
+    device/samsung/hltexx/audio/snd_soc_msm_Taiko:system/etc/snd_soc_msm/snd_soc_msm_Taiko \
     device/samsung/hltexx/audio/audio_policy.conf:system/etc/audio_policy.conf \
     frameworks/native/data/etc/android.hardware.audio.low_latency.xml:system/etc/permissions/android.hardware.audio.low_latency.xml
 
