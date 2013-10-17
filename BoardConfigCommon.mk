@@ -74,7 +74,7 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 
 # bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/hltexx/bluetooth
-BOARD_BLUEDROID_VENDOR_CONF := device/samsung/hltexx/bluetooth/vnd_jf.txt
+BOARD_BLUEDROID_VENDOR_CONF := device/samsung/hltexx/bluetooth/vnd_hltexx.txt
 BOARD_BLUETOOTH_USES_HCIATTACH_PROPERTY := false
 
 # NFC
