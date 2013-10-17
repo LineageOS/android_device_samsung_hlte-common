@@ -23,6 +23,9 @@
 # inherit from common msm8960
 -include device/samsung/msm8960-common/BoardConfigCommon.mk
 
+TARGET_SPECIFIC_HEADER_PATH := device/samsung/hltexx/include
+
+
 # overrides  msm8960
 TARGET_BOARD_PLATFORM := msm8974
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno330

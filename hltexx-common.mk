@@ -58,11 +58,7 @@ PRODUCT_PACKAGES += \
         libgps.utils \
         gps.msm8974
 
-ifeq ($(NEEDS_GPS_MSB_DISABLED),true)
-    GPS_CONF := device/samsung/hltexx/gps/gps-nomsb.conf
-else
     GPS_CONF := device/samsung/hltexx/gps/gps.conf
-endif
 
 PRODUCT_COPY_FILES += \
     $(GPS_CONF):/system/etc/gps.conf
