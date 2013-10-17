@@ -51,9 +51,12 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/samsung/hltexx/media/media_profiles.xml:system/etc/media_profiles.xml
 
-# GPS
 PRODUCT_PACKAGES += \
-    gps.msm8974
+        libloc_adapter \
+        libloc_eng \
+        libloc_api_v02 \
+        libgps.utils \
+        gps.msm8974
 
 ifeq ($(NEEDS_GPS_MSB_DISABLED),true)
     GPS_CONF := device/samsung/hltexx/gps/gps-nomsb.conf

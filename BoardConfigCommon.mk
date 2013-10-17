@@ -23,8 +23,6 @@
 # inherit from common msm8960
 -include device/samsung/msm8960-common/BoardConfigCommon.mk
 
-TARGET_SPECIFIC_HEADER_PATH := device/samsung/hltexx/include
-
 # overrides  msm8960
 TARGET_BOARD_PLATFORM := msm8974
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno330
@@ -98,8 +96,12 @@ BOARD_HAVE_SAMSUNG_CSDCLIENT := true
 # Use seperate devices for VOIP
 BOARD_USES_SEPERATED_VOIP := true
 
-# Use seperate devices for 3-pole headset
+# Use seperate devices for 3-pole headse
 BOARD_USES_SEPERATED_HEADSET_MIC := true
+
+#GPS
+BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := $(TARGET_BOARD_PLATFORM)
+TARGET_NO_RPC := true
 
 # SELinux
 BOARD_SEPOLICY_DIRS += \
