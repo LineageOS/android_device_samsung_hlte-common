@@ -1,4 +1,3 @@
 # put anything that cannot be in hltexx
 lib/libsec-ril.so
 lib/libril.so
-vendor/firmware/BT_FW_VER_BCM4339_003.001.009.0034.0143_ORC_H-SPR.hcd
