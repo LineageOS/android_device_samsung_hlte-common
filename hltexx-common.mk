@@ -101,7 +101,11 @@ PRODUCT_PACKAGES += \
     libnetcmdiface \
     macloader
 
-# NFC packages
+# Nfc
+NFCEE_ACCESS_PATH := device/samsung/hltexx/nfc/nfcee_access.xml
+
+ifneq ($(filter hltexx hltespr,$(TARGET_DEVICE)),)
+
 PRODUCT_PACKAGES += \
     libnfc-nci \
     libnfc_nci_jni \
@@ -110,11 +114,22 @@ PRODUCT_PACKAGES += \
     Tag \
     com.android.nfc_extras
 
-# NFCEE access control + configuration
-NFCEE_ACCESS_PATH := device/samsung/hltexx/nfc/nfcee_access.xml
 PRODUCT_COPY_FILES += \
     $(NFCEE_ACCESS_PATH):system/etc/nfcee_access.xml \
     device/samsung/hltexx/nfc/libnfc-brcm.conf:system/etc/libnfc-brcm.conf
+
+else
+PRODUCT_PACKAGES += \
+    libnfc \
+    libnfc_jni \
+    Nfc \
+    Tag \
+    com.android.nfc_extras
+
+PRODUCT_COPY_FILES += \
+    $(NFCEE_ACCESS_PATH):system/etc/nfcee_access.xml
+
+endif
 
 # Set default USB interface
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
