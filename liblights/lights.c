@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2008 The Android Open Source Project
- * Copyright (C) 2012 The CyanogenMod Project
+ * Copyright (C) 2013 The CyanogenMod Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,7 +32,7 @@ static pthread_once_t g_init = PTHREAD_ONCE_INIT;
 static pthread_mutex_t g_lock = PTHREAD_MUTEX_INITIALIZER;
 
 char const*const PANEL_FILE = "/sys/class/leds/lcd-backlight/brightness";
-char const*const BUTTON_FILE = "/sys/class/leds/button-backlight/brightness";
+char const*const BUTTON_FILE = "/sys/class/sec/sec_touchkey/brightness";
 
 char const*const LED_BLINK = "/sys/class/sec/led/led_blink";
 
