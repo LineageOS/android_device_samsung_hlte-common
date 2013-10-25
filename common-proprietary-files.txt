@@ -7,8 +7,6 @@ bin/thermald
 bin/thermal-engine
 
 # Bluetooth firmware
-vendor/firmware/bcm2079xB4_firmware.ncd
-vendor/firmware/bcm2079xB4_pre_firmware.ncd
 vendor/firmware/bcm4339.hcd
 vendor/firmware/bcm4339.hcd:vendor/firmware/bcm4335.hcd
 vendor/firmware/bcm4339_A0.hcd
@@ -19,6 +17,8 @@ vendor/firmware/bcm4339_semco.hcd
 vendor/lib/libacdbloader.so
 vendor/lib/libaudcal.so
 vendor/lib/libcsd-client.so
+vendor/lib/libacdbrtac.so
+vendor/lib/libadiertac.so
 #lib/lib_Samsung_AudioZoom_v100.so
 #lib//libsamsungRecord_zoom.so
 #lib/lib_DNSe_NRSS_ver225.so
@@ -127,17 +127,11 @@ lib/libloc_api_v02.so
 
 # Sensors
 lib/libsensirion_h_6.so
-#vendor/lib/libsam.so
 lib/hw/sensors.msm8974.so
 lib/hw/sensorhubs.msm8974.so
 
 # Camera
 bin/mm-qcamera-daemon
-#cameradata/M10MO_SFW.bin
-#cameradata/RS_M10MO_OL.bin
-#cameradata/RS_M10MO_OS.bin
-#cameradata/RS_M10MO_SL.bin
-#cameradata/RS_M10MO_SS.bin
 cameradata/datapattern_420sp.yuv
 cameradata/datapattern_front_420sp.yuv
 lib/hw/camera.msm8974.so
@@ -147,7 +141,7 @@ lib/libqomx_jpegenc.so
 lib/libliveframework.so
 # loading full library causes the boot process to hang
 # todo add media.audio_policy
-#lib//libarcsoft_nighthawk.so
+#lib/libarcsoft_nighthawk.so
 lib/libchromatix_imx134_common.so
 lib/libchromatix_imx134_common_720p_b.so
 lib/libchromatix_imx134_common_720p_s.so
@@ -210,10 +204,6 @@ lib/libchromatix_s5k6b2yx_smart_stay.so
 lib/libchromatix_s5k6b2yx_vt.so
 lib/libchromatix_s5k6b2yx_vt_hd.so
 lib/libchromatix_s5k6b2yx_zslshot.so
-#vendor/lib/libgemini.so
-#vendor/lib/libimage-jpeg-enc-omx-comp.so
-#vendor/lib/libimage-omx-common.so
-#vendor/lib/libmercury.so
 vendor/lib/libmmcamera_faceproc.so
 lib/libmmcamera2_stats_algorithm.so
 lib/libmmcamera_cac2_lib.so
@@ -243,7 +233,6 @@ vendor/lib/libchromatix_imx135_vt.so
 vendor/lib/libchromatix_imx135_vt_hd.so
 vendor/lib/libchromatix_s5k3l2xx_vt.so
 vendor/lib/libchromatix_s5k3l2xx_vt_hd.so
-#vendor/lib/libmmstillomx.so
 vendor/lib/liboemcamera.so
 lib/libsecnativefeature.so
 lib/libvdis.so
