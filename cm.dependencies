@@ -11,6 +11,10 @@
     "repository": "android_device_samsung_hltexx",
     "target_path": "device/samsung/hltexx"
   },
+   {
+    "repository": "android_kernel_samsung_hlte",
+    "target_path": "kernel/samsung/hlte"
+  },
   {
     "repository": "android_hardware_samsung",
     "target_path": "hardware/samsung"
