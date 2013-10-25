@@ -317,8 +317,8 @@ on post-fs-data
 
 # NFC_NXP
     setprop ro.nfc.port "I2C"
-    chmod 0600 /dev/pn544
-    chown nfc nfc /dev/pn544
+    chmod 0600 /dev/pn547
+    chown nfc nfc /dev/pn547
 
 # NFC_BROADCOM
     chmod 0600 /dev/bcm2079x
