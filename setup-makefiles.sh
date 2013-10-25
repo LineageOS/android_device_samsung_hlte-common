@@ -27,9 +27,6 @@ DISM=`egrep -c '(^#|^$)' device-proprietary-files.txt`
 COUNT=`expr $COUNT - $DISM`
 for FILE in `egrep -v '(^#|^$)' ../$DEVICE/device-proprietary-files.txt`; do
   COUNT=`expr $COUNT - 1`
-  if [ $COUNT = "0" ]; then
-    LINEEND=""
-  fi
       # Split the file from the destination (format is "file[:destination]")
   OLDIFS=$IFS IFS=":" PARSING_ARRAY=($FILE) IFS=$OLDIFS
   FILE=${PARSING_ARRAY[0]}
