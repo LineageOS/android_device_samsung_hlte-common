@@ -40,7 +40,7 @@ TARGET_KRAIT_BIONIC_BBTHRESH  := 64
 TARGET_KRAIT_BIONIC_PLDSIZE   := 64
 
 # Kernel Configs
-TARGET_KERNEL_SOURCE := kernel/samsung/msm8974
+TARGET_KERNEL_SOURCE := kernel/samsung/hlte
 TARGET_KERNEL_CONFIG := msm8974_sec_defconfig
 TARGET_KERNEL_SELINUX_CONFIG := selinux_defconfig
 
