@@ -13,8 +13,13 @@ vendor/firmware/bcm4339_A0.hcd
 vendor/firmware/bcm4339_murata.hcd
 vendor/firmware/bcm4339_semco.hcd
 
+# GPS
+vendor/lib/libgeofence.so
+lib/libloc_api_v02.so
+
 # Audio
 vendor/lib/libacdbloader.so
+vendor/lib/libacdbloader.so:lib/libacdbloader.so
 vendor/lib/libaudcal.so
 vendor/lib/libcsd-client.so
 vendor/lib/libacdbrtac.so
@@ -28,8 +33,6 @@ vendor/lib/libadiertac.so
 #lib/lib_Samsung_Resampler.so 
 #lib/libaudio-ril.so
 #lib/hw/audio.primary.msm8974.so 
-#vendor/lib/libadiertac.so 
-#vendor/lib/libacdbrtac.so
 #lib/libalsa-intf.so
 #lib/hw/audio_policy.msm8974.so
 #lib/libaudioparameter.so
@@ -121,9 +124,6 @@ lib/libsecril-client.so
 vendor/lib/libtime_genoff.so
 
 
-# GPS
-vendor/lib/libgeofence.so
-lib/libloc_api_v02.so
 
 # Sensors
 lib/libsensirion_h_6.so
