@@ -16,10 +16,6 @@
     "target_path": "kernel/samsung/hlte"
   },
   {
-    "repository": "android_hardware_qcom_display-mdss",
-    "target_path": "hardware/qcom/display-mdss"
-  },
-  {
     "repository": "android_hardware_samsung",
     "target_path": "hardware/samsung"
   }
