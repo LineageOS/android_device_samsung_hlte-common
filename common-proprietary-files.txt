@@ -126,7 +126,6 @@ vendor/lib/libtime_genoff.so
 
 
 # Sensors
-lib/libsensirion_h_6.so
 lib/hw/sensors.msm8974.so
 lib/hw/sensorhubs.msm8974.so
 
@@ -246,6 +245,7 @@ lib/libxml2.so
 lib/libmmcamera_s5k6b2yx.so
 lib/libsecnativefeature.so
 lib/libvdis.so
+vendor/lib/libthermalclient.so
 vendor/lib/libmmcamera_imx135.so
 vendor/lib/libmmcamera_faceproc.so
 vendor/lib/libsensor1.so
