@@ -710,7 +710,6 @@ service wifi-crda /system/bin/sh /system/etc/init.crda.sh
    disabled
    oneshot
 
-
 on property:sys.boot_completed=1
     start qcom-post-boot
 
