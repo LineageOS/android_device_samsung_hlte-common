@@ -124,3 +124,7 @@ USE_DEVICE_SPECIFIC_CAMERA := true
 
 # Build lights 
 TARGET_PROVIDES_LIBLIGHT := true
+
+# Time services
+BOARD_USES_QC_TIME_SERVICES := true
+
