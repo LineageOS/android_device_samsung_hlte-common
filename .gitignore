@@ -1,4 +1,4 @@
-
+*.bak
 BoardConfig.mk
 .DS_Store
 

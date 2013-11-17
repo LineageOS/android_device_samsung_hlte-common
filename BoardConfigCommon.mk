@@ -45,15 +45,15 @@ TARGET_KERNEL_CONFIG := msm8974_sec_defconfig
 TARGET_KERNEL_SELINUX_CONFIG := selinux_defconfig
 
 # Kernel
-BOARD_KERNEL_CMDLINE := console=null androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x3F
+BOARD_KERNEL_CMDLINE := console=null androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x3F androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000 --dt device/samsung/hltexx/dtb.img --tags_offset 0x01e00000
 BOARD_KERNEL_SEPARATED_DT := true
 
 # Graphics
-TARGET_USES_QCOM_BSP := true
-COMMON_GLOBAL_CFLAGS += -DQCOM_BSP
+#TARGET_USES_QCOM_BSP := true
+#COMMON_GLOBAL_CFLAGS += -DQCOM_BSP
 BOARD_EGL_CFG := device/samsung/hltexx/egl.cfg
 
 # Recovery
@@ -102,8 +102,9 @@ BOARD_USES_SEPERATED_AUDIO_INPUT :=
 BOARD_HAVE_NEW_QCOM_CSDCLIENT := true
 
 # Media Branch
-TARGET_QCOM_MEDIA_VARIANT := v4l2
-TARGET_QCOM_DISPLAY_VARIANT := mdss
+#TARGET_QCOM_MEDIA_VARIANT := v4l2
+#TARGET_QCOM_DISPLAY_VARIANT := mdss
+#TARGET_QCOM_AUDIO_VARIANT := caf
 
 #GPS
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := $(TARGET_BOARD_PLATFORM)
@@ -150,5 +151,5 @@ BOARD_SEPOLICY_UNION += \
     
     
 # Use retire fence from MDP driver
-TARGET_DISPLAY_USE_RETIRE_FENCE :=
+#TARGET_DISPLAY_USE_RETIRE_FENCE := true
 WIFI_DRIVER_FW_PATH_P2P     := 

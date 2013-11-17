@@ -225,7 +225,7 @@
     <bool name="config_batterySdCardAccessibility">true</bool>
 
     <!-- Disable the home key unlock setting -->
-    <bool name="config_disableHomeUnlockSetting">false</bool>
+    <!-- <bool name="config_disableHomeUnlockSetting">false</bool> -->
 
     <!-- Hardware 'face' keys present on the device, stored as a bit field.
          This integer should equal the sum of the corresponding value for each
@@ -246,6 +246,6 @@
 
     <!-- True if the Irda service should be started at system start. This currently only
          supports Samsung Galaxy S4. -->
-    <bool name="config_enableIrdaManagerService">true</bool>
+    <!-- <bool name="config_enableIrdaManagerService">true</bool> -->
 
 </resources>

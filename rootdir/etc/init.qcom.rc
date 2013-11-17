@@ -26,7 +26,7 @@
 #
 
 import init.qcom.usb.rc
-import init.target.rc
+#import init.target.rc
 
 on early-init
     mount debugfs debugfs /sys/kernel/debug
@@ -44,6 +44,7 @@ on init
     export EXTERNAL_STORAGE /storage/emulated/legacy
     export EMULATED_STORAGE_SOURCE /mnt/shell/emulated
     export EMULATED_STORAGE_TARGET /storage/emulated
+    export BOOTCLASSPATH ${BOOTCLASSPATH}:/system/framework/qcom.fmradio.jar
 
     # Support legacy paths
     symlink /storage/emulated/legacy /sdcard
@@ -193,7 +194,7 @@ on post-fs-data
     mkdir /data/misc/bluetooth 0770 bluetooth bluetooth
 
     # Create the directories used by the Wireless subsystem
-    mkdir /data/misc/wifi 0770 wifi system
+    mkdir /data/misc/wifi 0770 wifi wifi
     mkdir /data/misc/wifi/sockets 0770 wifi wifi
     mkdir /data/misc/wifi/wpa_supplicant 0770 wifi wifi
     mkdir /data/misc/dhcp 0775 dhcp dhcp
@@ -498,7 +499,7 @@ service amp_unload /system/bin/amploader -u
     oneshot
 
 service wpa_supplicant /system/bin/wpa_supplicant \
-    -Dnl80211 -iwlan0 -puse_p2p_group_interface=1 -e/data/misc/wifi/entropy.bin
+    -Dnl80211 -iwlan0 -puse_p2p_group_interface=1 -e/data/misc/wifi/entropy.bin -g@android:wpa_wlan0
     #   we will start as root and wpa_supplicant will switch to user wifi
     #   after setting up the capabilities required for WEXT
     #   user wifi
@@ -510,7 +511,7 @@ service wpa_supplicant /system/bin/wpa_supplicant \
 
 service p2p_supplicant /system/bin/wpa_supplicant \
     -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf -N \
-    -ip2p0 -Dnl80211 -c/data/misc/wifi/p2p_supplicant.conf -e/data/misc/wifi/entropy.bin -puse_p2p_group_interface=1
+    -ip2p0 -Dnl80211 -c/data/misc/wifi/p2p_supplicant.conf -e/data/misc/wifi/entropy.bin -g@android:wpa_wlan0 -puse_p2p_group_interface=1
     #   we will start as root and wpa_supplicant will switch to user wifi
     #   after setting up the capabilities required for WEXT
     #   user wifi
@@ -564,6 +565,21 @@ service dhcpcd_bnep3 /system/bin/dhcpcd -BKLG
 service dhcpcd_bnep4 /system/bin/dhcpcd -BKLG
     disabled
     oneshot
+
+# Broadcom NFC
+    chmod 0600 /dev/bcm2079x
+    chown nfc nfc /dev/bcm2079x
+    mkdir /data/bcmnfc
+    mkdir /data/bcmnfc/param
+    chmod 0700 /data/bcmnfc
+    chmod 0700 /data/bcmnfc/param
+    chown nfc nfc /data/bcmnfc
+    chown nfc nfc /data/bcmnfc/param
+
+# NFC
+    setprop ro.nfc.port "I2C"
+    chmod 0600 /dev/pn547
+    chown nfc nfc /dev/pn547
 
 #for WiFi MFG(TestMode)
 service mfgloader /system/bin/mfgloader

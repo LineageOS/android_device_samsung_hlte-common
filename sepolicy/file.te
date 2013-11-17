@@ -16,3 +16,4 @@ type persist_bluetooth_file, file_type;
 type persist_drm_file, file_type;
 type persist_sensors_file, file_type;
 type persist_wifi_file, file_type;
+type audio_data_file, file_type, data_file_type;

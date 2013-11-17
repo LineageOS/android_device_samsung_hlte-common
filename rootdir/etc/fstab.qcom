@@ -6,17 +6,19 @@
 # Currently we dont have e2fsck compiled. So fs check would failed.
 
 #<src>                                                <mnt_point>  <type>  <mnt_flags and options>                     <fs_mgr_flags>
-/dev/block/platform/msm_sdcc.1/by-name/boot           /boot        emmc    defaults   defaults
-/dev/block/platform/msm_sdcc.1/by-name/recovery       /recovery    emmc    defaults   defaults
-/dev/block/platform/msm_sdcc.1/by-name/cache          /cache       ext4    nosuid,nodev,barrier=1 wait,check
-/dev/block/platform/msm_sdcc.1/by-name/system         /system      ext4    ro,errors=panic                                wait
-/dev/block/platform/msm_sdcc.1/by-name/userdata       /data        ext4    nosuid,nodev,noatime,noauto_da_alloc,discard,journal_async_commit,errors=panic      wait,check,encryptable=footer
+/dev/block/platform/msm_sdcc.1/by-name/boot           /boot            emmc    defaults   defaults
+/dev/block/platform/msm_sdcc.1/by-name/recovery       /recovery        emmc    defaults   defaults
+/dev/block/platform/msm_sdcc.1/by-name/cache          /cache           ext4    nosuid,nodev,barrier=1 wait,check
+/dev/block/platform/msm_sdcc.1/by-name/system         /system          ext4    ro,errors=panic                                wait
+/dev/block/platform/msm_sdcc.1/by-name/userdata       /data            ext4    nosuid,nodev,noatime,noauto_da_alloc,discard,journal_async_commit,errors=panic      wait,check,encryptable=footer
+/dev/block/platform/msm_sdcc.1/by-name/apnhlos        /firmware        vfat    ro,shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337  wait
+/dev/block/platform/msm_sdcc.1/by-name/modem          /firmware-modem  vfat    ro,shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337  wait
 
 # VOLD
-/devices/msm_sdcc.3/mmc_host/mmc2			/storage/extSdCard 		vfat	default		voldmanaged=sdcard:auto
-/devices/platform/xhci-hcd/usb2,/devices/platform/xhci-hcd/usb1			/storage/UsbDriveA		vfat	default		voldmanaged=sda:auto
-/devices/platform/xhci-hcd/usb2,/devices/platform/xhci-hcd/usb1			/storage/UsbDriveB		vfat	default		voldmanaged=sdb:auto
-/devices/platform/xhci-hcd/usb2,/devices/platform/xhci-hcd/usb1			/storage/UsbDriveC		vfat	default		voldmanaged=sdc:auto
-/devices/platform/xhci-hcd/usb2,/devices/platform/xhci-hcd/usb1		    /storage/UsbDriveD		vfat	default		voldmanaged=sdd:auto
-/devices/platform/xhci-hcd/usb2,/devices/platform/xhci-hcd/usb1			/storage/UsbDriveE		vfat	default		voldmanaged=sde:auto
-/devices/platform/xhci-hcd/usb2,/devices/platform/xhci-hcd/usb1			/storage/UsbDriveF		vfat	default		voldmanaged=sdf:auto
+/devices/msm_sdcc.3/mmc_host/mmc2						auto              		vfat	defaults	voldmanaged=sdcard1:auto
+#/devices/platform/xhci-hcd/usb2,/devices/platform/xhci-hcd/usb1			/storage/UsbDriveA		vfat	defaults	voldmanaged=sda:auto
+#/devices/platform/xhci-hcd/usb2,/devices/platform/xhci-hcd/usb1			/storage/UsbDriveB		vfat	defaults	voldmanaged=sdb:auto
+#/devices/platform/xhci-hcd/usb2,/devices/platform/xhci-hcd/usb1			/storage/UsbDriveC		vfat	defaults	voldmanaged=sdc:auto
+#/devices/platform/xhci-hcd/usb2,/devices/platform/xhci-hcd/usb1		        /storage/UsbDriveD		vfat	defaults	voldmanaged=sdd:auto
+#/devices/platform/xhci-hcd/usb2,/devices/platform/xhci-hcd/usb1			/storage/UsbDriveE		vfat	defaults	voldmanaged=sde:auto
+#/devices/platform/xhci-hcd/usb2,/devices/platform/xhci-hcd/usb1			/storage/UsbDriveF		vfat	defaults	voldmanaged=sdf:auto

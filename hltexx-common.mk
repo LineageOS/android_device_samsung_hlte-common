@@ -31,8 +31,8 @@ TARGET_SCREEN_HEIGHT := 1920
 TARGET_SCREEN_WIDTH := 1080
 
 # Expose Irda feature
-PRODUCT_COPY_FILES += \
-    device/samsung/hltexx/etc/com.sec.feature.irda_service.xml:system/etc/permissions/com.sec.feature.irda_service.xml
+#PRODUCT_COPY_FILES += \
+#    device/samsung/hltexx/etc/com.sec.feature.irda_service.xml:system/etc/permissions/com.sec.feature.irda_service.xml
 
 # Audio configuration
 PRODUCT_COPY_FILES += \
@@ -133,7 +133,7 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 PRODUCT_PACKAGES += lights.msm8974
 
 # Irda
-PRODUCT_PACKAGES += irda.msm8974
+#PRODUCT_PACKAGES += irda.msm8974
 
 # QC Perf
 PRODUCT_PROPERTY_OVERRIDES += \
