@@ -153,3 +153,9 @@ BOARD_SEPOLICY_UNION += \
 # Use retire fence from MDP driver
 #TARGET_DISPLAY_USE_RETIRE_FENCE := true
 WIFI_DRIVER_FW_PATH_P2P     := 
+
+# Don't use qcom camera HAL
+USE_DEVICE_SPECIFIC_CAMERA := true
+
+# Build lights 
+TARGET_PROVIDES_LIBLIGHT := true
