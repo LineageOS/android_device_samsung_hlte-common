@@ -157,11 +157,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.sf.lcd_density=480 \
     ro.ril.transmitpower=true \
     ro.opengles.version=196608 \
-    persist.audio.fluence.mode=endfire \
-    persist.audio.vr.enable=false \
-    persist.audio.handset.mic=digital \
-    persist.audio.speaker.location=high \
-    ro.qc.sdk.audio.fluencetype=none \
+    tunnel.decode=false \
+    lpa.decode=false \
     persist.timed.enable=true \
     ro.emmc.sdcard.partition=17 \
     ro.use_data_netmgrd=true \
@@ -170,7 +167,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.config.ehrpd=true \
     persist.omh.enabled=1 \
     persist.data_netmgrd_nint=16 \
-    lpa.decode=true \
     rild.libpath=/system/lib/libsec-ril.so \
     ril.subscription.types=NV,RUIM \
     ro.cdma.subscribe_on_ruim_ready=true \
@@ -187,6 +183,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.rild.nitz_short_ons_2="" \
     persist.rild.nitz_short_ons_3="" \
     ro.telephony.ril.v3=newDriverCall
+
+# Wifi
+PRODUCT_COPY_FILES += \
+   device/samsung/hltexx/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
+   device/samsung/hltexx/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf
 
 # call common msm8960
 $(call inherit-product, device/samsung/msm8960-common/msm8960.mk)
