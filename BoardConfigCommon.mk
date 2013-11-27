@@ -115,41 +115,6 @@ BOARD_HAVE_NEW_QC_GPS :=
 #BOARD_USES_LIBMEDIA_WITH_AUDIOPARAMETER := true
 #TARGET_PROVIDES_LIBAUDIO := true
 
-# SELinux
-BOARD_SEPOLICY_DIRS += \
-        device/samsung/hltexx/sepolicy
-
-BOARD_SEPOLICY_UNION += \
-	file_contexts \
-	property_contexts \
-	te_macros \
-	bluetooth_loader.te \
-	bridge.te \
-	camera.te \
-	conn_init.te \
-	device.te \
-	dhcp.te \
-	domain.te \
-	drmserver.te \
-	file.te \
-	init.te \
-	kickstart.te \
-	mediaserver.te \
-	mpdecision.te \
-	netmgrd.te \
-	property.te \
-	qmux.te \
-	rild.te \
-	rmt.te \
-	sensors.te \
-	surfaceflinger.te \
-	system.te \
-	tee.te \
-	thermald.te \
-	ueventd.te \
-	wpa_supplicant.te
-    
-    
 # Use retire fence from MDP driver
 TARGET_DISPLAY_USE_RETIRE_FENCE := 
 WIFI_DRIVER_FW_PATH_P2P     := 
