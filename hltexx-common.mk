@@ -130,7 +130,7 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=mtp
 
 # Lights
-PRODUCT_PACKAGES += lights.msm8974
+PRODUCT_PACKAGES += lights.MSM8974
 
 # Irda
 #PRODUCT_PACKAGES += irda.msm8974
