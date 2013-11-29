@@ -52,8 +52,8 @@ BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000 --dt device/samsung/hltexx/d
 BOARD_KERNEL_SEPARATED_DT := true
 
 # Graphics
-#TARGET_USES_QCOM_BSP := true
-#COMMON_GLOBAL_CFLAGS += -DQCOM_BSP
+TARGET_USES_QCOM_BSP := true
+COMMON_GLOBAL_CFLAGS += -DQCOM_BSP
 BOARD_EGL_CFG := device/samsung/hltexx/egl.cfg
 
 # Recovery
@@ -101,6 +101,7 @@ BOARD_USES_SEPERATED_AUDIO_INPUT :=
 # Samsung's nonstandard csd-client
 BOARD_HAVE_NEW_QCOM_CSDCLIENT := true
 
+TARGET_USES_QCOM_COMPRESSED_AUDIO :=
 TARGET_QCOM_MEDIA_VARIANT :=
 
 #GPS
