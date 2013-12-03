@@ -121,16 +121,10 @@ vendor/lib/libqmi_client_qmux.so
 lib/libreference-ril.so
 lib/libril-qcril-hook-oem.so
 lib/libsecril-client.so
-<<<<<<< HEAD
-vendor/lib/libtime_genoff.so
-=======
 
 # Time services
 bin/time_daemon
-lib/libtime_genoff.so
->>>>>>> 9223038... jf: Enable QC time services
-
-
+vendor/lib/libtime_genoff.so
 
 # Sensors
 lib/hw/sensors.msm8974.so
