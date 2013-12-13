@@ -112,6 +112,13 @@ PRODUCT_PACKAGES += \
     Tag \
     com.android.nfc_extras
 
+
+# IR packages
+PRODUCT_PACKAGES += \
+    consumerir.msm8974
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.consumerir.xml:system/etc/permissions/android.hardware.consumerir.xml
+
 PRODUCT_COPY_FILES += \
     $(NFCEE_ACCESS_PATH):system/etc/nfcee_access.xml \
     device/samsung/hltexx/nfc/libnfc-brcm.conf:system/etc/libnfc-brcm.conf
