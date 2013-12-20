@@ -126,6 +126,7 @@ lib/libsecril-client.so
 bin/time_daemon
 vendor/lib/libtime_genoff.so
 
+
 # Sensors
 lib/hw/sensors.msm8974.so
 lib/hw/sensorhubs.msm8974.so
