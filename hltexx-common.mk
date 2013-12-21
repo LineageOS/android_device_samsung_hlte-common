@@ -102,7 +102,7 @@ PRODUCT_PACKAGES += \
 # Nfc
 NFCEE_ACCESS_PATH := device/samsung/hltexx/nfc/nfcee_access.xml
 
-ifneq ($(filter hltexx hltespr,$(TARGET_DEVICE)),)
+#ifneq ($(filter hltexx hltespr,$(TARGET_DEVICE)),)
 
 PRODUCT_PACKAGES += \
     libnfc-nci \
@@ -121,20 +121,23 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_COPY_FILES += \
     $(NFCEE_ACCESS_PATH):system/etc/nfcee_access.xml \
+    device/samsung/hltexx/nfc/libnfc-brcm-20791b05.conf:system/etc/libnfc-brcm-20791b05.conf \
+    device/samsung/hltexx/nfc/libnfc-brcm-20791b04.conf:system/etc/libnfc-brcm-20791b04.conf \
     device/samsung/hltexx/nfc/libnfc-brcm.conf:system/etc/libnfc-brcm.conf
 
-else
-PRODUCT_PACKAGES += \
-    libnfc \
-    libnfc_jni \
-    Nfc \
-    Tag \
-    com.android.nfc_extras
 
-PRODUCT_COPY_FILES += \
-    $(NFCEE_ACCESS_PATH):system/etc/nfcee_access.xml
+#else
+#PRODUCT_PACKAGES += \
+#    libnfc \
+#    libnfc_jni \
+#    Nfc \
+#    Tag \
+#    com.android.nfc_extras
 
-endif
+#PRODUCT_COPY_FILES += \
+#    $(NFCEE_ACCESS_PATH):system/etc/nfcee_access.xml
+
+#endif
 
 # Set default USB interface
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
