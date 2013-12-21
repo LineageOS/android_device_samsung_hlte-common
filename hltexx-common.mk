@@ -158,7 +158,7 @@ PRODUCT_PACKAGES += qrngd
 
 #common build.props
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.chipname=apq8064 \
+    ro.chipname=msm8974 \
     ro.ril.hsxpa=1 \
     ro.ril.gprsclass=10 \
     persist.radio.add_power_save=1 \
@@ -171,7 +171,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.sf.lcd_density=480 \
     ro.ril.transmitpower=true \
     ro.opengles.version=196608 \
-    lpa.decode=true \
+    lpa.decode=false \
     persist.timed.enable=true \
     ro.emmc.sdcard.partition=17 \
     ro.use_data_netmgrd=true \
