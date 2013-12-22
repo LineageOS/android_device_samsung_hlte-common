@@ -690,17 +690,14 @@
         <ctl name="IIR1 INP1 MUX" value="DEC7" />
     </path>
 
-    <path name="speaker">
-        <ctl name="SLIM RX1 MUX" value="AIF1_PB" />
-        <ctl name="RX1 MIX1 INP1" value="RX1" />
-        <ctl name="CLASS_H_DSM MUX" value="DSM_HPHL_RX1" />
-        <ctl name="DAC1 Switch" value="1" />
-    </path>
-
     <path name="speaker-fluid">
         <ctl name="SLIM RX1 MUX" value="AIF1_PB" />
         <ctl name="RX7 MIX1 INP1" value="RX1" />
         <ctl name="COMP0 Switch" value="1" />
+    </path>
+
+    <path name="speaker">
+        <path name="speaker-fluid" />
     </path>
 
     <path name="speaker-cdp">
@@ -853,16 +850,14 @@
         <ctl name="ADC2 Volume" value="13" />
     </path>
 
-    <path name="speaker-and-headphones">
-        <path name="headphones" />
-        <ctl name="DAC1 Switch" value="1" />
-        <ctl name="RX7 MIX1 INP1" value="RX1" />
-    </path>
-
     <path name="speaker-and-headphones-fluid">
         <path name="headphones" />
         <ctl name="RX7 MIX1 INP1" value="RX1" />
         <ctl name="COMP0 Switch" value="1" />
+    </path>
+
+    <path name="speaker-and-headphones">
+        <path name="speaker-and-headphones-fluid" />
     </path>
 
     <path name="speaker-and-headphones-cdp">
@@ -1177,11 +1172,11 @@
     </path>
 
     <path name="voice-speaker-qmic">
-        <path name="speaker-qmic" />
+        <path name="speaker-qmic-cdp" />
     </path>
 
     <path name="quad-mic">
-        <path name="speaker-qmic" />
+        <path name="speaker-qmic-cdp" />
     </path>
 
     <path name="voice-speaker-qmic-cdp">
