@@ -48,8 +48,11 @@ TARGET_KERNEL_SELINUX_CONFIG := selinux_defconfig
 BOARD_KERNEL_CMDLINE := console=null androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x3F androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 2048
-BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000 --dt device/samsung/hltexx/dtb.img --tags_offset 0x01e00000
+BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000 --tags_offset 0x01e00000
 BOARD_KERNEL_SEPARATED_DT := true
+ 
+
+BOARD_CUSTOM_BOOTIMG_MK := device/samsung/hltexx/mkbootimg.mk
 
 # Graphics
 TARGET_USES_QCOM_BSP := true
