@@ -38,10 +38,10 @@ for FILE in `egrep -v '(^#|^$)' ../$DEVICE/device-proprietary-files.txt`; do
 done
 
 LINEEND=" \\"
-COUNT=`wc -l ../hltexx/proprietary-files.txt | awk {'print $1'}`
-DISM=`egrep -c '(^#|^$)' ../hltexx/proprietary-files.txt`
+COUNT=`wc -l ../hlte-common/proprietary-files.txt | awk {'print $1'}`
+DISM=`egrep -c '(^#|^$)' ../hlte-common/proprietary-files.txt`
 COUNT=`expr $COUNT - $DISM`
-for FILE in `egrep -v '(^#|^$)' ../hltexx/proprietary-files.txt`; do
+for FILE in `egrep -v '(^#|^$)' ../hlte-common/proprietary-files.txt`; do
   COUNT=`expr $COUNT - 1`
   if [ $COUNT = "0" ]; then
     LINEEND=""
@@ -121,10 +121,10 @@ PRODUCT_COPY_FILES += \\
 EOF
 
 LINEEND=" \\"
-COUNT=`wc -l ../hltexx/common-proprietary-files.txt | awk {'print $1'}`
-DISM=`egrep -c '(^#|^$)' ../hltexx/common-proprietary-files.txt`
+COUNT=`wc -l ../hlte-common/common-proprietary-files.txt | awk {'print $1'}`
+DISM=`egrep -c '(^#|^$)' ../hlte-common/common-proprietary-files.txt`
 COUNT=`expr $COUNT - $DISM`
-for FILE in `egrep -v '(^#|^$)' ../hltexx/common-proprietary-files.txt`; do
+for FILE in `egrep -v '(^#|^$)' ../hlte-common/common-proprietary-files.txt`; do
   COUNT=`expr $COUNT - 1`
   if [ $COUNT = "0" ]; then
     LINEEND=""
@@ -200,7 +200,7 @@ EOF
 
 LOCAL_PATH := \$(call my-dir)
 
-ifneq (\$(filter hltexx hltetmo,\$(TARGET_DEVICE)),)
+ifneq (\$(filter hltexx hltetmo hltespr,\$(TARGET_DEVICE)),)
 
 include \$(CLEAR_VARS)
 LOCAL_MODULE := libtime_genoff

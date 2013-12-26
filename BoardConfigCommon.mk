@@ -23,7 +23,7 @@
 # inherit from common msm8960
 -include device/samsung/msm8960-common/BoardConfigCommon.mk
 
-TARGET_SPECIFIC_HEADER_PATH := device/samsung/hltexx/include
+TARGET_SPECIFIC_HEADER_PATH := device/samsung/hlte-common/include
 
 
 # overrides  msm8960
@@ -52,22 +52,22 @@ BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000 --tags_offset 0x01e00000
 BOARD_KERNEL_SEPARATED_DT := true
  
 
-BOARD_CUSTOM_BOOTIMG_MK := device/samsung/hltexx/mkbootimg.mk
+BOARD_CUSTOM_BOOTIMG_MK := device/samsung/hlte-common/mkbootimg.mk
 
 # Graphics
 TARGET_USES_QCOM_BSP := true
 COMMON_GLOBAL_CFLAGS += -DQCOM_BSP
-BOARD_EGL_CFG := device/samsung/hltexx/egl.cfg
+BOARD_EGL_CFG := device/samsung/hlte-common/egl.cfg
 
 # Recovery
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
-BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/hltexx/recovery/recovery_keys.c
+BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/hlte-common/recovery/recovery_keys.c
 BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_23x41.h\"
 BOARD_USES_MMCUTILS := true
 BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_HAS_NO_MISC_PARTITION := true
 BOARD_HAS_NO_SELECT_BUTTON := true
-TARGET_RECOVERY_FSTAB := device/samsung/hltexx/rootdir/etc/fstab.qcom
+TARGET_RECOVERY_FSTAB := device/samsung/hlte-common/rootdir/etc/fstab.qcom
 
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_BOOTIMAGE_PARTITION_SIZE := 11534336
@@ -77,8 +77,8 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 28651290624
 BOARD_FLASH_BLOCK_SIZE := 131072
 
 # bluetooth
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/hltexx/bluetooth
-BOARD_BLUEDROID_VENDOR_CONF := device/samsung/hltexx/bluetooth/vnd_hltexx.txt
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/hlte-common/bluetooth
+BOARD_BLUEDROID_VENDOR_CONF := device/samsung/hlte-common/bluetooth/vnd_hlte-common.txt
 BOARD_BLUETOOTH_USES_HCIATTACH_PROPERTY := false
 
 # NFC

@@ -51,7 +51,7 @@ for FILE in `egrep -v '(^#|^$)' ../$DEVICE/device-proprietary-files.txt`; do
   fi
 done
 
-for FILE in `egrep -v '(^#|^$)' ../hltexx/proprietary-files.txt`; do
+for FILE in `egrep -v '(^#|^$)' ../hlte-common/proprietary-files.txt`; do
   echo "Extracting /system/$FILE ..."
   OLDIFS=$IFS IFS=":" PARSING_ARRAY=($FILE) IFS=$OLDIFS
   FILE=${PARSING_ARRAY[0]}
@@ -83,7 +83,7 @@ done
 
 BASE=../../../vendor/$VENDOR/hlte-common/proprietary
 rm -rf $BASE/*
-for FILE in `egrep -v '(^#|^$)' ../hltexx/common-proprietary-files.txt`; do
+for FILE in `egrep -v '(^#|^$)' ../hlte-common/common-proprietary-files.txt`; do
   echo "Extracting /system/$FILE ..."
   OLDIFS=$IFS IFS=":" PARSING_ARRAY=($FILE) IFS=$OLDIFS
   FILE=${PARSING_ARRAY[0]}
@@ -113,4 +113,4 @@ for FILE in `egrep -v '(^#|^$)' ../hltexx/common-proprietary-files.txt`; do
   fi
 done
 
-./../hltexx/setup-makefiles.sh
+./../hlte-common/setup-makefiles.sh
