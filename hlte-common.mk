@@ -98,10 +98,27 @@ PRODUCT_PACKAGES += \
     regulatory.bin \
     linville.key.pub.pem
 
+# IR packages
+PRODUCT_PACKAGES += \
+    consumerir.msm8974
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.consumerir.xml:system/etc/permissions/android.hardware.consumerir.xml
+
 # Nfc
 NFCEE_ACCESS_PATH := device/samsung/hlte-common/nfc/nfcee_access.xml
 
-#ifneq ($(filter hltexx hltespr,$(TARGET_DEVICE)),)
+ifeq ($(TARGET_NFC_TECH), nxp)
+PRODUCT_PACKAGES += \
+    libnfc \
+    libnfc_jni \
+    Nfc \
+    Tag \
+    com.android.nfc_extras
+
+PRODUCT_COPY_FILES += \
+    $(NFCEE_ACCESS_PATH):system/etc/nfcee_access.xml
+
+else
 
 PRODUCT_PACKAGES += \
     libnfc-nci \
@@ -111,32 +128,13 @@ PRODUCT_PACKAGES += \
     Tag \
     com.android.nfc_extras
 
-
-# IR packages
-PRODUCT_PACKAGES += \
-    consumerir.msm8974
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.consumerir.xml:system/etc/permissions/android.hardware.consumerir.xml
-
 PRODUCT_COPY_FILES += \
     $(NFCEE_ACCESS_PATH):system/etc/nfcee_access.xml \
     device/samsung/hlte-common/nfc/libnfc-brcm-20791b05.conf:system/etc/libnfc-brcm-20791b05.conf \
     device/samsung/hlte-common/nfc/libnfc-brcm-20791b04.conf:system/etc/libnfc-brcm-20791b04.conf \
     device/samsung/hlte-common/nfc/libnfc-brcm.conf:system/etc/libnfc-brcm.conf
 
-
-#else
-#PRODUCT_PACKAGES += \
-#    libnfc \
-#    libnfc_jni \
-#    Nfc \
-#    Tag \
-#    com.android.nfc_extras
-
-#PRODUCT_COPY_FILES += \
-#    $(NFCEE_ACCESS_PATH):system/etc/nfcee_access.xml
-
-#endif
+endif
 
 # Set default USB interface
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
