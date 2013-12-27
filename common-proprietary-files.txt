@@ -8,6 +8,7 @@ bin/thermal-engine
 
 # Bluetooth firmware
 vendor/firmware/bcm4339.hcd
+vendor/firmware/bcm4339.hcd:vendor/firmware/bcm4335.hcd
 vendor/firmware/bcm4339_A0.hcd
 vendor/firmware/bcm4339_semco.hcd
 vendor/firmware/bcm4339_wisol.hcd
