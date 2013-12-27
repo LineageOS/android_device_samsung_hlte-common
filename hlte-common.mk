@@ -40,6 +40,10 @@ PRODUCT_COPY_FILES += \
     device/samsung/hlte-common/audio/audio_policy.conf:system/etc/audio_policy.conf \
     frameworks/native/data/etc/android.hardware.audio.low_latency.xml:system/etc/permissions/android.hardware.audio.low_latency.xml
 
+# Thermal config
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/thermal-engine-8974.conf:system/etc/thermal-engine.conf
+
 # Media Profile
 PRODUCT_COPY_FILES += \
     device/samsung/hlte-common/media/media_profiles.xml:system/etc/media_profiles.xml
