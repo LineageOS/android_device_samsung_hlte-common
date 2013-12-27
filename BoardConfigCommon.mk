@@ -110,6 +110,7 @@ BOARD_HAVE_NEW_QCOM_CSDCLIENT := true
 
 TARGET_USES_QCOM_COMPRESSED_AUDIO :=
 TARGET_QCOM_MEDIA_VARIANT :=
+TARGET_QCOM_DISPLAY_VARIANT :=
 
 #GPS
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := $(TARGET_BOARD_PLATFORM)
@@ -133,3 +134,17 @@ TARGET_PROVIDES_LIBLIGHT := true
 # Time services
 BOARD_USES_QC_TIME_SERVICES := true
 
+# Display
+NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
+OVERRIDE_RS_DRIVER:= libRSDriver_adreno.so
+TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
+
+# Shader cache config options
+# Maximum size of the  GLES Shaders that can be cached for reuse.
+# Increase the size if shaders of size greater than 12KB are used.
+MAX_EGL_CACHE_KEY_SIZE := 12*1024
+
+# Maximum GLES shader cache size for each app to store the compiled shader
+# binaries. Decrease the size if RAM or Flash Storage size is a limitation
+# of the device.
+MAX_EGL_CACHE_SIZE := 2048*1024

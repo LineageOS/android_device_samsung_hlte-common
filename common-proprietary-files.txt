@@ -60,30 +60,21 @@ vendor/lib/egl/eglsubAndroid.so
 vendor/lib/egl/libEGL_adreno.so
 vendor/lib/egl/libGLESv1_CM_adreno.so
 vendor/lib/egl/libGLESv2_adreno.so
+vendor/lib/egl/libplayback_adreno.so
 vendor/lib/egl/libq3dtools_adreno.so
-vendor/lib/libCB.so
-#lib/egl/libplayback_adreno200.so
-#lib/libc2d2_z180.so
-vendor/lib/libc2d2_a3xx.so
-vendor/lib/libgsl.so
-vendor/lib/libllvm-a3xx.so
-#lib/libllvm-arm.so
-vendor/lib/libC2D2.so
-vendor/lib/libOpenVG.so
-vendor/lib/libOpenCL.so
-#lib/libsc-a2xx.so
 vendor/lib/libadreno_utils.so
+vendor/lib/libC2D2.so
+vendor/lib/libc2d30-a3xx.so
+vendor/li/libc2d30.so
+vendor/lib/libCB.so
+vendor/lib/libgsl.so
+vendor/lib/libllvm-qcom.so
+vendor/lib/librs_adreno_sha1.so
+vendor/lib/librs_adreno.so
+vendor/lib/libRSDriver_adreno.so
 vendor/lib/libsc-a3xx.so
-#etc/firmware/a225p5_pm4.fw
-#etc/firmware/a225_pfp.fw
-#etc/firmware/a225_pm4.fw
 etc/firmware/a330_pfp.fw
 etc/firmware/a330_pm4.fw
-#etc/firmware/leia_pfp_470.fw
-#etc/firmware/leia_pm4_470.fw
-#vendor/etc/firmware/vidc_1080p.fw
-#etc/firmware/yamato_pfp.fw
-#etc/firmware/yamato_pm4.fw
 
 # Graphics
 vendor/lib/libmm-color-convertor.so
@@ -322,3 +313,7 @@ lib/libhdcp2.so
 vendor/lib/libQSEEComAPI.so
 lib/libWVStreamControlAPI_L1.so
 lib/libwvm.so
+
+# IPC router security
+etc/sec_config
+bin/irsc_util
