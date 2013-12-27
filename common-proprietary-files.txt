@@ -8,10 +8,9 @@ bin/thermal-engine
 
 # Bluetooth firmware
 vendor/firmware/bcm4339.hcd
-vendor/firmware/bcm4339.hcd:vendor/firmware/bcm4335.hcd
 vendor/firmware/bcm4339_A0.hcd
-vendor/firmware/bcm4339_murata.hcd
 vendor/firmware/bcm4339_semco.hcd
+vendor/firmware/bcm4339_wisol.hcd
 
 # GPS
 vendor/lib/libgeofence.so
@@ -24,20 +23,6 @@ vendor/lib/libaudcal.so
 vendor/lib/libcsd-client.so
 vendor/lib/libacdbrtac.so
 vendor/lib/libadiertac.so
-#lib/lib_Samsung_AudioZoom_v100.so
-#lib//libsamsungRecord_zoom.so
-#lib/lib_DNSe_NRSS_ver225.so
-#lib/libsamsungRecord_ns.so 
-#lib/lib_SamsungRec_V04001_He.so
-#lib/libsamsungRecord.so
-#lib/lib_Samsung_Resampler.so 
-#lib/libaudio-ril.so
-#lib/hw/audio.primary.msm8974.so 
-#lib/libalsa-intf.so
-#lib/hw/audio_policy.msm8974.so
-#lib/libaudioparameter.so
-#lib/libaudiopolicy_sec.so
-#lib/libcontrolcsc.so 
 etc/Bluetooth_cal.acdb
 etc/General_cal.acdb
 etc/Handset_cal.acdb
@@ -65,7 +50,7 @@ vendor/lib/egl/libq3dtools_adreno.so
 vendor/lib/libadreno_utils.so
 vendor/lib/libC2D2.so
 vendor/lib/libc2d30-a3xx.so
-vendor/li/libc2d30.so
+vendor/lib/libc2d30.so
 vendor/lib/libCB.so
 vendor/lib/libgsl.so
 vendor/lib/libllvm-qcom.so
