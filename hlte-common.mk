@@ -102,6 +102,9 @@ PRODUCT_PACKAGES += \
     regulatory.bin \
     linville.key.pub.pem
 
+# libxml2 is needed for camera
+PRODUCT_PACKAGES += libxml2
+
 # IR packages
 PRODUCT_PACKAGES += \
     consumerir.msm8974
