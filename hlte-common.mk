@@ -48,6 +48,11 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/samsung/hlte-common/media/media_profiles.xml:system/etc/media_profiles.xml
 
+# support for epen
+PRODUCT_COPY_FILES += \
+    device/samsung/hlte-common/sec_e-pen.idc:system/usr/idc/sec_e-pen.idc
+
+
 PRODUCT_PACKAGES += \
         libloc_adapter \
         libloc_eng \
