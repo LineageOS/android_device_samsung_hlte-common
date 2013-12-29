@@ -30,10 +30,6 @@ PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 TARGET_SCREEN_HEIGHT := 1920
 TARGET_SCREEN_WIDTH := 1080
 
-# Expose Irda feature
-#PRODUCT_COPY_FILES += \
-#    device/samsung/hlte-common/etc/com.sec.feature.irda_service.xml:system/etc/permissions/com.sec.feature.irda_service.xml
-
 # Audio configuration
 PRODUCT_COPY_FILES += \
     device/samsung/hlte-common/audio/mixer_paths.xml:system/etc/mixer_paths.xml \
@@ -155,8 +151,6 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 # Lights
 PRODUCT_PACKAGES += lights.MSM8974
 
-# Irda
-#PRODUCT_PACKAGES += irda.msm8974
 
 # QC Perf
 PRODUCT_PROPERTY_OVERRIDES += \
