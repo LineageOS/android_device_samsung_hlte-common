@@ -26,7 +26,6 @@
 #
 
 import init.qcom.usb.rc
-#import init.target.rc
 
 on early-init
     mount debugfs debugfs /sys/kernel/debug
@@ -34,14 +33,21 @@ on early-init
 on init
     # Set permissions for persist partition
     mkdir /persist 0771 system system
-    # See storage config details at http://source.android.com/tech/storage/
     mkdir /mnt/shell/emulated 0700 shell shell
     mkdir /mnt/shell/container 0700 system system
     mkdir /storage 0550 system sdcard_r
     mkdir /storage/emulated 0555 root root
-    # mkdir /storage/emulated/legacy 0555 root root
+
+    #External storage directories
+    mkdir /mnt/media_rw/sdcard1 0700 media_rw media_rw
+    mkdir /storage/usbdisk 0000 system system
+    mkdir /mnt/media_rw/usbdisk 0700 media_rw media_rw
+
+    mkdir /storage/sdcard1 0700 root root
+    mkdir /storage/usbdisk 0700 root root
 
     export EXTERNAL_STORAGE /storage/emulated/legacy
+    export SECONDARY_STORAGE /storage/sdcard1:/storage/usbdisk
     export EMULATED_STORAGE_SOURCE /mnt/shell/emulated
     export EMULATED_STORAGE_TARGET /storage/emulated
     export BOOTCLASSPATH ${BOOTCLASSPATH}:/system/framework/qcom.fmradio.jar
@@ -52,26 +58,12 @@ on init
     symlink /storage/emulated/legacy /storage/sdcard0
     symlink /mnt/shell/emulated/0 /storage/emulated/legacy
     symlink /mnt/shell/container /storage/container
+    symlink /storage/sdcard1 /extSdCard
+    symlink /storage/sdcard1 /mnt/extSdCard
+    symlink /storage/sdcard1 /external_sd
+    symlink /storage/usbdisk /usbdisk
+    symlink /storage/usbdisk /mnt/usbdisk
 
-    export SECONDARY_STORAGE /storage/extSdCard
-    mkdir /storage/extSdCard 0555 root root
-# map "real" external storages paths also in same way. backwards compatibility.
-    symlink /storage/extSdCard /mnt/extSdCard
-    symlink /storage/UsbDriveA /mnt/UsbDriveA
-    symlink /storage/UsbDriveB /mnt/UsbDriveB
-    symlink /storage/UsbDriveC /mnt/UsbDriveC
-    symlink /storage/UsbDriveD /mnt/UsbDriveD
-    symlink /storage/UsbDriveE /mnt/UsbDriveE
-    symlink /storage/UsbDriveF /mnt/UsbDriveF
-
-    export SECONDARY_STORAGE /storage/extSdCard:/storage/UsbDriveA:/storage/UsbDriveB:/storage/UsbDriveC:/storage/UsbDriveD:/storage/UsbDriveE:/storage/UsbDriveF
-    mkdir /storage/extSdCard 0000 system system
-    mkdir /storage/UsbDriveA 0000 system system
-    mkdir /storage/UsbDriveB 0000 system system
-    mkdir /storage/UsbDriveC 0000 system system
-    mkdir /storage/UsbDriveD 0000 system system
-    mkdir /storage/UsbDriveE 0000 system system
-    mkdir /storage/UsbDriveF 0000 system system
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
@@ -777,11 +769,6 @@ service profiler_daemon /system/bin/profiler_daemon
     group root
     disabled
 
-# virtual sdcard daemon running as media_rw (1023)
-service sdcard /system/bin/sdcard /data/media /mnt/shell/emulated 1023 1023
-    class late_start
-    oneshot
-
 # virtual sdcard daemon running as system (1000)
 service container /system/bin/sdcard /data/container /mnt/shell/container 1000 1000
     class late_start
@@ -789,16 +776,27 @@ service container /system/bin/sdcard /data/container /mnt/shell/container 1000 1
 
     start container
 
+# virtual sdcard daemon running as media_rw (1023)
+service sdcard /system/bin/sdcard -u 1023 -g 1023 -l /data/media /mnt/shell/emulated
+    class late_start
+    oneshot
+
+service fuse_sdcard1 /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/sdcard1 /storage/sdcard1
+    class late_start
+    disabled
+
+service fuse_usbdisk /system/bin/sdcard -u 1023 -g 1023 /mnt/media_rw/usbdisk /storage/usbdisk
+    class late_start
+    disabled
+
 on property:ro.fuse_sdcard=true
     start sdcard
 
-# Binding fuse mount point to /storage/emulated/legacy
-#on property:init.svc.sdcard=running
-#    wait /mnt/shell/emulated/0
-#    mount none /mnt/shell/emulated/0 /storage/emulated/legacy bind
-
 # This will make sure that sdcard service starts as late_start.
 on nonencrypted
+    setprop ro.fuse_sdcard ${persist.fuse_sdcard}
+
+on property:vold.decrypt=trigger_restart_framework
     setprop ro.fuse_sdcard ${persist.fuse_sdcard}
 
 service hcidump /system/bin/sh /system/etc/hcidump.sh
