@@ -15,10 +15,5 @@
 /dev/block/platform/msm_sdcc.1/by-name/modem          /firmware-modem  vfat    ro,shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337  wait
 
 # VOLD
-/devices/msm_sdcc.3/mmc_host/mmc2						auto              		vfat	defaults	voldmanaged=sdcard1:auto
-#/devices/platform/xhci-hcd/usb2,/devices/platform/xhci-hcd/usb1			/storage/UsbDriveA		vfat	defaults	voldmanaged=sda:auto
-#/devices/platform/xhci-hcd/usb2,/devices/platform/xhci-hcd/usb1			/storage/UsbDriveB		vfat	defaults	voldmanaged=sdb:auto
-#/devices/platform/xhci-hcd/usb2,/devices/platform/xhci-hcd/usb1			/storage/UsbDriveC		vfat	defaults	voldmanaged=sdc:auto
-#/devices/platform/xhci-hcd/usb2,/devices/platform/xhci-hcd/usb1		        /storage/UsbDriveD		vfat	defaults	voldmanaged=sdd:auto
-#/devices/platform/xhci-hcd/usb2,/devices/platform/xhci-hcd/usb1			/storage/UsbDriveE		vfat	defaults	voldmanaged=sde:auto
-#/devices/platform/xhci-hcd/usb2,/devices/platform/xhci-hcd/usb1			/storage/UsbDriveF		vfat	defaults	voldmanaged=sdf:auto
+/devices/msm_sdcc.3/mmc_host/mmc2				auto		auto	default		voldmanaged=sdcard1:auto
+/devices/platform/msm_hsusb_host/usb				auto		auto	default		voldmanaged=usbdisk:auto
