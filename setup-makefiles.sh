@@ -22,12 +22,13 @@ PRODUCT_COPY_FILES += \\
 EOF
 
 LINEEND=" \\"
-COUNT=`wc -l device-proprietary-files.txt | awk {'print $1'}`
-DISM=`egrep -c '(^#|^$)' device-proprietary-files.txt`
-COUNT=`expr $COUNT - $DISM`
+COUNT=`egrep -c -v '(^#|^$)' device-proprietary-files.txt`
 for FILE in `egrep -v '(^#|^$)' ../$DEVICE/device-proprietary-files.txt`; do
   COUNT=`expr $COUNT - 1`
-      # Split the file from the destination (format is "file[:destination]")
+  if [ $COUNT = "0" ]; then
+    LINEEND=""
+  fi
+  # Split the file from the destination (format is "file[:destination]")
   OLDIFS=$IFS IFS=":" PARSING_ARRAY=($FILE) IFS=$OLDIFS
   FILE=${PARSING_ARRAY[0]}
   DEST=${PARSING_ARRAY[1]}
@@ -37,10 +38,11 @@ for FILE in `egrep -v '(^#|^$)' ../$DEVICE/device-proprietary-files.txt`; do
   echo "	$OUTDIR/proprietary/$FILE:system/$FILE$LINEEND" >> $MAKEFILE
 done
 
+echo "" >> $MAKEFILE
+echo "PRODUCT_COPY_FILES += \\" >> $MAKEFILE
+
 LINEEND=" \\"
-COUNT=`wc -l ../hlte-common/proprietary-files.txt | awk {'print $1'}`
-DISM=`egrep -c '(^#|^$)' ../hlte-common/proprietary-files.txt`
-COUNT=`expr $COUNT - $DISM`
+COUNT=`egrep -c -v '(^#|^$)' ../hlte-common/proprietary-files.txt`
 for FILE in `egrep -v '(^#|^$)' ../hlte-common/proprietary-files.txt`; do
   COUNT=`expr $COUNT - 1`
   if [ $COUNT = "0" ]; then
@@ -53,7 +55,7 @@ for FILE in `egrep -v '(^#|^$)' ../hlte-common/proprietary-files.txt`; do
   if [ -n "$DEST" ]; then
     FILE=$DEST
   fi
-  echo "        $OUTDIR/proprietary/$FILE:system/$FILE$LINEEND" >> $MAKEFILE
+  echo "    $OUTDIR/proprietary/$FILE:system/$FILE$LINEEND" >> $MAKEFILE
 done
 
 (cat << EOF) > ../../../$OUTDIR/$DEVICE-vendor.mk
