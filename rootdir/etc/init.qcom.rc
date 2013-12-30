@@ -82,12 +82,6 @@ on early-boot
     chown system system /sys/class/graphics/fb1/format_3d
     ## [END] system_sw.sa
 
-    ## [START] system_sw.sa: optimize syspart_fixup.sh and take common settings out
-    exec /system/bin/sh /init.qcom.syspart_fixup.sh ${ro.board.platform} ${ro.serialno}
-    insmod /system/lib/modules/adsp-loader.ko
-    setprop qcom.audio.init complete
-    ## [END] system_sw.sa
-
 on boot
 
     mount debugfs /sys/kernel/debug /sys/kernel/debug
