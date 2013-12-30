@@ -39,6 +39,8 @@ on fs
     mount_all fstab.qcom
     setprop ro.crypto.fuse_sdcard true
 
+    exec /system/bin/sh /init.qcom.syspart_fixup.sh ${ro.board.platform} ${ro.serialno}
+
     # Keeping following partitions outside fstab file. As user may not have
     # these partition flashed on the device. Failure to mount any partition in fstab file
     # results in failure to launch late-start class.
@@ -64,6 +66,7 @@ on fs
 #    wait /dev/block/platform/msm_sdcc.1/by-name/modem
 #    mount vfat /dev/block/platform/msm_sdcc.1/by-name/modem /firmware-modem ro shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337
      write /sys/kernel/boot_adsp/boot 1
+     setprop qcom.audio.init complete
 
 on post-fs-data
       mkdir /data/tombstones 0771 system system
