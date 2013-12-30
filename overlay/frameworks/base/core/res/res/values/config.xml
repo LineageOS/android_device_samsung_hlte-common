@@ -250,4 +250,9 @@
 
     <!-- Device supports LED flashlight -->
     <bool name="config_enableTorch">true</bool>
+
+    <!-- Enable translucent UI -->
+    <bool name="config_enableLockScreenTranslucentDecor">true</bool>
+    <bool name="config_enableTranslucentDecor">true</bool>
+
 </resources>
