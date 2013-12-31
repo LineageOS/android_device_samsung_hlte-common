@@ -26,7 +26,7 @@
     <ctl name="LINEOUT4 Volume" value="20" />
     <ctl name="HPHL Volume" value="20" />
     <ctl name="HPHR Volume" value="20" />
-    <ctl name="RX1 Digital Volume" value="84" />
+    <ctl name="RX1 Digital Volume" value="0" />
     <ctl name="RX2 Digital Volume" value="84" />
     <ctl name="RX3 Digital Volume" value="84" />
     <ctl name="RX4 Digital Volume" value="84" />
@@ -42,9 +42,9 @@
     <ctl name="DEC1 Volume" value="84" />
     <ctl name="DEC2 Volume" value="84" />
     <ctl name="DEC3 Volume" value="84" />
-    <ctl name="DEC4 Volume" value="84" />
+    <ctl name="DEC4 Volume" value="0" />
     <ctl name="DEC5 Volume" value="84" />
-    <ctl name="DEC6 Volume" value="84" />
+    <ctl name="DEC6 Volume" value="0" />
     <ctl name="DEC7 Volume" value="84" />
     <ctl name="DEC8 Volume" value="84" />
     <ctl name="DEC9 Volume" value="84" />
@@ -244,7 +244,7 @@
     <ctl name="IIR1 Enable Band3" value="0" />
     <ctl name="IIR1 Enable Band4" value="0" />
     <ctl name="IIR1 Enable Band5" value="0" />
-    <ctl name="IIR1 INP1 Volume" value="62" />
+    <ctl name="IIR1 INP1 Volume" value="84" />
     <!-- IIR/voice anc end -->
     <!-- anc handset -->
     <ctl name="ANC Slot" value="0" />
@@ -277,6 +277,16 @@
     <!-- afe-proxy -->
     <ctl name="AFE_PCM_RX Audio Mixer MultiMedia2" value="0" />
     <!-- afe-proxy end-->
+    <!-- es325 setup -->
+    <ctl name="TX3 HPF cut off" value="MIN_3DB_4Hz" />
+    <ctl name="TX4 HPF cut off" value="MIN_3DB_4Hz" />
+    <ctl name="TX5 HPF cut off" value="MIN_3DB_4Hz" />
+    <!-- <ctl name="ES325-AP Tx Channels" value="One" /> -->
+    <ctl name="Internal Route Config" value="26" />
+    <ctl name="ES325 RX1 Enable" value="0" />
+    <ctl name="ES325 TX1 Enable" value="0" />
+    <ctl name="ES325 RX2 Enable" value="0" />
+    <!-- es325 end -->
 
     <!-- These are audio route (FE to BE) specific mixer settings -->
     <path name="deep-buffer-playback">
@@ -667,6 +677,7 @@
 
     <!-- These are actual sound device specific mixer settings -->
     <path name="adc1">
+        <ctl name="Main Mic Delay" value="4"/>
         <ctl name="AIF1_CAP Mixer SLIM TX7" value="1"/>
         <ctl name="SLIM_0_TX Channels" value="One" />
         <ctl name="SLIM TX7 MUX" value="DEC6" />
@@ -682,6 +693,26 @@
         <ctl name="SLIM TX7 MUX" value="DEC5" />
         <ctl name="DEC5 MUX" value="ADC2" />
         <ctl name="IIR1 INP1 MUX" value="DEC5" />
+    </path>
+
+    <path name="es325-dual-mic">
+        <ctl name="AIF1_CAP Mixer SLIM TX7" value="1" />
+        <ctl name="AIF1_CAP Mixer SLIM TX8" value="1" />
+        <ctl name="SLIM_0_TX Channels" value="Two" />
+        <ctl name="SLIM TX7 MUX" value="DEC6" />
+        <ctl name="DEC6 MUX" value="ADC1" />
+        <ctl name="ADC1 Volume" value="63" />
+        <ctl name="DEC6 Volume" value="68" />
+        <ctl name="SLIM TX8 MUX" value="DEC4" />
+        <ctl name="DEC4 MUX" value="ADC3" />
+        <ctl name="ADC3 Volume" value="63" />
+        <ctl name="DEC4 Volume" value="68" />
+        <ctl name="TX3 HPF cut off" value="MIN_3DB_150Hz" />
+        <ctl name="TX4 HPF cut off" value="MIN_3DB_150Hz" />
+        <ctl name="TX5 HPF cut off" value="MIN_3DB_150Hz" />
+        <ctl name="ES325-AP Tx Channels" value="One" />
+        <ctl name="Internal Route Config" value="2" />
+        <ctl name="ES325 TX1 Enable" value="1" />
     </path>
 
     <path name="dmic1">
@@ -752,7 +783,7 @@
     </path>
 
     <path name="speaker-mic">
-        <path name="adc2" />
+        <path name="es325-dual-mic" />
     </path>
 
     <path name="speaker-mic-liquid">
@@ -784,13 +815,14 @@
         <ctl name="SLIM_0_RX Channels" value="One" />
         <ctl name="RX1 MIX1 INP1" value="RX1" />
         <ctl name="CLASS_H_DSM MUX" value="DSM_HPHL_RX1" />
+        <ctl name="EAR PA Gain" value="POS_3_DB" />
         <ctl name="DAC1 Switch" value="1" />
-        <ctl name="RX1 Digital Volume" value="65.3" />
-        <ctl name="EAR PA Gain" value="POS_6_DB" />
+        <ctl name="RX1 Digital Volume" value="68" />
+        <ctl name="ES325 RX1 Enable" value="1" />
     </path>
 
     <path name="handset-mic">
-        <path name="adc1" />
+        <path name="es325-dual-mic" />
     </path>
 
     <path name="anc-handset">
@@ -838,7 +870,7 @@
     </path>
 
     <path name="voice-handset">
-        <path name="sidetone-handset" />
+        <!-- <path name="sidetone-handset" /> -->
         <path name="handset" />
     </path>
 
@@ -1024,7 +1056,7 @@
     </path>
 
     <path name="voice-rec-mic">
-        <path name="handset-mic" />
+        <path name="adc1" />
     </path>
 
     <path name="camcorder-mic">
