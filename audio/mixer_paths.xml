@@ -303,11 +303,11 @@
     </path>
 
     <path name="deep-buffer-playback bt-sco">
-        <ctl name="INTERNAL_BT_SCO_RX Audio Mixer MultiMedia1" value="1" />
+        <ctl name="AUX_PCM_RX_Voice Audio Mixer MultiMedia1" value="1" />
     </path>
 
     <path name="deep-buffer-playback bt-sco-wb">
-        <ctl name="Internal BTSCO SampleRate" value="16000" />
+     <!--   <ctl name="Internal BTSCO SampleRate" value="16000" />-->
         <path name="deep-buffer-playback bt-sco" />
     </path>
 
@@ -337,11 +337,11 @@
     </path>
 
     <path name="low-latency-playback bt-sco">
-        <ctl name="INTERNAL_BT_SCO_RX Audio Mixer MultiMedia5" value="1" />
+        <ctl name="AUX_PCM_RX_Voice Audio Mixer MultiMedia5" value="1" />
     </path>
 
     <path name="low-latency-playback bt-sco-wb">
-        <ctl name="Internal BTSCO SampleRate" value="16000" />
+       <!-- <ctl name="Internal BTSCO SampleRate" value="16000" />-->
         <path name="low-latency-playback bt-sco" />
     </path>
 
@@ -384,7 +384,7 @@
     </path>
 
     <path name="compress-offload-playback bt-sco">
-        <ctl name="INTERNAL_BT_SCO_RX Audio Mixer MultiMedia4" value="1" />
+        <ctl name="AUX_PCM_RX_Voice Audio Mixer MultiMedia4" value="1" />
     </path>
 
     <path name="compress-offload-playback speaker-and-hdmi">
@@ -418,7 +418,7 @@
     </path>
 
     <path name="audio-record bt-sco">
-        <ctl name="MultiMedia1 Mixer INTERNAL_BT_SCO_TX" value="1" />
+        <ctl name="Voice_Tx Mixer AUX_PCM_TX_Voice" value="1" />
     </path>
 
     <path name="audio-record capture-fm">
@@ -430,7 +430,7 @@
     </path>
 
     <path name="audio-record-compress bt-sco">
-        <ctl name="MultiMedia8 Mixer INTERNAL_BT_SCO_TX" value="1" />
+        <ctl name="Voice_Tx Mixer AUX_PCM_TX_Voice" value="1" />
     </path>
 
     <path name="audio-record-compress usb-headset-mic">
@@ -452,12 +452,12 @@
     </path>
 
     <path name="voice-call bt-sco">
-        <ctl name="INTERNAL_BT_SCO_RX_Voice Mixer CSVoice" value="1" />
-        <ctl name="Voice_Tx Mixer INTERNAL_BT_SCO_TX_Voice" value="1" />
+        <ctl name="AUX_PCM_RX_Voice Mixer CSVoice" value="1" />
+        <ctl name="Voice_Tx Mixer AUX_PCM_TX_Voice" value="1" />
     </path>
 
     <path name="voice-call bt-sco-wb">
-        <ctl name="Internal BTSCO SampleRate" value="16000" />
+       <!-- <ctl name="Internal BTSCO SampleRate" value="16000" />-->
         <path name="voice-call bt-sco" />
     </path>
 
@@ -482,7 +482,7 @@
     </path>
 
     <path name="voice2-call bt-sco-wb">
-        <ctl name="Internal BTSCO SampleRate" value="16000" />
+        <ctl name="Internal BTSCO SampleRate" value="16000" />-->
         <path name="voice-call bt-sco" />
     </path>
 
