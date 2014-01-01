@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <mixer>
     <!-- These are the initial mixer settings -->
+    <ctl name="MultiMedia1 Mixer AUX_PCM_UL_TX" value="0" />
     <ctl name="Voice Rx Device Mute" id="0" value="0" />
     <ctl name="Voice Rx Device Mute" id="1" value="-1" />
     <ctl name="Voice Rx Device Mute" id="2" value="20" />
@@ -55,8 +56,8 @@
     <ctl name="SLIMBUS_3_RX Port Mixer MI2S_TX" value="0" />
     <ctl name="HDMI_RX Port Mixer MI2S_TX" value="0" />
     <ctl name="SLIMBUS_0_RX Port Mixer SLIM_0_TX" value="0" />
-    <ctl name="INTERNAL_BT_SCO_RX Audio Mixer MultiMedia2" value="0" />
-    <ctl name="INTERNAL_BT_SCO_RX Audio Mixer MultiMedia3" value="0" />
+    <ctl name="AUX_PCM_RX Audio Mixer MultiMedia2" value="0" />
+    <ctl name="AUX_PCM_RX Audio Mixer MultiMedia3" value="0" />
     <ctl name="SLIMBUS_0_RX Port Mixer INT_BT_SCO_TX" value="0" />
     <ctl name="AUX_PCM_RX Audio Mixer MultiMedia5" value="0" />
     <ctl name="AUX_PCM_RX_Voice Mixer CSVoice" value="0" />
@@ -64,16 +65,16 @@
     <ctl name="Voice_Tx Mixer SLIM_0_TX_Voice" value="0" />
     <ctl name="Voice_Tx Mixer SEC_AUX_PCM_TX_Voice" value="0" />
     <!-- Audio BTSCO -->
-    <ctl name="INTERNAL_BT_SCO_RX Audio Mixer MultiMedia1" value="0" />
-    <ctl name="INTERNAL_BT_SCO_RX Audio Mixer MultiMedia4" value="0" />
-    <ctl name="INTERNAL_BT_SCO_RX Audio Mixer MultiMedia5" value="0" />
-    <ctl name="MultiMedia1 Mixer INTERNAL_BT_SCO_TX" value="0" />
+    <ctl name="AUX_PCM_RX Audio Mixer MultiMedia1" value="0" />
+    <ctl name="AUX_PCM_RX Audio Mixer MultiMedia4" value="0" />
+    <ctl name="AUX_PCM_RX Audio Mixer MultiMedia5" value="0" />
+    <ctl name="MultiMedia1 Mixer AUX_PCM_TX" value="0" />
     <!-- Voice BTSCO -->
-    <ctl name="Internal BTSCO SampleRate" value="8000" />
-    <ctl name="INTERNAL_BT_SCO_RX_Voice Mixer CSVoice" value="0" />
-    <ctl name="INTERNAL_BT_SCO_RX Audio Mixer Multimedia6" value="0" />
+<!--    <ctl name="Internal BTSCO SampleRate" value="8000" />-->
+    <ctl name="AUX_PCM_RX_Voice Mixer CSVoice" value="0" />
+    <ctl name="AUX_PCM_RX_Voice Audio Mixer Multimedia6" value="0" />
     <ctl name="MultiMedia6 Mixer SLIM_0_TX" value="0" />
-    <ctl name="Voice_Tx Mixer INTERNAL_BT_SCO_TX_Voice" value="0" />
+    <ctl name="Voice_Tx Mixer AUX_PCM_TX_Voice" value="0" />
     <ctl name="HDMI_RX_Voice Mixer CSVoice" value="0" />
     <ctl name="SLIM_0_RX_Voice Mixer CSVoice" value="0" />
     <ctl name="SLIMBUS_4_RX Audio Mixer MultiMedia1" value="0" />
@@ -150,7 +151,7 @@
     <ctl name="AFE_PCM_RX Audio Mixer MultiMedia4" value="0" />
     <ctl name="INTERNAL_FM_RX Audio Mixer MultiMedia4" value="0" />
     <ctl name="HDMI Mixer MultiMedia4" value="0" />
-    <ctl name="INTERNAL_BT_SCO_RX Audio Mixer MultiMedia4" value="0" />
+    <ctl name="AUX_PCM_RX_Voice Audio Mixer MultiMedia4" value="0" />
     <!-- usb headset -->
     <ctl name="AFE_PCM_RX Audio Mixer MultiMedia1" value="0" />
     <ctl name="MultiMedia1 Mixer AFE_PCM_TX" value="0" />
@@ -175,8 +176,8 @@
     <ctl name="SLIM_0_RX_Voice Mixer VoLTE" value="0" />
     <ctl name="VoLTE_Tx Mixer SLIM_0_TX_VoLTE" value="0" />
     <ctl name="HDMI_RX_Voice Mixer VoLTE" value="0" />
-    <ctl name="INTERNAL_BT_SCO_RX_Voice Mixer VoLTE" value="0" />
-    <ctl name="VoLTE_Tx Mixer INTERNAL_BT_SCO_TX_VoLTE" value="0" />
+   <!-- <ctl name="INTERNAL_BT_SCO_RX_Voice Mixer VoLTE" value="0" />-->
+   <!-- <ctl name="VoLTE_Tx Mixer INTERNAL_BT_SCO_TX_VoLTE" value="0" />-->
     <ctl name="AFE_PCM_RX_Voice Mixer VoLTE" value="0" />
     <ctl name="VoLTE_Tx Mixer AFE_PCM_TX_VoLTE" value="0" />
     <!-- VoLTE end-->
@@ -186,8 +187,8 @@
     <ctl name="Voice2_Tx Mixer SLIM_0_TX_Voice2" value="0" />
     <ctl name="HDMI_RX_Voice Mixer Voice2" value="0" />
     <ctl name="Voice2_Tx Mixer SLIM_0_TX_Voice2" value="0" />
-    <ctl name="INTERNAL_BT_SCO_RX_Voice Mixer Voice2" value="0" />
-    <ctl name="Voice2_Tx Mixer INTERNAL_BT_SCO_TX_Voice2" value="0" />
+<!--    <ctl name="INTERNAL_BT_SCO_RX_Voice Mixer Voice2" value="0" />-->
+  <!--  <ctl name="Voice2_Tx Mixer INTERNAL_BT_SCO_TX_Voice2" value="0" />-->
     <ctl name="AFE_PCM_RX_Voice Mixer Voice2" value="0" />
     <ctl name="Voice2_Tx Mixer AFE_PCM_TX_Voice2" value="0" />
     <!-- Voice2 End-->
@@ -195,8 +196,8 @@
     <!-- compress-voip-call -->
     <ctl name="SLIM_0_RX_Voice Mixer Voip" value="0" />
     <ctl name="Voip_Tx Mixer SLIM_0_TX_Voip" value="0" />
-    <ctl name="INTERNAL_BT_SCO_RX_Voice Mixer Voip" value="0" />
-    <ctl name="Voip_Tx Mixer INTERNAL_BT_SCO_TX_Voip" value="0" />
+    <ctl name="AUX_PCM_RX_Voice Mixer Voip" value="0" />
+    <ctl name="Voip_Tx Mixer AUX_PCM_TX_Voip" value="0" />
     <ctl name="AFE_PCM_RX_Voice Mixer Voip" value="0" />
     <ctl name="Voip_Tx Mixer AFE_PCM_TX_Voip" value="0" />
     <!-- compress-voip-call End-->
@@ -204,8 +205,8 @@
     <!-- QCHAT -->
     <ctl name="SLIM_0_RX_Voice Mixer QCHAT" value="0" />
     <ctl name="QCHAT_Tx Mixer SLIM_0_TX_QCHAT" value="0" />
-    <ctl name="INTERNAL_BT_SCO_RX_Voice Mixer QCHAT" value="0" />
-    <ctl name="QCHAT_Tx Mixer INTERNAL_BT_SCO_TX_QCHAT" value="0" />
+<!--    <ctl name="INTERNAL_BT_SCO_RX_Voice Mixer QCHAT" value="0" />-->
+<!--<ctl name="QCHAT_Tx Mixer INTERNAL_BT_SCO_TX_QCHAT" value="0" />-->
     <!-- QCHAT End -->
 
     <!-- anc headset -->
@@ -263,7 +264,7 @@
     <!-- ssr qmic end-->
     <!-- audio record compress-->
     <ctl name="MultiMedia8 Mixer SLIM_0_TX" value="0" />
-    <ctl name="MultiMedia8 Mixer INTERNAL_BT_SCO_TX" value="0" />
+    <ctl name="MultiMedia8 Mixer AUX_PCM_TX" value="0" />
     <ctl name="MultiMedia8 Mixer AFE_PCM_TX" value="0" />
     <ctl name="MultiMedia8 Mixer VOC_REC_UL" value="0" />
     <ctl name="MultiMedia8 Mixer VOC_REC_DL" value="0" />
@@ -303,7 +304,7 @@
     </path>
 
     <path name="deep-buffer-playback bt-sco">
-        <ctl name="AUX_PCM_RX_Voice Audio Mixer MultiMedia1" value="1" />
+        <ctl name="AUX_PCM_RX Audio Mixer MultiMedia1" value="1" />
     </path>
 
     <path name="deep-buffer-playback bt-sco-wb">
@@ -337,7 +338,7 @@
     </path>
 
     <path name="low-latency-playback bt-sco">
-        <ctl name="AUX_PCM_RX_Voice Audio Mixer MultiMedia5" value="1" />
+        <ctl name="AUX_PCM_RX Audio Mixer MultiMedia5" value="1" />
     </path>
 
     <path name="low-latency-playback bt-sco-wb">
@@ -384,7 +385,7 @@
     </path>
 
     <path name="compress-offload-playback bt-sco">
-        <ctl name="AUX_PCM_RX_Voice Audio Mixer MultiMedia4" value="1" />
+        <ctl name="AUX_PCM_RX Audio Mixer MultiMedia4" value="1" />
     </path>
 
     <path name="compress-offload-playback speaker-and-hdmi">
@@ -477,8 +478,8 @@
     </path>
 
     <path name="voice2-call bt-sco">
-        <ctl name="INTERNAL_BT_SCO_RX_Voice Mixer Voice2" value="1" />
-        <ctl name="Voice2_Tx Mixer INTERNAL_BT_SCO_TX_Voice2" value="1" />
+        <ctl name="AUX_PCM_RX_Voice Mixer CSVoice" value="1" />
+        <ctl name="Voice_Tx Mixer AUX_PCM_TX_Voice" value="1" />
     </path>
 
     <path name="voice2-call bt-sco-wb">
@@ -506,9 +507,9 @@
     </path>
 
    <path name="hfp-sco">
-        <ctl name="SLIMBUS_0_RX Port Mixer INTERNAL_BT_SCO_TX" value="1" />
-        <ctl name="INTERNAL_BT_SCO_RX Audio Mixer MultiMedia6" value="1" />
-        <ctl name="MultiMedia6 Mixer SLIM_0_TX" value="1" />
+       <ctl name="AUX_PCM_RX_Voice Mixer CSVoice" value="1" />
+       <ctl name="Voice_Tx Mixer AUX_PCM_TX_Voice" value="1" />
+        <ctl name="AUX_PCM_TX_Voice Mixer SLIM_0_TX" value="1" />
         <ctl name="SLIMBUS_DL_HL Switch" value="1" />
    </path>
 
@@ -613,12 +614,12 @@
     </path>
 
     <path name="volte-call bt-sco">
-        <ctl name="INTERNAL_BT_SCO_RX_Voice Mixer VoLTE" value="1" />
-        <ctl name="VoLTE_Tx Mixer INTERNAL_BT_SCO_TX_VoLTE" value="1" />
+        <ctl name="AUX_PCM_RX_Voice Mixer CSVoice" value="1" />
+        <ctl name="Voice_Tx Mixer AUX_PCM_TX_Voice" value="1" />
     </path>
 
     <path name="volte-call bt-sco-wb">
-        <ctl name="Internal BTSCO SampleRate" value="16000" />
+   <!--     <ctl name="Internal BTSCO SampleRate" value="16000" />-->
         <path name="volte-call bt-sco" />
     </path>
 
@@ -633,12 +634,12 @@
     </path>
 
     <path name="compress-voip-call bt-sco">
-        <ctl name="INTERNAL_BT_SCO_RX_Voice Mixer Voip" value="1" />
-        <ctl name="Voip_Tx Mixer INTERNAL_BT_SCO_TX_Voip" value="1" />
+        <ctl name="AUX_PCM_RX_Voice Mixer Voip" value="1" />
+        <ctl name="Voip_Tx Mixer AUX_PCM_TX_Voip" value="1" />
     </path>
 
     <path name="compress-voip-call bt-sco-wb">
-        <ctl name="Internal BTSCO SampleRate" value="16000" />
+    <!--     <ctl name="Internal BTSCO SampleRate" value="16000" />-->
         <path name="compress-voip-call bt-sco" />
     </path>
 
@@ -666,12 +667,12 @@
     </path>
 
     <path name="qchat-call bt-sco">
-        <ctl name="INTERNAL_BT_SCO_RX_Voice Mixer QCHAT" value="1" />
-        <ctl name="QCHAT_Tx Mixer INTERNAL_BT_SCO_TX_QCHAT" value="1" />
+        <ctl name="AUX_PCM_RX_Voice Mixer CSVoice" value="1" />
+        <ctl name="Voice_Tx Mixer AUX_PCM_TX_Voice" value="1" />
     </path>
 
     <path name="qchat-call bt-sco-wb">
-        <ctl name="Internal BTSCO SampleRate" value="16000" />
+       <!-- <ctl name="Internal BTSCO SampleRate" value="16000" />-->
         <path name="qchat-call bt-sco" />
     </path>
 
@@ -1091,12 +1092,14 @@
     </path>
 
     <path name="bt-sco-mic">
+        <ctl name="MultiMedia1 Mixer AUX_PCM_UL_TX" value="1" />
     </path>
 
     <path name="bt-sco-headset-wb">
     </path>
 
     <path name="bt-sco-mic-wb">
+        <path name="bt-sco-mic"/>
     </path>
 
     <path name="usb-headset-mic">
