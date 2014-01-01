@@ -482,7 +482,7 @@
     </path>
 
     <path name="voice2-call bt-sco-wb">
-        <ctl name="Internal BTSCO SampleRate" value="16000" />-->
+        <!--<ctl name="Internal BTSCO SampleRate" value="16000" />-->
         <path name="voice-call bt-sco" />
     </path>
 
