@@ -804,7 +804,7 @@
     </path>
 
     <path name="speaker-mic">
-        <path name="es325-dual-mic" />
+        <path name="adc1" />
     </path>
 
     <path name="speaker-mic-liquid">
@@ -843,6 +843,10 @@
     </path>
 
     <path name="handset-mic">
+        <path name="adc1" />
+    </path>
+
+    <path name="voice-call handset-mic">
         <path name="es325-dual-mic" />
     </path>
 
@@ -904,7 +908,7 @@
     </path>
 
     <path name="voice-speaker-mic">
-        <path name="speaker-mic" />
+        <path name="es325-dual-mic" />
     </path>
 
     <path name="voice-headphones">
