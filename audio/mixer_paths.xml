@@ -462,7 +462,7 @@
         <path name="voice-call bt-sco" />
     </path>
 
-    <path name="voice-call usb-headphones">
+	<path name="voice-call usb-headphones">
         <ctl name="AFE_PCM_RX_Voice Mixer CSVoice" value="1" />
         <ctl name="Voice_Tx Mixer AFE_PCM_TX_Voice" value="1" />
     </path>
@@ -804,7 +804,7 @@
     </path>
 
     <path name="speaker-mic">
-        <path name="es325-dual-mic" />
+        <path name="adc1" />
     </path>
 
     <path name="speaker-mic-liquid">
@@ -843,7 +843,7 @@
     </path>
 
     <path name="handset-mic">
-        <path name="es325-dual-mic" />
+            <path name="adc1" />
     </path>
 
     <path name="anc-handset">
@@ -904,7 +904,7 @@
     </path>
 
     <path name="voice-speaker-mic">
-        <path name="speaker-mic" />
+        <path name="es325-dual-mic" />
     </path>
 
     <path name="voice-headphones">
