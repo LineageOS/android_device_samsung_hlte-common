@@ -702,12 +702,12 @@
         <ctl name="SLIM_0_TX Channels" value="Two" />
         <ctl name="SLIM TX7 MUX" value="DEC6" />
         <ctl name="DEC6 MUX" value="ADC1" />
-        <ctl name="ADC1 Volume" value="63" />
-        <ctl name="DEC6 Volume" value="68" />
+        <ctl name="ADC1 Volume" value="78" />
+        <ctl name="DEC6 Volume" value="84" />
         <ctl name="SLIM TX8 MUX" value="DEC4" />
         <ctl name="DEC4 MUX" value="ADC3" />
-        <ctl name="ADC3 Volume" value="63" />
-        <ctl name="DEC4 Volume" value="68" />
+        <ctl name="ADC3 Volume" value="78" />
+        <ctl name="DEC4 Volume" value="84" />
         <ctl name="TX3 HPF cut off" value="MIN_3DB_150Hz" />
         <ctl name="TX4 HPF cut off" value="MIN_3DB_150Hz" />
         <ctl name="TX5 HPF cut off" value="MIN_3DB_150Hz" />
@@ -723,11 +723,11 @@
         <ctl name="SLIM TX7 MUX" value="DEC3" />
         <ctl name="DEC3 MUX" value="ADC4" />
         <ctl name="ADC4 Volume" value="104" />
-        <ctl name="DEC3 Volume" value="68" />
+        <ctl name="DEC3 Volume" value="84" />
         <ctl name="SLIM TX8 MUX" value="DEC4" />
         <ctl name="DEC4 MUX" value="ADC3" />
         <ctl name="ADC3 Volume" value="104" />
-        <ctl name="DEC4 Volume" value="68" />
+        <ctl name="DEC4 Volume" value="84" />
         <ctl name="TX3 HPF cut off" value="MIN_3DB_150Hz" />
         <ctl name="TX4 HPF cut off" value="MIN_3DB_150Hz" />
         <ctl name="TX5 HPF cut off" value="MIN_3DB_150Hz" />
@@ -761,6 +761,18 @@
 
     <path name="speaker-cdp">
         <path name="speaker-fluid" />
+    </path>
+
+    <path name="speaker-es325">
+        <ctl name="SLIM RX1 MUX" value="AIF1_PB" />
+        <ctl name="SLIM RX2 MUX" value="AIF1_PB" />
+        <ctl name="SLIM_0_RX Channels" value="Two" />
+        <ctl name="RX7 MIX1 INP1" value="RX1" />
+        <ctl name="RX4 MIX1 INP1" value="RX2" />
+        <ctl name="SPK DRV Volume" value="8" />
+        <ctl name="RX7 Digital Volume" value="84" />
+        <ctl name="DAC1 Switch" value="1" />
+        <ctl name="ES325 RX1 Enable" value="1" />
     </path>
 
     <path name="speaker-DB">
@@ -804,7 +816,11 @@
     </path>
 
     <path name="speaker-mic">
-        <path name="es325-dual-mic" />
+        <path name="adc1" />
+    </path>
+
+    <path name="speaker-stereo-dmic-es325">
+        <path name="es325-dual-mic-speaker" />
     </path>
 
     <path name="speaker-mic-liquid">
@@ -838,11 +854,15 @@
         <ctl name="CLASS_H_DSM MUX" value="DSM_HPHL_RX1" />
         <ctl name="EAR PA Gain" value="POS_3_DB" />
         <ctl name="DAC1 Switch" value="1" />
-        <ctl name="RX1 Digital Volume" value="68" />
+        <ctl name="RX1 Digital Volume" value="84" />
         <ctl name="ES325 RX1 Enable" value="1" />
     </path>
 
     <path name="handset-mic">
+        <path name="adc1" />
+    </path>
+
+    <path name="handset-stereo-dmic-es325">
         <path name="es325-dual-mic" />
     </path>
 
@@ -868,16 +888,16 @@
         <ctl name="CLASS_H_DSM MUX" value="DSM_HPHL_RX1" />
         <ctl name="HPHL DAC Switch" value="1" />
         <ctl name="COMP1 Switch" value="1" />
-        <ctl name="HPHL Volume" value="43.75" />
-        <ctl name="HPHR Volume" value="43.75" />
-        <ctl name="RX1 Digital Volume" value="68" />
-        <ctl name="RX2 Digital Volume" value="68" />
+        <ctl name="HPHL Volume" value="20" />
+        <ctl name="HPHR Volume" value="20" />
+        <ctl name="RX1 Digital Volume" value="84" />
+        <ctl name="RX2 Digital Volume" value="84" />
     </path>
 
     <path name="headset-mic">
         <path name="adc2" />
-        <ctl name="ADC2 Volume" value="76" />
-        <ctl name="DEC5 Volume" value="58.1" />
+        <ctl name="ADC2 Volume" value="78" />
+        <ctl name="DEC5 Volume" value="84" />
     </path>
 
     <path name="headset-mic-DB">
@@ -900,7 +920,7 @@
     </path>
 
     <path name="voice-speaker">
-        <path name="speaker" />
+        <path name="speaker-es325" />
     </path>
 
     <path name="voice-speaker-mic">
@@ -910,11 +930,14 @@
     <path name="voice-headphones">
         <path name="sidetone-headphones" />
         <path name="headphones" />
+        <ctl name="ES325 RX1 Enable" value="1" />
     </path>
 
     <path name="voice-headset-mic">
         <path name="headset-mic" />
-        <ctl name="ADC2 Volume" value="13" />
+        <ctl name="ES325-AP Tx Channels" value="One" />
+        <ctl name="Internal Route Config" value="0" />
+        <ctl name="ES325 TX1 Enable" value="1" />
     </path>
 
     <path name="speaker-and-headphones-fluid">
