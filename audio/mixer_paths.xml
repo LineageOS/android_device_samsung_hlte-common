@@ -804,7 +804,7 @@
     </path>
 
     <path name="speaker-mic">
-        <path name="es325-dual-mic" />
+        <path name="adc1" />
     </path>
 
     <path name="speaker-mic-liquid">
@@ -843,7 +843,7 @@
     </path>
 
     <path name="handset-mic">
-        <path name="es325-dual-mic" />
+        <path name="adc1" />
     </path>
 
     <path name="anc-handset">
@@ -904,7 +904,7 @@
     </path>
 
     <path name="voice-speaker-mic">
-        <path name="speaker-mic" />
+        <path name="es325-dual-mic" />
     </path>
 
     <path name="voice-headphones">
@@ -913,7 +913,7 @@
     </path>
 
     <path name="voice-headset-mic">
-        <path name="headset-mic" />
+         <path name="es325-dual-mic" />
         <ctl name="ADC2 Volume" value="13" />
     </path>
 
