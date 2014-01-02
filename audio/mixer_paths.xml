@@ -804,7 +804,11 @@
     </path>
 
     <path name="speaker-mic">
-        <path name="es325-dual-mic" />
+        <path name="adc1" />
+    </path>
+
+    <path name="speaker-stereo-dmic-es325">
+        <path name="es325-dual-mic-speaker" />
     </path>
 
     <path name="speaker-mic-liquid">
@@ -843,6 +847,10 @@
     </path>
 
     <path name="handset-mic">
+        <path name="adc1" />
+    </path>
+
+    <path name="handset-stereo-dmic-es325">
         <path name="es325-dual-mic" />
     </path>
 
