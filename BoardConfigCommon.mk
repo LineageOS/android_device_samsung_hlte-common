@@ -112,6 +112,11 @@ TARGET_PROVIDES_LIBLIGHT := true
 # Time services
 BOARD_USES_QC_TIME_SERVICES := true
 
+# NFC
+ifeq ($(TARGET_NFC_TECH), nxp)
+TARGET_USES_CUSTOM_NFC_NXP := true
+endif
+
 # Display
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 OVERRIDE_RS_DRIVER:= libRSDriver_adreno.so
