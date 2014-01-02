@@ -67,6 +67,8 @@ static const snd_device_t taiko_CDP_variant_devices[] = {
     SND_DEVICE_OUT_SPEAKER_AND_HEADPHONES,
     SND_DEVICE_OUT_SPEAKER_AND_ANC_HEADSET,
     SND_DEVICE_IN_QUAD_MIC,
+    SND_DEVICE_IN_HANDSET_STEREO_DMIC,
+    SND_DEVICE_IN_SPEAKER_STEREO_DMIC,
 };
 
 static const snd_device_t taiko_apq8084_CDP_variant_devices[] = {
