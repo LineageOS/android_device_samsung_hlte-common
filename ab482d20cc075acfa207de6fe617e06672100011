@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a5de9d1_c00dc238",
+        "filename": "audio/platform/customplatform.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2014-01-03T17:15:40Z",
+      "side": 1,
+      "message": "Nitpick-\n\nCopyright should read \"Copyright 2013, The CyanogenMod Project\"\n\nAny author mentions should come below the license text.",
+      "revId": "ab482d20cc075acfa207de6fe617e06672100011",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
