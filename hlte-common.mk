@@ -48,15 +48,15 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/samsung/hlte-common/sec_e-pen.idc:system/usr/idc/sec_e-pen.idc
 
-
+# GPS
 PRODUCT_PACKAGES += \
-        libloc_adapter \
-        libloc_eng \
-        libloc_api_v02 \
-        libgps.utils \
-        gps.msm8974
+    libloc_adapter \
+    libloc_eng \
+    libloc_api_v02 \
+    libgps.utils \
+    gps.msm8974
 
-    GPS_CONF := device/samsung/hlte-common/gps/gps.conf
+GPS_CONF := device/samsung/hlte-common/gps/gps.conf
 
 PRODUCT_COPY_FILES += \
     $(GPS_CONF):/system/etc/gps.conf
@@ -155,44 +155,29 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 # Lights
 PRODUCT_PACKAGES += lights.MSM8974
 
-
 # QC Perf
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.extension_library=/system/lib/libqc-opt.so
 
-# QRNGD
-PRODUCT_PACKAGES += qrngd
-
 #common build.props
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.chipname=msm8974 \
-    ro.ril.hsxpa=1 \
-    ro.ril.gprsclass=10 \
-    persist.radio.add_power_save=1 \
-    persist.radio.snapshot_disabled=1 \
-    persist.radio.use_se_table_only=1 \
-    persist.radio.fill_eons=1 \
-    com.qc.hardware=true \
-    persist.radio.apm_sim_not_pwdn=1 \
-    ro.telephony.call_ring.multiple=0 \
     ro.sf.lcd_density=480 \
-    ro.ril.transmitpower=true \
     ro.opengles.version=196608 \
-    lpa.decode=false \
     persist.timed.enable=true \
-    ro.emmc.sdcard.partition=17 \
-    ro.use_data_netmgrd=true \
-    persist.data.ds_fmc_app.mode=0 \
-    persist.ims.regmanager.mode=0 \
-    ro.config.ehrpd=true \
-    persist.omh.enabled=1 \
-    persist.data_netmgrd_nint=16 \
+    keyguard.no_require_sim=true
+
+# Radio properties
+PRODUCT_PROPERTY_OVERRIDES += \
     rild.libpath=/system/lib/libsec-ril.so \
     ril.subscription.types=NV,RUIM \
-    ro.cdma.subscribe_on_ruim_ready=true \
-    persist.radio.no_wait_for_card=0 \
-    keyguard.no_require_sim=true \
-    media.aac_51_output_enabled=true \
+    ro.ril.hsxpa=1 \
+    ro.ril.gprsclass=10 \
+    ro.use_data_netmgrd=true \
+    persist.data.netmgrd.qos.enable=true \
+    persist.radio.add_power_save=1 \
+    persist.radio.apm_sim_not_pwdn=1 \
+    persist.radio.lte_vrat_report=1 \
     persist.rild.nitz_plmn="" \
     persist.rild.nitz_long_ons_0="" \
     persist.rild.nitz_long_ons_1="" \
