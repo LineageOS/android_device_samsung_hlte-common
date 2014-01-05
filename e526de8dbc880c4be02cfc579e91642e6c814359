@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a5ae5dd_8ec93faf",
+        "filename": "audio/platform/customplatform.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2014-01-05T11:08:34Z",
+      "side": 1,
+      "message": "why do we need this in the custom stuff?",
+      "revId": "e526de8dbc880c4be02cfc579e91642e6c814359",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
