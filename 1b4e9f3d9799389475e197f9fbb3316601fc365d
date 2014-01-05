@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a5ae5dd_2e17ebee",
+        "filename": "audio/platform/customplatform.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2014-01-05T13:03:45Z",
+      "side": 1,
+      "message": "use c-style naming instead of camelcase plx",
+      "revId": "1b4e9f3d9799389475e197f9fbb3316601fc365d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
