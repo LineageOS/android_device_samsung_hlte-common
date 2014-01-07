@@ -750,7 +750,7 @@
         <ctl name="SLIM_0_RX Channels" value="One" />
         <ctl name="SPK Status" value="1" />
         <ctl name="DAC1 Switch" value="1" />
-        <ctl name="SPK DRV Volume" value="8" />
+        <ctl name="SPK DRV Volume" value="7" />
         <ctl name="RX7 Digital Volume" value="81" />
         <ctl name="COMP0 Switch" value="1" />
     </path>
