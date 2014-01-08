@@ -50,10 +50,6 @@ PRODUCT_COPY_FILES += \
 
 # GPS
 PRODUCT_PACKAGES += \
-    libloc_adapter \
-    libloc_eng \
-    libloc_api_v02 \
-    libgps.utils \
     gps.msm8974
 
 GPS_CONF := device/samsung/hlte-common/gps/gps.conf
