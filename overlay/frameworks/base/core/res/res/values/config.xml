@@ -253,9 +253,16 @@
 
     <!-- Enable translucent UI -->
     <bool name="config_enableLockScreenTranslucentDecor">true</bool>
+<<<<<<< HEAD
     <bool name="config_enableTranslucentDecor">true</bool>
 
     <!-- Boolean to enable stylus gestures -->
     <bool name="config_stylusGestures">true</bool>
+=======
+
+    <!-- Performance profiles -->
+    <string name="config_perf_profile_prop">sys.perf.profile</string>
+    <string name="config_perf_profile_default_entry">1</string>
+>>>>>>> 88a6780... jf-common: Add CM performance profile definitions
 
 </resources>
