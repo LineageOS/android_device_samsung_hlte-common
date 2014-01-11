@@ -54,14 +54,16 @@ vendor/lib/libc2d30-a3xx.so
 vendor/lib/libc2d30.so
 vendor/lib/libCB.so
 vendor/lib/libgsl.so
+lib/libOpenVG.so
+lib/libOpenCL.so
 vendor/lib/libllvm-a3xx.so
 vendor/lib/libllvm-qcom.so
 vendor/lib/librs_adreno_sha1.so
 vendor/lib/librs_adreno.so
 vendor/lib/libRSDriver_adreno.so
 vendor/lib/libsc-a3xx.so
-etc/firmware/a330_pfp.fw
-etc/firmware/a330_pm4.fw
+vendor/firmware/a330_pfp.fw
+vendor/firmware/a330_pm4.fw
 
 # Graphics
 vendor/lib/libmm-color-convertor.so
