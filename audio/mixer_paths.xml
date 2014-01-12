@@ -750,7 +750,7 @@
         <ctl name="SLIM_0_RX Channels" value="One" />
         <ctl name="SPK Status" value="1" />
         <ctl name="DAC1 Switch" value="1" />
-        <ctl name="SPK DRV Volume" value="7" />
+        <ctl name="SPK DRV Volume" value="6" />
         <ctl name="RX7 Digital Volume" value="81" />
         <ctl name="COMP0 Switch" value="1" />
     </path>
@@ -769,7 +769,7 @@
         <ctl name="SLIM_0_RX Channels" value="Two" />
         <ctl name="RX7 MIX1 INP1" value="RX1" />
         <ctl name="RX4 MIX1 INP1" value="RX2" />
-        <ctl name="SPK DRV Volume" value="8" />
+        <ctl name="SPK DRV Volume" value="6" />
         <ctl name="RX7 Digital Volume" value="84" />
         <ctl name="DAC1 Switch" value="1" />
         <ctl name="ES325 RX1 Enable" value="1" />
