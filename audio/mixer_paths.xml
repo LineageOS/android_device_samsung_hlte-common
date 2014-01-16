@@ -910,12 +910,13 @@
     </path>
 
     <path name="voice-handset">
-        <!-- <path name="sidetone-handset" /> -->
         <path name="handset" />
+        <ctl name="ES325 RX1 Enable" value="1" />
     </path>
 
     <path name="voice-handset-tmus">
         <path name="handset" />
+        <ctl name="ES325 RX1 Enable" value="1" />
     </path>
 
     <path name="voice-speaker">
@@ -1319,6 +1320,7 @@
     <path name="voice-tty-hco-handset">
         <ctl name="TTY Mode" value="HCO" />
         <path name="handset" />
+        <ctl name="ES325 RX1 Enable" value="1" />
     </path>
 
     <path name="voice-tty-full-headset-mic">
