@@ -68,6 +68,10 @@ vendor/firmware/a330_pm4.fw
 # Graphics
 vendor/lib/libmm-color-convertor.so
 
+lib/libsec-ril.so
+lib/libril.so
+lib/hw/sensors.msm8974.so
+
 # Radio
 bin/ds_fmc_appd
 bin/efsks
