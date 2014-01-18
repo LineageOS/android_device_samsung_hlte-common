@@ -1,4 +1,0 @@
-# put anything that cannot be in hltexx
-lib/libsec-ril.so
-lib/libril.so
-lib/hw/sensors.msm8974.so
