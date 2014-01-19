@@ -26,6 +26,7 @@
 #include <platform_api.h>
 #include "platform.h"
 #include "voice_extn.h"
+#include "audio_extn.h"
 
 snd_device_t custom_platform_get_input_snd_device(void *platform, audio_devices_t out_device)
 {
