@@ -340,6 +340,7 @@ bin/qseecomd
 lib/libdrmdecrypt.so
 vendor/lib/libdrmfs.so
 vendor/lib/libdrmtime.so
+vendor/lib/librpmb.so
 lib/libhdcp2.so
 vendor/lib/libQSEEComAPI.so
 lib/libWVStreamControlAPI_L1.so
