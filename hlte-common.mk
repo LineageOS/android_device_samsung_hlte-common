@@ -36,6 +36,12 @@ PRODUCT_COPY_FILES += \
     device/samsung/hlte-common/audio/audio_policy.conf:system/etc/audio_policy.conf \
     frameworks/native/data/etc/android.hardware.audio.low_latency.xml:system/etc/permissions/android.hardware.audio.low_latency.xml
 
+PRODUCT_PROPERTY_OVERRIDES += \
+    af.resampler.quality=4 \
+    audio.offload.buffer.size.kb=32 \
+    audio.offload.gapless.enabled=true \
+    av.offload.enable=true
+
 # Thermal config
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/thermal-engine-8974.conf:system/etc/thermal-engine.conf
