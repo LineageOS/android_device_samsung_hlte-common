@@ -46,7 +46,6 @@ vendor/lib/egl/eglsubAndroid.so
 vendor/lib/egl/libEGL_adreno.so
 vendor/lib/egl/libGLESv1_CM_adreno.so
 vendor/lib/egl/libGLESv2_adreno.so
-vendor/lib/egl/libplayback_adreno.so
 vendor/lib/egl/libq3dtools_adreno.so
 vendor/lib/libadreno_utils.so
 vendor/lib/libC2D2.so
@@ -54,27 +53,21 @@ vendor/lib/libc2d30-a3xx.so
 vendor/lib/libc2d30.so
 vendor/lib/libCB.so
 vendor/lib/libgsl.so
-lib/libOpenVG.so
-lib/libOpenCL.so
-vendor/lib/libllvm-a3xx.so
+vendor/lib/libOpenVG.so
+vendor/lib/libOpenCL.so
 vendor/lib/libllvm-qcom.so
-vendor/lib/librs_adreno_sha1.so
-vendor/lib/librs_adreno.so
-vendor/lib/libRSDriver_adreno.so
 vendor/lib/libsc-a3xx.so
-vendor/firmware/a330_pfp.fw
-vendor/firmware/a330_pm4.fw
+etc/firmware/a330_pfp.fw
+etc/firmware/a330_pm4.fw
 
 # Graphics
 vendor/lib/libmm-color-convertor.so
 
-lib/cdma/libsec-ril.so
-lib/cdma/libril.so
-lib/gsm/libsec-ril.so
-lib/gsm/libril.so
+lib/libsec-ril.so
+lib/libril.so
+
 lib/libsensirion_h_2.so
 lib/hw/sensors.msm8974.so
-
 # Radio
 bin/ds_fmc_appd
 bin/efsks
@@ -89,11 +82,11 @@ bin/rmt_storage
 lib/libatparser.so
 lib/libcordon.so
 vendor/lib/libdiag.so
-lib/libdsutils.so
+vendor/lib/libdsutils.so
 #vendor/lib/libdsi_netctrl.so
 lib/libfactoryutil.so
 vendor/lib/libidl.so
-lib/libnetmgr.so
+vendor/lib/libnetmgr.so
 lib/libomission_avoidance.so
 #vendor/lib/libqdi.so
 #vendor/lib/libqdp.so
@@ -106,7 +99,7 @@ vendor/lib/libqmi_encdec.so
 vendor/lib/libqcci_legacy.so
 vendor/lib/libqmi_client_qmux.so
 lib/libreference-ril.so
-lib/libril-qcril-hook-oem.so
+vendor/lib/libril-qcril-hook-oem.so
 lib/libsecril-client.so
 
 # Time services
@@ -328,14 +321,14 @@ etc/wifi/cred.conf
 etc/wifi/nvram_mfg.txt
 #etc/wifi/nvram_mfg.txt_a0
 #etc/wifi/nvram_mfg.txt
-etc/wifi/nvram_mfg.txt_murata
+#etc/wifi/nvram_mfg.txt_murata
 #etc/wifi/nvram_mfg.txt_murata_a0
-etc/wifi/nvram_mfg.txt_muratafem1
+#etc/wifi/nvram_mfg.txt_muratafem1
 #etc/wifi/nvram_mfg.txt_muratafem2
 etc/wifi/nvram_net.txt
-etc/wifi/nvram_net.txt_murata
+#etc/wifi/nvram_net.txt_murata
 #etc/wifi/nvram_net.txt_murata_a0
-etc/wifi/nvram_net.txt_muratafem1
+#etc/wifi/nvram_net.txt_muratafem1
 etc/wifi/wpa_supplicant.conf
 
 # Perf
