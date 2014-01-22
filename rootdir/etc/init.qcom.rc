@@ -267,7 +267,7 @@ on post-fs-data
     mkdir /data/audio/ 0770 media audio
     # Enable the setgid bit on the directory
     chmod 2770 /data/audio
-
+    chown system system /sys/devices/virtual/lcd/panel/panel/backlight
     setprop vold.post_fs_data_done 1
 
     #Create a folder for SRS to be able to create a usercfg file
