@@ -287,6 +287,7 @@ on post-fs-data
     chown system radio /sys/class/sensors/accelerometer_sensor/reactive_alert
     chown system radio /sys/class/sensors/accelerometer_sensor/vendor
     chown system radio /sys/class/sensors/accelerometer_sensor/name
+    chown system radio /sys/class/sensors/accelerometer_sensor/selftest
 # Proximity_sensor
     chown system radio /sys/class/sensors/proximity_sensor/state
     chown system radio /sys/class/sensors/proximity_sensor/raw_data
@@ -320,21 +321,23 @@ on post-fs-data
     chown system radio /sys/class/sensors/magnetic_sensor/raw_data
     chown system radio /sys/class/sensors/magnetic_sensor/vendor
     chown system radio /sys/class/sensors/magnetic_sensor/name
-# uv_sensor
-    chown system radio /sys/class/sensors/uv_sensor/vendor
-    chown system radio /sys/class/sensors/uv_sensor/name
-    chown system radio /sys/class/sensors/uv_sensor/raw_data
-    chown system radio /sys/class/sensors/uv_sensor/power_on
-    chown system radio /sys/class/sensors/uv_sensor/power_off
 # Temphumidity_sensor
     chown system radio /sys/class/sensors/temphumidity_sensor/vendor
     chown system radio /sys/class/sensors/temphumidity_sensor/name
     chown system radio /sys/class/sensors/temphumidity_sensor/engine_ver
+    chown system radio /sys/class/sensors/temphumidity_sensor/engine_ver2
     chown system radio /sys/class/sensors/temphumidity_sensor/cp_thm
     chown system radio /sys/class/sensors/temphumidity_sensor/send_accuracy
+# Grip_sensor
+    chown system radio /sys/class/sensors/grip_sensor/vendor
+    chown system radio /sys/class/sensors/grip_sensor/name
+    chown system radio /sys/class/sensors/grip_sensor/raw_data
+    chown system radio /sys/class/sensors/grip_sensor/calibration
+    chown system radio /sys/class/sensors/grip_sensor/threshold
+    chown system radio /sys/class/sensors/grip_sensor/thresh_touch_check
+    chown system radio /sys/class/sensors/grip_sensor/onoff
 # SensorHub
     chown system radio /sys/class/sensors/ssp_sensor/enable
-    chown system radio /sys/class/sensors/ssp_sensor/enable_irq
     chown system radio /sys/class/sensors/ssp_sensor/mcu_rev
     chown system radio /sys/class/sensors/ssp_sensor/mcu_name
     chown system radio /sys/class/sensors/ssp_sensor/mcu_test
@@ -344,10 +347,24 @@ on post-fs-data
     chown system radio /sys/class/sensors/ssp_sensor/ori_poll_delay
     chown system radio /sys/class/sensors/ssp_sensor/mag_poll_delay
     chown system radio /sys/class/sensors/ssp_sensor/temp_humi_poll_delay
+    chown system radio /sys/class/sensors/ssp_sensor/accel_poll_delay
+    chown system radio /sys/class/sensors/ssp_sensor/rot_poll_delay
+    chown system radio /sys/class/sensors/ssp_sensor/game_rot_poll_delay
+    chown system radio /sys/class/sensors/ssp_sensor/step_det_poll_delay
+    chown system radio /sys/class/sensors/ssp_sensor/gyro_poll_delay
+    chown system radio /sys/class/sensors/ssp_sensor/ssp_flush
+    chmod 0600 /dev/batch_io
+    chown system system /dev/batch_io
 # Gesture_sensor
+    chown system radio /sys/class/sensors/gesture_sensor/vendor
+    chown system radio /sys/class/sensors/gesture_sensor/name
+    chown system radio /sys/class/sensors/gesture_sensor/raw_data
     chown system radio /sys/class/sensors/gesture_sensor/ir_current
     chown system radio /sys/class/sensors/gesture_sensor/selftest
-
+# SHTC1 BULK
+    chmod 0600 /dev/shtc1_sensor
+    chown system system /dev/shtc1_sensor
+    
 # NFC_NXP
     setprop ro.nfc.port "I2C"
     chmod 0600 /dev/pn547
