@@ -84,7 +84,7 @@ LOCAL_CFLAGS += -DFEATURE_IPV6
 
 LOCAL_C_INCLUDES:= \
     $(TARGET_OUT_HEADERS)/gps.utils \
-    device/samsung/hlte-common/gps/ulp/inc
+    device/samsung/hlte/gps/ulp/inc
 
 LOCAL_PRELINK_MODULE := false
 
@@ -120,7 +120,7 @@ LOCAL_CFLAGS += -DFEATURE_IPV6
 ## Includes
 LOCAL_C_INCLUDES:= \
     $(TARGET_OUT_HEADERS)/gps.utils \
-    device/samsung/hlte-common/gps/ulp/inc
+    device/samsung/hlte/gps/ulp/inc
 
 LOCAL_PRELINK_MODULE := false
 LOCAL_MODULE_PATH := $(TARGET_OUT_SHARED_LIBRARIES)/hw
