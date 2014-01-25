@@ -92,6 +92,10 @@ PRODUCT_PACKAGES += \
     memtrack.msm8974 \
     power.msm8974
 
+# hardware keystore
+PRODUCT_PACKAGES += \
+    keystore.msm8974
+
 # AUdio
 PRODUCT_PACKAGES += \
     audio_policy.msm8974 \
@@ -115,6 +119,7 @@ PRODUCT_PACKAGES += libxml2
 # IR packages
 PRODUCT_PACKAGES += \
     consumerir.msm8974
+
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.consumerir.xml:system/etc/permissions/android.hardware.consumerir.xml
 
