@@ -191,6 +191,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.rild.nitz_short_ons_3="" \
     ro.telephony.ril.v3=newDriverCall,newDialCode
 
+# msm_rng entropy feeder
+PRODUCT_PACKAGES += \
+    qrngd \
+    qrngp
+
 # Wifi
 PRODUCT_COPY_FILES += \
    device/samsung/hlte/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
