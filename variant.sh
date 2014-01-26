@@ -25,12 +25,14 @@ if [[ $CMDLINE != "${CMDLINE/SM-N900P}" ]]; #hltespr
        sed -i 's|ro.build.description=xxxxxxxxxx|ro.build.description=hltespr-user 4.3 JSS15J N900PVPUBMJ4 release-keys|g' /system/build.prop
        sed -i 's|ro.product.model=hlte|ro.product.model=SM-N900P|g' /system/build.prop
        sed -i 's|ro.product.device=hlte|ro.product.device=hltespr|g' /system/build.prop
+        echo "ro.telephony.ril.v3=newDriverCallU,newDialCode" >> /system/build.prop
        cp -R /system/lib/cdma/* /system/lib
 elif [[ $CMDLINE != "${CMDLINE/SM-N9005}" ]]; #hltexx
     then
        sed -i 's|ro.build.fingerprint=xxxxxxxxxx|ro.build.fingerprint=samsung/hltexx/hlte:4.3/JSS15J/N9005XXUBMH1:user/release-keys|g' /system/build.prop
        sed -i 's|ro.build.description=xxxxxxxxxx|ro.build.description=hltexx-user 4.3 JSS15J N9005XXUBMH1 release-keys|g' /system/build.prop
        sed -i 's|ro.product.model=hlte|ro.product.model=SM-N9005|g' /system/build.prop
+        echo "ro.telephony.ril.v3=newDialCode" >> /system/build.prop
        cp -R /system/lib/gsm/* /system/lib
 elif [[ $CMDLINE != "${CMDLINE/SM-N900T}" ]]; #hltetmo
     then
@@ -38,6 +40,7 @@ elif [[ $CMDLINE != "${CMDLINE/SM-N900T}" ]]; #hltetmo
        sed -i 's|ro.build.description=xxxxxxxxxx|hltetmo-user 4.3 JSS15J N900TUVUBMI7 release-keys|g' /system/build.prop
        sed -i 's|ro.product.model=hlte|ro.product.model=SM-N900T|g' /system/build.prop
        sed -i 's|ro.product.device=hlte|ro.product.device=hltetmo|g' /system/build.prop
+        echo "ro.telephony.ril.v3=newDialCode" >> /system/build.prop
        cp -R /system/lib/gsm/* /system/lib
 elif [[ $CMDLINE != "${CMDLINE/SM-N900W8}" ]]; #hltexx
     then
@@ -45,6 +48,7 @@ elif [[ $CMDLINE != "${CMDLINE/SM-N900W8}" ]]; #hltexx
        sed -i 's|ro.build.description=xxxxxxxxxx|ro.build.description="hltevl-user 4.3 JSS15J N900W8VLUBMJ4 release-keys|g' /system/build.prop
        sed -i 's|ro.product.model=hlte|ro.product.model=SM-N900W8|g' /system/build.prop
         sed -i 's|ro.product.device=hlte|ro.product.device=hltecan|g' /system/build.prop
+        echo "ro.telephony.ril.v3=newDialCode" >> /system/build.prop
         cp -R /system/lib/gsm/* /system/lib
 elif [[ $CMDLINE != "${CMDLINE/SM-N900V}" ]]; #hltexx
     then
@@ -52,6 +56,7 @@ elif [[ $CMDLINE != "${CMDLINE/SM-N900V}" ]]; #hltexx
        sed -i 's|ro.build.description=xxxxxxxxxx|ro.build.description=hltevzw-user 4.3 JSS15J N900VOYUBMJ3 release-keys|g' /system/build.prop
        sed -i 's|ro.product.model=hlte|ro.product.model=SM-N900W8|g' /system/build.prop
         sed -i 's|ro.product.device=hlte|ro.product.device=hltevzw|g' /system/build.prop
+        echo "ro.telephony.ril.v3=newDriverCallU,newDialCode" >> /system/build.prop
         cp -R /system/lib/cdma/* /system/lib
 fi
 chmod 644 /system/build.prop
