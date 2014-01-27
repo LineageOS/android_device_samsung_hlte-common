@@ -16,6 +16,24 @@
       "revId": "5c7da7c22f1620fc0e1c1bff781e74946dc51345",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a54edaf_2c73774f",
+        "filename": "variant.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 883
+      },
+      "writtenOn": "2014-01-27T13:42:30Z",
+      "side": 1,
+      "message": "I added the u to it because it includes the gsm rather than trying to detect it automatic  when attempting to  do it. \nthis extend the fix to gsm not just cdma. this is a  cdma ril on gsm are gaving problem with data call",
+      "parentUuid": "1a54edaf_6c1def0e",
+      "revId": "5c7da7c22f1620fc0e1c1bff781e74946dc51345",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
