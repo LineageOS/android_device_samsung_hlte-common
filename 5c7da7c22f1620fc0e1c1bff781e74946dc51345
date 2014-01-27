@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a54edaf_6c1def0e",
+        "filename": "variant.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 8640
+      },
+      "writtenOn": "2014-01-27T12:55:06Z",
+      "side": 1,
+      "message": "newDriverCallU or should it be newDriverCall",
+      "revId": "5c7da7c22f1620fc0e1c1bff781e74946dc51345",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
