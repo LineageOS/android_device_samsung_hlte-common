@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a54edaf_3dd87f1d",
+        "filename": "full_hlte.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 167
+      },
+      "writtenOn": "2014-01-28T19:15:28Z",
+      "side": 1,
+      "message": "This needs to change from SM-N9005 in order for the variant.sh to work.  Or the variant.sh needs to say SM-N9005 in the ro.product.model part.",
+      "revId": "de81599b046d0c61255d008c6e96e5ce11083cdc",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a54edaf_dd036b75",
+        "filename": "variant.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 167
+      },
+      "writtenOn": "2014-01-28T19:15:28Z",
+      "side": 1,
+      "message": "This line here in each instance. ro.product.model",
+      "revId": "de81599b046d0c61255d008c6e96e5ce11083cdc",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
