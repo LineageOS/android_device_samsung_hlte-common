@@ -17,10 +17,10 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 ## Get non-open-source specific aspects
-$(call inherit-product-if-exists, vendor/samsung/hlte/hlte-vendor.mk)
+$(call inherit-product-if-exists, vendor/samsung/hlte-common/hlte-common-vendor.mk)
 
 ## overlays
-DEVICE_PACKAGE_OVERLAYS += device/samsung/hlte/overlay
+DEVICE_PACKAGE_OVERLAYS += device/samsung/hlte-common/overlay
 
 # Device uses high-density artwork where available
 PRODUCT_AAPT_CONFIG := normal hdpi xhdpi xxhdpi
@@ -32,8 +32,8 @@ TARGET_SCREEN_WIDTH := 1080
 
 # Audio configuration
 PRODUCT_COPY_FILES += \
-    device/samsung/hlte/audio/mixer_paths.xml:system/etc/mixer_paths.xml \
-    device/samsung/hlte/audio/audio_policy.conf:system/etc/audio_policy.conf \
+    device/samsung/hlte-common/audio/mixer_paths.xml:system/etc/mixer_paths.xml \
+    device/samsung/hlte-common/audio/audio_policy.conf:system/etc/audio_policy.conf \
     frameworks/native/data/etc/android.hardware.audio.low_latency.xml:system/etc/permissions/android.hardware.audio.low_latency.xml
 
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -48,30 +48,30 @@ PRODUCT_COPY_FILES += \
 
 # Media Profile
 PRODUCT_COPY_FILES += \
-    device/samsung/hlte/media/media_profiles.xml:system/etc/media_profiles.xml
+    device/samsung/hlte-common/media/media_profiles.xml:system/etc/media_profiles.xml
 
 # support for epen
 PRODUCT_COPY_FILES += \
-    device/samsung/hlte/sec_e-pen.idc:system/usr/idc/sec_e-pen.idc
+    device/samsung/hlte-common/sec_e-pen.idc:system/usr/idc/sec_e-pen.idc
 
 # GPS
 PRODUCT_PACKAGES += \
     gps.msm8974
 
-GPS_CONF := device/samsung/hlte/gps/gps.conf
+GPS_CONF := device/samsung/hlte-common/gps/gps.conf
 
 PRODUCT_COPY_FILES += \
     $(GPS_CONF):/system/etc/gps.conf
 
 # Keylayouts
 PRODUCT_COPY_FILES += \
-    device/samsung/hlte/keylayout/atmel_mxt_ts.kl:system/usr/keylayout/atmel_mxt_ts.kl \
-    device/samsung/hlte/keylayout/Button_Jack.kl:system/usr/keylayout/Button_Jack.kl \
-    device/samsung/hlte/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
-    device/samsung/hlte/keylayout/philips_remote_ir.kl:system/usr/keylayout/philips_remote_ir.kl \
-    device/samsung/hlte/keylayout/samsung_remote_ir.kl:system/usr/keylayout/samsung_remote_ir.kl \
-    device/samsung/hlte/keylayout/sec_touchkey.kl:system/usr/keylayout/sec_touchkey.kl \
-    device/samsung/hlte/keylayout/ue_rf4ce_remote.kl:system/usr/keylayout/ue_rf4ce_remote.kl
+    device/samsung/hlte-common/keylayout/atmel_mxt_ts.kl:system/usr/keylayout/atmel_mxt_ts.kl \
+    device/samsung/hlte-common/keylayout/Button_Jack.kl:system/usr/keylayout/Button_Jack.kl \
+    device/samsung/hlte-common/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
+    device/samsung/hlte-common/keylayout/philips_remote_ir.kl:system/usr/keylayout/philips_remote_ir.kl \
+    device/samsung/hlte-common/keylayout/samsung_remote_ir.kl:system/usr/keylayout/samsung_remote_ir.kl \
+    device/samsung/hlte-common/keylayout/sec_touchkey.kl:system/usr/keylayout/sec_touchkey.kl \
+    device/samsung/hlte-common/keylayout/ue_rf4ce_remote.kl:system/usr/keylayout/ue_rf4ce_remote.kl
 
 # Ramdisk
 PRODUCT_PACKAGES += \
@@ -119,7 +119,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.consumerir.xml:system/etc/permissions/android.hardware.consumerir.xml
 
 # Nfc
-NFCEE_ACCESS_PATH := device/samsung/hlte/nfc/nfcee_access.xml
+NFCEE_ACCESS_PATH := device/samsung/hlte-common/nfc/nfcee_access.xml
 
 ifeq ($(TARGET_NFC_TECH), nxp)
 PRODUCT_PACKAGES += \
@@ -144,9 +144,9 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += \
     $(NFCEE_ACCESS_PATH):system/etc/nfcee_access.xml \
-    device/samsung/hlte/nfc/libnfc-brcm-20791b05.conf:system/etc/libnfc-brcm-20791b05.conf \
-    device/samsung/hlte/nfc/libnfc-brcm-20791b04.conf:system/etc/libnfc-brcm-20791b04.conf \
-    device/samsung/hlte/nfc/libnfc-brcm.conf:system/etc/libnfc-brcm.conf
+    device/samsung/hlte-common/nfc/libnfc-brcm-20791b05.conf:system/etc/libnfc-brcm-20791b05.conf \
+    device/samsung/hlte-common/nfc/libnfc-brcm-20791b04.conf:system/etc/libnfc-brcm-20791b04.conf \
+    device/samsung/hlte-common/nfc/libnfc-brcm.conf:system/etc/libnfc-brcm.conf
 
 endif
 
@@ -193,8 +193,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Wifi
 PRODUCT_COPY_FILES += \
-   device/samsung/hlte/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
-   device/samsung/hlte/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf
+   device/samsung/hlte-common/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
+   device/samsung/hlte-common/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf
 
 # call common msm8960
 $(call inherit-product, device/samsung/msm8960-common/msm8960.mk)
