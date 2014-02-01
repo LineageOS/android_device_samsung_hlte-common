@@ -56,12 +56,16 @@ PRODUCT_COPY_FILES += \
 
 # GPS
 PRODUCT_PACKAGES += \
-    gps.msm8974
+    gps.msm8974 \
+    libgps.utils \
+    libloc_core \
+    libloc_eng
 
-GPS_CONF := device/samsung/hlte/gps/gps.conf
+GPS_CONF := device/samsung/hlte/gps/etc/gps.conf
 
 PRODUCT_COPY_FILES += \
-    $(GPS_CONF):/system/etc/gps.conf
+    $(GPS_CONF):/system/etc/gps.conf \
+    device/samsung/hlte/gps/etc/sap.conf:/system/etc/sap.conf
 
 # Keylayouts
 PRODUCT_COPY_FILES += \
@@ -159,7 +163,7 @@ PRODUCT_PACKAGES += lights.MSM8974
 
 # QC Perf
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.vendor.extension_library=/system/lib/libqc-opt.so
+    ro.vendor.extension_library=/vendor/lib/libqc-opt.so
 
 #common build.props
 PRODUCT_PROPERTY_OVERRIDES += \

@@ -5,6 +5,7 @@ bin/mpdecision
 # Thermal
 bin/thermald
 bin/thermal-engine
+vendor/lib/libthermalclient.so
 
 # Bluetooth firmware
 vendor/firmware/bcm4339.hcd
@@ -14,8 +15,13 @@ vendor/firmware/bcm4339_semco.hcd
 vendor/firmware/bcm4339_wisol.hcd
 
 # GPS
-vendor/lib/libgeofence.so
+-app/com.qualcomm.location.apk
+etc/permissions/com.qualcomm.location.xml
 lib/libloc_api_v02.so
+vendor/lib/libgeofence.so
+vendor/lib/libizat_core.so
+vendor/lib/liblbs_core.so
+vendor/lib/liblocationservice.so
 
 # Audio
 vendor/lib/libacdbloader.so
@@ -32,16 +38,7 @@ etc/Hdmi_cal.acdb
 etc/Headset_cal.acdb
 etc/Speaker_cal.acdb
 
-#etc/firmware/wcd9310/wcd9310_anc.bin
-#etc/firmware/wcd9310/wcd9310_mbhc.bin
-
-# mmparser extended
-vendor/lib/libExtendedExtractor.so
-vendor/lib/libmmparser.so
-vendor/lib/libmmosal.so
-vendor/lib/libDivxDrm.so
-
-# Adreno GPU (Available on Nexus 4)
+# Adreno GPU
 vendor/lib/egl/eglsubAndroid.so
 vendor/lib/egl/libEGL_adreno.so
 vendor/lib/egl/libGLESv1_CM_adreno.so
@@ -55,7 +52,6 @@ vendor/lib/libCB.so
 vendor/lib/libgsl.so
 vendor/lib/libOpenVG.so
 vendor/lib/libOpenCL.so
-vendor/lib/libllvm-a3xx.so
 vendor/lib/libllvm-qcom.so
 vendor/lib/librs_adreno_sha1.so
 vendor/lib/librs_adreno.so
@@ -110,10 +106,24 @@ lib/libsecril-client.so
 
 # Time services
 bin/time_daemon
-vendor/lib/libtime_genoff.so
+-vendor/lib/libtime_genoff.so
 
 # Sensors
 lib/hw/sensorhubs.msm8974.so
+
+# Media
+lib/libOmxVdecHevc.so
+vendor/lib/libDivxDrm.so
+vendor/lib/libExtendedExtractor.so
+vendor/lib/libHevcSwDecoder.so
+vendor/lib/libI420colorconvert.so
+vendor/lib/libmmosal.so
+vendor/lib/libmmparser.so
+vendor/lib/libOmxAacDec.so
+vendor/lib/libOmxAmrwbplusDec.so
+vendor/lib/libOmxEvrcDec.so
+vendor/lib/libOmxQcelp13Dec.so
+vendor/lib/libOmxWmaDec.so
 
 # Camera
 bin/mm-qcamera-daemon
@@ -341,16 +351,19 @@ vendor/lib/libqc-opt.so
 
 # DRM
 bin/qseecomd
-#bin/scranton_RD
 lib/libdrmdecrypt.so
-vendor/lib/libdrmfs.so
-vendor/lib/libdrmtime.so
-vendor/lib/librpmb.so
-vendor/lib/libssd.so
 lib/libhdcp2.so
-vendor/lib/libQSEEComAPI.so
+lib/libstagefright_hdcp.so
 lib/libWVStreamControlAPI_L1.so
 lib/libwvm.so
+lib/drm/libdrmwvmplugin.so
+vendor/lib/libdrmfs.so
+vendor/lib/libdrmtime.so
+vendor/lib/liboemcrypto.so
+vendor/lib/librpmb.so
+vendor/lib/libssd.so
+vendor/lib/libQSEEComAPI.so
+vendor/lib/mediadrm/libwvdrmengine.so
 
 # IPC router security
 etc/sec_config
@@ -365,4 +378,8 @@ etc/firmware/cpp_firmware_v1_2_0.fw
 vendor/firmware/bcm2079xB4_firmware.ncd
 vendor/firmware/bcm2079xB4_pre_firmware.ncd
 
-
+# postproc
+bin/mm-pp-daemon
+vendor/lib/libdisp-aba.so
+vendor/lib/libmm-abl.so
+vendor/lib/libmm-abl-oem.so
