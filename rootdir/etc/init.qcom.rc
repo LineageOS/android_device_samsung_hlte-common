@@ -26,6 +26,7 @@
 #
 
 import init.qcom.usb.rc
+import init.ril.rc
 
 on early-init
     mount debugfs debugfs /sys/kernel/debug
@@ -269,6 +270,21 @@ on post-fs-data
     chmod 2770 /data/audio
     chown system system /sys/devices/virtual/lcd/panel/panel/backlight
     setprop vold.post_fs_data_done 1
+
+# Broadcom NFC
+    chmod 0600 /dev/bcm2079x
+    chown nfc nfc /dev/bcm2079x
+    mkdir /data/bcmnfc
+    mkdir /data/bcmnfc/param
+    chmod 0700 /data/bcmnfc
+    chmod 0700 /data/bcmnfc/param
+    chown nfc nfc /data/bcmnfc
+    chown nfc nfc /data/bcmnfc/param
+
+# NFC
+    setprop ro.nfc.port "I2C"
+    chmod 0600 /dev/pn547
+    chown nfc nfc /dev/pn547
 
     #Create a folder for SRS to be able to create a usercfg file
     mkdir /data/data/media 0770 media media
@@ -565,21 +581,6 @@ service dhcpcd_bnep3 /system/bin/dhcpcd -BKLG
 service dhcpcd_bnep4 /system/bin/dhcpcd -BKLG
     disabled
     oneshot
-
-# Broadcom NFC
-    chmod 0600 /dev/bcm2079x
-    chown nfc nfc /dev/bcm2079x
-    mkdir /data/bcmnfc
-    mkdir /data/bcmnfc/param
-    chmod 0700 /data/bcmnfc
-    chmod 0700 /data/bcmnfc/param
-    chown nfc nfc /data/bcmnfc
-    chown nfc nfc /data/bcmnfc/param
-
-# NFC
-    setprop ro.nfc.port "I2C"
-    chmod 0600 /dev/pn547
-    chown nfc nfc /dev/pn547
 
 #for WiFi MFG(TestMode)
 service mfgloader /system/bin/mfgloader

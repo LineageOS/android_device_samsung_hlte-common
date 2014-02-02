@@ -86,6 +86,7 @@ PRODUCT_PACKAGES += \
     init.crda.sh \
     init.qcom.rc \
     init.qcom.usb.rc \
+    init.ril.rc \
     init.target.rc \
     ueventd.qcom.rc
 # HAL
