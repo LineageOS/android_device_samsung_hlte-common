@@ -16,6 +16,7 @@ vendor/firmware/bcm4339_wisol.hcd
 
 # GPS
 -app/com.qualcomm.location.apk
+bin/gsiff_daemon
 etc/permissions/com.qualcomm.location.xml
 lib/libloc_api_v02.so
 vendor/lib/libgeofence.so
