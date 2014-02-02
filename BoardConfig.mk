@@ -125,3 +125,10 @@ TARGET_KERNEL_VARIANT_CONFIG := msm8974_sec_hlte_eur_defconfig
 
 # PowerHAL extension
 TARGET_POWERHAL_SET_INTERACTIVE_EXT := device/samsung/hlte/power/power_ext.c
+
+# Vendor Init
+TARGET_UNIFIED_DEVICE := true
+TARGET_INIT_VENDOR_LIB := libinit_msm
+TARGET_LIBINIT_DEFINES_FILE := device/samsung/hlte/init/init_hlte.c
+
+TARGET_RELEASETOOLS_EXTENSIONS := device/samsung/hlte
