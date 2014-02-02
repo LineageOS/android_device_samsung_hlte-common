@@ -34,5 +34,3 @@ PRODUCT_BRAND := samsung
 PRODUCT_MANUFACTURER := samsung
 PRODUCT_MODEL := hlte
 
-PRODUCT_COPY_FILES += \
-    device/samsung/hlte/variant.sh:system/bin/variant.sh
