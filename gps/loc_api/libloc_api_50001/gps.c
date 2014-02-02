@@ -1,4 +1,4 @@
-/* Copyright (c) 2012, The Linux Foundation. All rights reserved.
+/* Copyright (c) 2011 The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -26,43 +26,47 @@
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  */
-#ifndef LOC_TARGET_H
-#define LOC_TARGET_H
-#define TARGET_SET(gnss,ssc) ( (gnss<<1)|ssc )
-#define TARGET_DEFAULT       TARGET_SET(GNSS_MSM, HAS_SSC)
-#define TARGET_MDM           TARGET_SET(GNSS_MDM, HAS_SSC)
-#define TARGET_APQ_SA        TARGET_SET(GNSS_GSS, NO_SSC)
-#define TARGET_MPQ           TARGET_SET(GNSS_NONE,NO_SSC)
-#define TARGET_MSM_NO_SSC    TARGET_SET(GNSS_MSM, NO_SSC)
-#define TARGET_QCA1530       TARGET_SET(GNSS_QCA1530, NO_SSC)
-#define TARGET_UNKNOWN       TARGET_SET(GNSS_UNKNOWN, NO_SSC)
-#define getTargetGnssType(target)  (target>>1)
 
-#ifdef __cplusplus
-extern "C"
+#include <hardware/gps.h>
+
+#include <stdlib.h>
+
+extern const GpsInterface* get_gps_interface();
+
+const GpsInterface* gps__get_gps_interface(struct gps_device_t* dev)
 {
-#endif
-
-unsigned int loc_get_target(void);
-
-/* Please remember to update 'target_name' in loc_log.cpp,
-   if do any changes to this enum. */
-typedef enum {
-    GNSS_NONE = 0,
-    GNSS_MSM,
-    GNSS_GSS,
-    GNSS_MDM,
-    GNSS_QCA1530,
-    GNSS_UNKNOWN
-}GNSS_TARGET;
-
-typedef enum {
-    NO_SSC = 0,
-    HAS_SSC
-}SSC_TYPE;
-
-#ifdef __cplusplus
+    return get_gps_interface();
 }
-#endif
 
-#endif /*LOC_TARGET_H*/
+static int open_gps(const struct hw_module_t* module, char const* name,
+        struct hw_device_t** device)
+{
+    struct gps_device_t *dev = (struct gps_device_t *) malloc(sizeof(struct gps_device_t));
+
+    if(dev == NULL)
+        return -1;
+
+    memset(dev, 0, sizeof(*dev));
+
+    dev->common.tag = HARDWARE_DEVICE_TAG;
+    dev->common.version = 0;
+    dev->common.module = (struct hw_module_t*)module;
+    dev->get_gps_interface = gps__get_gps_interface;
+
+    *device = (struct hw_device_t*)dev;
+    return 0;
+}
+
+static struct hw_module_methods_t gps_module_methods = {
+    .open = open_gps
+};
+
+struct hw_module_t HAL_MODULE_INFO_SYM = {
+    .tag = HARDWARE_MODULE_TAG,
+    .module_api_version = 1,
+    .hal_api_version = 0,
+    .id = GPS_HARDWARE_MODULE_ID,
+    .name = "loc_api GPS Module",
+    .author = "Qualcomm USA, Inc.",
+    .methods = &gps_module_methods,
+};

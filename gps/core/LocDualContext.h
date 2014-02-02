@@ -1,4 +1,4 @@
-/* Copyright (c) 2011-2012, The Linux Foundation. All rights reserved.
+/* Copyright (c) 2011-2013, The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -26,43 +26,47 @@
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  */
+#ifndef __LOC_ENG_CONTEXT__
+#define __LOC_ENG_CONTEXT__
 
-#ifndef LOC_LOG_H
-#define LOC_LOG_H
-
-#ifdef __cplusplus
-extern "C"
-{
-#endif
-
+#include <stdbool.h>
 #include <ctype.h>
-#include "loc_target.h"
+#include <dlfcn.h>
+#include <ContextBase.h>
 
-typedef struct
-{
-   char                 name[128];
-   long                 val;
-} loc_name_val_s_type;
+namespace loc_core {
 
-#define NAME_VAL(x) {"" #x "", x }
+class LocDualContext : public ContextBase {
+    static const MsgTask* mMsgTask;
+    static ContextBase* mFgContext;
+    static ContextBase* mBgContext;
 
-#define UNKNOWN_STR "UNKNOWN"
+    static const MsgTask* getMsgTask(MsgTask::tCreate tCreator,
+                                     const char* name);
+    static const MsgTask* getMsgTask(MsgTask::tAssociate tAssociate,
+                                     const char* name);
 
-#define CHECK_MASK(type, value, mask_var, mask) \
-   ((mask_var & mask) ? (type) value : (type) (-1))
+protected:
+    LocDualContext(const MsgTask* msgTask,
+                   LOC_API_ADAPTER_EVENT_MASK_T exMask);
+    inline virtual ~LocDualContext() {}
 
-/* Get names from value */
-const char* loc_get_name_from_mask(loc_name_val_s_type table[], int table_size, long mask);
-const char* loc_get_name_from_val(loc_name_val_s_type table[], int table_size, long value);
-const char* loc_get_msg_q_status(int status);
-const char* loc_get_target_name(unsigned int target);
+public:
+    static const char* mIzatLibName;
+    static const LOC_API_ADAPTER_EVENT_MASK_T mFgExclMask;
+    static const LOC_API_ADAPTER_EVENT_MASK_T mBgExclMask;
+    static const char* mLocationHalName;
 
-extern const char* log_succ_fail_string(int is_succ);
+    static ContextBase* getLocFgContext(MsgTask::tCreate tCreator,
+                                        const char* name);
+    static ContextBase* getLocFgContext(MsgTask::tAssociate tAssociate,
+                                        const char* name);
+    static ContextBase* getLocBgContext(MsgTask::tCreate tCreator,
+                                        const char* name);
+    static ContextBase* getLocBgContext(MsgTask::tAssociate tAssociate,
+                                        const char* name);
+};
 
-extern char *loc_get_time(char *time_string, unsigned long buf_size);
-
-#ifdef __cplusplus
 }
-#endif
 
-#endif /* LOC_LOG_H */
+#endif //__LOC_ENG_CONTEXT__

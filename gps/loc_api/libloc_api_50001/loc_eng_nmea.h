@@ -26,43 +26,17 @@
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  */
-#ifndef LOC_TARGET_H
-#define LOC_TARGET_H
-#define TARGET_SET(gnss,ssc) ( (gnss<<1)|ssc )
-#define TARGET_DEFAULT       TARGET_SET(GNSS_MSM, HAS_SSC)
-#define TARGET_MDM           TARGET_SET(GNSS_MDM, HAS_SSC)
-#define TARGET_APQ_SA        TARGET_SET(GNSS_GSS, NO_SSC)
-#define TARGET_MPQ           TARGET_SET(GNSS_NONE,NO_SSC)
-#define TARGET_MSM_NO_SSC    TARGET_SET(GNSS_MSM, NO_SSC)
-#define TARGET_QCA1530       TARGET_SET(GNSS_QCA1530, NO_SSC)
-#define TARGET_UNKNOWN       TARGET_SET(GNSS_UNKNOWN, NO_SSC)
-#define getTargetGnssType(target)  (target>>1)
 
-#ifdef __cplusplus
-extern "C"
-{
-#endif
+#ifndef LOC_ENG_NMEA_H
+#define LOC_ENG_NMEA_H
 
-unsigned int loc_get_target(void);
+#include <hardware/gps.h>
 
-/* Please remember to update 'target_name' in loc_log.cpp,
-   if do any changes to this enum. */
-typedef enum {
-    GNSS_NONE = 0,
-    GNSS_MSM,
-    GNSS_GSS,
-    GNSS_MDM,
-    GNSS_QCA1530,
-    GNSS_UNKNOWN
-}GNSS_TARGET;
+#define NMEA_SENTENCE_MAX_LENGTH 200
 
-typedef enum {
-    NO_SSC = 0,
-    HAS_SSC
-}SSC_TYPE;
+void loc_eng_nmea_send(char *pNmea, int length, loc_eng_data_s_type *loc_eng_data_p);
+int loc_eng_nmea_put_checksum(char *pNmea, int maxSize);
+void loc_eng_nmea_generate_sv(loc_eng_data_s_type *loc_eng_data_p, const GpsSvStatus &svStatus, const GpsLocationExtended &locationExtended);
+void loc_eng_nmea_generate_pos(loc_eng_data_s_type *loc_eng_data_p, const UlpLocation &location, const GpsLocationExtended &locationExtended, unsigned char generate_nmea);
 
-#ifdef __cplusplus
-}
-#endif
-
-#endif /*LOC_TARGET_H*/
+#endif // LOC_ENG_NMEA_H

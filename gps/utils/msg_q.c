@@ -30,7 +30,7 @@
 
 #define LOG_TAG "LocSvc_utils_q"
 #include "log_util.h"
-
+#include "platform_lib_includes.h"
 #include "linked_list.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -134,6 +134,20 @@ msq_q_err_type msg_q_init(void** msg_q_data)
    *msg_q_data = tmp_msg_q;
 
    return eMSG_Q_SUCCESS;
+}
+
+/*===========================================================================
+
+  FUNCTION:   msg_q_init2
+
+  ===========================================================================*/
+const void* msg_q_init2()
+{
+  void* q = NULL;
+  if (eMSG_Q_SUCCESS != msg_q_init(&q)) {
+    q = NULL;
+  }
+  return q;
 }
 
 /*===========================================================================

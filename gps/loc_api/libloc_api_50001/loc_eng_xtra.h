@@ -1,4 +1,4 @@
-/* Copyright (c) 2012, The Linux Foundation. All rights reserved.
+/* Copyright (c) 2009,2011 The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -26,43 +26,22 @@
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  */
-#ifndef LOC_TARGET_H
-#define LOC_TARGET_H
-#define TARGET_SET(gnss,ssc) ( (gnss<<1)|ssc )
-#define TARGET_DEFAULT       TARGET_SET(GNSS_MSM, HAS_SSC)
-#define TARGET_MDM           TARGET_SET(GNSS_MDM, HAS_SSC)
-#define TARGET_APQ_SA        TARGET_SET(GNSS_GSS, NO_SSC)
-#define TARGET_MPQ           TARGET_SET(GNSS_NONE,NO_SSC)
-#define TARGET_MSM_NO_SSC    TARGET_SET(GNSS_MSM, NO_SSC)
-#define TARGET_QCA1530       TARGET_SET(GNSS_QCA1530, NO_SSC)
-#define TARGET_UNKNOWN       TARGET_SET(GNSS_UNKNOWN, NO_SSC)
-#define getTargetGnssType(target)  (target>>1)
 
-#ifdef __cplusplus
-extern "C"
+#ifndef LOC_ENG_XTRA_H
+#define LOC_ENG_XTRA_H
+
+#include <hardware/gps.h>
+
+// Module data
+typedef struct
 {
-#endif
+   // loc_eng_ioctl_cb_data_s_type   ioctl_cb_data;
+   gps_xtra_download_request      download_request_cb;
+   report_xtra_server             report_xtra_server_cb;
 
-unsigned int loc_get_target(void);
+   // XTRA data buffer
+   char                          *xtra_data_for_injection;  // NULL if no pending data
+   int                            xtra_data_len;
+} loc_eng_xtra_data_s_type;
 
-/* Please remember to update 'target_name' in loc_log.cpp,
-   if do any changes to this enum. */
-typedef enum {
-    GNSS_NONE = 0,
-    GNSS_MSM,
-    GNSS_GSS,
-    GNSS_MDM,
-    GNSS_QCA1530,
-    GNSS_UNKNOWN
-}GNSS_TARGET;
-
-typedef enum {
-    NO_SSC = 0,
-    HAS_SSC
-}SSC_TYPE;
-
-#ifdef __cplusplus
-}
-#endif
-
-#endif /*LOC_TARGET_H*/
+#endif // LOC_ENG_XTRA_H
