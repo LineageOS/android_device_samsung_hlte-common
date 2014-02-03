@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fade3982_5c8915ca",
+        "filename": "init/init_hlte.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 883
+      },
+      "writtenOn": "2014-02-03T13:37:00Z",
+      "side": 1,
+      "message": "gsm doesn\u0027t need newdrivercall and  vzw needs property_set(\"ro.telephony.default_cdma_sub\", \"0\");",
+      "range": {
+        "startLine": 77,
+        "startChar": 45,
+        "endLine": 77,
+        "endChar": 58
+      },
+      "revId": "826462fa7b971adab9581c5faab4f121b1eb185f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
