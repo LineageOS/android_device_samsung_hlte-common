@@ -34,6 +34,24 @@
       "revId": "e40a6c8fc32f08b8d8987024955d74482d7da3ec",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fade3982_4cacc0ed",
+        "filename": "init/init_hlte.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 8640
+      },
+      "writtenOn": "2014-02-04T15:01:31Z",
+      "side": 1,
+      "message": "Agreed and it won\u0027t pick up the vzw eri overlay without it.",
+      "parentUuid": "fade3982_cc9f30b3",
+      "revId": "e40a6c8fc32f08b8d8987024955d74482d7da3ec",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
