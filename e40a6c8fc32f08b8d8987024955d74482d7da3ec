@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fade3982_4c65e0df",
+        "filename": "init/init_hlte.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 883
+      },
+      "writtenOn": "2014-02-04T14:48:37Z",
+      "side": 1,
+      "message": "no. that not needed with lte based cdma devices.",
+      "revId": "e40a6c8fc32f08b8d8987024955d74482d7da3ec",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
