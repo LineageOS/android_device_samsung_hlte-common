@@ -52,6 +52,24 @@
       "revId": "e40a6c8fc32f08b8d8987024955d74482d7da3ec",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fade3982_2cb4dcf0",
+        "filename": "init/init_hlte.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 883
+      },
+      "writtenOn": "2014-02-04T17:25:33Z",
+      "side": 1,
+      "message": "Not needed for qualcomm lte based, you probably had some missing overlay mmc mnc sim based. get it from the log.",
+      "parentUuid": "fade3982_4cacc0ed",
+      "revId": "e40a6c8fc32f08b8d8987024955d74482d7da3ec",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
