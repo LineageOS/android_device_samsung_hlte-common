@@ -70,6 +70,24 @@
       "revId": "e40a6c8fc32f08b8d8987024955d74482d7da3ec",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fade3982_1f6e5cc9",
+        "filename": "init/init_hlte.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1848
+      },
+      "writtenOn": "2014-02-05T11:01:58Z",
+      "side": 1,
+      "message": "And you\u0027re 100% sure of this for some reason?  Does it matter to leave this in?  I\u0027m not even sure I can test this build in it\u0027s current state to verify with / without.  No kittens will be punished by leaving this prop in place.  I promise.",
+      "parentUuid": "fade3982_2cb4dcf0",
+      "revId": "e40a6c8fc32f08b8d8987024955d74482d7da3ec",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
