@@ -124,6 +124,24 @@
       "revId": "e40a6c8fc32f08b8d8987024955d74482d7da3ec",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fade3982_3f09a032",
+        "filename": "init/init_hlte.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 883
+      },
+      "writtenOn": "2014-02-06T05:28:06Z",
+      "side": 1,
+      "message": "is always the case here  because this is a CSIM standard device.  there are 3 apps where you can pick from, all of them contains the sim information in it. LTE  CDMA, IMS.so you needto check the radio log for more information",
+      "parentUuid": "fade3982_ff161854",
+      "revId": "e40a6c8fc32f08b8d8987024955d74482d7da3ec",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
