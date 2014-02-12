@@ -1,5 +1,8 @@
 # Bins
+bin/hvdcp
 bin/mpdecision
+bin/radish
+bin/rfs_access
 #bin/prepare_param.sh
 
 # Thermal
