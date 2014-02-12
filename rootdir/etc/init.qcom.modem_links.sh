@@ -244,7 +244,7 @@ case $linksNeeded in
             for imgfile in mc_v2*; do
                ln -s /firmware/image/$imgfile /system/etc/firmware/$imgfile 2>/dev/null
             done
-            break;;
+            ;;
          *)
             log -p w -t PIL 8974 device but no mc_v2 image found;;
       esac
@@ -268,6 +268,7 @@ case $linksNeeded in
          *)
             log -p w -t PIL no tzpr25 image found;;
       esac
+      ;;
 
    *)
       # Nothing to do. No links needed
