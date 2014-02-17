@@ -33,7 +33,7 @@
 #include <arpa/inet.h>
 
 //for SSID_BUF_SIZE
-#include <hardware/gps.h>
+#include "hardware/gps.h"
 
 #ifndef SSID_BUF_SIZE
     #define SSID_BUF_SIZE (32+1)

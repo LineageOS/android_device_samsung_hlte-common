@@ -36,7 +36,7 @@ extern "C" {
 
 #include <ctype.h>
 #include <cutils/properties.h>
-#include <hardware/gps.h>
+#include "hardware/gps.h"
 #include <gps_extended.h>
 
 typedef void (*loc_location_cb_ext) (UlpLocation* location, void* locExt);

@@ -30,7 +30,7 @@
 #define LOC_API_ENG_ADAPTER_H
 
 #include <ctype.h>
-#include <hardware/gps.h>
+#include "hardware/gps.h"
 #include <loc.h>
 #include <loc_eng_log.h>
 #include <log_util.h>

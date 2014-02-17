@@ -30,7 +30,7 @@
 #ifndef LOC_ENG_XTRA_H
 #define LOC_ENG_XTRA_H
 
-#include <hardware/gps.h>
+#include "hardware/gps.h"
 
 // Module data
 typedef struct

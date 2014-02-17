@@ -30,7 +30,7 @@
 #define LOC_ENG_MSG_H
 
 
-#include <hardware/gps.h>
+#include "hardware/gps.h"
 #include <gps_extended.h>
 #include <stdlib.h>
 #include <string.h>
