@@ -32,6 +32,7 @@ TARGET_SCREEN_WIDTH := 1080
 
 # Audio configuration
 PRODUCT_COPY_FILES += \
+    device/samsung/hlte/audio/audio_effects.conf:system/vendor/etc/audio_effects.conf \
     device/samsung/hlte/audio/mixer_paths.xml:system/etc/mixer_paths.xml \
     device/samsung/hlte/audio/audio_policy.conf:system/etc/audio_policy.conf \
     frameworks/native/data/etc/android.hardware.audio.low_latency.xml:system/etc/permissions/android.hardware.audio.low_latency.xml
@@ -39,7 +40,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     af.resampler.quality=4 \
     audio.offload.buffer.size.kb=32 \
-    audio.offload.gapless.enabled=true \
+    audio.offload.gapless.enabled=false \
     av.offload.enable=true
 
 # Thermal config
@@ -97,11 +98,18 @@ PRODUCT_PACKAGES += \
     memtrack.msm8974 \
     power.msm8974
 
-# AUdio
+# Audio
 PRODUCT_PACKAGES += \
+    audiod \
+    audio.a2dp.default \
     audio_policy.msm8974 \
     audio.primary.msm8974 \
-    audiod
+    audio.r_submix.default \
+    audio.usb.default \
+    libaudio-resampler \
+    libqcomvisualizer \
+    libqcomvoiceprocessing \
+    tinymix
 
 # Torch
 PRODUCT_PACKAGES += Torch
