@@ -30,6 +30,7 @@ import init.ril.rc
 
 on early-init
     mount debugfs debugfs /sys/kernel/debug
+    write /sys/block/mmcblk0/queue/scheduler noop
 
 on init
     # Set permissions for persist partition
@@ -698,6 +699,7 @@ service wifi-crda /system/bin/sh /system/etc/init.crda.sh
 
 on property:sys.boot_completed=1
     start qcom-post-boot
+    write /sys/block/mmcblk0/queue/scheduler row
 
 service atfwd /system/bin/ATFWD-daemon
     class late_start
