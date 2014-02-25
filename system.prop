@@ -11,3 +11,9 @@ ro.qualcomm.cabl=1
 ro.hdcp2.rx=tz
 ro.secwvk=144
 debug.sensors=1
+
+# Audio configuration
+ro.qc.sdk.audio.fluencetype=fluence
+persist.audio.fluence.voicecall=true
+persist.audio.fluence.voicerec=false
+persist.audio.fluence.speaker=true
