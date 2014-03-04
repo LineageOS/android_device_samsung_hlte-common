@@ -91,9 +91,13 @@ void custom_init_data(){
     change_table_data(SND_DEVICE_IN_HANDSET_MIC, "rec-main-mic");
     change_table_data(SND_DEVICE_IN_HANDSET_DMIC, "voice-call-main-mic");
     change_table_data(SND_DEVICE_IN_HANDSET_DMIC_NS, "voice-call-NS-mic-handset");
+    change_table_data(SND_DEVICE_IN_HANDSET_DMIC_AEC, "voice-call-main-mic");
+    change_table_data(SND_DEVICE_IN_HANDSET_DMIC_AEC_NS, "voice-call-main-mic");
     change_table_data(SND_DEVICE_IN_SPEAKER_MIC, "rec-sub-mic");
     change_table_data(SND_DEVICE_IN_SPEAKER_DMIC, "voice-call-sub-mic");
     change_table_data(SND_DEVICE_IN_SPEAKER_DMIC_NS, "voice-call-NS-mic-speaker");
+    change_table_data(SND_DEVICE_IN_SPEAKER_DMIC_AEC, "voice-call-sub-mic");
+    change_table_data(SND_DEVICE_IN_SPEAKER_DMIC_AEC_NS, "voice-call-sub-mic");
     change_table_data(SND_DEVICE_IN_HEADSET_MIC, "rec-headset-mic");
     change_table_data(SND_DEVICE_IN_VOICE_SPEAKER_MIC, "voice-call-sub-mic");
     change_table_data(SND_DEVICE_IN_VOICE_HEADSET_MIC, "voice-call-headset-mic");
