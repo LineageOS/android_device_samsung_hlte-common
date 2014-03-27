@@ -67,7 +67,8 @@ done
 # Pick up overlay for features that depend on non-open-source files
 PRODUCT_PACKAGES += \\
     libtime_genoff \\
-    com.qualcomm.location
+    com.qualcomm.location \\
+    PPPreference
 
 \$(call inherit-product, vendor/$VENDOR/$DEVICE/$DEVICE-vendor-blobs.mk)
 EOF
@@ -125,6 +126,16 @@ include \$(CLEAR_VARS)
 LOCAL_MODULE := com.qualcomm.location
 LOCAL_MODULE_OWNER := samsung
 LOCAL_SRC_FILES := proprietary/app/com.qualcomm.location.apk
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_SUFFIX := .apk
+LOCAL_MODULE_CLASS := APPS
+LOCAL_CERTIFICATE := platform
+include \$(BUILD_PREBUILT)
+
+include \$(CLEAR_VARS)
+LOCAL_MODULE := PPPreference
+LOCAL_MODULE_OWNER := samsung
+LOCAL_SRC_FILES := proprietary/app/PPPreference.apk
 LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE_SUFFIX := .apk
 LOCAL_MODULE_CLASS := APPS
