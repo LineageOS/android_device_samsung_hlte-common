@@ -24,7 +24,7 @@
 #define TOUCHKEY_POWER "/sys/class/input/input2/enabled"
 //#define SPEN_POWER "/sys/class/input/input3/enabled"
 #define TSP_POWER "/sys/class/input/input4/enabled"
-#define GPIO_KEYS_POWER "/sys/class/input/input21/enabled"
+#define GPIO_KEYS_POWER "/sys/class/input/input18/enabled"
 
 static void sysfs_write(char *path, char *s) {
     char buf[80];
