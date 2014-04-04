@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+#set -e
 export DEVICE=hlte
 export VENDOR=samsung
 
