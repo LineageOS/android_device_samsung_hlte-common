@@ -16,7 +16,7 @@ on boot
 
 # permission for Input Device(Wacom).
     chmod 0660 /sys/class/input/input4/enabled
-    chmod system system /sys/class/input/input4/enabled
+    chown system system /sys/class/input/input4/enabled
 
 # permissions for S-Pen
     chmod 0660 /sys/class/input/input3/enabled
