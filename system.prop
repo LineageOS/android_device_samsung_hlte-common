@@ -20,3 +20,6 @@ persist.audio.fluence.speaker=true
 use.voice.path.for.pcm.voip=true
 use.dedicated.device.for.voip=true
 qcom.hw.aac.encoder=true
+
+# System property for number of mQANElements
+ro.ril.telephony.mqanelements=6
