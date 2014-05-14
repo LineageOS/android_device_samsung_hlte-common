@@ -85,6 +85,15 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
         property_set("ro.telephony.default_cdma_sub", "0");
         property_set("ro.cdma.home.operator.alpha", "Verizon");
         property_set("ro.cdma.home.operator.numeric", "311480");
+    } else if (strstr(bootloader, "N900R4")) {
+        /* hlteusc */
+        property_set("ro.build.fingerprint", "samsung/hlteusc/hlteusc:4.3/JSS15J/N900R4TYUBMI5:user/release-keys");
+        property_set("ro.build.description", "hlteusc-user 4.3 JSS15J N900R4TYUBMI5 release-keys");
+        property_set("ro.product.model", "SM-N900R4");
+        property_set("ro.product.device", "hlteusc");
+        property_set("ro.telephony.ril.v3", "newDriverCallU,newDialCode");
+        property_set("ro.cdma.home.operator.alpha", "U.S.Cellular");
+        property_set("ro.cdma.home.operator.numeric", "311580");
     } else {
         /* hltexx */
         property_set("ro.build.fingerprint", "samsung/hltexx/hlte:4.3/JSS15J/N9005XXUBMH1:user/release-keys");
