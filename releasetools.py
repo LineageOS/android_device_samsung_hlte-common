@@ -22,5 +22,6 @@ def FullOTA_InstallEnd(info):
   info.script.AppendExtra('ifelse(is_substring("N900W", getprop("ro.bootloader")), run_program("/sbin/sh", "-c", "busybox cp /system/lib/gsm/* /system/lib/"));')
   info.script.AppendExtra('ifelse(is_substring("N900V", getprop("ro.bootloader")), run_program("/sbin/sh", "-c", "busybox cp /system/lib/cdma/* /system/lib/"));')
   info.script.AppendExtra('ifelse(is_substring("N900P", getprop("ro.bootloader")), run_program("/sbin/sh", "-c", "busybox cp /system/lib/cdma/* /system/lib/"));')
+  info.script.AppendExtra('ifelse(is_substring("N900R4", getprop("ro.bootloader")), run_program("/sbin/sh", "-c", "busybox cp /system/lib/cdma/* /system/lib/"));')
   info.script.AppendExtra('delete_recursive("/system/lib/gsm/");')
   info.script.AppendExtra('delete_recursive("/system/lib/cdma/");')
