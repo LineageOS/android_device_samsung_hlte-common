@@ -40,8 +40,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     af.resampler.quality=4 \
     audio.offload.buffer.size.kb=32 \
-    audio.offload.gapless.enabled=false \
-    av.offload.enable=true
+    audio.offload.gapless.enabled=false
 
 # Thermal config
 PRODUCT_COPY_FILES += \
