@@ -43,8 +43,6 @@ on fs
     restorecon_recursive /persist
     setprop ro.crypto.fuse_sdcard true
 
-    exec /system/bin/sh /init.qcom.syspart_fixup.sh ${ro.board.platform} ${ro.serialno}
-
     # Keeping following partitions outside fstab file. As user may not have
     # these partition flashed on the device. Failure to mount any partition in fstab file
     # results in failure to launch late-start class.
@@ -73,7 +71,7 @@ on fs
      setprop qcom.audio.init complete
 
 on post-fs-data
-      mkdir /data/tombstones 0771 system system
+    mkdir /data/tombstones 0771 system system
     mkdir /tombstones/modem 0771 system system
     mkdir /tombstones/lpass 0771 system system
     mkdir /tombstones/wcnss 0771 system system

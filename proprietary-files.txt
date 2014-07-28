@@ -81,7 +81,6 @@ bin/ks
 #vendor/bin/netmgrd
 #vendor/bin/sec-ril
 bin/qcks
-bin/qmiproxy
 bin/qmuxd
 bin/rild
 bin/rmt_storage

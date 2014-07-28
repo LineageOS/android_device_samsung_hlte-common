@@ -26,7 +26,6 @@
 #
 
 import init.qcom.usb.rc
-import init.ril.rc
 
 on early-init
     mount debugfs debugfs /sys/kernel/debug
@@ -320,30 +319,8 @@ on property:init.svc.wpa_supplicant=stopped
 on property:ro.bluetooth.ftm_enabled=true
     start ftmd
 
-service qcom-c_core-sh /system/bin/sh /init.qcom.class_core.sh
-    class core
-    user root
-    oneshot
-
-service qcom-c_main-sh /system/bin/sh /init.qcom.class_main.sh
-    class main
-    user root
-    oneshot
-
-service ril-qmi /system/bin/sh /init.qcom.ril.sh
-    class main
-    user root
-    oneshot
-
 on property:vold.decrypt=trigger_restart_framework
     setprop ro.fuse_sdcard ${persist.fuse_sdcard}
-    start qcom-c_main-sh
-# BRCM bt
-#     start config_bluetooth
-
-#ALRAN : Run qmuxd, qmiproxy .. "disabled" type main service while encryption stage
-on property:vold.decrypt=trigger_restart_min_framework
-    start qcom-c_main-sh
 
 service cnd /system/bin/cnd
     class late_start
@@ -375,65 +352,6 @@ on property:ro.debuggable=1
     chmod 0666 /sys/class/mhl/swing
     chmod 0666 /sys/class/mhl/timing
 
-# BRCM bt
-# service config_bluetooth /system/bin/sh /system/etc/init.qcom.bt.sh "onboot"
-#     class core
-#     user root
-#     oneshot
-
-# service dbus /system/bin/dbus-daemon --system --nofork
-#     class main
-#     socket dbus stream 660 bluetooth bluetooth
-#     user bluetooth
-#     group bluetooth net_bt_admin
-#     disabled
-
-# on property:ro.qc.bluetooth.stack=bluez
-#     start dbus
-
-# service bluetoothd /system/bin/logwrapper /system/bin/bluetoothd -n
-#     class main
-#     socket bluetooth stream 660 bluetooth bluetooth
-#     socket dbus_bluetooth stream 660 bluetooth bluetooth
-#     # init.rc does not yet support applying capabilities, so run as root and
-#     # let bluetoothd drop uid to bluetooth with the right linux capabilities
-#     group bluetooth net_bt_admin misc net_bt_stack
-#     disabled
-
-# service hciattach /system/bin/sh /system/etc/init.qcom.bt.sh
-#     class late_start
-#     user bluetooth
-#     group bluetooth net_bt_admin
-#     disabled
-#     oneshot
-
-# on property:bluetooth.hciattach=true
-#     start hciattach
-
-# on property:bluetooth.hciattach=false
-#     setprop bluetooth.status off
-
-# service hciattach_ath3k /system/bin/sh /system/etc/init.ath3k.bt.sh
-#      class late_start
-#      user bluetooth
-#      group system bluetooth net_bt_admin misc
-#      disabled
-#      oneshot
-
-# service bt-dun /system/bin/dun-server /dev/smd7 /dev/rfcomm0
-#     class late_start
-#     user bluetooth
-#     group bluetooth net_bt_admin inet
-#     disabled
-#     oneshot
-
-# service bt-sap /system/bin/sapd 15
-#     user bluetooth
-#     group bluetooth net_bt_admin
-#     class late_start
-#     disabled
-#     oneshot
-
 service ftmd /system/bin/logwrapper /system/bin/ftmdaemon
     class late_start
     user root
@@ -453,24 +371,16 @@ service port-bridge /system/bin/port-bridge /dev/smd0 /dev/ttyGS0
     group system inet
     disabled
 
-service qmiproxy /system/bin/qmiproxy
-    class main
-    user radio
-    group radio qcom_diag
-    disabled
-
 # QMUX must be in multiple groups to support external process connections
 service qmuxd /system/bin/qmuxd
     class main
     user radio
     group radio audio bluetooth gps qcom_diag log
-    disabled
 
 service netmgrd /system/bin/netmgrd
     class main
     user root
     group radio
-    disabled
 
 service sensors /system/bin/sensors.qcom
     class late_start
@@ -679,17 +589,6 @@ on property:drmdiag.load=1
 on property:drmdiag.load=0
     stop drmdiag
 
-service qcom-sh /system/bin/sh /init.qcom.sh
-    class late_start
-    user root
-    oneshot
-
-service qcom-post-boot /system/bin/sh /system/etc/init.qcom.post_boot.sh
-    class late_start
-    user root
-    disabled
-    oneshot
-
 service wifi-sdio-on /system/bin/sh /system/etc/init.qcom.sdio.sh
     class late_start
     group wifi inet
@@ -703,8 +602,82 @@ service wifi-crda /system/bin/sh /system/etc/init.crda.sh
    oneshot
 
 on property:sys.boot_completed=1
-    start qcom-post-boot
     write /sys/block/mmcblk0/queue/scheduler row
+
+    # Configure the hardware properly
+    write /sys/module/lpm_resources/enable_low_power/l2 2
+    write /sys/module/lpm_resources/enable_low_power/pxo 1
+    write /sys/module/lpm_resources/enable_low_power/vdd_dig 1
+    write /sys/module/lpm_resources/enable_low_power/vdd_mem 1
+    write /sys/module/msm_pm/modes/cpu0/power_collapse/suspend_enabled 1
+    write /sys/module/msm_pm/modes/cpu1/power_collapse/suspend_enabled 1
+    write /sys/module/msm_pm/modes/cpu2/power_collapse/suspend_enabled 1
+    write /sys/module/msm_pm/modes/cpu3/power_collapse/suspend_enabled 1
+    write /sys/module/msm_pm/modes/cpu0/power_collapse/idle_enabled 1
+    write /sys/module/msm_pm/modes/cpu1/power_collapse/idle_enabled 1
+    write /sys/module/msm_pm/modes/cpu2/power_collapse/idle_enabled 1
+    write /sys/module/msm_pm/modes/cpu3/power_collapse/idle_enabled 1
+    write /sys/module/msm_pm/modes/cpu0/standalone_power_collapse/suspend_enabled 1
+    write /sys/module/msm_pm/modes/cpu1/standalone_power_collapse/suspend_enabled 1
+    write /sys/module/msm_pm/modes/cpu2/standalone_power_collapse/suspend_enabled 1
+    write /sys/module/msm_pm/modes/cpu3/standalone_power_collapse/suspend_enabled
+    write /sys/module/msm_pm/modes/cpu0/standalone_power_collapse/idle_enabled 1
+    write /sys/module/msm_pm/modes/cpu1/standalone_power_collapse/idle_enabled 1
+    write /sys/module/msm_pm/modes/cpu2/standalone_power_collapse/idle_enabled 1
+    write /sys/module/msm_pm/modes/cpu3/standalone_power_collapse/idle_enabled 1
+    write /sys/module/msm_pm/modes/cpu0/retention/idle_enabled 1
+    write /sys/module/msm_pm/modes/cpu1/retention/idle_enabled 1
+    write /sys/module/msm_pm/modes/cpu2/retention/idle_enabled 1
+    write /sys/module/msm_pm/modes/cpu3/retention/idle_enabled 1
+    write /sys/module/msm_pm/modes/cpu0/retention/suspend_enabled 1
+    write /sys/module/msm_pm/modes/cpu1/retention/suspend_enabled 1
+    write /sys/module/msm_pm/modes/cpu2/retention/suspend_enabled 1
+    write /sys/module/msm_pm/modes/cpu3/retention/suspend_enabled 1
+    write /sys/module/msm_thermal/core_control/enabled 1
+
+    # Configure the CPU governor
+    write /sys/devices/system/cpu/cpu1/online 1
+    write /sys/devices/system/cpu/cpu2/online 1
+    write /sys/devices/system/cpu/cpu3/online 1
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
+    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor interactive
+    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor interactive
+    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor interactive
+    write /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay "20000 1400000:40000 1700000:20000"
+    write /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load 90
+    write /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq 1497600
+    write /sys/devices/system/cpu/cpufreq/interactive/io_is_busy 1
+    write /sys/devices/system/cpu/cpufreq/interactive/target_loads "85 1500000:90 1800000:70"
+    write /sys/devices/system/cpu/cpufreq/interactive/min_sample_time 40000
+    write /sys/devices/system/cpu/cpufreq/interactive/timer_rate 30000
+    write /sys/devices/system/cpu/cpufreq/interactive/sampling_down_factor 100000
+    write /devices/system/cpu/cpu0/cpufreq/scaling_min_freq 300000
+    write /devices/system/cpu/cpu1/cpufreq/scaling_min_freq 300000
+    write /devices/system/cpu/cpu2/cpufreq/scaling_min_freq 300000
+    write /devices/system/cpu/cpu3/cpufreq/scaling_min_freq 300000
+    write /sys/module/msm_thermal/core_control/enabled 1
+    write /sys/devices/system/cpu/cpufreq/interactive/up_threshold_any_cpu_load 75
+    write /sys/devices/system/cpu/cpufreq/interactive/up_threshold_any_cpu_freq 1728000
+    chown root system /sys/devices/system/cpu/mfreq
+    chmod 220 /sys/devices/system/cpu/mfreq
+    chown root system /sys/devices/system/cpu/cpu1/online
+    chown root system /sys/devices/system/cpu/cpu2/online
+    chown root system /sys/devices/system/cpu/cpu3/online
+    chmod 664 /sys/devices/system/cpu/cpu1/online
+    chmod 664 /sys/devices/system/cpu/cpu2/online
+    chmod 664 /sys/devices/system/cpu/cpu3/online
+    write /dev/cpuctl/apps/cpu.notify_on_migrate 1
+
+    # Configure the cpu-boost module
+    write /sys/module/cpu_boost/parameters/boost_ms 10
+    write /sys/module/cpu_boost/parameters/sync_threshold 1728000
+    write /sys/module/cpu_boost/parameters/input_boost_freq 1497600
+    write /sys/module/cpu_boost/parameters/input_boost_ms 40
+    write /sys/module/cpu_boost/parameters/plug_boost_freq 1728000
+    write /sys/module/cpu_boost/parameters/plug_boost_ms 5
+
+    # Post boot services
+    start mpdecision
 
 service atfwd /system/bin/ATFWD-daemon
     class late_start
