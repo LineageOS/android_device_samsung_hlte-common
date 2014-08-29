@@ -118,7 +118,7 @@ lib/hw/sensorhubs.msm8974.so
 lib/libOmxVdecHevc.so
 vendor/lib/libDivxDrm.so
 vendor/lib/libExtendedExtractor.so
-vendor/lib/libHevcSwDecoder.so
+-vendor/lib/libHevcSwDecoder.so
 vendor/lib/libI420colorconvert.so
 vendor/lib/libmmosal.so
 vendor/lib/libmmparser.so
@@ -385,5 +385,5 @@ vendor/firmware/bcm2079xB4_pre_firmware.ncd
 -app/PPPreference.apk
 bin/mm-pp-daemon
 vendor/lib/libdisp-aba.so
-vendor/lib/libmm-abl.so
+-vendor/lib/libmm-abl.so
 vendor/lib/libmm-abl-oem.so
