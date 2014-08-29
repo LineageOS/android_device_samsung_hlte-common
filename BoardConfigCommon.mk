@@ -15,9 +15,9 @@
 # inherit from common msm8974
 -include device/samsung/msm8974-common/BoardConfigCommon.mk
 
-TARGET_SPECIFIC_HEADER_PATH := device/samsung/hlte/include
+LOCAL_PATH := device/samsung/hlte-common
 
-TARGET_OTA_ASSERT_DEVICE := hltexx,hltespr,hltetmo,SM-N900T,hltecan,hlteatt,hltevzw,hlteusc,hlte
+TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
 
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := MSM8974
@@ -67,14 +67,6 @@ TARGET_PROVIDES_LIBLIGHT := true
 # NFC
 BOARD_NFC_HAL_SUFFIX := msm8974
 
-# Partitions
-BOARD_BOOTIMAGE_PARTITION_SIZE := 11534336
-BOARD_RECOVERYIMAGE_PARTITION_SIZE := 13631488
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1572864000
-BOARD_USERDATAIMAGE_PARTITION_SIZE := 28651290624
-BOARD_FLASH_BLOCK_SIZE := 131072
-TARGET_USERIMAGES_USE_EXT4 := true
-
 # Power HAL
 TARGET_POWERHAL_VARIANT := qcom
 TARGET_POWERHAL_SET_INTERACTIVE_EXT := device/samsung/hlte/power/power_ext.c
@@ -87,9 +79,6 @@ BOARD_RECOVERY_SWIPE := true
 BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_23x41.h\"
 BOARD_USES_MMCUTILS := true
 TARGET_RECOVERY_FSTAB := device/samsung/hlte/rootdir/etc/fstab.qcom
-
-# Releasetools
-TARGET_RELEASETOOLS_EXTENSIONS := device/samsung/hlte
 
 # Wifi
 BOARD_HAVE_SAMSUNG_WIFI := true
