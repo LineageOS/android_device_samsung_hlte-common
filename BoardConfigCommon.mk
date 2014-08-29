@@ -50,11 +50,6 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/hlte/bluetooth
 BOARD_BLUETOOTH_USES_HCIATTACH_PROPERTY := false
 BOARD_HAVE_BLUETOOTH_BCM := true
 
-# Init
-TARGET_INIT_VENDOR_LIB := libinit_msm
-TARGET_LIBINIT_DEFINES_FILE := device/samsung/hlte/init/init_hlte.c
-TARGET_UNIFIED_DEVICE := true
-
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
 
