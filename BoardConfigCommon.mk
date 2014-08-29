@@ -23,7 +23,7 @@ TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
 TARGET_BOOTLOADER_BOARD_NAME := MSM8974
 
 # Kernel
-BOARD_CUSTOM_BOOTIMG_MK := device/samsung/hlte/mkbootimg.mk
+BOARD_CUSTOM_BOOTIMG_MK := $(LOCAL_PATH)/mkbootimg.mk
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_CMDLINE := console=null androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x3F
 BOARD_KERNEL_PAGESIZE := 2048
@@ -45,8 +45,8 @@ AUDIO_FEATURE_DISABLED_FM := true
 AUDIO_FEATURE_DISABLED_MULTI_VOICE_SESSIONS := true
 
 # Bluetooth
-BOARD_BLUEDROID_VENDOR_CONF := device/samsung/hlte/bluetooth/vnd_hlte.txt
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/hlte/bluetooth
+BOARD_BLUEDROID_VENDOR_CONF := $(LOCAL_PATH)/bluetooth/vnd_hlte.txt
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
 BOARD_BLUETOOTH_USES_HCIATTACH_PROPERTY := false
 BOARD_HAVE_BLUETOOTH_BCM := true
 
@@ -58,7 +58,7 @@ BOARD_NFC_HAL_SUFFIX := msm8974
 
 # Power HAL
 TARGET_POWERHAL_VARIANT := qcom
-TARGET_POWERHAL_SET_INTERACTIVE_EXT := device/samsung/hlte/power/power_ext.c
+TARGET_POWERHAL_SET_INTERACTIVE_EXT := $(LOCAL_PATH)/power/power_ext.c
 
 # Recovery
 BOARD_HAS_LARGE_FILESYSTEM := true
@@ -67,7 +67,7 @@ BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_RECOVERY_SWIPE := true
 BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_23x41.h\"
 BOARD_USES_MMCUTILS := true
-TARGET_RECOVERY_FSTAB := device/samsung/hlte/rootdir/etc/fstab.qcom
+TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/etc/fstab.qcom
 
 # Wifi
 BOARD_HAVE_SAMSUNG_WIFI := true
