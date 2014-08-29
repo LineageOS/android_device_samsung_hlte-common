@@ -53,9 +53,6 @@ BOARD_HAVE_BLUETOOTH_BCM := true
 # Display
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 
-# GPS
-TARGET_NO_RPC := true
-
 # Init
 TARGET_INIT_VENDOR_LIB := libinit_msm
 TARGET_LIBINIT_DEFINES_FILE := device/samsung/hlte/init/init_hlte.c
