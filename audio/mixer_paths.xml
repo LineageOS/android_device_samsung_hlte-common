@@ -601,10 +601,10 @@
 	<path name="rec-stereo-mic">
 		<ctl name="Main Mic Delay" value="4" />
 		<path name="sub-main-mic" />
-		<ctl name="ADC1 Volume" value="11" />
-		<ctl name="DEC6 Volume" value="84" />
-		<ctl name="ADC3 Volume" value="9" />
-		<ctl name="DEC4 Volume" value="84" />
+		<ctl name="ADC1 Volume" value="30" />
+		<ctl name="DEC6 Volume" value="100" />
+		<ctl name="ADC3 Volume" value="30" />
+		<ctl name="DEC4 Volume" value="100" />
 	</path>
 
 	<path name="rec-high-gain-main-mic">
@@ -627,9 +627,9 @@
 
 	<path name="rec-high-gain-stereo-mic">
 		<path name="sub-3rd-mic" />
-		<ctl name="ADC4 Volume" value="19" />
+		<ctl name="ADC4 Volume" value="25" />
 		<ctl name="DEC3 Volume" value="84" />
-		<ctl name="ADC3 Volume" value="19" />
+		<ctl name="ADC3 Volume" value="25" />
 		<ctl name="DEC4 Volume" value="84" />
 	</path>
 
