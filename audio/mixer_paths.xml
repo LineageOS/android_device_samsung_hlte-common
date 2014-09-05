@@ -1758,11 +1758,11 @@
 	</path>
 
 	<path name="voice-dmic-ef">
-		<path name="voice-call-main-mic" />
+		<path name="voice-call-NS-mic-handset" />
 	</path>
 
 	<path name="voice-speaker-dmic-ef">
-		<path name="voice-call-sub-mic" />
+		<path name="voice-call-NS-mic-speaker" />
 	</path>
 
 	<path name="voice-tty-full-headset-mic">
@@ -1782,7 +1782,7 @@
 	</path>
 
 	<path name="voice-rec-dmic-ef">
-		<path name="vr-sub-mic" />
+		<path name="svoice-NS-mic" />
 	</path>
 
 	<path name="handset-stereo-dmic-ef">
