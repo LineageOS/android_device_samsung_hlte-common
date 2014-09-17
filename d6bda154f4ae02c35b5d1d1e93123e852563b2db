@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a1b2928_08dc3ee3",
+        "filename": "overlay/frameworks/base/core/res/res/values/config.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 167
+      },
+      "writtenOn": "2014-09-17T15:38:46Z",
+      "side": 1,
+      "message": "The Bottom value may need adjustment.  The Long Smart cover view may not be respecting the full range of the coordinates.",
+      "revId": "d6bda154f4ae02c35b5d1d1e93123e852563b2db",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
