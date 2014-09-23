@@ -49,6 +49,9 @@ BOARD_HAVE_BLUETOOTH_BCM := true
 # CMHW
 BOARD_HARDWARE_CLASS += hardware/samsung/cmhw
 
+# Graphics
+TARGET_HAVE_NEW_GRALLOC := true
+
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
 
