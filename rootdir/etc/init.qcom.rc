@@ -298,6 +298,7 @@ on post-fs-data
     setprop ro.nfc.port "I2C"
     chmod 0660 /dev/pn547
     chown nfc nfc /dev/pn547
+    symlink /dev/pn547 /dev/pn544
 
     #Create a folder for SRS to be able to create a usercfg file
     mkdir /data/data/media 0770 media media
