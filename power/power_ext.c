@@ -22,7 +22,7 @@
 #include <utils/Log.h>
 
 #define TOUCHKEY_POWER "/sys/class/input/input2/enabled"
-//#define SPEN_POWER "/sys/class/input/input3/enabled"
+#define SPEN_POWER "/sys/class/input/input3/enabled"
 #define TSP_POWER "/sys/class/input/input4/enabled"
 #define GPIO_KEYS_POWER "/sys/class/input/input18/enabled"
 
@@ -50,7 +50,7 @@ void cm_power_set_interactive_ext(int on) {
     ALOGD("%s: %s input devices", __func__, on ? "enabling" : "disabling");
     sysfs_write(TSP_POWER, on ? "1" : "0");
     sysfs_write(TOUCHKEY_POWER, on ? "1" : "0");
-    //sysfs_write(SPEN_POWER, on ? "1" : "0");
+    sysfs_write(SPEN_POWER, on ? "1" : "0");
     sysfs_write(GPIO_KEYS_POWER, on ? "1" : "0");
 }
 
