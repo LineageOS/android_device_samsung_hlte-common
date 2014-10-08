@@ -30,9 +30,6 @@
     <!-- The green LED is brighter than red, bias closer to yellow. -->
     <integer name="config_notificationsBatteryMediumARGB">0xFFFF6000</integer>
 
-    <!-- If this is true, the screen will come on when you unplug usb/power/whatever. -->
-    <bool name="config_unplugTurnsOnScreen">true</bool>
-
     <!-- Array of light sensor LUX values to define our levels for auto backlight brightness support.
          The N entries of this array define N  1 zones as follows:
 
@@ -244,16 +241,8 @@
     <!-- Panel auto-brightness configuration value -->
     <integer name="config_panelAutoBrightnessValue">1</integer>
 
-    <!-- True if the Irda service should be started at system start. This currently only
-         supports Samsung Galaxy S4. -->
-    <!-- <bool name="config_enableIrdaManagerService">true</bool> -->
-
     <!-- Device supports LED flashlight -->
     <bool name="config_enableTorch">true</bool>
-
-    <!-- Enable translucent UI -->
-    <bool name="config_enableLockScreenTranslucentDecor">true</bool>
-    <bool name="config_enableTranslucentDecor">true</bool>
 
     <!-- Boolean to enable stylus gestures -->
     <bool name="config_stylusGestures">true</bool>
@@ -261,5 +250,25 @@
     <!-- Performance profiles -->
     <string name="config_perf_profile_prop">sys.perf.profile</string>
     <string name="config_perf_profile_default_entry">1</string>
-    
+
+    <!-- Indicate whether closing the lid causes the device to go to sleep and opening
+         it causes the device to wake up.
+         The default is false. -->
+    <bool name="config_lidControlsSleep">true</bool>
+
+    <!-- Indicate the device's Smart Cover coordinates.
+         If none are provided, then the feature will be disabled.
+         The array should contain 4 values, in pixels, (sample values provided):
+         Top      0
+         Left     100
+         Bottom   Top + 400
+         Right    Display Width - 100
+    -->
+    <integer-array name="config_smartCoverWindowCoords">
+        <item>30</item>
+        <item>80</item>
+        <item>960</item>
+        <item>1050</item>
+    </integer-array>
+
 </resources>

@@ -4,29 +4,39 @@
 # This is a common source of Android security bugs.
 #
 
-on init
-
-#For Absolute Persistence Partition
-    mkdir /persdata 0755 system system
-    mkdir /persdata/absolute 0750 system system
-    
-    wait /dev/block/platform/msm_sdcc.1/by-name/persdata
-    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/persdata /persdata/absolute nosuid nodev barrier=1
-    chown system system /persdata
-    chmod 0755 /persdata
-    chown system system /persdata/absolute
-    chmod 0750 /persdata/absolute
-
-on early-boot
-    chown bluetooth net_bt_stack /dev/ttyHS0
-    chmod 0660 /dev/ttyHS0
-
-
 on boot
+# permission for Input Device(Touchkey).
+    chmod 0660 /sys/class/input/input2/enabled
+    chown system system /sys/class/input/input2/enabled
+    chown radio system /sys/class/sec/sec_touchkey/touch_sensitivity
+    chown radio system /sys/class/sec/sec_touchkey/touchkey_firm_update
+    chown system radio /sys/class/sec/sec_touchkey/glove_mode
+    chown system radio /sys/class/sec/sec_touchkey/flip_mode
+    chown system radio /sys/class/sec/sec_touchkey/boost_level
+
+# permission for Input Device(Wacom).
+    chmod 0660 /sys/class/input/input4/enabled
+    chown system system /sys/class/input/input4/enabled
+    chown system system /sys/class/input/input18/enabled
+
+# permissions for S-Pen
+    chmod 0660 /sys/class/input/input3/enabled
+    chown system system /sys/class/input/input3/enabled
+    chown system radio /sys/class/sec/sec_epen/epen_firm_update
+    chown system radio /sys/class/sec/sec_epen/epen_rotation
+    chown system radio /sys/class/sec/sec_epen/epen_hand
+    chown system radio /sys/class/sec/sec_epen/epen_reset
+    chown system radio /sys/class/sec/sec_epen/epen_reset_result
+    chown system radio /sys/class/sec/sec_epen/epen_checksum
+    chown system radio /sys/class/sec/sec_epen/epen_checksum_result
+    chown system radio /sys/class/sec/sec_epen/epen_saving_mode
+    chown system radio /sys/class/sec/sec_epen/boost_level
 
 # permissions for bluetooth.
     setprop ro.bt.bdaddr_path "/efs/bluetooth/bt_addr"
     chown bluetooth net_bt_stack ro.bt.bdaddr_path
+    chown bluetooth net_bt_stack /dev/ttyHS0
+    chmod 0660 /dev/ttyHS0
     chmod 0660 /sys/class/rfkill/rfkill0/state
     chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/state
     chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/type
@@ -39,47 +49,35 @@ on boot
     chmod 0600 /dev/btlock
     chown bluetooth bluetooth /dev/btlock
 
-# Permissions for InputDevices.
-    chmod 0660 /sys/class/input/input2/enabled
-    chmod 0660 /sys/class/input/input3/enabled
-    chmod 0660 /sys/class/input/input21/enabled
-    chown system system /sys/class/input/input2/enabled
-    chown system system /sys/class/input/input3/enabled
-    chown system system /sys/class/input/input21/enabled
-    chown system system /sys/class/sec/sec_touchkey/brightness
-
-# AuthenTec IPSec VPN
-#    insmod system/lib/modules/vpnclient.ko ssh_procfs_uid=1000 ssh_procfs_gid=1000
-
-# bootchecker
-service bootchecker /system/bin/bootchecker
-    class late_start
-    user system
-    group system log
-    oneshot
-
-## mount carreir partition for SPR model ##
-on init
-    mkdir /carrier 0771 system system
-
 on fs
-    wait /dev/block/platform/msm_sdcc.1/by-name/carrier
-    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/carrier /carrier nosuid nodev barrier=1
-    chown system system /carrier
-    chmod 0771 /carrier
-	# We restorecon /carrier in case the carrier partition has been reset.
-    restorecon -R /carrier
+
+# Support Preload install apks
+    mkdir /preload 0771 system system
+
+#For Absolute Persistence Partition
+
+     mkdir /persdata 0755 system system
+     mkdir /persdata/absolute 0750 system system
+
+     wait /dev/block/platform/msm_sdcc.1/by-name/persdata
+     check_fs /dev/block/platform/msm_sdcc.1/by-name/persdata ext4
+     mount ext4 /dev/block/platform/msm_sdcc.1/by-name/persdata /persdata/absolute nosuid nodev barrier=1
+
+     chown system system /persdata
+     chmod 0755 /persdata
+     chown system system /persdata/absolute
+     chmod 0750 /persdata/absolute
 
 # bluetooth dhcp config
 service dhcpcd_bt-pan /system/bin/dhcpcd -ABKL
     class main
-	disabled
-	oneshot
+ disabled
+ oneshot
 
 service iprenew_bt-pan /system/bin/dhcpcd -n
     class late_start
-	disabled
-	oneshot
+ disabled
+ oneshot
 
 # service for TZPR provisioning version check app
 service scranton_RD /system/bin/scranton_RD
@@ -91,19 +89,3 @@ service scranton_RD /system/bin/scranton_RD
 # start for TZPR provisioning version check app
 on property:sys.qseecomd.enable=true
     start scranton_RD
-
-# AuthenTec IPSec VPN
-service vpnclientpm /system/bin/vpnclientpm -u 1000 -O /data/data/com.ipsec.vpnclient/vpnclientpm.txt
-    group system net_admin net_raw
-    disabled
-
-service secstarter /system/bin/secstarter
-    class main
-    user system
-    group system
-
-on property:vpnclientpm.enable=1
-    start vpnclientpm 
-
-on property:vpnclientpm.enable=0
-    stop vpnclientpm

@@ -1,8 +1,34 @@
 #!/bin/bash
 
-set -e
-export DEVICE=hlte
-export VENDOR=samsung
+function extract() {
+    for FILE in `egrep -v '(^#|^$)' $1`; do
+        OLDIFS=$IFS IFS=":" PARSING_ARRAY=($FILE) IFS=$OLDIFS
+        FILE=`echo ${PARSING_ARRAY[0]} | sed -e "s/^-//g"`
+        DEST=${PARSING_ARRAY[1]}
+        if [ -z $DEST ]; then
+            DEST=$FILE
+        fi
+        DIR=`dirname $FILE`
+        if [ ! -d $2/$DIR ]; then
+            mkdir -p $2/$DIR
+        fi
+        if [ "$SRC" = "adb" ]; then
+            # Try CM target first
+            adb pull /system/$DEST $2/$DEST
+            # if file does not exist try OEM target
+            if [ "$?" != "0" ]; then
+                adb pull /system/$FILE $2/$DEST
+            fi
+        else
+            cp $SRC/system/$FILE $2/$DEST
+            # if file dot not exist try destination
+            if [ "$?" != "0" ]
+                then
+                cp $SRC/system/$DEST $2/$DEST
+            fi
+        fi
+    done
+}
 
 if [ $# -eq 0 ]; then
   SRC=adb
@@ -20,39 +46,13 @@ else
   fi
 fi
 
-BASE=../../../vendor/$VENDOR/$DEVICE/proprietary
+BASE=../../../vendor/$VENDOR/hlte-common/proprietary
 rm -rf $BASE/*
 
-for FILE in `egrep -v '(^#|^$)' proprietary-files.txt`; do
-  echo "Extracting /system/$FILE ..."
-  OLDIFS=$IFS IFS=":" PARSING_ARRAY=($FILE) IFS=$OLDIFS
-  FILE=${PARSING_ARRAY[0]}
-  DEST=${PARSING_ARRAY[1]}
-  if [ -z $DEST ]
-  then
-    DEST=$FILE
-  fi
-  DIR=`dirname $FILE`
-  if [ ! -d $BASE/$DIR ]; then
-    mkdir -p $BASE/$DIR
-  fi
-  if [ "$SRC" = "adb" ]; then
-    adb pull /system/$FILE $BASE/$DEST
-  # if file dot not exist try destination
-    if [ "$?" != "0" ]
-        then
-        adb pull /system/$DEST $BASE/$DEST
-    fi
-  else
-    cp $SRC/system/$FILE $BASE/$DEST
-    # if file dot not exist try destination
-    if [ "$?" != "0" ]
-        then
-        cp $SRC/system/$DEST $BASE/$DEST
-    fi
-  fi
-done
+DEVBASE=../../../vendor/$VENDOR/$DEVICE/proprietary
+rm -rf $DEVBASE/*
 
-
+extract ../../$VENDOR/hlte-common/proprietary-files.txt $BASE
+extract ../../$VENDOR/$DEVICE/proprietary-files.txt $DEVBASE
 
 ./setup-makefiles.sh
