@@ -160,13 +160,13 @@
     <bool name="skip_restoring_network_selection">true</bool>
 
     <!-- Is the notification LED intrusive? Used to decide if there should be a disable option -->
-    <bool name="config_intrusiveNotificationLed">true</bool>
+   <!-- <bool name="config_intrusiveNotificationLed">true</bool> -->
 
     <!-- Is the battery LED intrusive? Used to decide if there should be a disable option -->
-    <bool name="config_intrusiveBatteryLed">true</bool>
+   <!-- <bool name="config_intrusiveBatteryLed">true</bool> -->
 
     <!-- Does the battery LED support multiple colors? Used to decide if the user can change the colors -->
-    <bool name="config_multiColorBatteryLed">true</bool>
+   <!-- <bool name="config_multiColorBatteryLed">true</bool>  -->
 
 <!-- Vibrator pattern for feedback about a long screen/key press -->
     <integer-array name="config_longPressVibePattern">
@@ -216,7 +216,7 @@
     </integer-array>
 
     <!-- Workaround for devices with broken keyboards -->
-    <bool name="config_forceDisableHardwareKeyboard">true</bool>
+<!--    <bool name="config_forceDisableHardwareKeyboard">true</bool> -->
 
     <!-- Indicate whether the SD card is accessible without removing the battery. -->
     <bool name="config_batterySdCardAccessibility">true</bool>
@@ -234,22 +234,22 @@
             16 - App switch
          For example, a device with Home, Back and Menu keys would set this
          config to 7. -->
-    <integer name="config_deviceHardwareKeys">7</integer>
+<!--    <integer name="config_deviceHardwareKeys">7</integer> -->
 
     <bool name="config_enableWifiDisplay">true</bool>
 
     <!-- Panel auto-brightness configuration value -->
-    <integer name="config_panelAutoBrightnessValue">1</integer>
+<!--    <integer name="config_panelAutoBrightnessValue">1</integer> -->
 
     <!-- Device supports LED flashlight -->
-    <bool name="config_enableTorch">true</bool>
+    <!-- <bool name="config_enableTorch">true</bool> -->
 
     <!-- Boolean to enable stylus gestures -->
-    <bool name="config_stylusGestures">true</bool>
+   <!-- <bool name="config_stylusGestures">true</bool> --> 
 
     <!-- Performance profiles -->
-    <string name="config_perf_profile_prop">sys.perf.profile</string>
-    <string name="config_perf_profile_default_entry">1</string>
+   <!-- <string name="config_perf_profile_prop">sys.perf.profile</string>
+    <string name="config_perf_profile_default_entry">1</string> -->
 
     <!-- Indicate whether closing the lid causes the device to go to sleep and opening
          it causes the device to wake up.
@@ -264,11 +264,11 @@
          Bottom   Top + 400
          Right    Display Width - 100
     -->
-    <integer-array name="config_smartCoverWindowCoords">
+<!--    <integer-array name="config_smartCoverWindowCoords">
         <item>30</item>
         <item>80</item>
         <item>960</item>
         <item>1050</item>
-    </integer-array>
+    </integer-array> -->
 
 </resources>
