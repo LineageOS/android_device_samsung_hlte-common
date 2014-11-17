@@ -52,6 +52,7 @@ BOARD_HARDWARE_CLASS += device/samsung/hlte-common/cmhw
 
 # Graphics
 TARGET_HAVE_NEW_GRALLOC := true
+BOARD_USES_LEGACY_MMAP := true
 
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
