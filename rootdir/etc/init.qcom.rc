@@ -226,6 +226,14 @@ on post-fs-data
     chown system system /sys/class/sec/sec_touchkey/keypad_enable
     chmod 0660 /sys/class/sec/sec_touchkey/keypad_enable
 
+    # Power Hal Permissions
+    chown system system /sys/class/input/input2/enabled
+    chown system system /sys/class/input/input3/enabled
+    chown system system /sys/class/input/input18/enabled
+    chmod 0660 /sys/class/input/input2/enabled
+    chmod 0660 /sys/class/input/input3/enabled
+    chmod 0660 /sys/class/input/input18/enabled
+
     # Vibrator
     chmod 0644 /sys/class/timed_output/vibrator/pwm_value
     chown root system /sys/class/timed_output/vibrator/pwm_value
