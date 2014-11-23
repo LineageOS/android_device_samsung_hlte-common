@@ -32,9 +32,20 @@ on early-init
     write /sys/block/mmcblk0/queue/read_ahead_kb 512
     write /sys/block/mmcblk0/queue/scheduler noop
 
-on init
+    mkdir /firmware 0771 system system
+    mkdir /firmware-modem 0771 system system
+    mkdir /efs 0771 system radio
+
     # Set permissions for persist partition
     mkdir /persist 0771 system system
+
+    #For Absolute Persistence Partition
+    mkdir /persdata 0755 system system
+    mkdir /persdata/absolute 0750 system system
+
+    symlink /data/tombstones /tombstones
+
+on init
     mkdir /mnt/shell/emulated 0700 shell shell
     mkdir /mnt/shell/container 0700 system system
     mkdir /storage 0550 system sdcard_r
@@ -225,6 +236,50 @@ on post-fs-data
 
     chown system system /sys/class/sec/sec_touchkey/keypad_enable
     chmod 0660 /sys/class/sec/sec_touchkey/keypad_enable
+
+# permission for Input Device(Touchkey).
+    chmod 0660 /sys/class/input/input2/enabled
+    chown system system /sys/class/input/input2/enabled
+    chown radio system /sys/class/sec/sec_touchkey/touch_sensitivity
+    chown radio system /sys/class/sec/sec_touchkey/touchkey_firm_update
+    chown system radio /sys/class/sec/sec_touchkey/glove_mode
+    chown system radio /sys/class/sec/sec_touchkey/flip_mode
+    chown system radio /sys/class/sec/sec_touchkey/boost_level
+
+# permission for Input Device(Wacom).
+    chmod 0660 /sys/class/input/input4/enabled
+    chown system system /sys/class/input/input4/enabled
+    chown system system /sys/class/input/input18/enabled
+
+# permissions for S-Pen
+    chmod 0660 /sys/class/input/input3/enabled
+    chown system system /sys/class/input/input3/enabled
+    chown system radio /sys/class/sec/sec_epen/epen_firm_update
+    chown system radio /sys/class/sec/sec_epen/epen_rotation
+    chown system radio /sys/class/sec/sec_epen/epen_hand
+    chown system radio /sys/class/sec/sec_epen/epen_reset
+    chown system radio /sys/class/sec/sec_epen/epen_reset_result
+    chown system radio /sys/class/sec/sec_epen/epen_checksum
+    chown system radio /sys/class/sec/sec_epen/epen_checksum_result
+    chown system radio /sys/class/sec/sec_epen/epen_saving_mode
+    chown system radio /sys/class/sec/sec_epen/boost_level
+
+# permissions for bluetooth.
+    setprop ro.bt.bdaddr_path "/efs/bluetooth/bt_addr"
+    chown bluetooth net_bt_stack ro.bt.bdaddr_path
+    chown bluetooth net_bt_stack /dev/ttyHS0
+    chmod 0660 /dev/ttyHS0
+    chmod 0660 /sys/class/rfkill/rfkill0/state
+    chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/state
+    chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/type
+
+# bluetooth LPM
+    chmod 0660 /proc/bluetooth/sleep/lpm
+    chmod 0220 /proc/bluetooth/sleep/btwrite
+    chown bluetooth net_bt_stack /proc/bluetooth/sleep/lpm
+    chown bluetooth net_bt_stack /proc/bluetooth/sleep/btwrite
+    chmod 0600 /dev/btlock
+    chown bluetooth bluetooth /dev/btlock
 
     # Vibrator
     chmod 0644 /sys/class/timed_output/vibrator/pwm_value
@@ -468,6 +523,28 @@ service dhcpcd_bnep4 /system/bin/dhcpcd -BKLG
     disabled
     oneshot
 
+# bluetooth dhcp config
+service dhcpcd_bt-pan /system/bin/dhcpcd -ABKL
+    class main
+    disabled
+    oneshot
+
+service iprenew_bt-pan /system/bin/dhcpcd -n
+    class late_start
+    disabled
+    oneshot
+
+# service for TZPR provisioning version check app
+service scranton_RD /system/bin/scranton_RD
+    class main
+    user root
+    disabled
+    oneshot
+
+# start for TZPR provisioning version check app
+on property:sys.qseecomd.enable=true
+    start scranton_RD
+
 #for WiFi MFG(TestMode)
 service mfgloader /system/bin/mfgloader
     class main
@@ -653,7 +730,6 @@ service atfwd /system/bin/ATFWD-daemon
     class late_start
     user system
     group system radio
-    onrestart /system/bin/log -t RIL-ATFWD -p w "ATFWD daemon restarted"
 
 service hdmid /system/bin/hdmid
     class late_start
@@ -717,8 +793,6 @@ service profiler_daemon /system/bin/profiler_daemon
 service container /system/bin/sdcard /data/container /mnt/shell/container 1000 1000
     class late_start
     oneshot
-
-    start container
 
 # virtual sdcard daemon running as media_rw (1023)
 service sdcard /system/bin/sdcard -u 1023 -g 1023 -l /data/media /mnt/shell/emulated
