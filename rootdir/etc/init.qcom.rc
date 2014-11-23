@@ -29,7 +29,7 @@ import init.qcom.usb.rc
 import init.target.rc
 
 on early-init
-    mount debugfs debugfs /sys/kernel/debug
+    write /sys/block/mmcblk0/queue/read_ahead_kb 512
     write /sys/block/mmcblk0/queue/scheduler noop
 
 on init
@@ -68,9 +68,6 @@ on init
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
-
-    ## [START] system_sw.sa: comment out early_boot.sh and take necessary settings out
-    #exec /system/bin/sh /init.qcom.early_boot.sh ${ro.board.platform}
     chown system graphics /sys/class/graphics/fb1/hpd
     chown system graphics /sys/class/graphics/fb1/vendor_name
     chown system graphics /sys/class/graphics/fb1/product_description
@@ -81,7 +78,6 @@ on early-boot
     chmod 0664 /sys/class/graphics/fb1/format_3d
     symlink /dev/graphics/fb1 /dev/graphics/hdmi
     chown system system /sys/class/graphics/fb1/format_3d
-    ## [END] system_sw.sa
 
 on boot
 
@@ -109,6 +105,10 @@ on boot
     chmod 0660 /dev/ttyHS2
     chown bluetooth bluetooth /dev/ttyHS2
 
+    #Basic permissions
+    chown root system /dev/socket
+    chmod 775 /dev/socket
+
     #Create QMUX deamon socket area
     mkdir /dev/socket/qmux_radio 0770 radio radio
     chmod 2770 /dev/socket/qmux_radio
@@ -118,17 +118,6 @@ on boot
     chmod 2770 /dev/socket/qmux_bluetooth
     mkdir /dev/socket/qmux_gps 0770 gps gps
     chmod 2770 /dev/socket/qmux_gps
-
-    # Allow QMUX daemon to assign port open wait time
-    chown radio radio /sys/devices/virtual/hsicctl/hsicctl0/modem_wait
-
-    setprop wifi.interface wlan0
-
-    setprop ro.telephony.call_ring.multiple false
-
-    #Set SUID bit for usbhub
-    chmod 4755 /system/bin/usbhub
-    chmod 755 /system/bin/usbhub_init
 
     #Remove SUID bit for iproute2 ip tool
     chmod 0755 /system/bin/ip
@@ -299,7 +288,6 @@ on post-fs-data
     chown nfc nfc /data/bcmnfc/param
 
 # NFC NXP
-    setprop ro.nfc.port "I2C"
     chmod 0660 /dev/pn547
     chown nfc nfc /dev/pn547
 
@@ -321,16 +309,8 @@ on property:init.svc.surfaceflinger=stopped
     stop ppd
     stop hdmid
 
-on property:ro.board.platform=msm7630_fusion
-    start usbhub_init
-
 on property:init.svc.wpa_supplicant=stopped
     stop dhcpcd
-
-# BRCM bt
-# on property:bluetooth.isEnabled=true
-#     start btwlancoex
-#     write /sys/class/bluetooth/hci0/idle_timeout 7000
 
 on property:ro.bluetooth.ftm_enabled=true
     start ftmd
@@ -412,32 +392,6 @@ on property:ro.use_data_netmgrd=false
 # but only if ro.data.large_tcp_window_size property is set.
 on property:ro.data.large_tcp_window_size=true
     write /proc/sys/net/ipv4/tcp_adv_win_scale  2
-
-# BRCM bt
-# service btwlancoex /system/bin/sh /system/etc/init.qcom.coex.sh
-#     class late_start
-#     user bluetooth
-#     group bluetooth net_bt_admin inet net_admin net_raw
-#     disabled
-#     oneshot
-
-service amp_init /system/bin/amploader -i
-    class late_start
-    user root
-    disabled
-    oneshot
-
-service amp_load /system/bin/amploader -l 7000
-    class late_start
-    user root
-    disabled
-    oneshot
-
-service amp_unload /system/bin/amploader -u
-    class late_start
-    user root
-    disabled
-    oneshot
 
 service wpa_supplicant /system/bin/wpa_supplicant \
     -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
