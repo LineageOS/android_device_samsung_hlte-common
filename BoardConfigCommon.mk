@@ -54,6 +54,9 @@ USE_DEVICE_SPECIFIC_CAMERA := true
 BOARD_HARDWARE_CLASS += hardware/samsung/cmhw
 BOARD_HARDWARE_CLASS += device/samsung/hlte-common/cmhw
 
+# GPS
+TARGET_GPS_HAL_PATH := $(LOCAL_PATH)/gps
+
 # Graphics
 TARGET_HAVE_NEW_GRALLOC := true
 BOARD_USES_LEGACY_MMAP := true
