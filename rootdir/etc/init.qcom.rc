@@ -32,20 +32,9 @@ on early-init
     write /sys/block/mmcblk0/queue/read_ahead_kb 512
     write /sys/block/mmcblk0/queue/scheduler noop
 
-    mkdir /firmware 0771 system system
-    mkdir /firmware-modem 0771 system system
-    mkdir /efs 0771 system radio
-
+on init
     # Set permissions for persist partition
     mkdir /persist 0771 system system
-
-    #For Absolute Persistence Partition
-    mkdir /persdata 0755 system system
-    mkdir /persdata/absolute 0750 system system
-
-    symlink /data/tombstones /tombstones
-
-on init
     mkdir /mnt/shell/emulated 0700 shell shell
     mkdir /mnt/shell/container 0700 system system
     mkdir /storage 0550 system sdcard_r
@@ -531,28 +520,6 @@ service dhcpcd_bnep4 /system/bin/dhcpcd -BKLG
     disabled
     oneshot
 
-# bluetooth dhcp config
-service dhcpcd_bt-pan /system/bin/dhcpcd -ABKL
-    class main
-    disabled
-    oneshot
-
-service iprenew_bt-pan /system/bin/dhcpcd -n
-    class late_start
-    disabled
-    oneshot
-
-# service for TZPR provisioning version check app
-service scranton_RD /system/bin/scranton_RD
-    class main
-    user root
-    disabled
-    oneshot
-
-# start for TZPR provisioning version check app
-on property:sys.qseecomd.enable=true
-    start scranton_RD
-
 #for WiFi MFG(TestMode)
 service mfgloader /system/bin/mfgloader
     class main
@@ -738,6 +705,7 @@ service atfwd /system/bin/ATFWD-daemon
     class late_start
     user system
     group system radio
+    onrestart /system/bin/log -t RIL-ATFWD -p w "ATFWD daemon restarted"
 
 service hdmid /system/bin/hdmid
     class late_start
@@ -801,6 +769,8 @@ service profiler_daemon /system/bin/profiler_daemon
 service container /system/bin/sdcard /data/container /mnt/shell/container 1000 1000
     class late_start
     oneshot
+
+    start container
 
 # virtual sdcard daemon running as media_rw (1023)
 service sdcard /system/bin/sdcard -u 1023 -g 1023 -l /data/media /mnt/shell/emulated
