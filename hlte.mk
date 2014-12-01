@@ -87,11 +87,11 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml
 
 # NFC
-PRODUCT_PACKAGES += \
-    com.android.nfc_extras \
-    NfcNci \
-    nfc_nci.msm8974 \
-    Tag
+#PRODUCT_PACKAGES += \
+#    com.android.nfc_extras \
+#    NfcNci \
+#    nfc_nci.msm8974 \
+#    Tag
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/nfcee_access.xml:system/etc/nfcee_access.xml \
