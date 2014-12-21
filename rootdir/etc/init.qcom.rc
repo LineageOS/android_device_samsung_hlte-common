@@ -81,6 +81,7 @@ on early-boot
 
 on boot
 
+
     mount debugfs /sys/kernel/debug /sys/kernel/debug
 
     chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
@@ -192,8 +193,10 @@ on post-fs-data
 
     # for WIFI MAC address
     mkdir /efs/wifi 0775 radio system
-    chown system system /efs/wifi/.mac.info
-    chmod 0664 /efs/wifi/.mac.info
+    chown system wifi /efs/wifi/.mac.info
+    chmod 0660 /efs/wifi/.mac.info
+    restorecon /efs/wifi/.mac.info
+
 
     # Create directory used by audio subsystem
     mkdir /data/misc/audio 0770 audio audio
@@ -256,6 +259,9 @@ on post-fs-data
 # permissions for bluetooth.
     setprop ro.bt.bdaddr_path "/efs/bluetooth/bt_addr"
     chown bluetooth net_bt_stack ro.bt.bdaddr_path
+    chown radio net_bt_stack /efs/bluetooth/bt_addr
+    chmod 0640 /efs/bluetooth/bt_addr
+    restorecon_recursive /efs/bluetooth
     chown bluetooth net_bt_stack /dev/ttyHS0
     chmod 0660 /dev/ttyHS0
     chmod 0660 /sys/class/rfkill/rfkill0/state
@@ -347,8 +353,17 @@ on post-fs-data
     mkdir /data/data/media 0770 media media
     restorecon_recursive /data/media
 
+
 # GPIO DVS
     chown radio system /sys/class/secgpio_check/secgpio_check_all/secgpio_ctrl
+# sensor
+    chown system system /efs/FactoryApp/baro_delta
+    chmod 0640 /efs/FactoryApp/baro_delta
+    restorecon /efs/FactoryApp/baro_delta
+
+    chown system system /efs/gyro_cal_data
+    chmod 0640 /efs/gyro_cal_data
+    restorecon /efs/gyro_cal_data
 
 # Export GPIO56 for fusion targets to enable/disable hub
 service usbhub_init /system/bin/usbhub_init
@@ -356,6 +371,7 @@ service usbhub_init /system/bin/usbhub_init
    user root
    disabled
    oneshot
+
 
 on property:init.svc.surfaceflinger=stopped
     stop ppd

@@ -41,6 +41,8 @@ on fs
 
     mount_all fstab.qcom
     restorecon_recursive /persist
+    restorecon_recursive /efs
+
     setprop ro.crypto.fuse_sdcard true
 
     # Keeping following partitions outside fstab file. As user may not have
