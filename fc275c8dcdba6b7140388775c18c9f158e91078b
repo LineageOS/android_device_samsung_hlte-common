@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7aa08908_3531b6a3",
+        "filename": "ril/telephony/java/com/android/internal/telephony/hlteRIL.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 2814
+      },
+      "writtenOn": "2014-12-24T18:00:56Z",
+      "side": 1,
+      "message": "not that i care but someone will. whitespace error",
+      "revId": "fc275c8dcdba6b7140388775c18c9f158e91078b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
