@@ -40,3 +40,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Wifi
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0
+
+# Radio
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.ril.telephony.mqanelements=6 \
+    ro.telephony.ril_class=hlteRIL
