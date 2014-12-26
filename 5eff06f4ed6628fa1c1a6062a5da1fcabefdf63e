@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7aa08908_18e671b4",
+        "filename": "ril/telephony/java/com/android/internal/telephony/hlteRIL.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 2814
+      },
+      "writtenOn": "2014-12-26T00:32:59Z",
+      "side": 1,
+      "message": "why?",
+      "revId": "5eff06f4ed6628fa1c1a6062a5da1fcabefdf63e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7aa08908_b8d8fdf0",
+        "filename": "ril/telephony/java/com/android/internal/telephony/hlteRIL.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 2814
+      },
+      "writtenOn": "2014-12-26T00:32:59Z",
+      "side": 1,
+      "message": "I think this block might need to go in between like 246 and 247",
+      "revId": "5eff06f4ed6628fa1c1a6062a5da1fcabefdf63e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7aa08908_f8e2859e",
+        "filename": "ril/telephony/java/com/android/internal/telephony/hlteRIL.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 695,
+      "author": {
+        "id": 2814
+      },
+      "writtenOn": "2014-12-26T00:32:59Z",
+      "side": 1,
+      "message": "same as above",
+      "revId": "5eff06f4ed6628fa1c1a6062a5da1fcabefdf63e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
