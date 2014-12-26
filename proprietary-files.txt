@@ -11,13 +11,14 @@ etc/Global_cal.acdb
 etc/Hdmi_cal.acdb
 etc/Headset_cal.acdb
 etc/Speaker_cal.acdb
-
+vendor/lib/soundfx/libqcbassboost.so
+vendor/lib/soundfx/libqcvirt.so
+vendor/lib/soundfx/libqcreverb.so
 # Bluetooth firmware
 vendor/firmware/bcm4339.hcd
 vendor/firmware/bcm4339.hcd:vendor/firmware/bcm4335.hcd
 vendor/firmware/bcm4339_A0.hcd
 vendor/firmware/bcm4339_semco.hcd
-vendor/firmware/bcm4339_wisol.hcd
 
 # Camera chromatix
 etc/C13QL_s5k3l2xx_module_info.xml
@@ -233,16 +234,17 @@ bin/qseecomd
 lib/libdrmdecrypt.so
 lib/libhdcp2.so
 lib/libstagefright_hdcp.so
-vendor/lib/libWVStreamControlAPI_L3.so
+vendor/lib/libWVStreamControlAPI_L1.so
 vendor/lib/libwvm.so
 vendor/lib/libdrmfs.so
 vendor/lib/libdrmtime.so
 vendor/lib/librpmb.so
 vendor/lib/libssd.so
 vendor/lib/libQSEEComAPI.so
-vendor/lib/libwvdrm_L3.so
-vendor/lib/drm/libdrmwvmplugin.so
+vendor/lib/libwvdrm_L1.so
 vendor/lib/mediadrm/libwvdrmengine.so
+vendor/lib/libdrmdecrypt.so
+lib/drm/libfwdlockengine.so
 
 # Graphics
 vendor/lib/egl/eglsubAndroid.so
@@ -257,11 +259,13 @@ vendor/lib/libc2d30-a3xx.so
 vendor/lib/libCB.so
 vendor/lib/libgsl.so
 vendor/lib/libllvm-qcom.so
-vendor/lib/libOpenCL.so
 vendor/lib/librs_adreno.so
 vendor/lib/librs_adreno_sha1.so
 vendor/lib/libRSDriver_adreno.so
 vendor/lib/libsc-a3xx.so
+#vendor/lib/libOpenVG.so
+#vendor/lib/libOpenCL.so
+
 
 # Graphics firmware
 etc/firmware/a330_pfp.fw
@@ -286,6 +290,8 @@ vendor/lib/libOmxQcelp13Dec.so
 vendor/lib/libOmxWmaDec.so
 vendor/lib/libSHIMDivxDrm.so
 
+
+
 # NFC
 vendor/firmware/bcm2079xB4_firmware.ncd
 vendor/firmware/bcm2079xB4_pre_firmware.ncd
@@ -294,8 +300,6 @@ vendor/firmware/bcm2079xB4_pre_firmware.ncd
 vendor/lib/libqc-opt.so
 
 # Postprocessing
--app/PPPreference.apk
-bin/mm-pp-daemon
 vendor/lib/libdisp-aba.so
 -vendor/lib/libmm-abl.so
 vendor/lib/libmm-abl-oem.so
@@ -303,7 +307,7 @@ vendor/lib/libmm-abl-oem.so
 # Sensors
 lib/hw/sensorhubs.msm8974.so
 lib/hw/sensors.msm8974.so
-lib/libsensirion_h_2.so
+lib/libsensirion_h_6.so
 
 # Time services
 bin/time_daemon
