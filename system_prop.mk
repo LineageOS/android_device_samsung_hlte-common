@@ -31,6 +31,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.qc.sdk.izat.premium_enabled=0 \
     ro.qc.sdk.izat.service_mask=0x0
 
+# perf api
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.vendor.extension_library=/vendor/lib/libqti-perfd-client.so
+
 # NFC
 PRODUCT_PROPERTY_OVERRIDES += \
    ro.nfc.port=I2C
