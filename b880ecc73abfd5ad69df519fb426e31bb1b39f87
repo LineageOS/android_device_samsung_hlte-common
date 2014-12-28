@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "7aa08908_012d58a7",
+        "filename": "rootdir/etc/init.qcom.rc",
+        "patchSetId": 4
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 7874
+      },
+      "writtenOn": "2014-12-28T23:14:17Z",
+      "side": 1,
+      "message": "shouldnt be needed when node is created at boot",
+      "revId": "b880ecc73abfd5ad69df519fb426e31bb1b39f87",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7aa08908_6131bc0b",
         "filename": "rootdir/etc/init.target.rc",
         "patchSetId": 4
@@ -30,6 +47,23 @@
       "writtenOn": "2014-12-28T22:40:50Z",
       "side": 1,
       "message": "this seems odd....sysfs is a generic context, is it unlabeled or something? maybe you should make it sensors_device?",
+      "revId": "b880ecc73abfd5ad69df519fb426e31bb1b39f87",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7aa08908_61189c85",
+        "filename": "sepolicy/mm-qcamerad.te",
+        "patchSetId": 4
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 7874
+      },
+      "writtenOn": "2014-12-28T23:14:17Z",
+      "side": 1,
+      "message": "define a new type for the file",
       "revId": "b880ecc73abfd5ad69df519fb426e31bb1b39f87",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
