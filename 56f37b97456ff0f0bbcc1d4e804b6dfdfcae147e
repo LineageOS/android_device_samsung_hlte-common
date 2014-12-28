@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7aa08908_21ab341f",
+        "filename": "sepolicy/file.te",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 3671
+      },
+      "writtenOn": "2014-12-28T21:42:07Z",
+      "side": 1,
+      "message": "no need, change your fstab to use efs_file",
+      "revId": "56f37b97456ff0f0bbcc1d4e804b6dfdfcae147e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7aa08908_01a8b81e",
+        "filename": "sepolicy/location.te",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 3671
+      },
+      "writtenOn": "2014-12-28T21:42:07Z",
+      "side": 1,
+      "message": "no, you dont want this thing to have privs to all system_data_files\n\nchange the context of the files its trying to access",
+      "revId": "56f37b97456ff0f0bbcc1d4e804b6dfdfcae147e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7aa08908_416800f6",
+        "filename": "sepolicy/ueventd.te",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3671
+      },
+      "writtenOn": "2014-12-28T21:42:07Z",
+      "side": 1,
+      "message": "mount your firmware partition with context firmware_file (see my recent merged commits) and torch this file altogether",
+      "revId": "56f37b97456ff0f0bbcc1d4e804b6dfdfcae147e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
