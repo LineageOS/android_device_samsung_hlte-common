@@ -390,9 +390,10 @@ service cnd /system/bin/cnd
     class late_start
     socket cnd stream 660 root inet
 
-service irsc_util /system/bin/logwrapper /system/bin/irsc_util "/etc/sec_config"
+service irsc_util /system/bin/irsc_util "/etc/sec_config"
     class main
     user root
+    seclabel u:r:irsc_util_exec:s0
     oneshot
 
 service rmt_storage /system/bin/rmt_storage

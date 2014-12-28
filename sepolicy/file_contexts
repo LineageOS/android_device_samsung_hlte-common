@@ -1,8 +1,6 @@
 
 # Bluetooth
 /dev/btlock                                             u:object_r:bluetooth_device:s0
-/dev/rfkill                                             u:object_r:bluetooth_device:s0
-/efs/bluetooth(/.*)?                                    u:object_r:bluetooth_efs_file:s0
 
 # Camera
 /data/cam_socket.*                                      u:object_r:camera_socket:s0
@@ -10,25 +8,25 @@
 
 # CMHW
 /sys/devices/virtual/timed_output/vibrator(/.*)?        u:object_r:sysfs_vibeamp:s0
+/sys/class/sec/sec_touchkey/keypad_enable               u:object_r:sysfs_display:s0
 
 # Display
 /sys/devices/virtual/lcd/panel/power_reduce             u:object_r:sysfs_display:s0
 
 # GPS
+/data/misc/quipc(/.*)?                                  u:object_r:location_data_file:s0
+/data/misc/quipc/gsiff_socket                           u:object_r:location_socket:s0
 /data/misc/gsiff_ctrl_q                                 u:object_r:location_data_file:s0
 
 # NFC
 /dev/bcm2079x                                           u:object_r:nfc_device:s0
 /dev/pn547                                              u:object_r:nfc_device:s0
-
-# SEC
-/sys/devices/virtual/sec/sec_key/hall_irq_ctrl          u:object_r:sysfs_sec:s0
+/data/bcmnfc(/.*)?                                      u:object_r:nfc_data_file:s0
 
 # Sensors
 /dev/batch_io                                           u:object_r:sensors_device:s0
-/efs/FactoryApp/baro_delta                              u:object_r:sensors_efs_file:s0
-/efs/gyro_cal_data                                      u:object_r:sensors_efs_file:s0
+/dev/shtc1_sensor                                       u:object_r:sensors_device:s0
 
-# WiFi
-/data/.wifiver.info                                     u:object_r:wifi_data_file:s0
-/efs/wifi(/.*)?                                         u:object_r:wifi_efs_file:s0
+# Domain
+/system/bin/macloader                                   u:object_r:macloader_exec:s0
+/system/bin/rfs_access                                  u:object_r:rfs_access_exec:s0
