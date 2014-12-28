@@ -81,9 +81,8 @@ TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/etc/fstab.qcom
 
 # SELinux
 -include device/qcom/sepolicy/sepolicy.mk
-
-BOARD_SEPOLICY_DIRS += \
-    device/samsung/hlte-common/sepolicy
+BOARD_SEPOLICY_UNION += macloader.te
+BOARD_SEPOLICY_DIRS += device/samsung/hlte-common/sepolicy
 
 # Wifi
 BOARD_HAVE_SAMSUNG_WIFI := true

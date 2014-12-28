@@ -1,0 +1,5 @@
+allow location system_server:binder { call };
+allow location system_server:unix_stream_socket { read write };
+# For /data/misc/gsiff_ctrl_q
+allow location system_data_file:dir rw_dir_perms;
+type_transition location system_data_file:fifo_file location_data_file;
