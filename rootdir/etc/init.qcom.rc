@@ -228,7 +228,7 @@ on post-fs-data
 
     chown system system /sys/class/sec/sec_touchkey/keypad_enable
     chmod 0660 /sys/class/sec/sec_touchkey/keypad_enable
-
+    restorecon /sys/class/sec/sec_touchkey/keypad_enable
 # permission for Input Device(Touchkey).
     chmod 0660 /sys/class/input/input2/enabled
     chown system system /sys/class/input/input2/enabled
@@ -344,7 +344,7 @@ on post-fs-data
     chmod 0700 /data/bcmnfc/param
     chown nfc nfc /data/bcmnfc
     chown nfc nfc /data/bcmnfc/param
-
+    restorecon_recursive /data/bcmnfc
 # NFC NXP
     chmod 0660 /dev/pn547
     chown nfc nfc /dev/pn547

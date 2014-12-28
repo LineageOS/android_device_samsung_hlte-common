@@ -1,0 +1,4 @@
+allow location system_server:binder { call };
+allow location system_data_file:dir { write };
+allow location location_data_file:dir { add_name remove_name };
+allow location location_data_file:fifo_file { create read write};
