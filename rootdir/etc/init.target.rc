@@ -59,7 +59,7 @@ on fs
 
     wait /dev/block/platform/msm_sdcc.1/by-name/efs
     check_fs /dev/block/platform/msm_sdcc.1/by-name/efs ext4
-    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/efs /efs nosuid nodev noatime noauto_da_alloc,discard,journal_async_commit,errors=panic
+    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/efs /efs nosuid nodev noatime noauto_da_alloc,discard,journal_async_commit,errors=panic,context=u:object_r:efs:s0
      chown system radio /efs
      chmod 0771 /efs
     restorecon -R /efs
