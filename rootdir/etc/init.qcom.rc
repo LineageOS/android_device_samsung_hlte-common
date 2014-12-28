@@ -228,6 +228,7 @@ on post-fs-data
 
     chown system system /sys/class/sec/sec_touchkey/keypad_enable
     chmod 0660 /sys/class/sec/sec_touchkey/keypad_enable
+    restorecon /sys/class/sec/sec_touchkey/keypad_enable
 
 # permission for Input Device(Touchkey).
     chmod 0660 /sys/class/input/input2/enabled
@@ -344,7 +345,7 @@ on post-fs-data
     chmod 0700 /data/bcmnfc/param
     chown nfc nfc /data/bcmnfc
     chown nfc nfc /data/bcmnfc/param
-
+    restorecon_recursive /data/bcmnfc
 # NFC NXP
     chmod 0660 /dev/pn547
     chown nfc nfc /dev/pn547
@@ -393,6 +394,7 @@ service cnd /system/bin/cnd
 service irsc_util /system/bin/logwrapper /system/bin/irsc_util "/etc/sec_config"
     class main
     user root
+    seclabel u:r:irsc_util_exec:s0
     oneshot
 
 service rmt_storage /system/bin/rmt_storage
@@ -408,6 +410,7 @@ service rfs_access /system/bin/rfs_access
    class core
    user system
    group system net_raw
+   seclabel u:r:rfs_access_exec:s0
 
 on property:ro.boot.emmc=true
     start rfs_access
@@ -551,6 +554,8 @@ service wlandutservice /system/bin/wlandutservice
 
 service macloader /system/bin/macloader
     class main
+    seclabel u:r:macloader_exec:s0
+
     oneshot
 
 on property:init.svc.macloader=stopped
