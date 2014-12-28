@@ -10,9 +10,14 @@
 
 # CMHW
 /sys/devices/virtual/timed_output/vibrator(/.*)?        u:object_r:sysfs_vibeamp:s0
-
+/sys/class/sec/sec_touchkey/keypad_enable               u:object_r:sysfs_display:s0
+/dev/shtc1_sensor                                       u:object_r:sysfs:s0
+/dev/block/mmcblk0(.*)                                  u:object_r:mmc_block_device:s0
 # Display
 /sys/devices/virtual/lcd/panel/power_reduce             u:object_r:sysfs_display:s0
+
+/sys/module/pm8921_charger/parameters/thermal_mitigation u:object_r:sysfs_thermal:s0
+/sys/devices/platform/battery_current_limit(/.*)?       u:object_r:sysfs_thermal:s0
 
 # GPS
 /data/misc/gsiff_ctrl_q                                 u:object_r:location_data_file:s0
