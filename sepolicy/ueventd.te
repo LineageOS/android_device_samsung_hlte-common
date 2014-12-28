@@ -1,2 +1,0 @@
-allow ueventd sysfs_camera:file { open read write };
-allow ueventd sysfs_vibeamp:file { open read write };
