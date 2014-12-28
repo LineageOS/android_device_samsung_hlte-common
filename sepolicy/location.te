@@ -1,0 +1,3 @@
+# For /data/misc/gsiff_ctrl_q
+allow location system_data_file:dir rw_dir_perms;
+type_transition location system_data_file:fifo_file location_data_file;
