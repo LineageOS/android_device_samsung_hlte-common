@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7aa08908_c1099033",
+        "filename": "sepolicy/file.te",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 7874
+      },
+      "writtenOn": "2014-12-28T23:21:32Z",
+      "side": 0,
+      "message": "my bad, no youre not, but you should",
+      "parentUuid": "7aa08908_21305401",
+      "revId": "740f3fe0a1a315e670c65181f51aba4b77aa86d6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7aa08908_c12230b9",
         "filename": "sepolicy/wpa.te",
         "patchSetId": 4
