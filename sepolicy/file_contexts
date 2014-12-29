@@ -24,4 +24,3 @@
 
 # Domain
 /system/bin/macloader                                   u:object_r:macloader_exec:s0
-/system/bin/rfs_access                                  u:object_r:rfs_access_exec:s0
