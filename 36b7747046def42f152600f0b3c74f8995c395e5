@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "7aa08908_d9e2289f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 2195
+      },
+      "writtenOn": "2014-12-29T18:29:24Z",
+      "side": 1,
+      "message": "typo?",
+      "revId": "36b7747046def42f152600f0b3c74f8995c395e5",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7aa08908_f94e04c0",
         "filename": "rootdir/etc/init.qcom.rc",
         "patchSetId": 10
