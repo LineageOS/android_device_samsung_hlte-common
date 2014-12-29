@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7aa08908_1c049e13",
+        "filename": "sepolicy/location.te",
+        "patchSetId": 16
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 3671
+      },
+      "writtenOn": "2014-12-29T21:33:34Z",
+      "side": 1,
+      "message": "no",
+      "revId": "1290b08bb7bd79b0a66cd77fd4dcf232b45f9216",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
