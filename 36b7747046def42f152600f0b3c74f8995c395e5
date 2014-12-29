@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7aa08908_f94e04c0",
+        "filename": "rootdir/etc/init.qcom.rc",
+        "patchSetId": 10
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 2195
+      },
+      "writtenOn": "2014-12-29T18:27:50Z",
+      "side": 1,
+      "message": "This shouldn\u0027t be needed either",
+      "revId": "36b7747046def42f152600f0b3c74f8995c395e5",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7aa08908_795a1485",
+        "filename": "rootdir/etc/init.qcom.rc",
+        "patchSetId": 10
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 2195
+      },
+      "writtenOn": "2014-12-29T18:27:50Z",
+      "side": 1,
+      "message": "This is unnecessary, init has a restorecon_recursive for /data",
+      "revId": "36b7747046def42f152600f0b3c74f8995c395e5",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7aa08908_595f5872",
+        "filename": "rootdir/etc/init.qcom.rc",
+        "patchSetId": 10
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 2195
+      },
+      "writtenOn": "2014-12-29T18:27:50Z",
+      "side": 1,
+      "message": "Why not put this in file_contexts?",
+      "revId": "36b7747046def42f152600f0b3c74f8995c395e5",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7aa08908_b9547c54",
+        "filename": "rootdir/etc/init.qcom.rc",
+        "patchSetId": 10
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 2195
+      },
+      "writtenOn": "2014-12-29T18:27:50Z",
+      "side": 1,
+      "message": "Same as above",
+      "revId": "36b7747046def42f152600f0b3c74f8995c395e5",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7aa08908_9951c065",
+        "filename": "rootdir/etc/init.qcom.rc",
+        "patchSetId": 10
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 2195
+      },
+      "writtenOn": "2014-12-29T18:27:50Z",
+      "side": 1,
+      "message": "Same as above\nAlso, unnecessary extra newline added here.",
+      "revId": "36b7747046def42f152600f0b3c74f8995c395e5",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
