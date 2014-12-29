@@ -13,11 +13,6 @@
 # Display
 /sys/devices/virtual/lcd/panel/power_reduce             u:object_r:sysfs_display:s0
 
-# GPS
-/data/misc/quipc(/.*)?                                  u:object_r:location_data_file:s0
-/data/misc/quipc/gsiff_socket                           u:object_r:location_socket:s0
-/data/misc/gsiff_ctrl_q                                 u:object_r:location_data_file:s0
-
 # NFC
 /dev/bcm2079x                                           u:object_r:nfc_device:s0
 /dev/pn547                                              u:object_r:nfc_device:s0
