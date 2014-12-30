@@ -396,7 +396,7 @@ public class hlteRIL extends RIL implements CommandsInterface {
         if (error == 0 || p.dataAvail() > 0) {
             switch (rr.mRequest) {
                 case RIL_REQUEST_OPERATOR: ret =  operatorCheck(p); break;
-                case RIL_REQUEST_VOICE_REGISTRATION_STATE: ret = responseVoiceDataRegistrationState(p); break;
+                case RIL_REQUEST_VOICE_REGISTRATION_STATE: ret = responseVoiceRegistrationState(p); break;
                 case RIL_REQUEST_DATA_REGISTRATION_STATE: ret = responseDataRegistrationState(p); break;
                 default:
                     throw new RuntimeException("Unrecognized solicited response: " + rr.mRequest);
@@ -425,7 +425,7 @@ public class hlteRIL extends RIL implements CommandsInterface {
 
     private Object
     responseDataRegistrationState(Parcel p) {
-        String response[] = (String[])responseStrings(p);
+        String response[] = (String[])responseStrings(p); // all data from parcell get popped
         if (isGSM){
             /* DANGER WILL ROBINSON
              * In some cases from Vodaphone we are receiving a RAT of 102
@@ -437,11 +437,17 @@ public class hlteRIL extends RIL implements CommandsInterface {
                 response[3] = "2";
             }
         }
-        return responseVoiceDataRegistrationState(p);
+        return responseVoiceDataRegistrationState(response);
     }
+
     private Object
-    responseVoiceDataRegistrationState(Parcel p) {
-        String response[] = (String[])responseStrings(p);
+    responseVoiceRegistrationState(Parcel p) {
+        String response[] = (String[])responseStrings(p); // all data from parcell get popped
+        return responseVoiceDataRegistrationState(response);
+    }
+
+    private Object
+    responseVoiceDataRegistrationState(String[] response) {
         if (isGSM){
             return response;
         }
