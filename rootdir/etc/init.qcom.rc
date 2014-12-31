@@ -27,6 +27,7 @@
 
 import init.qcom.usb.rc
 import init.target.rc
+import init.carrier.rc
 
 on early-init
     setprop sys.boot_completed 0
