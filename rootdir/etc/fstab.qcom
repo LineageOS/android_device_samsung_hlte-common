@@ -13,5 +13,5 @@
 /dev/block/platform/msm_sdcc.1/by-name/cache          /cache           ext4    nosuid,nodev,barrier=1 wait,check
 
 # VOLD
-/devices/msm_sdcc.3/mmc_host/mmc2                     auto             auto    defaults	voldmanaged=sdcard1:auto
-/devices/platform/xhci-hcd                            auto             auto    defaults	voldmanaged=usbdisk:auto
+/devices/msm_sdcc.3/mmc_host/mmc2*                     auto             auto    defaults	voldmanaged=sdcard1:auto
+/devices/platform/xhci-hcd*                            auto             auto    defaults	voldmanaged=usbdisk:auto
