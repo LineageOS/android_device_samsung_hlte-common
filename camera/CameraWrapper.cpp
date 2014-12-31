@@ -101,6 +101,7 @@ static int check_vendor_module()
 }
 
 #define KEY_VIDEO_HFR_VALUES "video-hfr-values"
+#define KEY_SUPPORTED_VIDEO_SIZES "video-size-values"
 
 static char *camera_fixup_getparams(int __attribute__((unused)) id,
     const char *settings)
@@ -112,6 +113,11 @@ static char *camera_fixup_getparams(int __attribute__((unused)) id,
     ALOGV("%s: original parameters:", __FUNCTION__);
     params.dump();
 #endif
+
+	const char *videoSizesStr = params.get(KEY_SUPPORTED_VIDEO_SIZES);
+	char tmpsz[strlen(videoSizesStr) + 10 + 1];
+	sprintf(tmpsz, "3840x2160,%s", videoSizesStr);
+	params.set(KEY_SUPPORTED_VIDEO_SIZES, tmpsz);
 
     /* If the vendor has HFR values but doesn't also expose that
      * this can be turned off, fixup the params to tell the Camera
