@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7aa08908_5211edab",
+        "filename": "ril/telephony/java/com/android/internal/telephony/hlteRIL.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 11089
+      },
+      "writtenOn": "2014-12-31T02:25:08Z",
+      "side": 0,
+      "message": "This line can be removed too",
+      "revId": "488be0a56ecacb4a8b90a1b5fc935c3685ff2c37",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
