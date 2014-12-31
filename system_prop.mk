@@ -15,8 +15,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     tunnel.audio.encode=true \
     media.aac_51_output_enabled=true \
     audio.offload.pcm.16bit.enable=true \
-    audio.offload.pcm.24bit.enable=true  \
-    qcom.hw.aac.encoder=true
+    audio.offload.pcm.24bit.enable=true
 
 # Display
 PRODUCT_PROPERTY_OVERRIDES += \
