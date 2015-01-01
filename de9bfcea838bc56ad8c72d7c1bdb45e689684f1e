@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7aa08908_0859f45a",
+        "filename": "sepolicy/rild.te",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 3671
+      },
+      "writtenOn": "2015-01-01T10:20:50Z",
+      "side": 1,
+      "message": "You probably don\u0027t want to give rild rw permissions to all sysfs files. You\u0027ll want to create a new type for (or apply that context to) that particular node.",
+      "revId": "de9bfcea838bc56ad8c72d7c1bdb45e689684f1e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
