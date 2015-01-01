@@ -803,14 +803,6 @@ service battery_monitor /system/bin/battery_monitor
     group system
     disabled
 
-service ril-daemon1 /system/bin/rild -c 1
-    class main
-    socket rild1 stream 660 root radio
-    socket rild-debug1 stream 660 radio system
-    user root
-    disabled
-    group radio cache inet misc audio sdcard_r sdcard_rw qcom_oncrpc diag qcom_diag log
-
 service profiler_daemon /system/bin/profiler_daemon
     class late_start
     user root
