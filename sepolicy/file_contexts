@@ -18,6 +18,9 @@
 /dev/pn547                                              u:object_r:nfc_device:s0
 /data/bcmnfc(/.*)?                                      u:object_r:nfc_data_file:s0
 
+# SEC
+/sys/devices/virtual/sec/sec_key/hall_irq_ctrl          u:object_r:sysfs_sec:s0
+
 # Sensors
 /dev/batch_io                                           u:object_r:sensors_device:s0
 /dev/shtc1_sensor                                       u:object_r:sensors_device:s0
