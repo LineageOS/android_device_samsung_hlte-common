@@ -292,6 +292,8 @@ vendor/lib/libSHIMDivxDrm.so
 # NFC
 vendor/firmware/bcm2079xB4_firmware.ncd
 vendor/firmware/bcm2079xB4_pre_firmware.ncd
+vendor/firmware/bcm2079xB5_firmware.ncd
+vendor/firmware/bcm2079xB5_pre_firmware.ncd
 
 # Postprocessing
 vendor/lib/libdisp-aba.so
