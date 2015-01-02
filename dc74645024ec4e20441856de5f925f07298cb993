@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7aa08908_c0f860e8",
+        "filename": "sepolicy/rild.te",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 3671
+      },
+      "writtenOn": "2015-01-02T12:39:59Z",
+      "side": 1,
+      "message": "i would have probably gone rw_file_perms here (use the macros!)",
+      "revId": "dc74645024ec4e20441856de5f925f07298cb993",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
