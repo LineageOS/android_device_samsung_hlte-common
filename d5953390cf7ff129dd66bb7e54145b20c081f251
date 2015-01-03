@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7aa08908_e6b494f3",
+        "filename": "rootdir/etc/init.qcom.rc",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 883
+      },
+      "writtenOn": "2015-01-03T16:20:41Z",
+      "side": 1,
+      "message": "https://github.com/CyanogenMod/android_vendor_cm/commit/1f3653ebde0012ee8ecac5114a4bd497f2f284e3",
+      "revId": "d5953390cf7ff129dd66bb7e54145b20c081f251",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
