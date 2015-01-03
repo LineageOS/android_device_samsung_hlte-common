@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7aa08908_80301858",
+        "filename": "camera/CameraWrapper.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 3671
+      },
+      "writtenOn": "2015-01-03T02:12:19Z",
+      "side": 1,
+      "message": "from frameworks/av:\n\ncamera/CameraParameters.cpp:const char CameraParameters::KEY_SUPPORTED_VIDEO_SIZES[] \u003d \"video-size-values\";",
+      "revId": "f332d029cb9328d5a7019196d13d6deb6abca9a7",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
