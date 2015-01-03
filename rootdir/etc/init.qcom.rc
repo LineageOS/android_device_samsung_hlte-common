@@ -37,15 +37,15 @@ on init
     # Set permissions for persist partition
     mkdir /persist 0771 system system
     mkdir /mnt/shell/emulated 0700 shell shell
-    mkdir /mnt/shell/container 0700 system system
     mkdir /storage 0550 system sdcard_r
     mkdir /storage/emulated 0555 root root
 
     #External storage directories
+    mkdir /mnt/media_rw/sdcard0 0700 media_rw media_rw
     mkdir /mnt/media_rw/sdcard1 0700 media_rw media_rw
-    mkdir /storage/usbdisk 0000 system system
     mkdir /mnt/media_rw/usbdisk 0700 media_rw media_rw
 
+    mkdir /storage/sdcard0 0700 root root
     mkdir /storage/sdcard1 0700 root root
     mkdir /storage/usbdisk 0700 root root
 
@@ -59,7 +59,6 @@ on init
     symlink /storage/emulated/legacy /mnt/sdcard
     symlink /storage/emulated/legacy /storage/sdcard0
     symlink /mnt/shell/emulated/0 /storage/emulated/legacy
-    symlink /mnt/shell/container /storage/container
     symlink /storage/sdcard1 /extSdCard
     symlink /storage/sdcard1 /mnt/extSdCard
     symlink /storage/sdcard1 /external_sd
@@ -129,6 +128,11 @@ on boot
     #For bridgemgr daemon to inform the USB driver of the correct transport
     chown radio radio /sys/class/android_usb/f_rmnet_smd_sdio/transport
 
+    # Assign TCP buffer thresholds to be ceiling value of technology maximums
+    # Increased technology maximums should be reflected here.
+    write /proc/sys/net/core/rmem_max  2097152
+    write /proc/sys/net/core/wmem_max  2097152
+
     #To allow interfaces to get v6 address when tethering is enabled
     write /proc/sys/net/ipv6/conf/rmnet0/accept_ra 2
     write /proc/sys/net/ipv6/conf/rmnet1/accept_ra 2
@@ -164,10 +168,6 @@ on post-fs-data
     # we will remap this as /mnt/sdcard with the sdcard fuse tool
     mkdir /data/media 0770 media_rw media_rw
     chown media_rw media_rw /data/media
-
-# we will remap this as /storage/container with the sdcard fuse tool
-    mkdir /data/container 0770 system system
-    chown system system /data/container
     
     mkdir /data/misc/bluetooth 0770 bluetooth bluetooth
 
@@ -643,11 +643,6 @@ on property:persist.data.ds_fmc_app.mode=1
 on property:ro.data.large_tcp_window_size=true
     # Adjust socket buffer to enlarge TCP receive window for high bandwidth (e.g. DO-RevB)
     write /proc/sys/net/ipv4/tcp_adv_win_scale  2
-
-# virtual sdcard daemon running as system (1000)
-service container /system/bin/sdcard /data/container /mnt/shell/container 1000 1000
-    class late_start
-    oneshot
 
 # virtual sdcard daemon running as media_rw (1023)
 service sdcard /system/bin/sdcard -u 1023 -g 1023 -l /data/media /mnt/shell/emulated
