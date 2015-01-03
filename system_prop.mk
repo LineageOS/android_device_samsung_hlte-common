@@ -7,7 +7,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     use.voice.path.for.pcm.voip=false \
     use.dedicated.device.for.voip=true \
     mm.enable.smoothstreaming=true \
-    mm.enable.qcom_parser=3314291 \
     av.streaming.offload.enable=true \
     use.voice.path.for.pcm.voip=true \
     audio.offload.multiple.enabled=false \
