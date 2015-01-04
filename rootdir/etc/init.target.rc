@@ -180,6 +180,23 @@ on boot
     chown radio system /sys/class/kgsl/kgsl-3d0/gpu_available_frequencies
     chmod 664  /sys/class/kgsl/kgsl-3d0/gpu_available_frequencies
 
+    chown radio system /sys/class/devfreq/qcom,cpubw.34/available_frequencies
+    chmod 664 /sys/class/devfreq/qcom,cpubw.34/available_frequencies
+    chown radio system /sys/class/devfreq/qcom,cpubw.34/available_governors
+    chmod 664 /sys/class/devfreq/qcom,cpubw.34/available_governors
+    chown radio system /sys/class/devfreq/qcom,cpubw.34/governor
+    chmod 664 /sys/class/devfreq/qcom,cpubw.34/governor
+    chown radio system /sys/class/devfreq/qcom,cpubw.34/max_freq
+    chmod 664 /sys/class/devfreq/qcom,cpubw.34/max_freq
+    chown radio system /sys/class/devfreq/qcom,cpubw.34/min_freq
+    chmod 664 /sys/class/devfreq/qcom,cpubw.34/min_freq
+
+    # SEC PM sysfs node
+    chown system radio /sys/devices/system/soc/soc0/soc_iddq
+    chmod 0444 /sys/devices/system/soc/soc0/soc_iddq
+    chown system radio /sys/devices/system/soc/soc0/soc_pvs
+    chmod 0444 /sys/devices/system/soc/soc0/soc_pvs
+
     # Auto Brightness
     chown system system  /sys/class/backlight/panel/auto_brightness
     chmod 0660 /sys/class/backlight/panel/auto_brightness
@@ -385,6 +402,29 @@ on boot
     chown system radio /sys/class/sensors/ssp_sensor/ssp_flush
     chmod 0600 /dev/batch_io
     chown system system /dev/batch_io
+
+    # IIO devices for SensorHub
+    chmod 0600 /dev/iio:device0
+    chown system system /dev/iio:device0
+    chmod 0600 /dev/iio:device1
+    chown system system /dev/iio:device1
+    chmod 0600 /dev/iio:device2
+    chown system system /dev/iio:device2
+    chmod 0600 /dev/iio:device3
+    chown system system /dev/iio:device3
+    chmod 0600 /dev/iio:device4
+    chown system system /dev/iio:device4
+    chown system system /sys/bus/iio/devices/iio:device0/buffer/length
+    chown system system /sys/bus/iio/devices/iio:device0/buffer/enable
+    chown system system /sys/bus/iio/devices/iio:device1/buffer/length
+    chown system system /sys/bus/iio/devices/iio:device1/buffer/enable
+    chown system system /sys/bus/iio/devices/iio:device2/buffer/length
+    chown system system /sys/bus/iio/devices/iio:device2/buffer/enable
+    chown system system /sys/bus/iio/devices/iio:device3/buffer/length
+    chown system system /sys/bus/iio/devices/iio:device3/buffer/enable
+    chown system system /sys/bus/iio/devices/iio:device4/buffer/length
+    chown system system /sys/bus/iio/devices/iio:device4/buffer/enable
+
 # Gesture_sensor
     chown system radio /sys/class/sensors/gesture_sensor/vendor
     chown system radio /sys/class/sensors/gesture_sensor/name
