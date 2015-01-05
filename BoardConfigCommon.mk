@@ -52,7 +52,7 @@ USE_DEVICE_SPECIFIC_CAMERA := true
 
 # CMHW
 BOARD_HARDWARE_CLASS += hardware/samsung/cmhw
-BOARD_HARDWARE_CLASS += device/samsung/hlte-common/cmhw
+
 # RIL
 BOARD_RIL_CLASS := ../../../device/samsung/hlte-common/ril
 
