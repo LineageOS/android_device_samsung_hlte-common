@@ -21,26 +21,13 @@ import static com.android.internal.telephony.RILConstants.*;
 import android.content.Context;
 import android.media.AudioManager;
 import android.os.AsyncResult;
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Looper;
 import android.os.Message;
 import android.os.Parcel;
-import android.telephony.SmsMessage;
 import android.os.SystemProperties;
-import android.os.SystemClock;
-import android.provider.Settings;
-import android.text.TextUtils;
 import android.telephony.Rlog;
 
 import android.telephony.SignalStrength;
-
 import android.telephony.PhoneNumberUtils;
-import com.android.internal.telephony.RILConstants;
-import com.android.internal.telephony.gsm.SmsBroadcastConfigInfo;
-import com.android.internal.telephony.cdma.CdmaInformationRecords;
-import com.android.internal.telephony.cdma.CdmaInformationRecords.CdmaSignalInfoRec;
-import com.android.internal.telephony.cdma.SignalToneUtil;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -50,28 +37,20 @@ import com.android.internal.telephony.uicc.IccCardApplicationStatus;
 import com.android.internal.telephony.uicc.IccCardStatus;
 
 /**
- * Qualcomm RIL for the Samsung family.
- * Quad core Exynos4 with Qualcomm modem and later is supported
- * Snapdragon S3 and later is supported
- * This RIL is univerisal meaning it supports CDMA and GSM radio.
- * Handles most GSM and CDMA cases.
+ * Qualcomm RIL for the Samsung msm8974 family.
  * {@hide}
  */
 public class hlteRIL extends RIL implements CommandsInterface {
 
     private AudioManager mAudioManager;
-
-    private Object mSMSLock = new Object();
-    private boolean mIsSendingSMS = false;
-    protected boolean isGSM = false;
-    public static final long SEND_SMS_TIMEOUT_IN_MS = 30000;
+    private boolean isGSM = false;
     private boolean newril = needsOldRilFeature("newril"); //4.4.4 verson of Samsung RIL
 
     private Message mPendingGetSimStatus;
 
     public hlteRIL(Context context, int preferredNetworkType,
             int cdmaSubscription, Integer instanceId) {
-        super(context, preferredNetworkType, cdmaSubscription);
+        super(context, preferredNetworkType, cdmaSubscription, instanceId);
         mAudioManager = (AudioManager)mContext.getSystemService(Context.AUDIO_SERVICE);
         mQANElements = SystemProperties.getInt("ro.ril.telephony.mqanelements", 4);
     }
@@ -123,6 +102,7 @@ public class hlteRIL extends RIL implements CommandsInterface {
             p.readInt(); // - perso_unblock_retries
             cardStatus.mApplications[i] = appStatus;
         }
+        // for sprint gsm(lte) only sim
         if (numApplications==1 && !isGSM && appStatus.app_type == appStatus.AppTypeFromRILInt(2)) {
             cardStatus.mApplications = new IccCardApplicationStatus[numApplications+2];
             cardStatus.mGsmUmtsSubscriptionAppIndex = 0;
@@ -153,43 +133,6 @@ public class hlteRIL extends RIL implements CommandsInterface {
         return cardStatus;
     }
 
-    @Override
-    public void
-    sendCdmaSms(byte[] pdu, Message result) {
-        smsLock();
-        super.sendCdmaSms(pdu, result);
-    }
-
-    @Override
-    public void
-        sendSMS (String smscPDU, String pdu, Message result) {
-        smsLock();
-        super.sendSMS(smscPDU, pdu, result);
-    }
-
-    private void smsLock(){
-        // Do not send a new SMS until the response for the previous SMS has been received
-        //   * for the error case where the response never comes back, time out after
-        //     30 seconds and just try the next SEND_SMS
-        synchronized (mSMSLock) {
-            long timeoutTime  = SystemClock.elapsedRealtime() + SEND_SMS_TIMEOUT_IN_MS;
-            long waitTimeLeft = SEND_SMS_TIMEOUT_IN_MS;
-            while (mIsSendingSMS && (waitTimeLeft > 0)) {
-                Rlog.d(RILJ_LOG_TAG, "sendSMS() waiting for response of previous SEND_SMS");
-                try {
-                    mSMSLock.wait(waitTimeLeft);
-                } catch (InterruptedException ex) {
-                    // ignore the interrupt and rewait for the remainder
-                }
-                waitTimeLeft = timeoutTime - SystemClock.elapsedRealtime();
-            }
-            if (waitTimeLeft <= 0) {
-                Rlog.e(RILJ_LOG_TAG, "sendSms() timed out waiting for response of previous CDMA_SEND_SMS");
-            }
-            mIsSendingSMS = true;
-        }
-
-    }
 
     @Override
     protected Object responseSignalStrength(Parcel p) {
@@ -308,15 +251,6 @@ public class hlteRIL extends RIL implements CommandsInterface {
         int response = p.readInt();
 
         switch(response) {
-            case RIL_UNSOL_RIL_CONNECTED:
-                ret = responseInts(p);
-                setRadioPower(false, null);
-                setPreferredNetworkType(mPreferredNetworkType, null);
-                setCdmaSubscriptionSource(mCdmaSubscription, null);
-                if(mRilVersion >= 8)
-                    setCellInfoListRate(Integer.MAX_VALUE, null);
-                notifyRegistrantsRilConnectionChanged(((int[])ret)[0]);
-                break;
             // SAMSUNG STATES
             case 11010: // RIL_UNSOL_AM:
                 ret = responseString(p);
@@ -368,8 +302,6 @@ public class hlteRIL extends RIL implements CommandsInterface {
                     try {switch (tr.mRequest) {
                             /* Get those we're interested in */
                         case RIL_REQUEST_DATA_REGISTRATION_STATE:
-                        case RIL_REQUEST_VOICE_REGISTRATION_STATE:
-                        case RIL_REQUEST_OPERATOR:
                             rr = tr;
                             break;
                     }} catch (Throwable thr) {
@@ -396,8 +328,6 @@ public class hlteRIL extends RIL implements CommandsInterface {
         Object ret = null;
         if (error == 0 || p.dataAvail() > 0) {
             switch (rr.mRequest) {
-                case RIL_REQUEST_OPERATOR: ret =  operatorCheck(p); break;
-                case RIL_REQUEST_VOICE_REGISTRATION_STATE: ret = responseVoiceRegistrationState(p); break;
                 case RIL_REQUEST_DATA_REGISTRATION_STATE: ret = responseDataRegistrationState(p); break;
                 default:
                     throw new RuntimeException("Unrecognized solicited response: " + rr.mRequest);
@@ -412,63 +342,21 @@ public class hlteRIL extends RIL implements CommandsInterface {
         }
         return rr;
     }
-
-    private Object
-    operatorCheck(Parcel p) {
-        String response[] = (String[])responseStrings(p);
-        for(int i=0; i<2; i++){
-            if (response[i]!= null){
-                response[i] = Operators.operatorReplace(response[i]);
-            }
-        }
-        return response;
-    }
-
     private Object
     responseDataRegistrationState(Parcel p) {
         String response[] = (String[])responseStrings(p); // all data from parcell get popped
-        if (isGSM){
-            /* DANGER WILL ROBINSON
-             * In some cases from Vodaphone we are receiving a RAT of 102
-             * while in tunnels of the metro. Lets Assume that if we
-             * receive 102 we actually want a RAT of 2 for EDGE service */
-            if (response.length > 4 &&
-                response[0].equals("1") &&
-                response[3].equals("102")) {
-                response[3] = "2";
-            }
+        /* DANGER WILL ROBINSON
+         * In some cases from Vodaphone we are receiving a RAT of 102
+         * while in tunnels of the metro. Lets Assume that if we
+         * receive 102 we actually want a RAT of 2 for EDGE service */
+        if (response.length > 4 &&
+            response[0].equals("1") &&
+            response[3].equals("102")) {
+            response[3] = "2";
         }
-        return responseVoiceDataRegistrationState(response);
-    }
-
-    private Object
-    responseVoiceRegistrationState(Parcel p) {
-        String response[] = (String[])responseStrings(p); // all data from parcell get popped
-        return responseVoiceDataRegistrationState(response);
-    }
-
-    private Object
-    responseVoiceDataRegistrationState(String[] response) {
-        if (isGSM){
-            return response;
-        }
-        if (response.length>=10){
-            for(int i=6; i<=9; i++){
-                if (response[i]== null){
-                    response[i]=Integer.toString(Integer.MAX_VALUE);
-                } else {
-                    try {
-                        Integer.parseInt(response[i]);
-                    } catch(NumberFormatException e) {
-                        response[i]=Integer.toString(Integer.parseInt(response[i],16));
-                    }
-                }
-            }
-        }
-
         return response;
     }
-
+    
     /**
      * Set audio parameter "wb_amr" for HD-Voice (Wideband AMR).
      *
@@ -482,77 +370,6 @@ public class hlteRIL extends RIL implements CommandsInterface {
             Rlog.d(RILJ_LOG_TAG, "setWbAmr(): setting audio parameter - wb_amr=off");
             mAudioManager.setParameters("wide_voice_enable=false");
         }
-    }
-
-    // Workaround for Samsung CDMA "ring of death" bug:
-    //
-    // Symptom: As soon as the phone receives notice of an incoming call, an
-    // audible "old fashioned ring" is emitted through the earpiece and
-    // persists through the duration of the call, or until reboot if the call
-    // isn't answered.
-    //
-    // Background: The CDMA telephony stack implements a number of "signal info
-    // tones" that are locally generated by ToneGenerator and mixed into the
-    // voice call path in response to radio RIL_UNSOL_CDMA_INFO_REC requests.
-    // One of these tones, IS95_CONST_IR_SIG_IS54B_L, is requested by the
-    // radio just prior to notice of an incoming call when the voice call
-    // path is muted. CallNotifier is responsible for stopping all signal
-    // tones (by "playing" the TONE_CDMA_SIGNAL_OFF tone) upon receipt of a
-    // "new ringing connection", prior to unmuting the voice call path.
-    //
-    // Problem: CallNotifier's incoming call path is designed to minimize
-    // latency to notify users of incoming calls ASAP. Thus,
-    // SignalInfoTonePlayer requests are handled asynchronously by spawning a
-    // one-shot thread for each. Unfortunately the ToneGenerator API does
-    // not provide a mechanism to specify an ordering on requests, and thus,
-    // unexpected thread interleaving may result in ToneGenerator processing
-    // them in the opposite order that CallNotifier intended. In this case,
-    // playing the "signal off" tone first, followed by playing the "old
-    // fashioned ring" indefinitely.
-    //
-    // Solution: An API change to ToneGenerator is required to enable
-    // SignalInfoTonePlayer to impose an ordering on requests (i.e., drop any
-    // request that's older than the most recent observed). Such a change,
-    // or another appropriate fix should be implemented in AOSP first.
-    //
-    // Workaround: Intercept RIL_UNSOL_CDMA_INFO_REC requests from the radio,
-    // check for a signal info record matching IS95_CONST_IR_SIG_IS54B_L, and
-    // drop it so it's never seen by CallNotifier. If other signal tones are
-    // observed to cause this problem, they should be dropped here as well.
-    @Override
-    protected void notifyRegistrantsCdmaInfoRec(CdmaInformationRecords infoRec) {
-        final int response = RIL_UNSOL_CDMA_INFO_REC;
-
-        if (infoRec.record instanceof CdmaSignalInfoRec) {
-            CdmaSignalInfoRec sir = (CdmaSignalInfoRec) infoRec.record;
-            if (sir != null
-                    && sir.isPresent
-                    && sir.signalType == SignalToneUtil.IS95_CONST_IR_SIGNAL_IS54B
-                    && sir.alertPitch == SignalToneUtil.IS95_CONST_IR_ALERT_MED
-                    && sir.signal == SignalToneUtil.IS95_CONST_IR_SIG_IS54B_L) {
-
-                Rlog.d(RILJ_LOG_TAG, "Dropping \"" + responseToString(response) + " "
-                        + retToString(response, sir)
-                        + "\" to prevent \"ring of death\" bug.");
-                return;
-            }
-        }
-
-        super.notifyRegistrantsCdmaInfoRec(infoRec);
-    }
-
-
-
-    @Override
-    protected Object
-    responseSMS(Parcel p) {
-        // Notify that sendSMS() can send the next SMS
-        synchronized (mSMSLock) {
-            mIsSendingSMS = false;
-            mSMSLock.notify();
-        }
-
-        return super.responseSMS(p);
     }
 
     @Override
@@ -584,54 +401,8 @@ public class hlteRIL extends RIL implements CommandsInterface {
         send(rr);
     }
 
-    //this method is used in the search network functionality.
-    // in mobile network setting-> network operators
-    @Override
-    protected Object
-    responseOperatorInfos(Parcel p) {
-        String strings[] = (String [])responseStrings(p);
-        ArrayList<OperatorInfo> ret;
-
-        if (strings.length % mQANElements != 0) {
-            throw new RuntimeException(
-                                       "RIL_REQUEST_QUERY_AVAILABLE_NETWORKS: invalid response. Got "
-                                       + strings.length + " strings, expected multiple of " + mQANElements);
-        }
-
-        ret = new ArrayList<OperatorInfo>(strings.length / mQANElements);
-        Operators init = null;
-        if (strings.length != 0) {
-            init = new Operators();
-        }
-        for (int i = 0 ; i < strings.length ; i += mQANElements) {
-            String temp = init.unOptimizedOperatorReplace(strings[i+0]);
-            ret.add (
-                     new OperatorInfo(
-                                      temp, //operatorAlphaLong
-                                      temp,//operatorAlphaShort
-                                      strings[i+2],//operatorNumeric
-                                      strings[i+3]));//state
-        }
-
-        return ret;
-    }
-
-    @Override
-    public void getImsRegistrationState(Message result) {
-        if(mRilVersion >= 8)
-            super.getImsRegistrationState(result);
-        else {
-            if (result != null) {
-                CommandException ex = new CommandException(
-                    CommandException.Error.REQUEST_NOT_SUPPORTED);
-                AsyncResult.forMessage(result, null, ex);
-                result.sendToTarget();
-            }
-        }
-    }
-
     static final int RIL_REQUEST_DIAL_EMERGENCY = 10016;
-    public void
+    private void
     dialEmergencyCall(String address, int clirMode, Message result) {
         RILRequest rr;
         Rlog.v(RILJ_LOG_TAG, "Emergency dial: " + address);
