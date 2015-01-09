@@ -59,10 +59,9 @@ on fs
 
     wait /dev/block/platform/msm_sdcc.1/by-name/efs
     check_fs /dev/block/platform/msm_sdcc.1/by-name/efs ext4
-    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/efs /efs nosuid nodev noatime noauto_da_alloc,discard,journal_async_commit,errors=panic,context=u:object_r:efs_file:s0
-     chown system radio /efs
+    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/efs /efs nosuid nodev noatime noauto_da_alloc,discard,journal_async_commit,errors=panic
+    chown system radio /efs
      chmod 0771 /efs
-    restorecon -R /efs
 #firmware_file
     wait /dev/block/platform/msm_sdcc.1/by-name/apnhlos
     mount vfat /dev/block/platform/msm_sdcc.1/by-name/apnhlos /firmware ro shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337,context=u:object_r:firmware_file:s0
@@ -91,7 +90,10 @@ on post-fs-data
     restorecon /efs/drm
     restorecon /efs/drm/sdrm
     restorecon /efs/drm/data_agent
-
+    restorecon /efs/imei
+    restorecon /efs/prox_cal
+    restorecon /efs/mps_code.dat
+    restorecon_recursive /efs/FactoryApp
     # DivX DRM
     mkdir /efs/.files 0775
     mkdir /efs/.files/.dx1 0775
