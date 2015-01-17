@@ -38,3 +38,5 @@
 /efs/FactoryApp(/.*)?  					u:object_r:efs_file:s0
 /efs/imei	  					u:object_r:efs_file:s0
 /efs/mps_code.dat					u:object_r:efs_file:s0
+
+/dev/block/platform/msm_sdcc\.1/by-name/ssd         u:object_r:ssd_device:s0
