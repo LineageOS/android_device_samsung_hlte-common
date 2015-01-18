@@ -262,7 +262,7 @@ vendor/lib/librs_adreno_sha1.so
 vendor/lib/libRSDriver_adreno.so
 vendor/lib/libsc-a3xx.so
 vendor/lib/libOpenCL.so
-
+vendor/lib/libscale.so
 
 # Graphics firmware
 etc/firmware/a330_pfp.fw
