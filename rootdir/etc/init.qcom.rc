@@ -512,6 +512,13 @@ service wifi-crda /system/bin/sh /system/etc/init.crda.sh
    disabled
    oneshot
 
+service keymaster /system/bin/sh /system/etc/init.keymaster.sh
+   class core
+   user root
+   disabled
+   oneshot
+
+
 on property:sys.boot_completed=1
     write /sys/block/mmcblk0/queue/scheduler row
 
