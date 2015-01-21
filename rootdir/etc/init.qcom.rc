@@ -357,7 +357,6 @@ service rmt_storage /system/bin/rmt_storage
     class core
     user root
     group system
-    disabled
 
 on property:ro.boot.emmc=true
     start rmt_storage
