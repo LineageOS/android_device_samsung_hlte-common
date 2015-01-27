@@ -506,6 +506,12 @@ on property:init.svc.macloader=stopped
     chmod 0664 /data/.rev
 # end of wifi
 
+service qcom-post-boot /system/bin/sh /system/etc/init.qcom.post_boot.sh
+    class late_start
+    user root
+    disabled
+    oneshot
+
 service wifi-crda /system/bin/sh /system/etc/init.crda.sh
    class late_start
    user root
@@ -513,6 +519,7 @@ service wifi-crda /system/bin/sh /system/etc/init.crda.sh
    oneshot
 
 on property:sys.boot_completed=1
+    start qcom-post-boot
     write /sys/block/mmcblk0/queue/scheduler row
 
     # Configure the hardware properly
