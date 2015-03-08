@@ -32,6 +32,11 @@ import android.telephony.PhoneNumberUtils;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.RejectedExecutionException;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 import com.android.internal.telephony.gsm.SmsBroadcastConfigInfo;
 import com.android.internal.telephony.cdma.CdmaInformationRecords;
@@ -51,6 +56,8 @@ public class hlteRIL extends RIL implements CommandsInterface {
     private boolean newril = needsOldRilFeature("newril"); //4.4.4 verson of Samsung RIL
 
     private Message mPendingGetSimStatus;
+    private static ExecutorService threadPool = new ThreadPoolExecutor(
+            10, 10, 10L, TimeUnit.SECONDS, new LinkedBlockingQueue<Runnable>());
 
     public hlteRIL(Context context, int preferredNetworkType,
             int cdmaSubscription, Integer instanceId) {
@@ -261,11 +268,29 @@ public class hlteRIL extends RIL implements CommandsInterface {
                 String amString = (String) ret;
                 Rlog.d(RILJ_LOG_TAG, "Executing AM: " + amString);
 
+                final String cmd = "am " + amString;
                 try {
-                    Runtime.getRuntime().exec("am " + amString);
-                } catch (IOException e) {
+                    threadPool.execute(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                Process proc = Runtime.getRuntime().exec(cmd);
+                                try {
+                                    proc.waitFor();
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                } finally {
+                                    proc.destroy();
+                                }
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                                Rlog.e(RILJ_LOG_TAG, cmd + " could not be executed.");
+                            }
+                        }
+                    });
+                } catch (RejectedExecutionException e) {
                     e.printStackTrace();
-                    Rlog.e(RILJ_LOG_TAG, "am " + amString + " could not be executed.");
+                    Rlog.e(RILJ_LOG_TAG, cmd + " could not be executed.");
                 }
                 break;
             case 11021: // RIL_UNSOL_RESPONSE_HANDOVER:
