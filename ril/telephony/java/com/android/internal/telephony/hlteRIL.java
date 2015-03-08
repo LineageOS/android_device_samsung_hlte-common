@@ -262,7 +262,13 @@ public class hlteRIL extends RIL implements CommandsInterface {
                 Rlog.d(RILJ_LOG_TAG, "Executing AM: " + amString);
 
                 try {
-                    Runtime.getRuntime().exec("am " + amString);
+                    Process p = Runtime.getRuntime().exec("am " + amString);
+                    try {
+                        p.waitFor();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    p.destroy();
                 } catch (IOException e) {
                     e.printStackTrace();
                     Rlog.e(RILJ_LOG_TAG, "am " + amString + " could not be executed.");
