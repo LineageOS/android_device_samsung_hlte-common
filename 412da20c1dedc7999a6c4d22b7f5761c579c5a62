@@ -33,6 +33,24 @@
       "revId": "412da20c1dedc7999a6c4d22b7f5761c579c5a62",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac969e8_ec6c9f0a",
+        "filename": "ril/telephony/java/com/android/internal/telephony/hlteRIL.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 883
+      },
+      "writtenOn": "2015-03-12T14:46:52Z",
+      "side": 1,
+      "message": "I was just thinking that an hour ago but i thought he was trying to prevent a race condition.",
+      "parentUuid": "7ac969e8_ccba836e",
+      "revId": "412da20c1dedc7999a6c4d22b7f5761c579c5a62",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
