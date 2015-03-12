@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ac969e8_2c8997cb",
+        "filename": "ril/telephony/java/com/android/internal/telephony/hlteRIL.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 883
+      },
+      "writtenOn": "2015-03-12T14:09:58Z",
+      "side": 1,
+      "message": "Why is this static?",
+      "revId": "412da20c1dedc7999a6c4d22b7f5761c579c5a62",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
