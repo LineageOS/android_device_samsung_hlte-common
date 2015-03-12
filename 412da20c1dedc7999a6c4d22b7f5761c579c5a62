@@ -51,6 +51,24 @@
       "revId": "412da20c1dedc7999a6c4d22b7f5761c579c5a62",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ac969e8_8f035d0d",
+        "filename": "ril/telephony/java/com/android/internal/telephony/hlteRIL.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 6351
+      },
+      "writtenOn": "2015-03-12T22:19:11Z",
+      "side": 1,
+      "message": "That was my first thought but isn\u0027t this constructor allowing 10 concurrent requests at the same time anyway?\n\nAnd, for the record, if we wanted to stop the race condition I would vote for doing it in a separate commit because it exists right now.  It would be easy enough to fix with a static mutex.",
+      "parentUuid": "7ac969e8_ec6c9f0a",
+      "revId": "412da20c1dedc7999a6c4d22b7f5761c579c5a62",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
