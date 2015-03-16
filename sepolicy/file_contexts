@@ -12,6 +12,7 @@
 /sys/class/sec/sec_touchkey/keypad_enable               u:object_r:sysfs_display:s0
 
 # Display
+/sys/devices/virtual/graphics/fb0/rgb                   u:object_r:sysfs_display:s0
 /sys/devices/virtual/lcd/panel/power_reduce             u:object_r:sysfs_display:s0
 
 # NFC
