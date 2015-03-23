@@ -50,8 +50,6 @@ public class hlteRIL extends RIL implements CommandsInterface {
     private boolean isGSM = false;
     private boolean newril = needsOldRilFeature("newril"); //4.4.4 verson of Samsung RIL
 
-    private Message mPendingGetSimStatus;
-
     public hlteRIL(Context context, int preferredNetworkType,
             int cdmaSubscription, Integer instanceId) {
         super(context, preferredNetworkType, cdmaSubscription, instanceId);
