@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa31d9ce_edebe1ae",
+        "filename": "ril/telephony/java/com/android/internal/telephony/hlteRIL.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 9813
+      },
+      "writtenOn": "2015-06-16T11:00:48Z",
+      "side": 1,
+      "message": "whitespace everywhre",
+      "revId": "d2d26362dc3355e2b89538a57b554adc45989c20",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
