@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff346bd7_f8ca694d",
+        "filename": "sepolicy/system_server.te",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 7202
+      },
+      "writtenOn": "2015-09-17T16:50:40Z",
+      "side": 0,
+      "message": "Do we still need it?\n\nAlso; one more needed to be deleted:\nhttps://github.com/CyanogenMod/android_device_samsung_hlte-common/blob/cm-12.1/sepolicy/system_app.te#L1",
+      "range": {
+        "startLine": 3,
+        "startChar": 16,
+        "endLine": 3,
+        "endChar": 30
+      },
+      "revId": "c8c2c37f15f9f4e578843b22832ad6ef52adc85b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
