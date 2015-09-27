@@ -17,6 +17,14 @@ vendor/lib/soundfx/libqcreverb.so
 vendor/firmware/bcm4335_V0093.0399_wisol.hcd
 vendor/firmware/bcm4335_V0093.0399.hcd
 
+# ADSP
+bin/adsprpcd
+vendor/lib/libadsprpc.so
+vendor/lib/libfastcvadsp_stub.so
+vendor/lib/libfastcvopt.so
+vendor/lib/libscve.so
+vendor/lib/libscve_stub.so
+
 # Camera chromatix
 etc/C13QL_s5k3l2xx_module_info.xml
 etc/C13QS_imx135_module_info.xml
