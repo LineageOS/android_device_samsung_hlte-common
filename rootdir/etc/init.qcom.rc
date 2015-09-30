@@ -540,31 +540,91 @@ on property:sys.boot_completed=1
     write /sys/module/msm_pm/modes/cpu1/retention/idle_enabled 1
     write /sys/module/msm_pm/modes/cpu2/retention/idle_enabled 1
     write /sys/module/msm_pm/modes/cpu3/retention/idle_enabled 1
-    write /sys/module/msm_pm/modes/cpu0/retention/suspend_enabled 1
-    write /sys/module/msm_pm/modes/cpu1/retention/suspend_enabled 1
-    write /sys/module/msm_pm/modes/cpu2/retention/suspend_enabled 1
-    write /sys/module/msm_pm/modes/cpu3/retention/suspend_enabled 1
-    write /sys/module/msm_thermal/core_control/enabled 1
-
-    # Configure the CPU governor
+    
     write /sys/devices/system/cpu/cpu1/online 1
     write /sys/devices/system/cpu/cpu2/online 1
     write /sys/devices/system/cpu/cpu3/online 1
-    write /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay "20000 1400000:40000 1700000:20000"
-    write /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load 90
-    write /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq 1497600
-    write /sys/devices/system/cpu/cpufreq/interactive/io_is_busy 1
-    write /sys/devices/system/cpu/cpufreq/interactive/target_loads "85 1500000:90 1800000:70"
-    write /sys/devices/system/cpu/cpufreq/interactive/min_sample_time 40000
-    write /sys/devices/system/cpu/cpufreq/interactive/timer_rate 30000
-    write /sys/devices/system/cpu/cpufreq/interactive/sampling_down_factor 100000
+
+    for devfreq_gov in /sys/class/devfreq/qcom,cpubw*/governor
+    do
+        echo "msm_cpufreq" > $devfreq_gov
+    done
+
+    write /sys/module/msm_thermal/core_control/enabled 1
+    write /sys/module/msm_thermal/parameters/enabled "Y"
+
+    write /sys/module/cpu_boost/parameters/sync_threshold 1497600
+
+    # Configure the cpu-boost module
+    write /sys/module/cpu_boost/parameters/boost_ms 10
+    write /sys/module/cpu_boost/parameters/input_boost_freq 0
+    write /sys/module/cpu_boost/parameters/input_boost_ms 40
+    write /dev/cpuctl/apps/cpu.notify_on_migrate 1
+
+    # Configure the CPU governor
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
+    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor interactive
+    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor interactive
+    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor interactive
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 300000
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_min_freq 300000
     write /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq 300000
     write /sys/devices/system/cpu/cpu3/cpufreq/scaling_min_freq 300000
-    write /sys/module/msm_thermal/core_control/enabled 1
-    write /sys/devices/system/cpu/cpufreq/interactive/up_threshold_any_cpu_load 75
-    write /sys/devices/system/cpu/cpufreq/interactive/up_threshold_any_cpu_freq 1728000
+
+    setprop ro.qualcomm.perf.cores_online 2
+
+    #Set Mode Change Condition
+    write /sys/devices/system/cpu/cpufreq/interactive/multi_enter_load 314
+    write /sys/devices/system/cpu/cpufreq/interactive/multi_enter_time 99000
+    write /sys/devices/system/cpu/cpufreq/interactive/multi_exit_load 83
+    write /sys/devices/system/cpu/cpufreq/interactive/multi_exit_time 299000
+    write /sys/devices/system/cpu/cpufreq/interactive/single_enter_load 83
+    write /sys/devices/system/cpu/cpufreq/interactive/single_enter_time 199000
+    write /sys/devices/system/cpu/cpufreq/interactive/single_exit_load 55
+    write /sys/devices/system/cpu/cpufreq/interactive/single_exit_time 99000
+
+    # Default interactive governor parameters
+    write /sys/devices/system/cpu/cpufreq/interactive/param_index 0
+    write /sys/devices/system/cpu/cpufreq/interactive/io_is_busy 1
+    write /sys/devices/system/cpu/cpufreq/interactive/timer_rate 20000
+    write /sys/devices/system/cpu/cpufreq/interactive/timer_slack 20000
+    write /sys/devices/system/cpu/cpufreq/interactive/min_sample_time 40000
+    write /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq 1190400
+    write /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load 99
+    write /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay "20000 1400000:80000 1500000:40000 1700000:20000 2400000:40000"
+    write /sys/devices/system/cpu/cpufreq/interactive/target_loads "85 1400000:90 1700000:95 2400000:97"
+    write /sys/devices/system/cpu/cpufreq/interactive/sampling_down_factor 40000
+    write /sys/devices/system/cpu/cpufreq/interactive/bimc_hispeed_freq 556800
+    #Single Mode Parameter
+    write /sys/devices/system/cpu/cpufreq/interactive/param_index 1
+    write /sys/devices/system/cpu/cpufreq/interactive/timer_rate 20000
+    write /sys/devices/system/cpu/cpufreq/interactive/min_sample_time 59000
+    write /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq 1497600
+    write /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load 95
+    write /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay 19000
+    write /sys/devices/system/cpu/cpufreq/interactive/target_loads "60 800000:65 1400000:65 1700000:75"
+    write /sys/devices/system/cpu/cpufreq/interactive/sampling_down_factor 150000
+    #Multi Mode Parameter
+    write /sys/devices/system/cpu/cpufreq/interactive/param_index 2
+    write /sys/devices/system/cpu/cpufreq/interactive/timer_rate 20000
+    write /sys/devices/system/cpu/cpufreq/interactive/min_sample_time 79000
+    write /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq 1728000
+    write /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load 90
+    write /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay 19000
+    write /sys/devices/system/cpu/cpufreq/interactive/target_loads "50 800000:60 1400000:65"
+    write /sys/devices/system/cpu/cpufreq/interactive/sampling_down_factor 200000
+    #Single & Multi Mode Parameter
+    write /sys/devices/system/cpu/cpufreq/interactive/param_index 3
+    write /sys/devices/system/cpu/cpufreq/interactive/timer_rate 20000
+    write /sys/devices/system/cpu/cpufreq/interactive/min_sample_time 99000
+    write /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq 1958400
+    write /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load 85
+    write /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay 19000
+    write /sys/devices/system/cpu/cpufreq/interactive/target_loads "50 1400000:60"
+    write /sys/devices/system/cpu/cpufreq/interactive/sampling_down_factor 300000
+    write /sys/devices/system/cpu/cpufreq/interactive/param_index 0
+
+
     chown root system /sys/devices/system/cpu/mfreq
     chmod 220 /sys/devices/system/cpu/mfreq
     chown root system /sys/devices/system/cpu/cpu1/online
@@ -573,57 +633,21 @@ on property:sys.boot_completed=1
     chmod 664 /sys/devices/system/cpu/cpu1/online
     chmod 664 /sys/devices/system/cpu/cpu2/online
     chmod 664 /sys/devices/system/cpu/cpu3/online
-    write /dev/cpuctl/apps/cpu.notify_on_migrate 1
 
-    # Configure the cpu-boost module
-    write /sys/module/cpu_boost/parameters/boost_ms 10
-    write /sys/module/cpu_boost/parameters/sync_threshold 1728000
-    write /sys/module/cpu_boost/parameters/input_boost_freq 1497600
-    write /sys/module/cpu_boost/parameters/input_boost_ms 40
-    write /sys/module/cpu_boost/parameters/plug_boost_freq 1728000
-    write /sys/module/cpu_boost/parameters/plug_boost_ms 5
-    
-    # post boot
-    setprop sys.perf.profile 1
 
-on property:sys.boot_completed=0
-    setprop sys.perf.profile 2
 
-# CM Performance Profiles
-on property:sys.perf.profile=0
-    write /sys/class/devfreq/qcom,cpubw.34/governor powersave
-    write /sys/class/devfreq/fdb00000.qcom,kgsl-3d0/governor powersave
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor conservative
-    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor conservative
-    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor conservative
-    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor conservative
-    write /sys/class/kgsl/kgsl-3d0/devfreq/governor powersave
+   # Change cpu-boost sysfs permission
+   chown system system /sys/module/cpu_boost/parameters/sync_threshold
+   chmod 0660 /sys/module/cpu_boost/parameters/sync_threshold
+   chown system system /sys/module/cpu_boost/parameters/boost_ms
+   chmod 0660 /sys/module/cpu_boost/parameters/boost_ms
+
+    chown system /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate
+    chown system /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor
+    chown system /sys/devices/system/cpu/cpufreq/ondemand/io_is_busy
+
+    # Post boot services
     start mpdecision
-
-on property:sys.perf.profile=1
-    write /sys/class/devfreq/qcom,cpubw.34/governor msm_cpufreq
-    write /sys/class/devfreq/fdb00000.qcom,kgsl-3d0/governor msm-adreno-tz
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
-    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor interactive
-    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor interactive
-    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor interactive
-
-    write /sys/class/kgsl/kgsl-3d0/devfreq/governor msm-adreno-tz
-    start mpdecision
-
-on property:sys.perf.profile=2
-    stop mpdecision
-    write /sys/devices/system/cpu/cpu0/online 1
-    write /sys/devices/system/cpu/cpu1/online 1
-    write /sys/devices/system/cpu/cpu2/online 1
-    write /sys/devices/system/cpu/cpu3/online 1
-    write /sys/class/devfreq/qcom,cpubw.34/governor performance
-    write /sys/class/devfreq/fdb00000.qcom,kgsl-3d0/governor performance
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor performance
-    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor performance
-    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor performance
-    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor performance
-    write /sys/class/kgsl/kgsl-3d0/devfreq/governor performance
 
 
 service hostapd /system/bin/hostapd -dddd /data/hostapd/hostapd.conf
