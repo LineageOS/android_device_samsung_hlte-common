@@ -311,4 +311,7 @@
         <item>1050</item>
     </integer-array> -->
 
+    <!-- enable doze powersaving mode -->
+    <bool name="config_enableAutoPowerModes">true</bool>
+
 </resources>
