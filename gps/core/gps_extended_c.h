@@ -1,4 +1,4 @@
-/* Copyright (c) 2013, The Linux Foundation. All rights reserved.
+/* Copyright (c) 2013-2014, The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -35,7 +35,7 @@ extern "C" {
 
 #include <ctype.h>
 #include <stdbool.h>
-#include "hardware/gps.h"
+#include <hardware/gps.h>
 
 /** Location has valid source information. */
 #define LOCATION_HAS_SOURCE_INFO   0x0020
@@ -55,12 +55,26 @@ extern "C" {
 /** Position source is ULP */
 #define ULP_LOCATION_IS_FROM_HYBRID   0x0001
 /** Position source is GNSS only */
-#define ULP_LOCATION_IS_FROM_GNSS   0x0002
+#define ULP_LOCATION_IS_FROM_GNSS     0x0002
 /** Position source is ZPP only */
-#define ULP_LOCATION_IS_FROM_ZPP 0x0004
+#define ULP_LOCATION_IS_FROM_ZPP      0x0004
+/** Position is from a Geofence Breach Event */
+#define ULP_LOCATION_IS_FROM_GEOFENCE 0X0008
+/** Positioin is from Hardware FLP */
+#define ULP_LOCATION_IS_FROM_HW_FLP   0x0010
 
 #define ULP_MIN_INTERVAL_INVALID 0xffffffff
 
+/*Emergency SUPL*/
+#define GPS_NI_TYPE_EMERGENCY_SUPL    4
+
+#define AGPS_CERTIFICATE_MAX_LENGTH 2000
+#define AGPS_CERTIFICATE_MAX_SLOTS 10
+
+enum loc_registration_mask_status {
+    LOC_REGISTRATION_MASK_ENABLED,
+    LOC_REGISTRATION_MASK_DISABLED
+};
 
 typedef struct {
     /** set to sizeof(UlpLocation) */
@@ -96,6 +110,16 @@ typedef int16_t AGpsBearerType;
 #define AGPS_APN_BEARER_IPV6        1
 #define AGPS_APN_BEARER_IPV4V6      2
 
+#define GPS_DELETE_ALMANAC_CORR     0x00001000
+#define GPS_DELETE_FREQ_BIAS_EST    0x00002000
+#define GPS_DELETE_EPHEMERIS_GLO    0x00004000
+#define GPS_DELETE_ALMANAC_GLO      0x00008000
+#define GPS_DELETE_SVDIR_GLO        0x00010000
+#define GPS_DELETE_SVSTEER_GLO      0x00020000
+#define GPS_DELETE_ALMANAC_CORR_GLO 0x00040000
+#define GPS_DELETE_TIME_GPS         0x00080000
+#define GPS_DELETE_TIME_GLO         0x00100000
+
 /** GPS extended callback structure. */
 typedef struct {
     /** set to sizeof(GpsCallbacks) */
@@ -106,6 +130,14 @@ typedef struct {
     gps_create_thread create_thread_cb;
     gps_request_utc_time request_utc_time_cb;
 } GpsExtCallbacks;
+
+/** GPS extended batch options */
+typedef struct {
+    double max_power_allocation_mW;
+    uint32_t sources_to_use;
+    uint32_t flags;
+    int64_t period_ns;
+} GpsExtBatchOptions;
 
 /** Callback to report the xtra server url to the client.
  *  The client should use this url when downloading xtra unless overwritten
@@ -128,7 +160,7 @@ typedef struct {
     AGpsExtType type;
     AGpsStatusValue status;
     uint32_t        ipv4_addr;
-    char            ipv6_addr[16];
+    struct sockaddr_storage addr;
     char            ssid[SSID_BUF_SIZE];
     char            password[SSID_BUF_SIZE];
 } AGpsExtStatus;
@@ -230,6 +262,19 @@ typedef struct {
     float           speed_unc;
 } GpsLocationExtended;
 
+typedef struct GpsExtLocation_s {
+    size_t          size;
+    uint16_t        flags;
+    double          latitude;
+    double          longitude;
+    double          altitude;
+    float           speed;
+    float           bearing;
+    float           accuracy;
+    int64_t         timestamp;
+    uint32_t        sources_used;
+} GpsExtLocation;
+
 enum loc_sess_status {
     LOC_SESS_SUCCESS,
     LOC_SESS_INTERMEDIATE,
@@ -285,59 +330,67 @@ enum loc_api_adapter_err {
 };
 
 enum loc_api_adapter_event_index {
-    LOC_API_ADAPTER_REPORT_POSITION = 0,       // Position report comes in loc_parsed_position_s_type
-    LOC_API_ADAPTER_REPORT_SATELLITE,          // Satellite in view report
-    LOC_API_ADAPTER_REPORT_NMEA_1HZ,           // NMEA report at 1HZ rate
-    LOC_API_ADAPTER_REPORT_NMEA_POSITION,      // NMEA report at position report rate
-    LOC_API_ADAPTER_REQUEST_NI_NOTIFY_VERIFY,  // NI notification/verification request
-    LOC_API_ADAPTER_REQUEST_ASSISTANCE_DATA,   // Assistance data, eg: time, predicted orbits request
-    LOC_API_ADAPTER_REQUEST_LOCATION_SERVER,   // Request for location server
-    LOC_API_ADAPTER_REPORT_IOCTL,              // Callback report for loc_ioctl
-    LOC_API_ADAPTER_REPORT_STATUS,             // Misc status report: eg, engine state
-    LOC_API_ADAPTER_REQUEST_WIFI,              //
-    LOC_API_ADAPTER_SENSOR_STATUS,             //
-    LOC_API_ADAPTER_REQUEST_TIME_SYNC,         //
-    LOC_API_ADAPTER_REPORT_SPI,                //
-    LOC_API_ADAPTER_REPORT_NI_GEOFENCE,        //
-    LOC_API_ADAPTER_GEOFENCE_GEN_ALERT,        //
-    LOC_API_ADAPTER_REPORT_GENFENCE_BREACH,    //
-    LOC_API_ADAPTER_PEDOMETER_CTRL,            //
-    LOC_API_ADAPTER_MOTION_CTRL,               //
-    LOC_API_ADAPTER_REQUEST_WIFI_AP_DATA,      // Wifi ap data
-    LOC_API_ADAPTER_BATCH_FULL,                // Batching on full
-    LOC_API_ADAPTER_BATCHED_POSITION_REPORT,   // Batching on fix
+    LOC_API_ADAPTER_REPORT_POSITION = 0,               // Position report comes in loc_parsed_position_s_type
+    LOC_API_ADAPTER_REPORT_SATELLITE,                  // Satellite in view report
+    LOC_API_ADAPTER_REPORT_NMEA_1HZ,                   // NMEA report at 1HZ rate
+    LOC_API_ADAPTER_REPORT_NMEA_POSITION,              // NMEA report at position report rate
+    LOC_API_ADAPTER_REQUEST_NI_NOTIFY_VERIFY,          // NI notification/verification request
+    LOC_API_ADAPTER_REQUEST_ASSISTANCE_DATA,           // Assistance data, eg: time, predicted orbits request
+    LOC_API_ADAPTER_REQUEST_LOCATION_SERVER,           // Request for location server
+    LOC_API_ADAPTER_REPORT_IOCTL,                      // Callback report for loc_ioctl
+    LOC_API_ADAPTER_REPORT_STATUS,                     // Misc status report: eg, engine state
+    LOC_API_ADAPTER_REQUEST_WIFI,                      //
+    LOC_API_ADAPTER_SENSOR_STATUS,                     //
+    LOC_API_ADAPTER_REQUEST_TIME_SYNC,                 //
+    LOC_API_ADAPTER_REPORT_SPI,                        //
+    LOC_API_ADAPTER_REPORT_NI_GEOFENCE,                //
+    LOC_API_ADAPTER_GEOFENCE_GEN_ALERT,                //
+    LOC_API_ADAPTER_REPORT_GENFENCE_BREACH,            //
+    LOC_API_ADAPTER_PEDOMETER_CTRL,                    //
+    LOC_API_ADAPTER_MOTION_CTRL,                       //
+    LOC_API_ADAPTER_REQUEST_WIFI_AP_DATA,              // Wifi ap data
+    LOC_API_ADAPTER_BATCH_FULL,                        // Batching on full
+    LOC_API_ADAPTER_BATCHED_POSITION_REPORT,           // Batching on fix
+    LOC_API_ADAPTER_BATCHED_GENFENCE_BREACH_REPORT,    //
+    LOC_API_ADAPTER_GNSS_MEASUREMENT,                  // GNSS Measurement report
 
     LOC_API_ADAPTER_EVENT_MAX
 };
 
-#define LOC_API_ADAPTER_BIT_PARSED_POSITION_REPORT   (1<<LOC_API_ADAPTER_REPORT_POSITION)
-#define LOC_API_ADAPTER_BIT_SATELLITE_REPORT         (1<<LOC_API_ADAPTER_REPORT_SATELLITE)
-#define LOC_API_ADAPTER_BIT_NMEA_1HZ_REPORT          (1<<LOC_API_ADAPTER_REPORT_NMEA_1HZ)
-#define LOC_API_ADAPTER_BIT_NMEA_POSITION_REPORT     (1<<LOC_API_ADAPTER_REPORT_NMEA_POSITION)
-#define LOC_API_ADAPTER_BIT_NI_NOTIFY_VERIFY_REQUEST (1<<LOC_API_ADAPTER_REQUEST_NI_NOTIFY_VERIFY)
-#define LOC_API_ADAPTER_BIT_ASSISTANCE_DATA_REQUEST  (1<<LOC_API_ADAPTER_REQUEST_ASSISTANCE_DATA)
-#define LOC_API_ADAPTER_BIT_LOCATION_SERVER_REQUEST  (1<<LOC_API_ADAPTER_REQUEST_LOCATION_SERVER)
-#define LOC_API_ADAPTER_BIT_IOCTL_REPORT             (1<<LOC_API_ADAPTER_REPORT_IOCTL)
-#define LOC_API_ADAPTER_BIT_STATUS_REPORT            (1<<LOC_API_ADAPTER_REPORT_STATUS)
-#define LOC_API_ADAPTER_BIT_REQUEST_WIFI             (1<<LOC_API_ADAPTER_REQUEST_WIFI)
-#define LOC_API_ADAPTER_BIT_SENSOR_STATUS            (1<<LOC_API_ADAPTER_SENSOR_STATUS)
-#define LOC_API_ADAPTER_BIT_REQUEST_TIME_SYNC        (1<<LOC_API_ADAPTER_REQUEST_TIME_SYNC)
-#define LOC_API_ADAPTER_BIT_REPORT_SPI               (1<<LOC_API_ADAPTER_REPORT_SPI)
-#define LOC_API_ADAPTER_BIT_REPORT_NI_GEOFENCE       (1<<LOC_API_ADAPTER_REPORT_NI_GEOFENCE)
-#define LOC_API_ADAPTER_BIT_GEOFENCE_GEN_ALERT       (1<<LOC_API_ADAPTER_GEOFENCE_GEN_ALERT)
-#define LOC_API_ADAPTER_BIT_REPORT_GENFENCE_BREACH   (1<<LOC_API_ADAPTER_REPORT_GENFENCE_BREACH)
-#define LOC_API_ADAPTER_BIT_PEDOMETER_CTRL           (1<<LOC_API_ADAPTER_PEDOMETER_CTRL)
-#define LOC_API_ADAPTER_BIT_MOTION_CTRL              (1<<LOC_API_ADAPTER_MOTION_CTRL)
-#define LOC_API_ADAPTER_BIT_REQUEST_WIFI_AP_DATA     (1<<LOC_API_ADAPTER_REQUEST_WIFI_AP_DATA)
-#define LOC_API_ADAPTER_BIT_BATCH_FULL               (1<<LOC_API_ADAPTER_BATCH_FULL)
-#define LOC_API_ADAPTER_BIT_BATCHED_POSITION_REPORT  (1<<LOC_API_ADAPTER_BATCHED_POSITION_REPORT)
+#define LOC_API_ADAPTER_BIT_PARSED_POSITION_REPORT           (1<<LOC_API_ADAPTER_REPORT_POSITION)
+#define LOC_API_ADAPTER_BIT_SATELLITE_REPORT                 (1<<LOC_API_ADAPTER_REPORT_SATELLITE)
+#define LOC_API_ADAPTER_BIT_NMEA_1HZ_REPORT                  (1<<LOC_API_ADAPTER_REPORT_NMEA_1HZ)
+#define LOC_API_ADAPTER_BIT_NMEA_POSITION_REPORT             (1<<LOC_API_ADAPTER_REPORT_NMEA_POSITION)
+#define LOC_API_ADAPTER_BIT_NI_NOTIFY_VERIFY_REQUEST         (1<<LOC_API_ADAPTER_REQUEST_NI_NOTIFY_VERIFY)
+#define LOC_API_ADAPTER_BIT_ASSISTANCE_DATA_REQUEST          (1<<LOC_API_ADAPTER_REQUEST_ASSISTANCE_DATA)
+#define LOC_API_ADAPTER_BIT_LOCATION_SERVER_REQUEST          (1<<LOC_API_ADAPTER_REQUEST_LOCATION_SERVER)
+#define LOC_API_ADAPTER_BIT_IOCTL_REPORT                     (1<<LOC_API_ADAPTER_REPORT_IOCTL)
+#define LOC_API_ADAPTER_BIT_STATUS_REPORT                    (1<<LOC_API_ADAPTER_REPORT_STATUS)
+#define LOC_API_ADAPTER_BIT_REQUEST_WIFI                     (1<<LOC_API_ADAPTER_REQUEST_WIFI)
+#define LOC_API_ADAPTER_BIT_SENSOR_STATUS                    (1<<LOC_API_ADAPTER_SENSOR_STATUS)
+#define LOC_API_ADAPTER_BIT_REQUEST_TIME_SYNC                (1<<LOC_API_ADAPTER_REQUEST_TIME_SYNC)
+#define LOC_API_ADAPTER_BIT_REPORT_SPI                       (1<<LOC_API_ADAPTER_REPORT_SPI)
+#define LOC_API_ADAPTER_BIT_REPORT_NI_GEOFENCE               (1<<LOC_API_ADAPTER_REPORT_NI_GEOFENCE)
+#define LOC_API_ADAPTER_BIT_GEOFENCE_GEN_ALERT               (1<<LOC_API_ADAPTER_GEOFENCE_GEN_ALERT)
+#define LOC_API_ADAPTER_BIT_REPORT_GENFENCE_BREACH           (1<<LOC_API_ADAPTER_REPORT_GENFENCE_BREACH)
+#define LOC_API_ADAPTER_BIT_BATCHED_GENFENCE_BREACH_REPORT   (1<<LOC_API_ADAPTER_BATCHED_GENFENCE_BREACH_REPORT)
+#define LOC_API_ADAPTER_BIT_PEDOMETER_CTRL                   (1<<LOC_API_ADAPTER_PEDOMETER_CTRL)
+#define LOC_API_ADAPTER_BIT_MOTION_CTRL                      (1<<LOC_API_ADAPTER_MOTION_CTRL)
+#define LOC_API_ADAPTER_BIT_REQUEST_WIFI_AP_DATA             (1<<LOC_API_ADAPTER_REQUEST_WIFI_AP_DATA)
+#define LOC_API_ADAPTER_BIT_BATCH_FULL                       (1<<LOC_API_ADAPTER_BATCH_FULL)
+#define LOC_API_ADAPTER_BIT_BATCHED_POSITION_REPORT          (1<<LOC_API_ADAPTER_BATCHED_POSITION_REPORT)
+#define LOC_API_ADAPTER_BIT_GNSS_MEASUREMENT                 (1<<LOC_API_ADAPTER_GNSS_MEASUREMENT)
 
 typedef unsigned int LOC_API_ADAPTER_EVENT_MASK_T;
 
+typedef uint32_t LOC_GPS_LOCK_MASK;
+#define isGpsLockNone(lock) ((lock) == 0)
+#define isGpsLockMO(lock) ((lock) & ((LOC_GPS_LOCK_MASK)1))
+#define isGpsLockMT(lock) ((lock) & ((LOC_GPS_LOCK_MASK)2))
+#define isGpsLockAll(lock) (((lock) & ((LOC_GPS_LOCK_MASK)3)) == 3)
 
 #ifdef __cplusplus
 }
 #endif /* __cplusplus */
 
 #endif /* GPS_EXTENDED_C_H */
-

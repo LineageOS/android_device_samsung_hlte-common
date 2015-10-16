@@ -45,21 +45,15 @@ typedef struct msg_q {
 
 /*===========================================================================
 FUNCTION    convert_linked_list_err_type
-
 DESCRIPTION
    Converts from one set of enum values to another.
-
    linked_list_val: Value to convert to msg_q_enum_type
-
 DEPENDENCIES
    N/A
-
 RETURN VALUE
    Corresponding linked_list_enum_type in msg_q_enum_type
-
 SIDE EFFECTS
    N/A
-
 ===========================================================================*/
 static msq_q_err_type convert_linked_list_err_type(linked_list_err_type linked_list_val)
 {
@@ -85,9 +79,7 @@ static msq_q_err_type convert_linked_list_err_type(linked_list_err_type linked_l
 /* ----------------------- END INTERNAL FUNCTIONS ---------------------------------------- */
 
 /*===========================================================================
-
   FUNCTION:   msg_q_init
-
   ===========================================================================*/
 msq_q_err_type msg_q_init(void** msg_q_data)
 {
@@ -137,9 +129,7 @@ msq_q_err_type msg_q_init(void** msg_q_data)
 }
 
 /*===========================================================================
-
   FUNCTION:   msg_q_init2
-
   ===========================================================================*/
 const void* msg_q_init2()
 {
@@ -151,9 +141,7 @@ const void* msg_q_init2()
 }
 
 /*===========================================================================
-
   FUNCTION:   msg_q_destroy
-
   ===========================================================================*/
 msq_q_err_type msg_q_destroy(void** msg_q_data)
 {
@@ -178,9 +166,7 @@ msq_q_err_type msg_q_destroy(void** msg_q_data)
 }
 
 /*===========================================================================
-
   FUNCTION:   msg_q_snd
-
   ===========================================================================*/
 msq_q_err_type msg_q_snd(void* msg_q_data, void* msg_obj, void (*dealloc)(void*))
 {
@@ -199,7 +185,7 @@ msq_q_err_type msg_q_snd(void* msg_q_data, void* msg_obj, void (*dealloc)(void*)
    msg_q* p_msg_q = (msg_q*)msg_q_data;
 
    pthread_mutex_lock(&p_msg_q->list_mutex);
-   LOC_LOGD("%s: Sending message with handle = 0x%08X\n", __FUNCTION__, msg_obj);
+   LOC_LOGD("%s: Sending message with handle = 0x%p\n", __FUNCTION__, msg_obj);
 
    if( p_msg_q->unblocked )
    {
@@ -215,15 +201,13 @@ msq_q_err_type msg_q_snd(void* msg_q_data, void* msg_obj, void (*dealloc)(void*)
 
    pthread_mutex_unlock(&p_msg_q->list_mutex);
 
-   LOC_LOGD("%s: Finished Sending message with handle = 0x%08X\n", __FUNCTION__, msg_obj);
+   LOC_LOGD("%s: Finished Sending message with handle = 0x%p\n", __FUNCTION__, msg_obj);
 
    return rv;
 }
 
 /*===========================================================================
-
   FUNCTION:   msg_q_rcv
-
   ===========================================================================*/
 msq_q_err_type msg_q_rcv(void* msg_q_data, void** msg_obj)
 {
@@ -263,15 +247,13 @@ msq_q_err_type msg_q_rcv(void* msg_q_data, void** msg_obj)
 
    pthread_mutex_unlock(&p_msg_q->list_mutex);
 
-   LOC_LOGD("%s: Received message 0x%08X rv = %d\n", __FUNCTION__, *msg_obj, rv);
+   LOC_LOGD("%s: Received message 0x%p rv = %d\n", __FUNCTION__, *msg_obj, rv);
 
    return rv;
 }
 
 /*===========================================================================
-
   FUNCTION:   msg_q_flush
-
   ===========================================================================*/
 msq_q_err_type msg_q_flush(void* msg_q_data)
 {
@@ -299,9 +281,7 @@ msq_q_err_type msg_q_flush(void* msg_q_data)
 }
 
 /*===========================================================================
-
   FUNCTION:   msg_q_unblock
-
   ===========================================================================*/
 msq_q_err_type msg_q_unblock(void* msg_q_data)
 {

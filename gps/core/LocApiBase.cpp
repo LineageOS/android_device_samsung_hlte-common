@@ -1,4 +1,4 @@
-/* Copyright (c) 2011-2013, The Linux Foundation. All rights reserved.
+/* Copyright (c) 2011-2014, The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -33,6 +33,7 @@
 #include <LocApiBase.h>
 #include <LocAdapterBase.h>
 #include <log_util.h>
+#include <LocDualContext.h>
 
 namespace loc_core {
 
@@ -125,8 +126,9 @@ struct LocOpenMsg : public LocMsg {
 };
 
 LocApiBase::LocApiBase(const MsgTask* msgTask,
-                       LOC_API_ADAPTER_EVENT_MASK_T excludedMask) :
-    mExcludedMask(excludedMask), mMsgTask(msgTask), mMask(0)
+                       LOC_API_ADAPTER_EVENT_MASK_T excludedMask,
+                       ContextBase* context) :
+    mExcludedMask(excludedMask), mMsgTask(msgTask), mMask(0), mContext(context)
 {
     memset(mLocAdapters, 0, sizeof(mLocAdapters));
 }
@@ -206,8 +208,20 @@ void LocApiBase::handleEngineUpEvent()
     // This will take care of renegotiating the loc handle
     mMsgTask->sendMsg(new LocSsrMsg(this));
 
+    LocDualContext::injectFeatureConfig(mContext);
+
     // loop through adapters, and deliver to all adapters.
     TO_ALL_LOCADAPTERS(mLocAdapters[i]->handleEngineUpEvent());
+}
+
+void LocApiBase::saveSupportedMsgList(uint64_t A)
+{
+    LOC_LOGE("saveSupportedMsgList");
+}
+
+void LocApiBase::updateEvtMask()
+{
+    mMsgTask->sendMsg(new LocOpenMsg(this, getEvtMask()));
 }
 
 void LocApiBase::handleEngineDownEvent()
@@ -324,6 +338,12 @@ void* LocApiBase :: getSibling()
 LocApiProxyBase* LocApiBase :: getLocApiProxy()
     DEFAULT_IMPL(NULL)
 
+void LocApiBase::reportGpsMeasurementData(GpsData &gpsMeasurementData)
+{
+    // loop through adapters, and deliver to all adapters.
+    TO_ALL_LOCADAPTERS(mLocAdapters[i]->reportGpsMeasurementData(gpsMeasurementData));
+}
+
 enum loc_api_adapter_err LocApiBase::
    open(LOC_API_ADAPTER_EVENT_MASK_T mask)
 DEFAULT_IMPL(LOC_API_ADAPTER_ERR_SUCCESS)
@@ -404,7 +424,8 @@ enum loc_api_adapter_err LocApiBase::
 DEFAULT_IMPL(LOC_API_ADAPTER_ERR_SUCCESS)
 
 enum loc_api_adapter_err LocApiBase::
-    setSensorControlConfig(int sensorUsage)
+    setSensorControlConfig(int sensorUsage,
+                           int sensorProvider)
 DEFAULT_IMPL(LOC_API_ADAPTER_ERR_SUCCESS)
 
 enum loc_api_adapter_err LocApiBase::
@@ -442,11 +463,15 @@ enum loc_api_adapter_err LocApiBase::
 DEFAULT_IMPL(LOC_API_ADAPTER_ERR_SUCCESS)
 
 enum loc_api_adapter_err LocApiBase::
-   getZppFix(GpsLocation & zppLoc)
+   getWwanZppFix(GpsLocation & zppLoc)
 DEFAULT_IMPL(LOC_API_ADAPTER_ERR_SUCCESS)
 
 enum loc_api_adapter_err LocApiBase::
-   getZppFix(GpsLocation & zppLoc, LocPosTechMask & tech_mask)
+   getBestAvailableZppFix(GpsLocation & zppLoc)
+DEFAULT_IMPL(LOC_API_ADAPTER_ERR_SUCCESS)
+
+enum loc_api_adapter_err LocApiBase::
+   getBestAvailableZppFix(GpsLocation & zppLoc, LocPosTechMask & tech_mask)
 DEFAULT_IMPL(LOC_API_ADAPTER_ERR_SUCCESS)
 
 int LocApiBase::
@@ -466,10 +491,26 @@ void LocApiBase::
 DEFAULT_IMPL()
 
 int LocApiBase::
-    setGpsLock(unsigned int lock)
+    setGpsLock(LOC_GPS_LOCK_MASK lock)
 DEFAULT_IMPL(-1)
+
+void LocApiBase::
+    installAGpsCert(const DerEncodedCertificate* pData,
+                    size_t length,
+                    uint32_t slotBitMask)
+DEFAULT_IMPL()
 
 int LocApiBase::
     getGpsLock()
 DEFAULT_IMPL(-1)
+
+int LocApiBase::
+    updateRegistrationMask(LOC_API_ADAPTER_EVENT_MASK_T event,
+                           loc_registration_mask_status isEnabled)
+DEFAULT_IMPL(-1)
+
+bool LocApiBase::
+    gnssConstellationConfig()
+DEFAULT_IMPL(false)
+
 } // namespace loc_core

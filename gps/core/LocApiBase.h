@@ -1,4 +1,4 @@
-/* Copyright (c) 2011-2013, The Linux Foundation. All rights reserved.
+/* Copyright (c) 2011-2014, The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -36,6 +36,7 @@
 #include <log_util.h>
 
 namespace loc_core {
+class ContextBase;
 
 int hexcode(char *hexstring, int string_size,
             const char *data, int data_size);
@@ -70,7 +71,7 @@ class LocApiBase {
     friend struct LocOpenMsg;
     friend class ContextBase;
     const MsgTask* mMsgTask;
-
+    ContextBase *mContext;
     LocAdapterBase* mLocAdapters[MAX_ADAPTERS];
 
 protected:
@@ -81,12 +82,17 @@ protected:
     LOC_API_ADAPTER_EVENT_MASK_T getEvtMask();
     LOC_API_ADAPTER_EVENT_MASK_T mMask;
     LocApiBase(const MsgTask* msgTask,
-               LOC_API_ADAPTER_EVENT_MASK_T excludedMask);
+               LOC_API_ADAPTER_EVENT_MASK_T excludedMask,
+               ContextBase* context = NULL);
     inline virtual ~LocApiBase() { close(); }
     bool isInSession();
     const LOC_API_ADAPTER_EVENT_MASK_T mExcludedMask;
 
 public:
+    inline void sendMsg(const LocMsg* msg) const {
+        mMsgTask->sendMsg(msg);
+    }
+
     void addAdapter(LocAdapterBase* adapter);
     void removeAdapter(LocAdapterBase* adapter);
 
@@ -115,6 +121,9 @@ public:
     void reportDataCallOpened();
     void reportDataCallClosed();
     void requestNiNotify(GpsNiNotification &notify, const void* data);
+    void reportGpsMeasurementData(GpsData &gpsMeasurementData);
+    void saveSupportedMsgList(uint64_t A);
+    void updateEvtMask();
 
     // downward calls
     // All below functions are to be defined by adapter specific modules:
@@ -158,7 +167,7 @@ public:
     virtual enum loc_api_adapter_err
         setLPPConfig(uint32_t profile);
     virtual enum loc_api_adapter_err
-        setSensorControlConfig(int sensorUsage);
+        setSensorControlConfig(int sensorUsage, int sensorProvider);
     virtual enum loc_api_adapter_err
         setSensorProperties(bool gyroBiasVarianceRandomWalk_valid,
                             float gyroBiasVarianceRandomWalk,
@@ -186,13 +195,18 @@ public:
     virtual enum loc_api_adapter_err
         setAGLONASSProtocol(unsigned long aGlonassProtocol);
     virtual enum loc_api_adapter_err
-        getZppFix(GpsLocation & zppLoc);
+        getWwanZppFix(GpsLocation & zppLoc);
     virtual enum loc_api_adapter_err
-        getZppFix(GpsLocation & zppLoc, LocPosTechMask & tech_mask);
+        getBestAvailableZppFix(GpsLocation & zppLoc);
+    virtual enum loc_api_adapter_err
+        getBestAvailableZppFix(GpsLocation & zppLoc, LocPosTechMask & tech_mask);
     virtual int initDataServiceClient();
     virtual int openAndStartDataCall();
     virtual void stopDataCall();
     virtual void closeDataCall();
+    virtual void installAGpsCert(const DerEncodedCertificate* pData,
+                                 size_t length,
+                                 uint32_t slotBitMask);
 
     inline virtual void setInSession(bool inSession) {}
 
@@ -202,17 +216,28 @@ public:
       3 = Lock MT position sessions
       4 = Lock all position sessions
      */
-    virtual int setGpsLock(unsigned int lock);
+    virtual int setGpsLock(LOC_GPS_LOCK_MASK lock);
     /*
       Returns
       Current value of GPS Lock on success
       -1 on failure
      */
     virtual int getGpsLock(void);
+
+    /*
+      Update gps reporting events
+     */
+    virtual int updateRegistrationMask(LOC_API_ADAPTER_EVENT_MASK_T event,
+                                       loc_registration_mask_status isEnabled);
+    /*
+      Check if the modem support the service
+     */
+    virtual bool gnssConstellationConfig();
 };
 
 typedef LocApiBase* (getLocApi_t)(const MsgTask* msgTask,
-                                  LOC_API_ADAPTER_EVENT_MASK_T exMask);
+                                  LOC_API_ADAPTER_EVENT_MASK_T exMask,
+                                  ContextBase *context);
 
 } // namespace loc_core
 

@@ -1,4 +1,4 @@
-/* Copyright (c) 2013-2014, The Linux Foundation. All rights reserved.
+/* Copyright (c) 2009,2011 The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -9,7 +9,7 @@
  *       copyright notice, this list of conditions and the following
  *       disclaimer in the documentation and/or other materials provided
  *       with the distribution.
- *     * Neither the name of The Linux Foundation, nor the names of its
+ *     * Neither the name of The Linux Foundation nor the names of its
  *       contributors may be used to endorse or promote products derived
  *       from this software without specific prior written permission.
  *
@@ -26,38 +26,22 @@
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  */
-#ifndef IZAT_PROXY_BASE_H
-#define IZAT_PROXY_BASE_H
-#include <gps_extended.h>
-#include <MsgTask.h>
 
-namespace loc_core {
+#ifndef LOC_ENG_XTRA_H
+#define LOC_ENG_XTRA_H
 
-class LocApiBase;
-class LocAdapterBase;
-class ContextBase;
+#include <hardware/gps.h>
 
-class LBSProxyBase {
-    friend class ContextBase;
-    inline virtual LocApiBase*
-        getLocApi(const MsgTask* msgTask,
-                  LOC_API_ADAPTER_EVENT_MASK_T exMask,
-                  ContextBase* context) const {
-        return NULL;
-    }
-protected:
-    inline LBSProxyBase() {}
-public:
-    inline virtual ~LBSProxyBase() {}
-    inline virtual void requestUlp(LocAdapterBase* adapter,
-                                   unsigned long capabilities) const {}
-    inline virtual bool hasAgpsExtendedCapabilities() const { return false; }
-    inline virtual bool hasCPIExtendedCapabilities() const { return false; }
-    virtual void injectFeatureConfig(ContextBase* context) const {}
-};
+// Module data
+typedef struct
+{
+   // loc_eng_ioctl_cb_data_s_type   ioctl_cb_data;
+   gps_xtra_download_request      download_request_cb;
+   report_xtra_server             report_xtra_server_cb;
 
-typedef LBSProxyBase* (getLBSProxy_t)();
+   // XTRA data buffer
+   char                          *xtra_data_for_injection;  // NULL if no pending data
+   int                            xtra_data_len;
+} loc_eng_xtra_data_s_type;
 
-} // namespace loc_core
-
-#endif // IZAT_PROXY_BASE_H
+#endif // LOC_ENG_XTRA_H

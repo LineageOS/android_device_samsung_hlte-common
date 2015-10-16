@@ -1,4 +1,4 @@
-/* Copyright (c) 2011-2013, The Linux Foundation. All rights reserved.
+/* Copyright (c) 2011-2014, The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -44,13 +44,21 @@ LBSProxyBase* ContextBase::getLBSProxy(const char* libName)
 {
     LBSProxyBase* proxy = NULL;
     LOC_LOGD("%s:%d]: getLBSProxy libname: %s\n", __func__, __LINE__, libName);
+    dlerror();
     void* lib = dlopen(libName, RTLD_NOW);
 
     if ((void*)NULL != lib) {
+        dlerror();
         getLBSProxy_t* getter = (getLBSProxy_t*)dlsym(lib, "getLBSProxy");
         if (NULL != getter) {
             proxy = (*getter)();
         }
+        else {
+            LOC_LOGD("%s:%d]: getter is NULL. Reason: %s", __func__, __LINE__, dlerror());
+        }
+    }
+    else {
+        LOC_LOGD("%s:%d]: lib is NULL. Reason: %s", __func__, __LINE__, dlerror());
     }
     if (NULL == proxy) {
         proxy = new LBSProxyBase();
@@ -65,13 +73,32 @@ LocApiBase* ContextBase::createLocApi(LOC_API_ADAPTER_EVENT_MASK_T exMask)
 
     // first if can not be MPQ
     if (TARGET_MPQ != loc_get_target()) {
-        if (NULL == (locApi = mLBSProxy->getLocApi(mMsgTask, exMask))) {
-            // only RPC is the option now
-            void* handle = dlopen("libloc_api-rpc-qc.so", RTLD_NOW);
-            if (NULL != handle) {
+        if (NULL == (locApi = mLBSProxy->getLocApi(mMsgTask, exMask, this))) {
+            void *handle = NULL;
+            //try to see if LocApiV02 is present
+            if((handle = dlopen("libloc_api_v02.so", RTLD_NOW)) != NULL) {
+                LOC_LOGD("%s:%d]: libloc_api_v02.so is present", __func__, __LINE__);
+                dlerror();
                 getLocApi_t* getter = (getLocApi_t*)dlsym(handle, "getLocApi");
-                if (NULL != getter) {
-                    locApi = (*getter)(mMsgTask, exMask);
+                if(getter != NULL) {
+                    LOC_LOGD("%s:%d]: getter is not NULL for LocApiV02", __func__, __LINE__);
+                    locApi = (*getter)(mMsgTask,exMask, this);
+                }
+                else {
+                    LOC_LOGD("%s:%d]: getter is NULL. Reason: %s", __func__, __LINE__, dlerror());
+                }
+            }
+            // only RPC is the option now
+            else {
+                LOC_LOGD("%s:%d]: libloc_api_v02.so is NOT present. Trying RPC",
+                         __func__, __LINE__);
+                handle = dlopen("libloc_api-rpc-qc.so", RTLD_NOW);
+                if (NULL != handle) {
+                    getLocApi_t* getter = (getLocApi_t*)dlsym(handle, "getLocApi");
+                    if (NULL != getter) {
+                        LOC_LOGD("%s:%d]: getter is NULL in RPC", __func__, __LINE__);
+                        locApi = (*getter)(mMsgTask, exMask, this);
+                    }
                 }
             }
         }
@@ -80,7 +107,7 @@ LocApiBase* ContextBase::createLocApi(LOC_API_ADAPTER_EVENT_MASK_T exMask)
     // locApi could still be NULL at this time
     // we would then create a dummy one
     if (NULL == locApi) {
-        locApi = new LocApiBase(mMsgTask, exMask);
+        locApi = new LocApiBase(mMsgTask, exMask, this);
     }
 
     return locApi;

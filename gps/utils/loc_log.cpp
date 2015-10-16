@@ -119,17 +119,12 @@ loc_name_val_s_type target_name[] =
 static int target_name_num = sizeof(target_name)/sizeof(loc_name_val_s_type);
 
 /*===========================================================================
-
 FUNCTION loc_get_target_name
-
 DESCRIPTION
    Returns pointer to a string that contains name of the target
-
    XX:XX:XX.000\0
-
 RETURN VALUE
    The target name string
-
 ===========================================================================*/
 const char *loc_get_target_name(unsigned int target)
 {
@@ -153,18 +148,13 @@ const char *loc_get_target_name(unsigned int target)
 
 
 /*===========================================================================
-
 FUNCTION loc_get_time
-
 DESCRIPTION
    Logs a callback event header.
    The pointer time_string should point to a buffer of at least 13 bytes:
-
    XX:XX:XX.000\0
-
 RETURN VALUE
    The time string
-
 ===========================================================================*/
 char *loc_get_time(char *time_string, unsigned long buf_size)
 {
@@ -184,38 +174,36 @@ char *loc_get_time(char *time_string, unsigned long buf_size)
 
 /*===========================================================================
 FUNCTION loc_logger_init
-
 DESCRIPTION
    Initializes the state of DEBUG_LEVEL and TIMESTAMP
-
 DEPENDENCIES
    N/A
-
 RETURN VALUE
    None
-
 SIDE EFFECTS
    N/A
 ===========================================================================*/
 void loc_logger_init(unsigned long debug, unsigned long timestamp)
 {
    loc_logger.DEBUG_LEVEL = debug;
+#ifdef TARGET_BUILD_VARIANT_USER
+   // force user builds to 2 or less
+   if (loc_logger.DEBUG_LEVEL > 2) {
+       loc_logger.DEBUG_LEVEL = 2;
+   }
+#endif
    loc_logger.TIMESTAMP   = timestamp;
 }
 
 
 /*===========================================================================
 FUNCTION get_timestamp
-
 DESCRIPTION
    Generates a timestamp using the current system time
-
 DEPENDENCIES
    N/A
-
 RETURN VALUE
    Char pointer to the parameter str
-
 SIDE EFFECTS
    N/A
 ===========================================================================*/
@@ -231,4 +219,3 @@ char * get_timestamp(char *str, unsigned long buf_size)
   snprintf(str, buf_size, "%02d:%02d:%02d.%06ld", hh, mm, ss, tv.tv_usec);
   return str;
 }
-

@@ -1,4 +1,4 @@
-/* Copyright (c) 2013-2014, The Linux Foundation. All rights reserved.
+/* Copyright (c) 2011, The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -9,7 +9,7 @@
  *       copyright notice, this list of conditions and the following
  *       disclaimer in the documentation and/or other materials provided
  *       with the distribution.
- *     * Neither the name of The Linux Foundation, nor the names of its
+ *     * Neither the name of The Linux Foundation nor the names of its
  *       contributors may be used to endorse or promote products derived
  *       from this software without specific prior written permission.
  *
@@ -26,38 +26,25 @@
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  */
-#ifndef IZAT_PROXY_BASE_H
-#define IZAT_PROXY_BASE_H
-#include <gps_extended.h>
-#include <MsgTask.h>
+#ifndef LOC_ENG_DMN_CONN_GLUE_PIPE_H
+#define LOC_ENG_DMN_CONN_GLUE_PIPE_H
 
-namespace loc_core {
+#ifdef __cplusplus
+extern "C" {
+#endif /* __cplusplus */
 
-class LocApiBase;
-class LocAdapterBase;
-class ContextBase;
+#include <linux/types.h>
 
-class LBSProxyBase {
-    friend class ContextBase;
-    inline virtual LocApiBase*
-        getLocApi(const MsgTask* msgTask,
-                  LOC_API_ADAPTER_EVENT_MASK_T exMask,
-                  ContextBase* context) const {
-        return NULL;
-    }
-protected:
-    inline LBSProxyBase() {}
-public:
-    inline virtual ~LBSProxyBase() {}
-    inline virtual void requestUlp(LocAdapterBase* adapter,
-                                   unsigned long capabilities) const {}
-    inline virtual bool hasAgpsExtendedCapabilities() const { return false; }
-    inline virtual bool hasCPIExtendedCapabilities() const { return false; }
-    virtual void injectFeatureConfig(ContextBase* context) const {}
-};
+int loc_eng_dmn_conn_glue_pipeget(const char * pipe_name, int mode);
+int loc_eng_dmn_conn_glue_piperemove(const char * pipe_name, int fd);
+int loc_eng_dmn_conn_glue_pipewrite(int fd, const void * buf, size_t sz);
+int loc_eng_dmn_conn_glue_piperead(int fd, void * buf, size_t sz);
 
-typedef LBSProxyBase* (getLBSProxy_t)();
+int loc_eng_dmn_conn_glue_pipeflush(int fd);
+int loc_eng_dmn_conn_glue_pipeunblock(int fd);
 
-} // namespace loc_core
+#ifdef __cplusplus
+}
+#endif /* __cplusplus */
 
-#endif // IZAT_PROXY_BASE_H
+#endif /* LOC_ENG_DMN_CONN_GLUE_PIPE_H */

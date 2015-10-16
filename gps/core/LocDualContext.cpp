@@ -1,4 +1,4 @@
-/* Copyright (c) 2011-2013, The Linux Foundation. All rights reserved.
+/* Copyright (c) 2011-2014, The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -50,15 +50,16 @@ LocDualContext::mBgExclMask =
      LOC_API_ADAPTER_BIT_NMEA_POSITION_REPORT |
      LOC_API_ADAPTER_BIT_IOCTL_REPORT |
      LOC_API_ADAPTER_BIT_STATUS_REPORT |
-     LOC_API_ADAPTER_BIT_GEOFENCE_GEN_ALERT);
+     LOC_API_ADAPTER_BIT_GEOFENCE_GEN_ALERT |
+     LOC_API_ADAPTER_BIT_GNSS_MEASUREMENT);
 
 const MsgTask* LocDualContext::mMsgTask = NULL;
 ContextBase* LocDualContext::mFgContext = NULL;
 ContextBase* LocDualContext::mBgContext = NULL;
-
+ContextBase* LocDualContext::mInjectContext = NULL;
 // the name must be shorter than 15 chars
 const char* LocDualContext::mLocationHalName = "Loc_hal_worker";
-const char* LocDualContext::mIzatLibName = "liblbs_core.so";
+const char* LocDualContext::mLBSLibName = "liblbs_core.so";
 
 const MsgTask* LocDualContext::getMsgTask(MsgTask::tCreate tCreator,
                                           const char* name)
@@ -74,6 +75,8 @@ const MsgTask* LocDualContext::getMsgTask(MsgTask::tAssociate tAssociate,
 {
     if (NULL == mMsgTask) {
         mMsgTask = new MsgTask(tAssociate, name);
+    } else if (tAssociate) {
+        mMsgTask->associate(tAssociate);
     }
     return mMsgTask;
 }
@@ -86,6 +89,10 @@ ContextBase* LocDualContext::getLocFgContext(MsgTask::tCreate tCreator,
         mFgContext = new LocDualContext(msgTask,
                                         mFgExclMask);
     }
+    if(NULL == mInjectContext) {
+        mInjectContext = mFgContext;
+        injectFeatureConfig(mInjectContext);
+    }
     return mFgContext;
 }
 
@@ -96,6 +103,11 @@ ContextBase* LocDualContext::getLocFgContext(MsgTask::tAssociate tAssociate,
         const MsgTask* msgTask = getMsgTask(tAssociate, name);
         mFgContext = new LocDualContext(msgTask,
                                         mFgExclMask);
+    }
+    if(NULL == mInjectContext) {
+        LOC_LOGD("%s:%d]: mInjectContext is FgContext", __func__, __LINE__);
+        mInjectContext = mFgContext;
+        injectFeatureConfig(mInjectContext);
     }
     return mFgContext;
 
@@ -109,6 +121,11 @@ ContextBase* LocDualContext::getLocBgContext(MsgTask::tCreate tCreator,
         mBgContext = new LocDualContext(msgTask,
                                         mBgExclMask);
     }
+    if(NULL == mInjectContext) {
+        LOC_LOGD("%s:%d]: mInjectContext is BgContext", __func__, __LINE__);
+        mInjectContext = mBgContext;
+        injectFeatureConfig(mInjectContext);
+    }
     return mBgContext;
 }
 
@@ -120,12 +137,28 @@ ContextBase* LocDualContext::getLocBgContext(MsgTask::tAssociate tAssociate,
         mBgContext = new LocDualContext(msgTask,
                                         mBgExclMask);
     }
+    if(NULL == mInjectContext) {
+        LOC_LOGD("%s:%d]: mInjectContext is BgContext", __func__, __LINE__);
+        mInjectContext = mBgContext;
+        injectFeatureConfig(mInjectContext);
+    }
     return mBgContext;
+}
+
+void LocDualContext :: injectFeatureConfig(ContextBase *curContext)
+{
+    LOC_LOGD("%s:%d]: Enter", __func__, __LINE__);
+    if(curContext == mInjectContext) {
+        LOC_LOGD("%s:%d]: Calling LBSProxy (%p) to inject feature config",
+                 __func__, __LINE__, ((LocDualContext *)mInjectContext)->mLBSProxy);
+        ((LocDualContext *)mInjectContext)->mLBSProxy->injectFeatureConfig(curContext);
+    }
+    LOC_LOGD("%s:%d]: Exit", __func__, __LINE__);
 }
 
 LocDualContext::LocDualContext(const MsgTask* msgTask,
                                LOC_API_ADAPTER_EVENT_MASK_T exMask) :
-    ContextBase(msgTask, exMask, mIzatLibName)
+    ContextBase(msgTask, exMask, mLBSLibName)
 {
 }
 
