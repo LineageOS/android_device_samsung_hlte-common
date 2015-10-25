@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f2577a7_fb1db20f",
+        "filename": "configs/media_profiles.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 667,
+      "author": {
+        "id": 9291
+      },
+      "writtenOn": "2015-10-25T23:29:41Z",
+      "side": 1,
+      "message": "Is this needed?",
+      "range": {
+        "startLine": 661,
+        "startChar": 4,
+        "endLine": 667,
+        "endChar": 66
+      },
+      "revId": "9fb757af5dac3dbcff9feb40fe693022e52f8f77",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
