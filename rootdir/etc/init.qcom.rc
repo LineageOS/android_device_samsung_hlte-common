@@ -34,6 +34,8 @@ on early-init
     write /sys/block/mmcblk0/queue/scheduler noop
 
 on init
+    export LD_PRELOAD "/system/lib/libboringssl-compat.so"
+    
     # Set permissions for persist partition
     mkdir /persist 0771 system system
 

@@ -67,6 +67,7 @@ PRODUCT_PACKAGES += \
 # camera
 PRODUCT_PACKAGES += \
     camera.msm8974 \
+    libboringssl-compat \
     libxml2
 
 PRODUCT_COPY_FILES += \
