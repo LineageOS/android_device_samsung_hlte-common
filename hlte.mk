@@ -112,6 +112,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/libnfc-brcm-20791b04.conf:system/etc/libnfc-brcm-20791b04.conf \
     $(LOCAL_PATH)/configs/libnfc-brcm.conf:system/etc/libnfc-brcm.conf
 
+# Radio
+PRODUCT_PACKAGES += \
+    libril_shim
+
 # Ramdisk
 PRODUCT_PACKAGES += \
     fstab.qcom \
