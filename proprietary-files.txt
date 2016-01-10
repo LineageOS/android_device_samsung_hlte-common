@@ -313,6 +313,7 @@ bin/time_daemon
 vendor/lib/libTimeService.so
 
 # Wi-Fi
+bin/radish
 etc/wifi/bcmdhd_apsta.bin
 etc/wifi/bcmdhd_mfg.bin
 etc/wifi/bcmdhd_sta.bin
