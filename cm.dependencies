@@ -6,5 +6,9 @@
   {
     "repository": "android_kernel_samsung_hlte",
     "target_path": "kernel/samsung/hlte"
+  },
+  {		
+    "repository": "android_vendor_qcom_opensource_dataservices",		
+    "target_path": "vendor/qcom/opensource/dataservices"
   }
 ]
