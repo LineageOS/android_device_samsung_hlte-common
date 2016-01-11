@@ -60,6 +60,10 @@ PRODUCT_PACKAGES += \
     com.dsi.ant.antradio_library \
     libantradio
 
+# Data
+PRODUCT_PACKAGES += \
+    librmnetctl
+
 # GPS
 PRODUCT_PACKAGES += \
     gps.msm8974
