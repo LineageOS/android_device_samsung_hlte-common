@@ -238,11 +238,10 @@ vendor/lib/libthermalioctl.so
 
 # DRM
 bin/qseecomd
-lib/libdrmdecrypt.so
 lib/libhdcp2.so
 lib/libstagefright_hdcp.so
 vendor/lib/libWVStreamControlAPI_L1.so
-lib/libwvm.so
+vendor/lib/libwvm.so
 vendor/lib/libdrmfs.so
 vendor/lib/libdrmtime.so
 vendor/lib/librpmb.so
@@ -251,7 +250,8 @@ vendor/lib/libQSEEComAPI.so
 vendor/lib/libwvdrm_L1.so
 vendor/lib/liboemcrypto.so
 vendor/lib/mediadrm/libwvdrmengine.so
-lib/libdrmdecrypt.so
+vendor/lib/drm/libdrmwvmplugin.so
+vendor/lib/libdrmdecrypt.so
 lib/drm/libfwdlockengine.so
 
 # Graphics
