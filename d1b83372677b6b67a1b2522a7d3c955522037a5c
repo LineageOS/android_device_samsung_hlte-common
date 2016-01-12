@@ -16,6 +16,23 @@
       "revId": "d1b83372677b6b67a1b2522a7d3c955522037a5c",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fcbff3d_cb6b351d",
+        "filename": "hlte.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 2936
+      },
+      "writtenOn": "2016-01-12T00:19:27Z",
+      "side": 1,
+      "message": "rmnetcli isn\u0027t used for anything.",
+      "revId": "d1b83372677b6b67a1b2522a7d3c955522037a5c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
