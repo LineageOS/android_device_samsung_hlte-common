@@ -63,6 +63,9 @@ BOARD_RIL_CLASS := ../../../device/samsung/hlte-common/ril
 # Graphics
 TARGET_HAVE_NEW_GRALLOC := true
 
+# Legacy BLOB Support
+TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
+
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
 
