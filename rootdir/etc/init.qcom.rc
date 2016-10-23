@@ -1,4 +1,5 @@
 # Copyright (c) 2009-2012, The Linux Foundation. All rights reserved.
+# Copyright (c) 2017, The LineageOS Project. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -457,6 +458,7 @@ service p2p_supplicant /system/bin/wpa_supplicant \
 service macloader /system/bin/macloader
     class late_start
     oneshot
+    seclabel u:r:macloader:s0
 
 on property:wlan.driver.status=ok
     start macloader
