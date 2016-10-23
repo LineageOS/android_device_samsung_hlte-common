@@ -457,6 +457,7 @@ service p2p_supplicant /system/bin/wpa_supplicant \
 service macloader /system/bin/macloader
     class late_start
     oneshot
+    seclabel u:r:macloader:s0
 
 on property:wlan.driver.status=ok
     start macloader
