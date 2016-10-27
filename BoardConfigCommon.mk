@@ -64,6 +64,10 @@ BOARD_RIL_CLASS := ../../../device/samsung/hlte-common/ril
 # Graphics
 TARGET_HAVE_NEW_GRALLOC := true
 
+# Display
+SF_VSYNC_EVENT_PHASE_OFFSET_NS := 5000000
+VSYNC_EVENT_PHASE_OFFSET_NS := 7500000
+
 # Legacy BLOB Support
 TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
 
