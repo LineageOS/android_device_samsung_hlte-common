@@ -106,6 +106,11 @@ BOARD_SEPOLICY_DIRS += device/samsung/hlte-common/sepolicy
 # Sensors
 TARGET_NO_SENSOR_PERMISSION_CHECK := true
 
+# TWRP Support - Optional
+ifeq ($(WITH_TWRP),true)
+-include $(LOCAL_PATH)/twrp.mk
+endif
+
 # Wifi
 BOARD_HAVE_SAMSUNG_WIFI := true
 BOARD_WLAN_DEVICE := bcmdhd
@@ -122,3 +127,6 @@ WIFI_DRIVER_FW_PATH_STA     := "/system/etc/wifi/bcmdhd_sta.bin"
 WIFI_DRIVER_FW_PATH_AP      := "/system/etc/wifi/bcmdhd_apsta.bin"
 WIFI_DRIVER_NVRAM_PATH_PARAM:= "/sys/module/dhd/parameters/nvram_path"
 WIFI_DRIVER_NVRAM_PATH      := "/system/etc/wifi/nvram_net.txt"
+
+# Inherit from the proprietary version
+-include vendor/samsung/hlte-common/BoardConfigVendor.mk
