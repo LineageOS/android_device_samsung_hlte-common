@@ -41,6 +41,13 @@ write_headers "hlte hltechn hltetmo"
 
 write_makefiles "$MY_DIR"/common-proprietary-files.txt
 
+# Blobs for TWRP data decryption
+cat << EOF >> "$BOARDMK"
+ifeq (\$(WITH_TWRP),true)
+TARGET_RECOVERY_DEVICE_DIRS += vendor/$VENDOR/$DEVICE_COMMON/proprietary
+endif
+EOF
+
 write_footers
 
 if [ ! -z $VARIANT_COPYRIGHT_YEAR ]; then

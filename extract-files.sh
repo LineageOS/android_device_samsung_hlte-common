@@ -51,6 +51,7 @@ fi
 setup_vendor "$DEVICE_COMMON" "$VENDOR" "$CM_ROOT" true
 
 extract "$MY_DIR"/common-proprietary-files.txt "$SRC"
+extract "$MY_DIR"/common-proprietary-files-twrp.txt "$SRC"
 
 # Reinitialize the helper for device
 setup_vendor "$DEVICE" "$VENDOR" "$CM_ROOT"
