@@ -538,6 +538,11 @@ service hcidump /system/bin/sh /system/etc/hcidump.sh
     disabled
     oneshot
 
+    # Fix file contexts for the directories; needed for upgrade from earlier
+    # 7.x versions, NOOP for clean flashes
+    restorecon /data/data/com.android.providers.telephony/databases
+    restorecon /data/data/com.android.providers.telephony/shared_prefs
+
 service charger /charger
     class charger
     seclabel u:r:healthd:s0
