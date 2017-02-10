@@ -277,6 +277,12 @@ vendor/lib/libscale.so
 etc/firmware/a330_pfp.fw
 etc/firmware/a330_pm4.fw
 
+#GPS
+lib/hw/gps.msm8974.so
+lib/libgps.utils.so
+lib/libloc_eng.so
+lib/libloc_core.so
+
 # IPC router security
 etc/sec_config
 bin/irsc_util
