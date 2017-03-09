@@ -131,7 +131,7 @@ PRODUCT_COPY_FILES += \
 
 # Radio
 PRODUCT_PACKAGES += \
-    libril_shim
+    libshim_ril
 
 # Ramdisk
 PRODUCT_PACKAGES += \
