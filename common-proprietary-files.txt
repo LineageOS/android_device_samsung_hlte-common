@@ -363,8 +363,5 @@ etc/wifi/nvram_net.txt_semco3rd
 etc/wifi/nvram_net.txt_wisol
 etc/wifi/wpa_supplicant.conf
 
-# Widevine
-lib/libwvm.so
-vendor/lib/libwvdrm_L1.so
-vendor/lib/libWVStreamControlAPI_L1.so
-vendor/lib/mediadrm/libwvdrmengine.so
+# Widevine (Samsung Package Version G920FXXU5EQBA_G920FOJV5EQBB_XSG)
+vendor/lib/mediadrm/libwvdrmengine.so|e669e2fbc352b4e38f4c7ea27c805e1619e9d4ca
