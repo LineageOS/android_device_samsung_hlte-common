@@ -54,8 +54,5 @@ ro.ril.telephony.mqanelements=6
 # Sensors
 debug.sensors=1
 
-# Storage
-ro.sys.sdcardfs=true
-
 # Wifi
 wifi.interface=wlan0
