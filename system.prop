@@ -39,6 +39,7 @@ ro.vendor.extension_library=/vendor/lib/libqti-perfd-client.so
 # Media
 media.stagefright.legacyencoder=true
 media.stagefright.less-secure=true
+persist.media.treble_omx=false
 
 # NFC
 ro.nfc.port=I2C
