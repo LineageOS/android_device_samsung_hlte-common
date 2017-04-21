@@ -286,8 +286,14 @@ etc/firmware/a330_pm4.fw
 #GPS
 lib/hw/gps.default.so
 lib/libgps.utils.so
-lib/libloc_eng.so
+lib/libloc_api_v02.so
 lib/libloc_core.so
+lib/libloc_eng.so
+vendor/lib/hw/flp.default.so
+vendor/lib/libgeofence.so
+vendor/lib/libizat_core.so
+vendor/lib/liblbs_core.so
+vendor/lib/libperipheral_client.so
 
 # IPC router security
 etc/sec_config
@@ -315,6 +321,9 @@ vendor/firmware/bcm2079xB5_pre_firmware.ncd
 vendor/lib/libdisp-aba.so
 -vendor/lib/libmm-abl.so
 vendor/lib/libmm-abl-oem.so
+
+# Qualcomm
+vendor/lib/libxml.so
 
 # Sensors
 lib/hw/sensorhubs.msm8974.so
