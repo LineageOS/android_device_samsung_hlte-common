@@ -1,5 +1,8 @@
 # Samsung Package Version: N9005XXSGBQA4_N9005VAUGBPA1_VAU, unless pinned
 
+# Activity recognition
+vendor/lib/libsensor1.so
+
 # Audio
 vendor/lib/libacdbloader.so
 vendor/lib/libacdbrtac.so
@@ -16,10 +19,6 @@ vendor/lib/soundfx/libqcbassboost.so
 vendor/lib/soundfx/libqcvirt.so
 vendor/lib/soundfx/libqcreverb.so
 
-# Bluetooth firmware
-vendor/firmware/bcm4335_V0111.0559.hcd
-vendor/firmware/bcm4335_V0111.0559_wisol.hcd
-
 # ADSP
 bin/adsprpcd
 vendor/lib/libadsprpc.so
@@ -27,6 +26,50 @@ vendor/lib/libfastcvadsp_stub.so
 vendor/lib/libfastcvopt.so
 vendor/lib/libscve.so
 vendor/lib/libscve_stub.so
+
+# Bluetooth firmware
+vendor/firmware/bcm4335_V0111.0559.hcd
+vendor/firmware/bcm4335_V0111.0559_wisol.hcd
+
+# Camera
+bin/mm-qcamera-daemon
+lib/hw/camera.msm8974.so:lib/hw/camera.vendor.msm8974.so
+lib/libarcsoft_nighthawk.so
+lib/libliveframework.so
+lib/libmmcamera_interface.so
+lib/libmmcamera_cac2_lib.so
+lib/libmmcamera_fidelix_eeprom.so
+lib/libmmcamera_s5k6b2yx.so
+lib/libmmcamera2_stats_algorithm.so
+lib/libmmqjpeg_codec.so
+lib/libmmjpeg.so
+lib/libmmjpeg_interface.so
+lib/libqomx_core.so
+lib/libqomx_jpegenc.so
+lib/libvdis.so
+vendor/lib/libactuator_ak7345_camcorder.so
+vendor/lib/libactuator_ak7345_camera.so
+vendor/lib/libactuator_dw9714_camcorder.so
+vendor/lib/libactuator_dw9714_camera.so
+vendor/lib/libactuator_dw9716_camcorder.so
+vendor/lib/libactuator_dw9716_camera.so
+vendor/lib/libactuator_wv560_camcorder.so
+vendor/lib/libactuator_wv560_camera.so
+vendor/lib/libmmcamera_faceproc.so
+vendor/lib/libmmcamera_image_stab.so
+vendor/lib/libmmcamera_imglib.so
+vendor/lib/libmmcamera_imx135.so
+vendor/lib/libmmcamera2_c2d_module.so
+vendor/lib/libmmcamera2_cpp_module.so
+vendor/lib/libmmcamera2_iface_modules.so
+vendor/lib/libmmcamera2_imglib_modules.so
+vendor/lib/libmmcamera2_isp_modules.so
+vendor/lib/libmmcamera2_pproc_modules.so
+vendor/lib/libmmcamera2_sensor_modules.so
+vendor/lib/libmmcamera2_stats_modules.so
+vendor/lib/libmmcamera2_vpe_module.so
+vendor/lib/libmmcamera2_wnr_module.so
+vendor/lib/liboemcamera.so
 
 # Camera chromatix
 etc/C13QL_s5k3l2xx_module_info.xml
@@ -184,47 +227,6 @@ vendor/lib/libchromatix_imx135_vt_hd.so
 vendor/lib/libchromatix_s5k3l2xx_vt.so
 vendor/lib/libchromatix_s5k3l2xx_vt_hd.so
 
-# Camera
-bin/mm-qcamera-daemon
-lib/hw/camera.msm8974.so:lib/hw/camera.vendor.msm8974.so
-lib/libarcsoft_nighthawk.so
-lib/libliveframework.so
-lib/libmmcamera_interface.so
-lib/libmmcamera_cac2_lib.so
-lib/libmmcamera_fidelix_eeprom.so
-lib/libmmcamera_s5k6b2yx.so
-lib/libmmcamera2_stats_algorithm.so
-lib/libmmqjpeg_codec.so
-lib/libmmjpeg.so
-lib/libmmjpeg_interface.so
-lib/libqomx_core.so
-lib/libqomx_jpegenc.so
-lib/libvdis.so
-vendor/lib/libactuator_ak7345_camcorder.so
-vendor/lib/libactuator_ak7345_camera.so
-vendor/lib/libactuator_dw9714_camcorder.so
-vendor/lib/libactuator_dw9714_camera.so
-vendor/lib/libactuator_dw9716_camcorder.so
-vendor/lib/libactuator_dw9716_camera.so
-vendor/lib/libactuator_wv560_camcorder.so
-vendor/lib/libactuator_wv560_camera.so
-vendor/lib/libmmcamera_faceproc.so
-vendor/lib/libmmcamera_image_stab.so
-vendor/lib/libmmcamera_imglib.so
-vendor/lib/libmmcamera_imx135.so
-vendor/lib/libmmcamera2_c2d_module.so
-vendor/lib/libmmcamera2_cpp_module.so
-vendor/lib/libmmcamera2_iface_modules.so
-vendor/lib/libmmcamera2_imglib_modules.so
-vendor/lib/libmmcamera2_isp_modules.so
-vendor/lib/libmmcamera2_pproc_modules.so
-vendor/lib/libmmcamera2_sensor_modules.so
-vendor/lib/libmmcamera2_stats_modules.so
-vendor/lib/libmmcamera2_vpe_module.so
-vendor/lib/libmmcamera2_wnr_module.so
-vendor/lib/liboemcamera.so
-vendor/lib/libsensor1.so
-
 # Camera firmware
 cameradata/datapattern_420sp.yuv
 cameradata/datapattern_front_420sp.yuv
@@ -240,25 +242,32 @@ vendor/lib/libthermalioctl.so
 
 # DRM
 bin/qseecomd
+lib/drm/libfwdlockengine.so
 lib/libdrmdecrypt.so
 lib/libhdcp2.so
 lib/libstagefright_hdcp.so
-vendor/lib/libWVStreamControlAPI_L1.so
-lib/libwvm.so
 vendor/lib/libdrmfs.so
 vendor/lib/libdrmtime.so
 vendor/lib/librpmb.so
 vendor/lib/libssd.so
 vendor/lib/libQSEEComAPI.so
-vendor/lib/libwvdrm_L1.so
 vendor/lib/liboemcrypto.so
-vendor/lib/mediadrm/libwvdrmengine.so
-lib/libdrmdecrypt.so
-lib/drm/libfwdlockengine.so
 vendor/lib/rfsa/adsp/libdspCV_skel.so
 vendor/lib/rfsa/adsp/libfastcvadsp.so
 vendor/lib/rfsa/adsp/libfastcvadsp_skel.so
 vendor/lib/rfsa/adsp/libscveT2T_skel.so
+
+# GPS
+lib/hw/gps.default.so
+lib/libgps.utils.so
+lib/libloc_api_v02.so
+lib/libloc_core.so
+lib/libloc_eng.so
+vendor/lib/hw/flp.default.so
+vendor/lib/libgeofence.so
+vendor/lib/libizat_core.so
+vendor/lib/liblbs_core.so
+vendor/lib/libperipheral_client.so
 
 # Graphics
 vendor/lib/egl/eglsubAndroid.so
@@ -283,21 +292,12 @@ vendor/lib/libscale.so
 etc/firmware/a330_pfp.fw
 etc/firmware/a330_pm4.fw
 
-#GPS
-lib/hw/gps.default.so
-lib/libgps.utils.so
-lib/libloc_api_v02.so
-lib/libloc_core.so
-lib/libloc_eng.so
-vendor/lib/hw/flp.default.so
-vendor/lib/libgeofence.so
-vendor/lib/libizat_core.so
-vendor/lib/liblbs_core.so
-vendor/lib/libperipheral_client.so
-
 # IPC router security
-etc/sec_config
 bin/irsc_util
+etc/sec_config
+
+# IPv6 Tethering
+bin/radish
 
 # Media
 vendor/lib/libDivxDrm.so
@@ -316,6 +316,9 @@ vendor/firmware/bcm2079xB4_firmware.ncd
 vendor/firmware/bcm2079xB4_pre_firmware.ncd
 vendor/firmware/bcm2079xB5_firmware.ncd
 vendor/firmware/bcm2079xB5_pre_firmware.ncd
+
+# Perf
+vendor/lib/libqti-perfd-client.so
 
 # Postprocessing
 vendor/lib/libdisp-aba.so
@@ -337,7 +340,6 @@ bin/time_daemon
 vendor/lib/libTimeService.so
 
 # Wi-Fi
-bin/radish
 etc/wifi/bcmdhd_apsta.bin
 etc/wifi/bcmdhd_mfg.bin
 etc/wifi/bcmdhd_sta.bin
@@ -346,5 +348,8 @@ etc/wifi/nvram_mfg.txt
 etc/wifi/nvram_net.txt
 etc/wifi/wpa_supplicant.conf
 
-#perf api
-/vendor/lib/libqti-perfd-client.so
+# Widevine
+lib/libwvm.so
+vendor/lib/libwvdrm_L1.so
+vendor/lib/libWVStreamControlAPI_L1.so
+vendor/lib/mediadrm/libwvdrmengine.so
