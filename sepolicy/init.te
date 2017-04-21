@@ -1,0 +1,2 @@
+allow init efs_file:dir mounton;
+allow init debugfs:dir mounton;
