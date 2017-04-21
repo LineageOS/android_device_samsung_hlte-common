@@ -1,3 +1,5 @@
+# Samsung Package Version: N9005XXSGBQA4_N9005VAUGBPA1_VAU, unless pinned
+
 # Audio
 vendor/lib/libacdbloader.so
 vendor/lib/libacdbrtac.so
@@ -15,8 +17,8 @@ vendor/lib/soundfx/libqcvirt.so
 vendor/lib/soundfx/libqcreverb.so
 
 # Bluetooth firmware
-vendor/firmware/bcm4335_V0105.0467_wisol.hcd
-vendor/firmware/bcm4335_V0105.0467.hcd
+vendor/firmware/bcm4335_V0111.0559.hcd
+vendor/firmware/bcm4335_V0111.0559_wisol.hcd
 
 # ADSP
 bin/adsprpcd
@@ -265,7 +267,6 @@ vendor/lib/egl/libGLESv1_CM_adreno.so
 vendor/lib/egl/libGLESv2_adreno.so
 vendor/lib/egl/libq3dtools_adreno.so
 vendor/lib/libadreno_utils.so
-vendor/lib/libbccQTI.so
 vendor/lib/libC2D2.so
 vendor/lib/libc2d30-a3xx.so
 vendor/lib/libCB.so
@@ -283,7 +284,7 @@ etc/firmware/a330_pfp.fw
 etc/firmware/a330_pm4.fw
 
 #GPS
-lib/hw/gps.msm8974.so
+lib/hw/gps.default.so
 lib/libgps.utils.so
 lib/libloc_eng.so
 lib/libloc_core.so
@@ -293,13 +294,16 @@ etc/sec_config
 bin/irsc_util
 
 # Media
+vendor/lib/libDivxDrm.so
 vendor/lib/libI420colorconvert.so
 vendor/lib/libmm-color-convertor.so
+vendor/lib/libmmosal.so
 vendor/lib/libOmxAacDec.so
 vendor/lib/libOmxAmrwbplusDec.so
 vendor/lib/libOmxEvrcDec.so
 vendor/lib/libOmxQcelp13Dec.so
 vendor/lib/libOmxWmaDec.so
+vendor/lib/libSHIMDivxDrm.so
 
 # NFC
 vendor/firmware/bcm2079xB4_firmware.ncd
