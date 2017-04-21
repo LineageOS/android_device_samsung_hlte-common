@@ -519,11 +519,6 @@ typedef uint8_t                         GnssConstellationType;
 #define AGPS_RIL_INTERFACE      "agps_ril"
 
 /**
- * The GPS chipset can use Psc for AGPS
- */
-#define AGPS_USE_PSC
-
-/**
  * Name for the GPS_Geofencing interface.
  */
 #define GPS_GEOFENCING_INTERFACE   "gps_geofencing"
@@ -687,9 +682,6 @@ typedef struct {
      * might rely in the old (wrong) behavior.
      */
     uint16_t lac;
-#ifdef AGPS_USE_PSC
-    uint16_t psc;
-#endif
     /** Cell id in 2G. Utran Cell id in 3G. Cell Global Id EUTRA in LTE. */
     uint32_t cid;
     /** Tracking Area Code in LTE. */
