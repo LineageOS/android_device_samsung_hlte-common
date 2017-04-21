@@ -52,19 +52,14 @@ BOARD_HAVE_BLUETOOTH_BCM := true
 BOARD_ANT_WIRELESS_DEVICE := "vfs-prerelease"
 
 # Camera
-TARGET_PROVIDES_CAMERA_HAL := true
-TARGET_USE_COMPAT_GRALLOC_ALIGN := true
+TARGET_HAS_LEGACY_CAMERA_HAL1 := true
 USE_DEVICE_SPECIFIC_CAMERA := true
 
 # CMHW
-BOARD_HARDWARE_CLASS += device/samsung/hlte-common/cmhw
-BOARD_HARDWARE_CLASS += hardware/samsung/cmhw
+BOARD_HARDWARE_CLASS += $(LOCAL_PATH)/cmhw
 
 # RIL
 BOARD_RIL_CLASS := ../../../device/samsung/hlte-common/ril
-
-# Graphics
-TARGET_HAVE_NEW_GRALLOC := true
 
 # Display
 SF_VSYNC_EVENT_PHASE_OFFSET_NS := 5000000
@@ -72,7 +67,6 @@ VSYNC_EVENT_PHASE_OFFSET_NS := 7500000
 
 # Legacy BLOB Support
 TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
-TARGET_HAS_LEGACY_CAMERA_HAL1 := true
 
 # NFC
 BOARD_NFC_HAL_SUFFIX := msm8974
@@ -93,8 +87,9 @@ TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/etc/fstab.qcom
 
 # SELinux
 -include device/qcom/sepolicy/sepolicy.mk
-BOARD_SEPOLICY_UNION += macloader.te
-BOARD_SEPOLICY_DIRS += device/samsung/hlte-common/sepolicy
+
+BOARD_SEPOLICY_DIRS += \
+    device/samsung/hlte-common/sepolicy
 
 # Sensors
 TARGET_NO_SENSOR_PERMISSION_CHECK := true
@@ -113,5 +108,3 @@ WIFI_DRIVER_MODULE_AP_ARG   := "firmware_path=/system/etc/wifi/bcmdhd_apsta.bin 
 WIFI_DRIVER_FW_PATH_PARAM   := "/sys/module/dhd/parameters/firmware_path"
 WIFI_DRIVER_FW_PATH_STA     := "/system/etc/wifi/bcmdhd_sta.bin"
 WIFI_DRIVER_FW_PATH_AP      := "/system/etc/wifi/bcmdhd_apsta.bin"
-WIFI_DRIVER_NVRAM_PATH_PARAM:= "/sys/module/dhd/parameters/nvram_path"
-WIFI_DRIVER_NVRAM_PATH      := "/system/etc/wifi/nvram_net.txt"
