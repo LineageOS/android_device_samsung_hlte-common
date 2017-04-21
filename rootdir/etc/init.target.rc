@@ -130,13 +130,13 @@ on post-fs-data
     chmod 0660 /data/.psm.info
 
     # icd
-    exec icd_check
-    chown system system /dev/icd
-    chmod 0644 /dev/icd
-    write /dev/icdr 0
-    chown system system /dev/icdr
-    chmod 0644 /dev/icdr
-    chown system system /dev/tzic
+#    exec icd_check
+#    chown system system /dev/icd
+#    chmod 0644 /dev/icd
+#    write /dev/icdr 0
+#    chown system system /dev/icdr
+#    chmod 0644 /dev/icdr
+#    chown system system /dev/tzic
 
     # h2k permission
     chmod 0644 /efs/redata.bin
@@ -546,7 +546,7 @@ service mpdecision /system/bin/mpdecision --avg_comp
 service thermal-engine /system/bin/thermal-engine
    class core
    user root
-   group radio system
+   group root
 
 service time_daemon /system/bin/time_daemon
    class main
