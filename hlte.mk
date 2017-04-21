@@ -1,5 +1,6 @@
 #
 # Copyright (C) 2014 The CyanogenMod Project
+# Copyright (C) 2017 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -66,8 +67,11 @@ PRODUCT_PACKAGES += \
     SamsungDoze
 
 # GPS
-PRODUCT_PACKAGES += \
-    gps.msm8974
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/flp.conf:system/etc/flp.conf \
+    $(LOCAL_PATH)/configs/gps.conf:system/etc/gps.conf \
+    $(LOCAL_PATH)/configs/izat.conf:system/etc/izat.conf \
+    $(LOCAL_PATH)/configs/sap.conf:system/etc/sap.conf
 
 # camera
 PRODUCT_PACKAGES += \
@@ -80,11 +84,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     Gello
 
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/gps/etc/gps.conf:/system/etc/gps.conf \
-    $(LOCAL_PATH)/gps/etc/flp.conf:/system/etc/flp.conf \
-    $(LOCAL_PATH)/gps/etc/sap.conf:/system/etc/sap.conf
-
 # Input device
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/idc/sec_e-pen.idc:system/usr/idc/sec_e-pen.idc
@@ -92,7 +91,6 @@ PRODUCT_COPY_FILES += \
 # IR
 PRODUCT_PACKAGES += \
     consumerir.msm8974
-
 
 # Keylayouts
 PRODUCT_COPY_FILES += \
