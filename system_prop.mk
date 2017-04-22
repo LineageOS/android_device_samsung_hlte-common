@@ -37,7 +37,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.qc.sdk.izat.premium_enabled=0 \
     ro.qc.sdk.izat.service_mask=0x0
 
-# perf api
+# Perf
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.extension_library=/vendor/lib/libqti-perfd-client.so
 
@@ -46,11 +46,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     media.stagefright.legacyencoder=true \
     media.stagefright.less-secure=true
 
-# NFC
-PRODUCT_PROPERTY_OVERRIDES += \
-   ro.nfc.port=I2C
-
-# Radio
+# Network
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.data.netmgrd.qos.enable=true \
     persist.data.qmi.adb_logmask=0 \
@@ -58,6 +54,15 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.radio.lte_vrat_report=1 \
     persist.radio.mode_pref_nv10=1 \
     persist.data.qmi.adb_logmask=0
+
+# NFC
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.nfc.port=I2C
+
+# Radio
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.ril.telephony.mqanelements=6 \
+    ro.telephony.ril_class=hlteRIL
 
 # Sensors
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -70,8 +75,3 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Wifi
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0
-
-# Radio
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.ril.telephony.mqanelements=6 \
-    ro.telephony.ril_class=hlteRIL

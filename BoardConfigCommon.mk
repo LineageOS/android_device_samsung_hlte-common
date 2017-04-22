@@ -36,6 +36,9 @@ TARGET_KERNEL_VARIANT_CONFIG := msm8974_sec_hlte_eur_defconfig
 TARGET_KERNEL_SOURCE := kernel/samsung/hlte
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-linux-androideabi-
 
+# ANT+
+BOARD_ANT_WIRELESS_DEVICE := "vfs-prerelease"
+
 # Audio
 QCOM_CSDCLIENT_ENABLED := false
 AUDIO_FEATURE_LOW_LATENCY_PRIMARY := true
@@ -48,9 +51,6 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
 BOARD_BLUETOOTH_USES_HCIATTACH_PROPERTY := false
 BOARD_HAVE_BLUETOOTH_BCM := true
 
-# ANT+
-BOARD_ANT_WIRELESS_DEVICE := "vfs-prerelease"
-
 # Camera
 TARGET_PROVIDES_CAMERA_HAL := true
 TARGET_USE_COMPAT_GRALLOC_ALIGN := true
@@ -60,15 +60,12 @@ USE_DEVICE_SPECIFIC_CAMERA := true
 BOARD_HARDWARE_CLASS += device/samsung/hlte-common/cmhw
 BOARD_HARDWARE_CLASS += hardware/samsung/cmhw
 
-# RIL
-BOARD_RIL_CLASS := ../../../device/samsung/hlte-common/ril
-
-# Graphics
-TARGET_HAVE_NEW_GRALLOC := true
-
 # Display
 SF_VSYNC_EVENT_PHASE_OFFSET_NS := 5000000
 VSYNC_EVENT_PHASE_OFFSET_NS := 7500000
+
+# Graphics
+TARGET_HAVE_NEW_GRALLOC := true
 
 # Legacy BLOB Support
 TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
@@ -90,6 +87,9 @@ BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_23x41.h\"
 BOARD_USES_MMCUTILS := true
 TARGET_RECOVERY_DENSITY := xhdpi
 TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/etc/fstab.qcom
+
+# RIL
+BOARD_RIL_CLASS := ../../../device/samsung/hlte-common/ril
 
 # SELinux
 -include device/qcom/sepolicy/sepolicy.mk

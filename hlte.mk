@@ -48,6 +48,12 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml
 
+# ANT+
+PRODUCT_PACKAGES += \
+    AntHalService \
+    com.dsi.ant.antradio_library \
+    libantradio
+
 # Audio
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_effects.conf:system/vendor/etc/audio_effects.conf \
@@ -55,30 +61,24 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf \
     $(LOCAL_PATH)/audio/mixer_paths.xml:system/etc/mixer_paths.xml
 
-# ANT+
-PRODUCT_PACKAGES += \
-    AntHalService \
-    com.dsi.ant.antradio_library \
-    libantradio
-
-# Doze
-PRODUCT_PACKAGES += \
-    SamsungDoze
-
-# GPS
-PRODUCT_PACKAGES += \
-    gps.msm8974
-
-# camera
+# Camera
 PRODUCT_PACKAGES += \
     camera.msm8974 \
     libstlport \
     libxml2 \
     Snap
 
+# Doze
+PRODUCT_PACKAGES += \
+    SamsungDoze
+
 # Gello
 PRODUCT_PACKAGES += \
     Gello
+
+# GPS
+PRODUCT_PACKAGES += \
+    gps.msm8974
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/gps/etc/gps.conf:/system/etc/gps.conf \
@@ -92,7 +92,6 @@ PRODUCT_COPY_FILES += \
 # IR
 PRODUCT_PACKAGES += \
     consumerir.msm8974
-
 
 # Keylayouts
 PRODUCT_COPY_FILES += \
