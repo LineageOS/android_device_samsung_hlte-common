@@ -29,6 +29,10 @@ vendor/lib/libscve_stub.so
 
 # Bluetooth firmware
 vendor/firmware/bcm4335_V0111.0559.hcd
+vendor/firmware/bcm4335_V0111.0559.hcd:vendor/firmware/bcm4335_V0111.0559_murata.hcd
+vendor/firmware/bcm4335_V0111.0559.hcd:vendor/firmware/bcm4335_V0111.0559_semco.hcd
+vendor/firmware/bcm4335_V0111.0559.hcd:vendor/firmware/bcm4335_V0111.0559_semcosh.hcd
+vendor/firmware/bcm4335_V0111.0559.hcd:vendor/firmware/bcm4335_V0111.0559_semcove.hcd
 vendor/firmware/bcm4335_V0111.0559_wisol.hcd
 
 # Camera
