@@ -37,8 +37,7 @@
 
 # RIL
 /efs/FactoryApp(/.*)?  	                                u:object_r:efs_file:s0
-/efs/imei(/.*)?                                         u:object_r:imei_efs_file:s0
-/efs/mps_code.dat                                       u:object_r:efs_file:s0
+/efs/imei(/.*)?                                         u:object_r:efs_file:s0
 
 # Thermal-Engine
 /system/bin/thermal-engine                              u:object_r:thermal-engine_exec:s0
