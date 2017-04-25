@@ -1,0 +1,2 @@
+allow kernel efs_file:file { open read };
+allow kernel sensors_efs_file:file { open read };
