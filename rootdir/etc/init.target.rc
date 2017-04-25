@@ -40,8 +40,6 @@ on fs
     write /sys/devices/msm_sdcc.3/mmc_host/mmc2/power/control on
 
     mount_all fstab.qcom
-    restorecon_recursive /persist
-    restorecon_recursive /efs
 
     # Keeping following partitions outside fstab file. As user may not have
     # these partition flashed on the device. Failure to mount any partition in fstab file
@@ -65,6 +63,9 @@ on fs
      write /sys/kernel/boot_adsp/boot 1
      setprop qcom.audio.init complete
 
+    restorecon_recursive /persist
+    restorecon_recursive /efs
+
 on post-fs-data
     mkdir /data/tombstones 0771 system system
     mkdir /tombstones/modem 0771 system system
@@ -84,9 +85,8 @@ on post-fs-data
     restorecon /efs/drm
     restorecon /efs/drm/sdrm
     restorecon /efs/drm/data_agent
-    restorecon /efs/imei
+    restorecon_recursive /efs/imei
     restorecon /efs/prox_cal
-    restorecon /efs/mps_code.dat
     restorecon_recursive /efs/FactoryApp
     # DivX DRM
     mkdir /efs/.files 0775
