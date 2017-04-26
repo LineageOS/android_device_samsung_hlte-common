@@ -352,9 +352,13 @@ etc/wifi/bcmdhd_mfg.bin
 etc/wifi/bcmdhd_sta.bin
 etc/wifi/cred.conf
 etc/wifi/nvram_mfg.txt
+etc/wifi/nvram_mfg.txt_murata|d39fdba37f72ed0c3d635285f91dda77a9c8098b
+etc/wifi/nvram_mfg.txt_muratafem1|2badb2b638980b7858b02bc9c2c21cf307ffa1ad
 etc/wifi/nvram_mfg.txt_semco3rd
 etc/wifi/nvram_mfg.txt_wisol
 etc/wifi/nvram_net.txt
+etc/wifi/nvram_net.txt_murata|7b514f462fb555eb0608600fe26634bf354bcc0d
+etc/wifi/nvram_net.txt_muratafem1|40dfcd74b14def9a292455ad00c6280fae6975eb
 etc/wifi/nvram_net.txt_semco3rd
 etc/wifi/nvram_net.txt_wisol
 etc/wifi/wpa_supplicant.conf
