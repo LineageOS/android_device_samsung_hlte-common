@@ -80,10 +80,6 @@ PRODUCT_PACKAGES += \
     libxml2 \
     Snap
 
-# Gello
-PRODUCT_PACKAGES += \
-    Gello
-
 # Input device
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/idc/sec_e-pen.idc:system/usr/idc/sec_e-pen.idc
