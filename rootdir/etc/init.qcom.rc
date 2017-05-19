@@ -348,7 +348,6 @@ on post-fs-data
     # Enable the setgid bit on the directory
     chmod 2770 /data/audio
     chown system system /sys/devices/virtual/lcd/panel/panel/backlight
-    setprop vold.post_fs_data_done 1
 
 # Broadcom NFC
     chmod 0600 /dev/bcm2079x
@@ -389,6 +388,8 @@ on post-fs-data
     rmdir /data/data/com.android.providers.telephony/databases
     rmdir /data/data/com.android.providers.telephony/shared_prefs
 
+    setprop vold.post_fs_data_done 1
+
 service irsc_util /system/bin/irsc_util "/etc/sec_config"
     class main
     user root
@@ -409,6 +410,15 @@ service rfs_access /system/bin/rfs_access
 
 on property:ro.boot.emmc=true
     start rfs_access
+
+service ril-daemon /system/bin/rild
+    class main
+    socket rild stream 660 root radio
+    socket sap_uim_socket1 stream 660 bluetooth bluetooth
+    socket rild-debug stream 660 radio system
+    socket rild-cas stream 660 casdrm mmb
+    user root
+    group radio cache inet misc audio log system wakelock qcom_diag
 
 on property:ro.debuggable=1
     chmod 0666 /sys/class/mhl/swing
@@ -473,6 +483,10 @@ on property:sys.boot_completed=1
 
     # post boot
     setprop sys.perf.profile 1
+
+    # Post boot services
+    rm /data/system/perfd/default_values
+    start mpdecision
 
     # Symlink directories to access telephony.db and preferred-apn.xml required by cbd
     symlink /data/user_de/0/com.android.providers.telephony/databases /data/data/com.android.providers.telephony/databases
