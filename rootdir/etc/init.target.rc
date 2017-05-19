@@ -534,13 +534,14 @@ service qcamerasvr /system/bin/mm-qcamera-daemon
     group camera system inet input graphics radio sdcard_rw sdcard_r media_rw shell log
 
 service qseecomd /system/bin/qseecomd
-   class late_start
+   class core
    user root
-   group system
+   group root
 
 service mpdecision /system/bin/mpdecision --avg_comp
+   class main
    user root
-   group system
+   group root readproc
    disabled
 
 service thermal-engine /system/bin/thermal-engine
