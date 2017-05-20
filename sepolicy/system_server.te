@@ -6,3 +6,5 @@ allow system_server sysfs_thermal:file { open read write };
 allow system_server efs_file:dir search;
 allow system_server sensors_efs_file:file { open read write };
 allow system_server system_file:file execmod; # for libsensirion_h_2.so
+allow system_server wifi_efs_file:dir { search };
+allow system_server wifi_efs_file:file { open read };
