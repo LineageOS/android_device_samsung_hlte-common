@@ -1,2 +1,2 @@
-allow kernel efs_file:file { open read };
+allow kernel efs_file:file { open read search };
 allow kernel sensors_efs_file:file { open read };
