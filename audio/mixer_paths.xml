@@ -509,7 +509,7 @@
 	<path name="speaker">
 		<ctl name="SPK Status" value="1" />
 		<path name="spk" />
-		<ctl name="RX7 Digital Volume" value="81" />
+		<ctl name="RX7 Digital Volume" value="88" />
 		<ctl name="SPK DRV Volume" value="8" />
 		<ctl name="COMP0 Switch" value="1" />
 	</path>
@@ -518,8 +518,8 @@
 		<path name="ear" />
 		<ctl name="HPHL Volume" value="20" />
 		<ctl name="HPHR Volume" value="20" />
-		<ctl name="RX1 Digital Volume" value="77" />
-		<ctl name="RX2 Digital Volume" value="77" />
+		<ctl name="RX1 Digital Volume" value="82" />
+		<ctl name="RX2 Digital Volume" value="82" />
 		<ctl name="COMP1 Switch" value="1" />
 	</path>
 
