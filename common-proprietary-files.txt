@@ -27,6 +27,10 @@ vendor/lib/libfastcvopt.so
 vendor/lib/libscve.so
 vendor/lib/libscve_stub.so
 
+# aptX (Moto griffin - NCLS25.86-11-4-6-5)
+vendor/lib/libaptX-1.0.0-rel-Android21-ARMv7A.so|b03772672144d4b750a5672c2922aded93bb0512
+vendor/lib/libaptXScheduler.so|6a0a2d564fde8434018b9840ce81d976b4d4ab28
+
 # Bluetooth firmware
 vendor/firmware/bcm4335_V0111.0559.hcd
 vendor/firmware/bcm4335_V0111.0559.hcd:vendor/firmware/bcm4335_V0111.0559_murata.hcd
