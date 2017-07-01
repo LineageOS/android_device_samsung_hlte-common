@@ -1,4 +1,4 @@
-# Samsung Package Version: N9005XXSGBQA4_N9005VAUGBPA1_VAU, unless pinned
+# Samsung Package Version: N9005XXSGBQD5_N9005OJVGBPF1_XSI, unless pinned
 
 # Activity recognition
 vendor/lib/libsensor1.so
@@ -31,13 +31,8 @@ vendor/lib/libscve_stub.so
 vendor/lib/libaptX-1.0.0-rel-Android21-ARMv7A.so|b03772672144d4b750a5672c2922aded93bb0512
 vendor/lib/libaptXScheduler.so|6a0a2d564fde8434018b9840ce81d976b4d4ab28
 
-# Bluetooth firmware
-vendor/firmware/bcm4335_V0111.0559.hcd
-vendor/firmware/bcm4335_V0111.0559.hcd:vendor/firmware/bcm4335_V0111.0559_murata.hcd
-vendor/firmware/bcm4335_V0111.0559.hcd:vendor/firmware/bcm4335_V0111.0559_semco.hcd
-vendor/firmware/bcm4335_V0111.0559.hcd:vendor/firmware/bcm4335_V0111.0559_semcosh.hcd
-vendor/firmware/bcm4335_V0111.0559.hcd:vendor/firmware/bcm4335_V0111.0559_semcove.hcd
-vendor/firmware/bcm4335_V0111.0559_wisol.hcd
+# Bluetooth firmware (Samsung hlte - N9005XXSGBQA4_N9005VAUGBPA1_VAU)
+vendor/firmware/bcm4335_V0111.0559.hcd|29f07d75c5ada4c89d208f252926300371992736
 
 # Camera
 bin/mm-qcamera-daemon
@@ -277,7 +272,7 @@ vendor/lib/libizat_core.so
 vendor/lib/liblbs_core.so
 vendor/lib/libperipheral_client.so
 
-# Graphics
+# Graphics (OnePlus bacon - Cyanogen OS cm-13.1.2-ZNH2KAS3P0)
 vendor/lib/egl/eglsubAndroid.so|cefa669b1d8e0b05afb46d435e7c9f65bfabea02
 vendor/lib/egl/libEGL_adreno.so|c409c4d27935de4597c8d31d5a43fff09c550531
 vendor/lib/egl/libGLESv1_CM_adreno.so|5fd26236efa861bdb6d756472b6659de97fbcfb6
@@ -343,8 +338,8 @@ lib/hw/sensorhubs.msm8974.so
 lib/hw/sensors.msm8974.so
 lib/libsensirion_h_2.so
 
-# Time services
--app/TimeService/TimeService.apk|a6ac3fec8d792114394f141c68a3d7e5a504f237
+# Time services (Samsung klte - G900FXXU1CQE1_G900FPHE1CQE1_PHE)
+-app/TimeService/TimeService.apk|dd8d01ac83aed2908d1cd4799dba90af175b17a7
 bin/time_daemon|a988427f90ce53b725808258ca29e9e5d1079ac8
 vendor/lib/libTimeService.so|2eaf638faf69a5814e892e6bc38f6616364e4786
 -vendor/lib/libtime_genoff.so|9b130affec781753cdc6dfbbb15768ed8517e03c
@@ -367,5 +362,5 @@ etc/wifi/nvram_net.txt_semco3rd
 etc/wifi/nvram_net.txt_wisol
 etc/wifi/wpa_supplicant.conf
 
-# Widevine (Samsung Package Version G920FXXU5EQBA_G920FOJV5EQBB_XSG)
+# Widevine (Samsung zero - G920FXXU5EQBA_G920FOJV5EQBB_XSG)
 vendor/lib/mediadrm/libwvdrmengine.so|e669e2fbc352b4e38f4c7ea27c805e1619e9d4ca
