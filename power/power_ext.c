@@ -53,5 +53,3 @@ void cm_power_set_interactive_ext(int on) {
     sysfs_write(SPEN_POWER, on ? "1" : "0");
     sysfs_write(GPIO_KEYS_POWER, on ? "1" : "0");
 }
-
-
