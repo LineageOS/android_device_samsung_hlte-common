@@ -33,6 +33,11 @@ vendor/lib/libaptXScheduler.so|6a0a2d564fde8434018b9840ce81d976b4d4ab28
 
 # Bluetooth firmware (Samsung hlte - N9005XXSGBQA4_N9005VAUGBPA1_VAU)
 vendor/firmware/bcm4335_V0111.0559.hcd|29f07d75c5ada4c89d208f252926300371992736
+vendor/firmware/bcm4335_V0111.0559_murata.hcd|29f07d75c5ada4c89d208f252926300371992736
+vendor/firmware/bcm4335_V0111.0559_semco.hcd|29f07d75c5ada4c89d208f252926300371992736
+vendor/firmware/bcm4335_V0111.0559_semcosh.hcd|29f07d75c5ada4c89d208f252926300371992736
+vendor/firmware/bcm4335_V0111.0559_semcove.hcd|29f07d75c5ada4c89d208f252926300371992736
+vendor/firmware/bcm4335_V0111.0559_wisol.hcd|29f07d75c5ada4c89d208f252926300371992736
 
 # Camera
 bin/mm-qcamera-daemon
