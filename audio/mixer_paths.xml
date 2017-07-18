@@ -370,6 +370,15 @@
     <path name="incall-rec-uplink-and-downlink usb-headset-mic">
         <path name="incall-rec-uplink-and-downlink" />
     </path>
+  
+    <!-- low latency recording -->
+    < Path name = " low-latency-record " >
+        < Ctl name = " MultiMedia5 Mixer SLIM_0_TX " value = " 1 " />
+    </ Path >
+
+    < Path name = " low-latency-record usb-headset-mic " >
+        < Ctl name = " MultiMedia5 Mixer AFE_PCM_TX " value = " 1 " />
+    </ Path >
 
 
 	<!-- end of Verb -->
