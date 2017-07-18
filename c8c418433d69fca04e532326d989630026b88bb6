@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eaff0fd5_4cfd3c57",
+        "filename": "audio/mixer_paths.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 16082
+      },
+      "writtenOn": "2017-07-18T07:49:06Z",
+      "side": 1,
+      "message": "whitespace",
+      "range": {
+        "startLine": 373,
+        "startChar": 0,
+        "endLine": 373,
+        "endChar": 2
+      },
+      "revId": "c8c418433d69fca04e532326d989630026b88bb6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8f2f8911_af989b35",
+        "filename": "audio/mixer_paths.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 16082
+      },
+      "writtenOn": "2017-07-18T07:49:06Z",
+      "side": 1,
+      "message": "Remove space",
+      "range": {
+        "startLine": 375,
+        "startChar": 5,
+        "endLine": 375,
+        "endChar": 6
+      },
+      "revId": "c8c418433d69fca04e532326d989630026b88bb6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1b104ad_43c8aa65",
+        "filename": "audio/mixer_paths.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 16082
+      },
+      "writtenOn": "2017-07-18T07:49:06Z",
+      "side": 1,
+      "message": "lowercase p",
+      "range": {
+        "startLine": 375,
+        "startChar": 6,
+        "endLine": 375,
+        "endChar": 7
+      },
+      "revId": "c8c418433d69fca04e532326d989630026b88bb6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3b077ccc_9c83351c",
+        "filename": "audio/mixer_paths.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 16082
+      },
+      "writtenOn": "2017-07-18T07:49:06Z",
+      "side": 1,
+      "message": "remove space",
+      "range": {
+        "startLine": 375,
+        "startChar": 15,
+        "endLine": 375,
+        "endChar": 16
+      },
+      "revId": "c8c418433d69fca04e532326d989630026b88bb6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ebdb679d_da9e5830",
+        "filename": "audio/mixer_paths.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 16082
+      },
+      "writtenOn": "2017-07-18T07:49:06Z",
+      "side": 1,
+      "message": "remove space",
+      "range": {
+        "startLine": 375,
+        "startChar": 40,
+        "endLine": 375,
+        "endChar": 41
+      },
+      "revId": "c8c418433d69fca04e532326d989630026b88bb6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "953b901a_19d1d548",
+        "filename": "audio/mixer_paths.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 16082
+      },
+      "writtenOn": "2017-07-18T07:49:06Z",
+      "side": 1,
+      "message": "remove space",
+      "range": {
+        "startLine": 375,
+        "startChar": 19,
+        "endLine": 375,
+        "endChar": 20
+      },
+      "revId": "c8c418433d69fca04e532326d989630026b88bb6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "21f6acaf_3bd0ba8c",
+        "filename": "audio/mixer_paths.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 16082
+      },
+      "writtenOn": "2017-07-18T07:49:06Z",
+      "side": 1,
+      "message": "remove space",
+      "range": {
+        "startLine": 375,
+        "startChar": 17,
+        "endLine": 375,
+        "endChar": 18
+      },
+      "revId": "c8c418433d69fca04e532326d989630026b88bb6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "629a22a6_78027dd1",
+        "filename": "audio/mixer_paths.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 16082
+      },
+      "writtenOn": "2017-07-18T07:49:06Z",
+      "side": 1,
+      "message": "remove space",
+      "range": {
+        "startLine": 375,
+        "startChar": 38,
+        "endLine": 375,
+        "endChar": 39
+      },
+      "revId": "c8c418433d69fca04e532326d989630026b88bb6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "02a19f4a_aadfebc6",
+        "filename": "audio/mixer_paths.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 16082
+      },
+      "writtenOn": "2017-07-18T07:49:06Z",
+      "side": 1,
+      "message": "Same goes for all these lines: remove surplus spaces and lowercase tags",
+      "range": {
+        "startLine": 376,
+        "startChar": 0,
+        "endLine": 381,
+        "endChar": 13
+      },
+      "revId": "c8c418433d69fca04e532326d989630026b88bb6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
