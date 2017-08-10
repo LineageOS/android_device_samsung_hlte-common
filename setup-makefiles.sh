@@ -18,9 +18,7 @@
 
 set -e
 
-if [ -z $INITIAL_COPYRIGHT_YEAR ]; then
-    export INITIAL_COPYRIGHT_YEAR=2014
-fi
+export INITIAL_COPYRIGHT_YEAR=2014
 
 # Load extract_utils and do some sanity checks
 MY_DIR="${BASH_SOURCE%/*}"
@@ -44,6 +42,10 @@ write_headers "hlte hltechn hltetmo"
 write_makefiles "$MY_DIR"/common-proprietary-files.txt
 
 write_footers
+
+if [ ! -z $VARIANT_COPYRIGHT_YEAR ]; then
+    export INITIAL_COPYRIGHT_YEAR=$VARIANT_COPYRIGHT_YEAR
+fi
 
 # Reinitialize the helper for device
 setup_vendor "$DEVICE" "$VENDOR" "$CM_ROOT"
