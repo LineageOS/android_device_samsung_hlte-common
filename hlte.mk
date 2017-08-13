@@ -68,6 +68,9 @@ PRODUCT_PACKAGES += \
     FlipFlap
 
 # GPS
+PRODUCT_PACKAGES += \
+    gps.msm8974
+
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/flp.conf:system/etc/flp.conf \
     $(LOCAL_PATH)/configs/gps.conf:system/etc/gps.conf \
