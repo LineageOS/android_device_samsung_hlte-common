@@ -22,6 +22,7 @@ $(call inherit-product-if-exists, vendor/samsung/hlte-common/hlte-common-vendor.
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
+DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay-lineage
 
 # System properties
 -include $(LOCAL_PATH)/system_prop.mk
