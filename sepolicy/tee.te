@@ -1,2 +1,0 @@
-allow tee efs_file:dir search;
-allow tee efs_file:file { getattr open read };
