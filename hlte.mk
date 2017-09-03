@@ -60,7 +60,7 @@ PRODUCT_PACKAGES += \
     libantradio
 
 # Doze
-PRODUCT_PACKAGES += \
+#PRODUCT_PACKAGES += \
     SamsungDoze
 
 # FlipFlap
