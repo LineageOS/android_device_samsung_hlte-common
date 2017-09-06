@@ -26,13 +26,18 @@
 
 #define LOG_TAG "CameraWrapper"
 #include <cutils/log.h>
-
 #include <utils/threads.h>
 #include <utils/String8.h>
 #include <hardware/hardware.h>
 #include <hardware/camera.h>
 #include <camera/Camera.h>
 #include <camera/CameraParameters2.h>
+
+static const char KEY_DIS[] = "dis";
+static const char DIS_DISABLE[] = "disable";
+static const char KEY_ZSL[] = "zsl";
+static const char ZSL_ON[] = "on";
+static const char ZSL_OFF[] = "off";
 
 static android::Mutex gCameraWrapperLock;
 static camera_module_t *gVendorModule = 0;
@@ -159,10 +164,10 @@ char * camera_fixup_setparams(struct camera_device * device, const char * settin
     bool isVideo = recordingHint && !strcmp(recordingHint, "true");
 
     if (isVideo) {
-        params.set(android::CameraParameters::KEY_DIS, android::CameraParameters::DIS_DISABLE);
-        params.set(android::CameraParameters::KEY_ZSL, android::CameraParameters::ZSL_OFF);
+        params.set(KEY_DIS, DIS_DISABLE);
+        params.set(KEY_ZSL, ZSL_OFF);
     } else {
-        params.set(android::CameraParameters::KEY_ZSL, android::CameraParameters::ZSL_ON);
+        params.set(KEY_ZSL, ZSL_ON);
     }
 
     android::String8 strParams = params.flatten();
