@@ -178,6 +178,9 @@ on boot
     # an ack packet comes out of order
     write /proc/sys/net/netfilter/nf_conntrack_tcp_be_liberal 1
 
+    # Set permissions for firmware path control
+    chown wifi wifi /sys/module/dhd/parameters/firmware_path
+
 # msm specific files that need to be created on /data
 on post-fs-data
 
