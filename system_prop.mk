@@ -55,9 +55,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.data.netmgrd.qos.enable=true \
     persist.data.qmi.adb_logmask=0 \
     persist.radio.add_power_save=1 \
-    persist.radio.lte_vrat_report=1 \
-    persist.radio.mode_pref_nv10=1 \
-    persist.data.qmi.adb_logmask=0
+    ro.ril.telephony.mqanelements=6 \
+    ro.telephony.ril_class=hlteRIL
 
 # Sensors
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -70,8 +69,3 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Wifi
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0
-
-# Radio
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.ril.telephony.mqanelements=6 \
-    ro.telephony.ril_class=hlteRIL
