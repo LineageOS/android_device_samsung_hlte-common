@@ -344,7 +344,6 @@ bin/ks
 bin/qcks
 bin/qmuxd
 bin/rfs_access
-bin/rild
 bin/rmt_storage
 vendor/lib/libril-qcril-hook-oem.so
 
