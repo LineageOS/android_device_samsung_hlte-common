@@ -32,8 +32,6 @@ import init.target.rc
 on early-init
     setprop sys.boot_completed 0
 
-    export LD_SHIM_LIBS /system/lib/libril.so|libshim_ril.so
-
     mount debugfs debugfs /sys/kernel/debug
     chmod 0755 /sys/kernel/debug
 
@@ -410,15 +408,6 @@ service rfs_access /system/bin/rfs_access
 
 on property:ro.boot.emmc=true
     start rfs_access
-
-service ril-daemon /system/bin/rild
-    class main
-    socket rild stream 660 root radio
-    socket sap_uim_socket1 stream 660 bluetooth bluetooth
-    socket rild-debug stream 660 radio system
-    socket rild-cas stream 660 casdrm mmb
-    user root
-    group radio cache inet misc audio log system wakelock qcom_diag
 
 on property:ro.debuggable=1
     chmod 0666 /sys/class/mhl/swing
