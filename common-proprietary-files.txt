@@ -341,6 +341,16 @@ vendor/lib/libqmi_csi.so
 vendor/lib/libqmi_encdec.so
 vendor/lib/libqmiservices.so
 
+# Radio
+bin/efsks
+bin/ks
+bin/qcks
+bin/qmuxd
+bin/rfs_access
+bin/rild
+bin/rmt_storage
+vendor/lib/libril-qcril-hook-oem.so
+
 # Sensors
 lib/hw/sensorhubs.msm8974.so
 lib/hw/sensors.msm8974.so
