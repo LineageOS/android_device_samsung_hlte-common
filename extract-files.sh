@@ -56,10 +56,6 @@ extract "$MY_DIR"/common-proprietary-files-twrp.txt "$SRC"
 # Reinitialize the helper for device
 setup_vendor "$DEVICE" "$VENDOR" "$CM_ROOT"
 
-if [ -z "$VARIANT" ] ; then
-    extract "$MY_DIR"/../$DEVICE/device-proprietary-files.txt "$SRC"
-else
-    extract "$MY_DIR"/../$DEVICE/device-proprietary-files-$VARIANT.txt "$SRC"
-fi
+extract "$MY_DIR"/../$DEVICE/device-proprietary-files.txt "$SRC"
 
 "$MY_DIR"/setup-makefiles.sh
