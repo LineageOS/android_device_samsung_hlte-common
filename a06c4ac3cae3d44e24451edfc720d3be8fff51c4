@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa027df2_bdfc0a03",
+        "filename": "ril/telephony/java/com/android/internal/telephony/hlteRIL.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 11801
+      },
+      "writtenOn": "2017-10-29T15:24:54Z",
+      "side": 1,
+      "message": "leave this block as is, it actually matches aosp better that way. I would\u0027ve on klte, but I forgot",
+      "revId": "a06c4ac3cae3d44e24451edfc720d3be8fff51c4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
