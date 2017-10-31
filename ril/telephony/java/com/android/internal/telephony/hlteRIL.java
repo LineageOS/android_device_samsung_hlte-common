@@ -399,7 +399,6 @@ public class hlteRIL extends RIL implements CommandsInterface {
                             /* Get those we're interested in */
                         case RIL_REQUEST_VOICE_REGISTRATION_STATE:
                         case RIL_REQUEST_DATA_REGISTRATION_STATE:
-                        case RIL_REQUEST_OPERATOR:
                             rr = tr;
                             break;
                     }} catch (Throwable thr) {
@@ -428,7 +427,6 @@ public class hlteRIL extends RIL implements CommandsInterface {
             switch (rr.mRequest) {
                 case RIL_REQUEST_VOICE_REGISTRATION_STATE: ret = responseVoiceDataRegistrationState(p, false); break;
                 case RIL_REQUEST_DATA_REGISTRATION_STATE: ret = responseVoiceDataRegistrationState(p, true); break;
-                case RIL_REQUEST_OPERATOR: ret =  operatorCheck(p); break;
                 default:
                     throw new RuntimeException("Unrecognized solicited response: " + rr.mRequest);
             }
@@ -441,17 +439,6 @@ public class hlteRIL extends RIL implements CommandsInterface {
             rr.mResult.sendToTarget();
         }
         return rr;
-    }
-
-    private Object
-    operatorCheck(Parcel p) {
-        String response[] = (String[])responseStrings(p);
-        for(int i=0; i<2; i++){
-            if (response[i]!= null){
-                response[i] = Operators.operatorReplace(response[i]);
-            }
-        }
-        return response;
     }
 
     private Object
@@ -590,38 +577,6 @@ public class hlteRIL extends RIL implements CommandsInterface {
         if (RILJ_LOGD) riljLog(rr.serialString() + "> " + requestToString(rr.mRequest));
 
         send(rr);
-    }
-
-    //this method is used in the search network functionality.
-    // in mobile network setting-> network operators
-    @Override
-    protected Object
-    responseOperatorInfos(Parcel p) {
-        String strings[] = (String [])responseStrings(p);
-        ArrayList<OperatorInfo> ret;
-
-        if (strings.length % mQANElements != 0) {
-            throw new RuntimeException(
-                                       "RIL_REQUEST_QUERY_AVAILABLE_NETWORKS: invalid response. Got "
-                                       + strings.length + " strings, expected multiple of " + mQANElements);
-        }
-
-        ret = new ArrayList<OperatorInfo>(strings.length / mQANElements);
-        Operators init = null;
-        if (strings.length != 0) {
-            init = new Operators();
-        }
-        for (int i = 0 ; i < strings.length ; i += mQANElements) {
-            String temp = init.unOptimizedOperatorReplace(strings[i+0]);
-            ret.add (
-                     new OperatorInfo(
-                                      temp, //operatorAlphaLong
-                                      temp,//operatorAlphaShort
-                                      strings[i+2],//operatorNumeric
-                                      strings[i+3]));//state
-        }
-
-        return ret;
     }
 
     @Override
