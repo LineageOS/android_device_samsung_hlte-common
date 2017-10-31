@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "763b4517_cf78071b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 11801
+      },
+      "writtenOn": "2017-10-31T14:11:02Z",
+      "side": 1,
+      "message": "This comma here is awkward.\nAlso, maybe \"on these hlte variants\" instead of \"on some hlte variants\"? (to avoid being repetitive)",
+      "range": {
+        "startLine": 13,
+        "startChar": 29,
+        "endLine": 13,
+        "endChar": 30
+      },
+      "revId": "27a909961c59b15bb0b64eede66e729e3255f09c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
