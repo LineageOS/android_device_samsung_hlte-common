@@ -24,7 +24,7 @@ if [[ ! -d "$MY_DIR" ]]; then MY_DIR="$PWD"; fi
 
 CM_ROOT="$MY_DIR"/../../..
 
-HELPER="$CM_ROOT"/vendor/cm/build/tools/extract_utils.sh
+HELPER="$CM_ROOT"/vendor/lineage/build/tools/extract_utils.sh
 if [ ! -f "$HELPER" ]; then
     echo "Unable to find helper script at $HELPER"
     exit 1
@@ -56,10 +56,8 @@ extract "$MY_DIR"/common-proprietary-files-twrp.txt "$SRC"
 # Reinitialize the helper for device
 setup_vendor "$DEVICE" "$VENDOR" "$CM_ROOT"
 
-if [ -z "$VARIANT" ] ; then
-    extract "$MY_DIR"/../$DEVICE/device-proprietary-files.txt "$SRC"
-else
-    extract "$MY_DIR"/../$DEVICE/device-proprietary-files-$VARIANT.txt "$SRC"
-fi
+for BLOB_LIST in "$MY_DIR"/../$DEVICE/device-proprietary-files*.txt; do
+    extract $BLOB_LIST "$SRC"
+done
 
 "$MY_DIR"/setup-makefiles.sh
