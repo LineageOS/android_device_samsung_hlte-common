@@ -1,4 +1,3 @@
-allow platform_app exfat:dir create_dir_perms;
-allow platform_app exfat:file create_file_perms;
-allow platform_app fuseblk:dir create_dir_perms;
-allow platform_app fuseblk:file create_file_perms;
+allow platform_app sdcard_type:dir create_dir_perms;
+allow platform_app sdcard_type:file create_file_perms;
+
