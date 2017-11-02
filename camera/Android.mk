@@ -33,6 +33,8 @@ LOCAL_SHARED_LIBRARIES := \
 LOCAL_C_INCLUDES := \
     system/media/camera/include
 
+LOCAL_HEADER_LIBRARIES := libnativebase_headers
+
 LOCAL_MODULE := camera.msm8974
 LOCAL_MODULE_RELATIVE_PATH := hw
 LOCAL_MODULE_TAGS := optional
