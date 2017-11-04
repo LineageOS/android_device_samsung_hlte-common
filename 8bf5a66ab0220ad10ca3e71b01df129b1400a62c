@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "09c9e0fd_2944d8cd",
+        "filename": "libril/ril.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 4110,
+      "author": {
+        "id": 883
+      },
+      "writtenOn": "2017-11-04T20:43:06Z",
+      "side": 1,
+      "message": "RIL_CardStatus_v6 *p_cur \u003d ((RIL_CardStatus_v6 *) response);\n\n    bool simglw206r \u003d (num_apps \u003d\u003d 1\n            \u0026\u0026 property_get_bool(\"telephony.lteOnCdmaDevice\", false)\n            \u0026\u0026 p_cur-\u003eapplications[0].app_type \u003d\u003d 2);",
+      "revId": "8bf5a66ab0220ad10ca3e71b01df129b1400a62c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
