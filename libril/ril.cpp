@@ -4036,7 +4036,7 @@ static void rilEventAddWakeup(struct ril_event *ev) {
 }
 
 static void sendSimStatusAppInfo(Parcel &p, int num_apps, RIL_AppStatus appStatus[]) {
-        p.writeInt32(num_apps);
+        p.writeInt32(num_apps + 2);
         startResponse;
         for (int i = 0; i < num_apps; i++) {
             p.writeInt32(appStatus[i].app_type);
@@ -4060,6 +4060,26 @@ static void sendSimStatusAppInfo(Parcel &p, int num_apps, RIL_AppStatus appStatu
                     appStatus[i].pin1,
                     appStatus[i].pin2);
         }
+        // CSIM
+        p.writeInt32(4);
+        p.writeInt32(appStatus[0].app_state);
+        p.writeInt32(appStatus[0].perso_substate);
+        writeStringToParcel(p, (const char*)(appStatus[0].aid_ptr));
+        writeStringToParcel(p, (const char*)
+                                      (appStatus[0].app_label_ptr));
+        p.writeInt32(appStatus[0].pin1_replaced);
+        p.writeInt32(appStatus[0].pin1);
+        p.writeInt32(appStatus[0].pin2);
+        // ISIM
+        p.writeInt32(5);
+        p.writeInt32(appStatus[0].app_state);
+        p.writeInt32(appStatus[0].perso_substate);
+        writeStringToParcel(p, (const char*)(appStatus[0].aid_ptr));
+        writeStringToParcel(p, (const char*)
+                                      (appStatus[0].app_label_ptr));
+        p.writeInt32(appStatus[0].pin1_replaced);
+        p.writeInt32(appStatus[0].pin1);
+        p.writeInt32(appStatus[0].pin2);
         closeResponse;
 }
 
@@ -4081,8 +4101,8 @@ static void responseSimStatusV6(Parcel &p, void *response) {
     p.writeInt32(p_cur->card_state);
     p.writeInt32(p_cur->universal_pin_state);
     p.writeInt32(p_cur->gsm_umts_subscription_app_index);
-    p.writeInt32(p_cur->cdma_subscription_app_index);
-    p.writeInt32(p_cur->ims_subscription_app_index);
+    p.writeInt32(1);
+    p.writeInt32(2);
 
     sendSimStatusAppInfo(p, p_cur->num_applications, p_cur->applications);
 }
