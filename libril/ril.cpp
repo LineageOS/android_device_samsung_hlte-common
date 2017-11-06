@@ -4206,6 +4206,8 @@ static int responseCdmaSms(Parcel &p, void *response, size_t responselen) {
     int digitLimit;
     uint8_t uct;
     void* dest;
+    int opNum;
+    bool isSprint;
 
     RLOGD("Inside responseCdmaSms");
 
@@ -4221,6 +4223,29 @@ static int responseCdmaSms(Parcel &p, void *response, size_t responselen) {
     }
 
     RIL_CDMA_SMS_Message *p_cur = (RIL_CDMA_SMS_Message *) response;
+
+    opNum = property_get_int32("ro.cdma.home.operator.numeric", 0);
+    switch (opNum) {
+        /* Sprint */
+        case 310120:
+        case 311490:
+        case 311870:
+        case 312530:
+            isSprint = true;
+            break;
+        default:
+            isSprint = false;
+            break;
+    }
+
+    if (isSprint) {
+        /* TELESERVICE_VMN */
+        if (p_cur->uTeleserviceID == 0x1003) {
+            /* Drop voicemail notifications for Sprint */
+            return RIL_E_GENERIC_FAILURE;
+        }
+    }
+
     p.writeInt32(p_cur->uTeleserviceID);
     p.write(&(p_cur->bIsServicePresent),sizeof(uct));
     p.writeInt32(p_cur->uServicecategory);
@@ -4255,7 +4280,7 @@ static int responseCdmaSms(Parcel &p, void *response, size_t responselen) {
             p_cur->sAddress.digit_mode, p_cur->sAddress.number_mode,p_cur->sAddress.number_type);
     closeResponse;
 
-    return 0;
+    return ret;
 }
 
 static int responseDcRtInfo(Parcel &p, void *response, size_t responselen)
