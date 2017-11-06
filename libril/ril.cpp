@@ -4206,6 +4206,8 @@ static int responseCdmaSms(Parcel &p, void *response, size_t responselen) {
     int digitLimit;
     uint8_t uct;
     void* dest;
+    int op_num, ret = 0;
+    bool is_sprint;
 
     RLOGD("Inside responseCdmaSms");
 
@@ -4221,6 +4223,29 @@ static int responseCdmaSms(Parcel &p, void *response, size_t responselen) {
     }
 
     RIL_CDMA_SMS_Message *p_cur = (RIL_CDMA_SMS_Message *) response;
+
+    op_num = property_get_int32("ro.cdma.home.operator.numeric", 0);
+    switch (op_num) {
+        /* Sprint */
+        case 310120:
+        case 311490:
+        case 311870:
+        case 312530:
+            is_sprint = true;
+            break;
+        default:
+            is_sprint = false;
+            break;
+    }
+
+    if (is_sprint) {
+        /* TELESERVICE_MWI */
+        if (p_cur->uTeleserviceID == 0x40000) {
+            /* Drop MWI for Sprint */
+            ret = 1;
+        }
+    }
+
     p.writeInt32(p_cur->uTeleserviceID);
     RLOGD("javelinanddart p_cur->uTeleserviceID=%d", p_cur->uTeleserviceID);
     p.write(&(p_cur->bIsServicePresent),sizeof(uct));
@@ -4270,7 +4295,7 @@ static int responseCdmaSms(Parcel &p, void *response, size_t responselen) {
             p_cur->sAddress.digit_mode, p_cur->sAddress.number_mode,p_cur->sAddress.number_type);
     closeResponse;
 
-    return 0;
+    return ret;
 }
 
 static int responseDcRtInfo(Parcel &p, void *response, size_t responselen)
