@@ -4222,30 +4222,45 @@ static int responseCdmaSms(Parcel &p, void *response, size_t responselen) {
 
     RIL_CDMA_SMS_Message *p_cur = (RIL_CDMA_SMS_Message *) response;
     p.writeInt32(p_cur->uTeleserviceID);
+    RLOGD("javelinanddart p_cur->uTeleserviceID=%d", p_cur->uTeleserviceID);
     p.write(&(p_cur->bIsServicePresent),sizeof(uct));
+    RLOGD("javelinanddart p_cur->bIsServicePresent=%d", p_cur->bIsServicePresent);
     p.writeInt32(p_cur->uServicecategory);
+    RLOGD("javleinanddart p_cur->uServicecategory=%d", p_cur->uServicecategory);
     p.writeInt32(p_cur->sAddress.digit_mode);
+    RLOGD("javelinanddart p_cur->sAddress.digit_mode=%d", p_cur->sAddress.digit_mode);
     p.writeInt32(p_cur->sAddress.number_mode);
+    RLOGD("javelinanddart p_cur->sAddress.number_mode=%d", p_cur->sAddress.number_mode);
     p.writeInt32(p_cur->sAddress.number_type);
+    RLOGD("javeliannddart p_cur->sAddress.number_type=%d", p_cur->sAddress.number_type);
     p.writeInt32(p_cur->sAddress.number_plan);
+    RLOGD("javelinanddart p_cur->sAddress.number_plan=%d", p_cur->sAddress.number_plan);
     p.write(&(p_cur->sAddress.number_of_digits), sizeof(uct));
+    RLOGD("javelinanddart p_cur->sAddress.number_of_digits=%d", p_cur->sAddress.number_of_digits);
     digitLimit= MIN((p_cur->sAddress.number_of_digits), RIL_CDMA_SMS_ADDRESS_MAX);
     for(digitCount =0 ; digitCount < digitLimit; digitCount ++) {
         p.write(&(p_cur->sAddress.digits[digitCount]),sizeof(uct));
+        RLOGD("javelinanddart p_cur->sAddress.digits[%d]=%d", digitCount, p_cur->sAddress.digits[digitCount]);
     }
 
     p.writeInt32(p_cur->sSubAddress.subaddressType);
+    RLOGD("javelinanddart p_cur->sSubAddress.subaddressType=%d", p_cur->sSubAddress.subaddressType);
     p.write(&(p_cur->sSubAddress.odd),sizeof(uct));
+    RLOGD("javelinanddart p_cur->sSubAddress.odd=%d", p_cur->sSubAddress.odd);
     p.write(&(p_cur->sSubAddress.number_of_digits),sizeof(uct));
+    RLOGD("javelinanddart p_cur->sSubAddress.number_of_digits=%d", p_cur->sSubAddress.number_of_digits);
     digitLimit= MIN((p_cur->sSubAddress.number_of_digits), RIL_CDMA_SMS_SUBADDRESS_MAX);
     for(digitCount =0 ; digitCount < digitLimit; digitCount ++) {
         p.write(&(p_cur->sSubAddress.digits[digitCount]),sizeof(uct));
+        RLOGD("javelinanddart p_cur->sSubAddress.digits[%d]=%d", digitCount, p_cur->sSubAddress.digits[digitCount]);
     }
 
     digitLimit= MIN((p_cur->uBearerDataLen), RIL_CDMA_SMS_BEARER_DATA_MAX);
     p.writeInt32(p_cur->uBearerDataLen);
+    RLOGD("javelinanddart p_cur->uBearerDataLen=%d", p_cur->uBearerDataLen);
     for(digitCount =0 ; digitCount < digitLimit; digitCount ++) {
        p.write(&(p_cur->aBearerData[digitCount]), sizeof(uct));
+        RLOGD("javelinanddart p_cur->aBearerData[%d]=%d", digitCount, p_cur->aBearerData[digitCount]);
     }
 
     startResponse;
