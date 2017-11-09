@@ -4200,6 +4200,32 @@ static int responseCdmaBrSmsCnf(Parcel &p, void *response, size_t responselen) {
     return 0;
 }
 
+static inline void remapSprintVVM(RIL_CDMA_SMS_Message *p_cur) {
+    /* Get last known voicemail count */
+    int voicemails = property_get_int32("persist.telephony.num_voicemails", 0);
+
+    // Detect if voicemail count increased or decreased
+
+    /* Ensure voicemail count is valid */
+    if (voicemails < 0) {
+        voicemails = 0;
+    } else if (voicemails > 99) {
+        voicemails = 99;
+    }
+
+    /* Set voicemail count */
+    if (property_set("persist.telephony.num_voicemails", voicemails)) {
+        RLOGE("Failed to set voicemail count");
+    }
+
+    /* Map response to MWI parcel */
+    /* TELESERVICE_MWI */
+    p_cur->uTeleserviceID = 0x40000;
+    /* Only send 1 value */
+    p_cur->uBearerDataLen = 1;
+    /* Send voicemail count as only data */
+    p_cur->aBearerData[0] = voicemails;
+}
 static int responseCdmaSms(Parcel &p, void *response, size_t responselen) {
     int num;
     int digitCount;
@@ -4245,6 +4271,17 @@ static int responseCdmaSms(Parcel &p, void *response, size_t responselen) {
             /* Drop MWI for Sprint */
             RLOGD("Found Sprint MWI message, dropping message");
             ret = 1;
+        }
+        /* Sprint VVM Message */
+        if (p_cur->sAddress.number_of_digits == 4) {
+            if (p_cur->sAddress.digits[0] == 9 &&
+                    p_cur->sAddress.digits[1] == 0 &&
+                    p_cur->sAddress.digits[2] == 1 &&
+                    p_cur->sAddress.digits[2] == 6) {
+                /* Rewrite response for userspace */
+                RLOGD("Found Sprint VVM SMS, remapping to MWI");
+                remapSprintVVM(p_cur);
+            }
         }
     }
 
