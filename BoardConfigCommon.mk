@@ -65,10 +65,6 @@ BOARD_HARDWARE_CLASS += hardware/samsung/cmhw
 # Graphics
 TARGET_HAVE_NEW_GRALLOC := true
 
-# Display
-SF_VSYNC_EVENT_PHASE_OFFSET_NS := 5000000
-VSYNC_EVENT_PHASE_OFFSET_NS := 7500000
-
 # Extended Filesystem Support
 TARGET_KERNEL_HAVE_EXFAT := true
 
