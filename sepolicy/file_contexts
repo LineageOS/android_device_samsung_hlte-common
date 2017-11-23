@@ -9,6 +9,7 @@
 # CMHW
 /sys/devices/virtual/timed_output/vibrator(/.*)?        u:object_r:sysfs_vibeamp:s0
 /sys/class/sec/sec_touchkey/keypad_enable               u:object_r:sysfs_display:s0
+/sys/class/sec/sec_epen/epen_gesture_rotation           u:object_r:sysfs_gesture:s0
 
 # Display
 /sys/devices/virtual/lcd/panel/power_reduce             u:object_r:sysfs_display:s0

@@ -77,6 +77,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/izat.conf:system/etc/izat.conf \
     $(LOCAL_PATH)/configs/sap.conf:system/etc/sap.conf
 
+# Gestures
+PRODUCT_PACKAGES += \
+    GestureRotation
+
 # camera
 PRODUCT_PACKAGES += \
     camera.msm8974 \
