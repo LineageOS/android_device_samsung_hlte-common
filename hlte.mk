@@ -67,6 +67,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     FlipFlap
 
+# Gestures
+PRODUCT_PACKAGES += \
+    com.cyanogenmod.keyhandler
+
 # GPS
 PRODUCT_PACKAGES += \
     gps.msm8974
