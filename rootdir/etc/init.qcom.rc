@@ -84,6 +84,8 @@ on early-init
     write /sys/module/cpu_boost/parameters/input_boost_ms 40
 
 on init
+    export LD_SHIM_LIBS /system/lib/hw/camera.vendor.msm8974.so|libshim_camera.so
+
     # Set permissions for persist partition
     mkdir /persist 0771 system system
 
