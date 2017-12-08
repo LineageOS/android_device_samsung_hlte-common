@@ -156,6 +156,14 @@ static char *camera_fixup_getparams(int id, const char *settings)
             params.set(KEY_QC_SUPPORTED_VIDEO_HIGH_FRAME_RATE_MODES, hfrModes);
         }
 
+        /* Advertise hdr as a supported scene mode */
+        const char *sceneModeValues = params.get(CameraParameters::KEY_SUPPORTED_SCENE_MODES);
+        if (sceneModeValues) {
+            char sceneModes[strlen(sceneModeValues) + 4 + 1];
+            sprintf(sceneModes, "%s,hdr", sceneModeValues);
+            params.set(CameraParameters::KEY_SUPPORTED_SCENE_MODES, sceneModes);
+        }
+
         /* Advertise scene mode as hdr when rt-hdr is on */
         const char *rtHdr = params.get(KEY_RT_HDR);
         if (rtHdr) {
