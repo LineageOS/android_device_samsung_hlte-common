@@ -20,25 +20,11 @@ LOCAL_PATH := device/samsung/hlte-common
 
 TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
 
-# Use Snapdragon LLVM if available on build server
-TARGET_USE_SDCLANG := true
-
 # ADB Legacy Interface
 TARGET_USES_LEGACY_ADB_INTERFACE := true
 
-# Bootloader
-TARGET_BOOTLOADER_BOARD_NAME := MSM8974
-
-# Kernel
-BOARD_KERNEL_BASE := 0x00000000
-BOARD_KERNEL_CMDLINE := console=null androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x3F androidboot.bootdevice=msm_sdcc.1
-BOARD_KERNEL_IMAGE_NAME := zImage
-BOARD_KERNEL_PAGESIZE := 2048
-BOARD_KERNEL_SEPARATED_DT := true
-BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02900000 --tags_offset 0x02700000
-LZMA_RAMDISK_TARGETS := recovery
-BOARD_CUSTOM_BOOTIMG_MK := hardware/samsung/mkbootimg.mk
-TARGET_KERNEL_SOURCE := kernel/samsung/msm8974
+# ANT+
+BOARD_ANT_WIRELESS_DEVICE := "vfs-prerelease"
 
 # Audio
 QCOM_CSDCLIENT_ENABLED := false
@@ -53,8 +39,8 @@ BOARD_BLUETOOTH_USES_HCIATTACH_PROPERTY := false
 BOARD_HAVE_BLUETOOTH_BCM := true
 BOARD_HAVE_SAMSUNG_BLUETOOTH := true
 
-# ANT+
-BOARD_ANT_WIRELESS_DEVICE := "vfs-prerelease"
+# Bootloader
+TARGET_BOOTLOADER_BOARD_NAME := MSM8974
 
 # Camera
 TARGET_PROVIDES_CAMERA_HAL := true
@@ -64,14 +50,25 @@ USE_DEVICE_SPECIFIC_CAMERA := true
 # CMHW
 BOARD_HARDWARE_CLASS += device/samsung/hlte-common/lineagehw
 
-# Graphics
-TARGET_HAVE_NEW_GRALLOC := true
-
 # Extended Filesystem Support
 TARGET_KERNEL_HAVE_EXFAT := true
 
+# Graphics
+TARGET_HAVE_NEW_GRALLOC := true
+
 # HIDL
 DEVICE_MANIFEST_FILE := $(LOCAL_PATH)/manifest.xml
+
+# Kernel
+BOARD_KERNEL_BASE := 0x00000000
+BOARD_KERNEL_CMDLINE := console=null androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x3F androidboot.bootdevice=msm_sdcc.1
+BOARD_KERNEL_IMAGE_NAME := zImage
+BOARD_KERNEL_PAGESIZE := 2048
+BOARD_KERNEL_SEPARATED_DT := true
+BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02900000 --tags_offset 0x02700000
+LZMA_RAMDISK_TARGETS := recovery
+BOARD_CUSTOM_BOOTIMG_MK := hardware/samsung/mkbootimg.mk
+TARGET_KERNEL_SOURCE := kernel/samsung/msm8974
 
 # Legacy BLOB Support
 TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
@@ -112,6 +109,9 @@ TARGET_NO_SENSOR_PERMISSION_CHECK := true
 ifeq ($(WITH_TWRP),true)
 -include $(LOCAL_PATH)/twrp.mk
 endif
+
+# Use Snapdragon LLVM if available on build server
+TARGET_USE_SDCLANG := true
 
 # Wifi
 BOARD_HAVE_SAMSUNG_WIFI := true
