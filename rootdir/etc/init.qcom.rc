@@ -84,7 +84,7 @@ on early-init
     write /sys/module/cpu_boost/parameters/input_boost_ms 40
 
 on init
-    export LD_SHIM_LIBS /system/lib/hw/camera.vendor.msm8974.so|libshim_camera.so:/system/lib/libcutils.so|libshim_cutils_atomic.so
+    export LD_SHIM_LIBS /system/vendor/lib/hw/camera.vendor.msm8974.so|libshim_camera.so:/system/lib/libcutils.so|libshim_cutils_atomic.so
 
     # Set permissions for persist partition
     mkdir /persist 0771 system system
@@ -394,12 +394,12 @@ on post-fs-data
 
     setprop vold.post_fs_data_done 1
 
-service irsc_util /system/bin/irsc_util "/etc/sec_config"
+service irsc_util /vendor/bin/irsc_util "/vendor/etc/sec_config"
     class main
     user root
     oneshot
 
-service rmt_storage /system/bin/rmt_storage
+service rmt_storage /vendor/bin/rmt_storage
     class core
     user root
     group system wakelock
@@ -407,7 +407,7 @@ service rmt_storage /system/bin/rmt_storage
 on property:ro.boot.emmc=true
     start rmt_storage
 
-service rfs_access /system/bin/rfs_access
+service rfs_access /vendor/bin/rfs_access
    class core
    user system
    group system net_raw
@@ -420,7 +420,7 @@ on property:ro.debuggable=1
     chmod 0666 /sys/class/mhl/timing
 
 # QMUX must be in multiple groups to support external process connections
-service qmuxd /system/bin/qmuxd
+service qmuxd /vendor/bin/qmuxd
     class main
     user root
     group radio audio bluetooth gps qcom_diag log
