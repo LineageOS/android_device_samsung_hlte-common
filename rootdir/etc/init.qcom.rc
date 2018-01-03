@@ -500,7 +500,7 @@ service hcidump /system/bin/sh /system/etc/hcidump.sh
 
 service charger /charger
     class charger
-    seclabel u:r:healthd:s0
+    seclabel u:r:charger:s0
 
 # Disable SSR to SoC restart
 on property:persist.sys.ssr.restart_level=1
