@@ -2,7 +2,6 @@
 <!--
 /*
 ** Copyright 2011, The Android Open Source Project
-** Copyright 2017, The LineageOS Project
 **
 ** Licensed under the Apache License, Version 2.0 (the "License");
 ** you may not use this file except in compliance with the License.
@@ -316,13 +315,4 @@
     <!-- enable doze powersaving mode -->
     <bool name="config_enableAutoPowerModes">true</bool>
 
-    <!-- Values for GPS configuration -->
-    <string-array translatable="false" name="config_gpsParameters">
-        <item>NTP_SERVER=north-america.pool.ntp.org</item>
-        <item>SUPL_ES=0</item>
-        <item>SUPL_HOST=supl.google.com</item>
-        <item>SUPL_PORT=7275</item>
-        <item>SUPL_MODE=1</item>
-        <item>LPP_PROFILE=0</item>
-    </string-array>
 </resources>
