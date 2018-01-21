@@ -63,7 +63,7 @@ PRODUCT_PACKAGES += \
 
 # Gestures
 PRODUCT_PACKAGES += \
-    com.cyanogenmod.keyhandler
+    org.lineageos.keyhandler
 
 # Input device
 PRODUCT_COPY_FILES += \
