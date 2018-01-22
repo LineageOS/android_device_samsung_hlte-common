@@ -16,8 +16,6 @@
 #
 #
 
-ifeq ($(TARGET_PROVIDES_CAMERA_HAL),true)
-
 LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 
@@ -41,5 +39,3 @@ LOCAL_MODULE_TAGS := optional
 LOCAL_PROPRIETARY_MODULE := true
 
 include $(BUILD_SHARED_LIBRARY)
-
-endif
