@@ -208,29 +208,29 @@ int camera_set_preview_window(struct camera_device * device,
     return VENDOR_CALL(device, set_preview_window, window);
 }
 
-void camera_notify_cb(int32_t msg_type, int32_t ext1, int32_t ext2, void *user) {
+void camera_notify_cb(int32_t msg_type, int32_t ext1, int32_t ext2, void __attribute__((unused)) *user) {
     gUserNotifyCb(msg_type, ext1, ext2, gUserCameraDevice);
 }
 
 void camera_data_cb(int32_t msg_type, const camera_memory_t *data, unsigned int index,
-        camera_frame_metadata_t *metadata, void *user) {
+        camera_frame_metadata_t *metadata, void __attribute__((unused)) *user) {
     gUserDataCb(msg_type, data, index, metadata, gUserCameraDevice);
 }
 
 void camera_data_cb_timestamp(nsecs_t timestamp, int32_t msg_type,
-        const camera_memory_t *data, unsigned index, void *user) {
+        const camera_memory_t *data, unsigned index, __attribute__((unused)) void *user) {
     gUserDataCbTimestamp(timestamp, msg_type, data, index, gUserCameraDevice);
 }
 
 camera_memory_t* camera_get_memory(int fd, size_t buf_size,
-        uint_t num_bufs, void *user) {
+        uint_t num_bufs, void __attribute__((unused)) *user) {
     return gUserGetMemory(fd, buf_size, num_bufs, gUserCameraDevice);
 }
 
 
 void camera_set_callbacks(struct camera_device * device,
         camera_notify_callback notify_cb,
-        camera_data_callback data_cb,
+        camera_data_callback __attribute__((unused)) data_cb,
         camera_data_timestamp_callback data_cb_timestamp,
         camera_request_memory get_memory,
         void *user)
@@ -242,11 +242,13 @@ void camera_set_callbacks(struct camera_device * device,
         return;
 
     gUserNotifyCb = notify_cb;
+    gUserDataCb = data_cb;
     gUserDataCbTimestamp = data_cb_timestamp;
     gUserGetMemory = get_memory;
     gUserCameraDevice = user;
 
-    VENDOR_CALL(device, set_callbacks, notify_cb, data_cb, data_cb_timestamp, get_memory, user);
+    VENDOR_CALL(device, set_callbacks, camera_notify_cb, camera_data_cb,
+            camera_data_cb_timestamp, camera_get_memory, user);
 }
 
 void camera_enable_msg_type(struct camera_device * device, int32_t msg_type)
