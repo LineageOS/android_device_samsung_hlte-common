@@ -213,6 +213,9 @@ on post-fs-data
     chmod 0660 /efs/wifi/.mac.info
     restorecon /efs/wifi/.mac.info
 
+    # for WIFI Front End Module
+    chown system system /data/.cid.info
+    chmod 0664 /data/.cid.info
 
     # Create directory used by audio subsystem
     mkdir /data/misc/audio 0770 audio audio
@@ -445,15 +448,12 @@ service wpa_supplicant /vendor/bin/hw/wpa_supplicant \
 service macloader /vendor/bin/macloader
     class late_start
     oneshot
+    user system
+    group system wifi
     seclabel u:r:macloader:s0
 
 on property:wlan.driver.status=ok
     start macloader
-
-on property:init.svc.macloader=stopped
-    chown system root /data/.rev
-    chmod 0664 /data/.rev
-# end of wifi
 
 on property:sys.boot_completed=1
     write /sys/block/mmcblk0/queue/scheduler row
