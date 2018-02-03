@@ -1,3 +1,0 @@
-allow init efs_file:dir mounton;
-allow init debugfs:dir mounton;
-allow init socket_device:sock_file { create setattr unlink write };

@@ -1,0 +1,5 @@
+# device nodes
+/dev/shtc1_sensor                                       u:object_r:sensors_device:s0
+
+# efs files
+/efs/hw_offset                                          u:object_r:sensors_efs_file:s0

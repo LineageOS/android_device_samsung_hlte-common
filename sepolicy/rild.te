@@ -1,8 +1,0 @@
-allow rild efs_file:file { getattr open read };
-allow rild proc_net:file { write };
-allow rild radio_data_file:lnk_file read;
-allow rild self:capability dac_override;
-allow rild self:tun_socket { create relabelfrom relabelto };
-allow rild sysfs_sec:file { getattr open read write };
-allow rild system_app_data_file:dir { search };
-allow rild tun_device:chr_file { ioctl open read write };
