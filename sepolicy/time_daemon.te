@@ -1,2 +1,0 @@
-allow time_daemon time_data_file:file { getattr append unlink };
-allow time_daemon time_data_file:dir { remove_name };
