@@ -37,7 +37,7 @@ fi
 setup_vendor "$DEVICE_COMMON" "$VENDOR" "$CM_ROOT" true
 
 # Copyright headers and common guards
-write_headers "hlte hltechn hltetmo"
+write_headers "hlte hltechn hltekor hltetmo"
 
 write_makefiles "$MY_DIR"/common-proprietary-files.txt
 
