@@ -180,6 +180,7 @@ on boot
 
     # Set permissions for firmware path control
     chown wifi wifi /sys/module/dhd/parameters/firmware_path
+    chown wifi wifi /sys/module/dhd/parameters/nvram_path
 
 # msm specific files that need to be created on /data
 on post-fs-data
