@@ -46,6 +46,7 @@ BOARD_HARDWARE_CLASS += $(COMMON_PATH)/lineagehw
 
 # Extended Filesystem Support
 TARGET_EXFAT_DRIVER := sdfat
+TARGET_VFAT_DRIVER := sdfat
 
 # HIDL
 DEVICE_MANIFEST_FILE += $(COMMON_PATH)/manifest.xml
