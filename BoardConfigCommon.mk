@@ -45,7 +45,7 @@ USE_DEVICE_SPECIFIC_CAMERA := true
 BOARD_HARDWARE_CLASS += $(COMMON_PATH)/lineagehw
 
 # Extended Filesystem Support
-TARGET_KERNEL_HAVE_EXFAT := true
+TARGET_EXFAT_DRIVER := exfat
 
 # HIDL
 DEVICE_MANIFEST_FILE += $(COMMON_PATH)/manifest.xml
