@@ -3,3 +3,10 @@
 
 # efs files
 /efs/hw_offset                                          u:object_r:sensors_efs_file:s0
+
+# Display Control
+/sys/devices/virtual/lcd/panel/panel/auto_brightness    u:object_r:sysfs_mdnie:s0
+/sys/devices/virtual/mdnie/mdnie/accessibility          u:object_r:sysfs_mdnie:s0
+/sys/devices/virtual/mdnie/mdnie/mode                   u:object_r:sysfs_mdnie:s0
+/sys/devices/virtual/mdnie/mdnie/outdoor                u:object_r:sysfs_mdnie:s0
+/sys/devices/virtual/mdnie/mdnie/scenario               u:object_r:sysfs_mdnie:s0

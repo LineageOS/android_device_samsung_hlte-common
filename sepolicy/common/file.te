@@ -1,1 +1,2 @@
 type sensors_efs_file, file_type;
+type sysfs_mdnie, fs_type, sysfs_type;
