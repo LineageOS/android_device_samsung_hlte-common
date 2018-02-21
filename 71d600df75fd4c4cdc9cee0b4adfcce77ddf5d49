@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1983f521_93f45974",
+        "filename": "lineagehw/org/lineageos/hardware/DisplayModeControl.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 11801
+      },
+      "writtenOn": "2018-02-21T20:11:07Z",
+      "side": 1,
+      "message": "shouldn\u0027t be needed",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 9
+      },
+      "revId": "71d600df75fd4c4cdc9cee0b4adfcce77ddf5d49",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5326f2f0_298d647d",
+        "filename": "lineagehw/org/lineageos/hardware/DisplayModeControl.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 11801
+      },
+      "writtenOn": "2018-02-21T20:11:07Z",
+      "side": 1,
+      "message": "success \u003d",
+      "range": {
+        "startLine": 119,
+        "startChar": 12,
+        "endLine": 119,
+        "endChar": 18
+      },
+      "revId": "71d600df75fd4c4cdc9cee0b4adfcce77ddf5d49",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
