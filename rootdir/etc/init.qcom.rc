@@ -352,6 +352,14 @@ on post-fs-data
     chmod 2770 /data/audio
     chown system system /sys/devices/virtual/lcd/panel/panel/backlight
 
+    # Display Control
+    chown system system /sys/class/lcd/panel/panel/auto_brightness
+    chown system system /sys/class/mdnie/mdnie/accessibility
+    chown system system /sys/class/mdnie/mdnie/mode
+    chown system system /sys/class/mdnie/mdnie/mode_max
+    chown system system /sys/class/mdnie/mdnie/outdoor
+    chown system system /sys/class/mdnie/mdnie/scenario
+
 # Broadcom NFC
     chmod 0600 /dev/bcm2079x
     chown nfc nfc /dev/bcm2079x
