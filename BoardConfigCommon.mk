@@ -87,6 +87,7 @@ TARGET_RIL_VARIANT := caf
 
 # Recovery
 TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/rootdir/etc/fstab.full
+TARGET_RECOVERY_USE_LCD_POWER_BLANK := true
 
 # SELinux
 include $(COMMON_PATH)/sepolicy/sepolicy.mk
