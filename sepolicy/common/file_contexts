@@ -3,3 +3,6 @@
 
 # efs files
 /efs/hw_offset                                          u:object_r:sensors_efs_file:s0
+
+# sysfs
+/sys/devices(/.*)?/input/input[2-4]/enabled             u:object_r:sysfs_hal_pwr:s0
