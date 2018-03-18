@@ -1,9 +1,9 @@
 # DRM - sed-ed from /system/bin/linker to /sbin/linker
 bin/qseecomd:recovery/root/sbin/qseecomd|cf49cc173070f7a4ac651a9c53399f32519baa32
-lib/hw/keystore.msm8974.so:recovery/root/vendor/lib/hw/keystore.msm8974.so|b1a613da4329226f40cdb5c20402bb9563930dcf
-vendor/lib/libQSEEComAPI.so:recovery/root/vendor/lib/libQSEEComAPI.so|0d2cd6359a8d573bebd445a2df2ec9c60e10abe2
-vendor/lib/libdiag.so:recovery/root/vendor/lib/libdiag.so|73cb32be471812843ef1a5b7f69230d2a5e73eb2
-vendor/lib/libdrmfs.so:recovery/root/vendor/lib/libdrmfs.so|41455db53d9ee622daf9e21def6acf7873922f71
-vendor/lib/libdrmtime.so:recovery/root/vendor/lib/libdrmtime.so|bf708d4a5b64e69db9bbadf38ca1a8a236554206
-vendor/lib/librpmb.so:recovery/root/vendor/lib/librpmb.so|c352d254a37a8cb156fde4c942d323468d4622a4
-vendor/lib/libssd.so:recovery/root/vendor/lib/libssd.so|a37e7ccb06288e7f9c1eca549f8383fe1b1d8c9e
+lib/hw/keystore.msm8974.so:recovery/root/odm/lib/hw/keystore.msm8974.so|b1a613da4329226f40cdb5c20402bb9563930dcf
+vendor/lib/libQSEEComAPI.so:recovery/root/sbin/libQSEEComAPI.so|0d2cd6359a8d573bebd445a2df2ec9c60e10abe2
+vendor/lib/libdiag.so:recovery/root/sbin/libdiag.so|73cb32be471812843ef1a5b7f69230d2a5e73eb2
+vendor/lib/libdrmfs.so:recovery/root/sbin/libdrmfs.so|41455db53d9ee622daf9e21def6acf7873922f71
+vendor/lib/libdrmtime.so:recovery/root/sbin/libdrmtime.so|bf708d4a5b64e69db9bbadf38ca1a8a236554206
+vendor/lib/librpmb.so:recovery/root/sbin/librpmb.so|c352d254a37a8cb156fde4c942d323468d4622a4
+vendor/lib/libssd.so:recovery/root/sbin/libssd.so|a37e7ccb06288e7f9c1eca549f8383fe1b1d8c9e
