@@ -55,6 +55,7 @@ BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_SEPARATED_DT := true
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02900000 --tags_offset 0x02700000
 LZMA_RAMDISK_TARGETS := recovery
+BOARD_CUSTOM_BOOTIMG := true
 BOARD_CUSTOM_BOOTIMG_MK := hardware/samsung/mkbootimg.mk
 TARGET_KERNEL_SOURCE := kernel/samsung/msm8974
 
