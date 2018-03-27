@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b274252c_691c3e2e",
+        "filename": "rootdir/etc/fstab.qcom",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2018-03-27T06:09:10Z",
+      "side": 0,
+      "message": "Should have left the comment that all the other changes kept.\n\n# NOTE: /system partition is now early-mounted and the fstab entry is specified in device tree (duplicated below for recovery image purposes only):",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 55
+      },
+      "revId": "8285497a1ed699ebfca82c19557a423bcabd2de4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
