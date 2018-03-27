@@ -22,6 +22,30 @@
       "revId": "8285497a1ed699ebfca82c19557a423bcabd2de4",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30f62f70_58dfb606",
+        "filename": "rootdir/etc/fstab.qcom",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 11801
+      },
+      "writtenOn": "2018-03-27T06:10:51Z",
+      "side": 0,
+      "message": "Ah, didn\u0027t even think of that. I copied fstab full to qcom, and added recoveryonly",
+      "parentUuid": "b274252c_691c3e2e",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 55
+      },
+      "revId": "8285497a1ed699ebfca82c19557a423bcabd2de4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
