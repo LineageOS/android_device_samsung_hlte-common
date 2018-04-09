@@ -269,4 +269,11 @@
     <!-- enable doze powersaving mode -->
     <bool name="config_enableAutoPowerModes">true</bool>
 
+    <!-- Whether the always on display mode is available. This should only be enabled
+         on devices where the display has been tuned to be power efficient in DOZE and/or
+         DOZE_SUSPEND states. -->
+    <bool name="config_dozeAlwaysOnDisplayAvailable">true</bool>
+
+    <!-- Whether the display blanks itself when transition from a doze to a non-doze state -->
+    <bool name="config_displayBlanksAfterDoze">true</bool>
 </resources>
