@@ -371,3 +371,9 @@ v/ppp                  0660   radio      vpn
 /sys/devices/f9968000.i2c/i2c-12/12-0068/iio:device* pedometer_int_thresh               0660   system     radio
 /sys/devices/f9968000.i2c/i2c-12/12-0068/iio:device* pedometer_step_thresh              0660   system     radio
 
+# msim radio nodes (h3gduoschn)
+/dev/modem_br             0664   root        radio
+/dev/gsm_boot0            0664   root        radio
+/dev/gsm_ipc0             0664   root        radio
+/dev/gsm_multi_pdp        0664   root        radio
+/dev/gsm_rfs0             0664   root        radio
