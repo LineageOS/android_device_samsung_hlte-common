@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "21ff81dc_eeb8861a",
+        "filename": "rootdir/etc/ueventd.qcom.rc",
+        "patchSetId": 2
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 15173
+      },
+      "writtenOn": "2018-04-25T02:06:55Z",
+      "side": 1,
+      "message": "maybe toss an \"h3gduos\" in there somewhere to keep me or some other idiot from accidentally deleting it if this ever gets cleaned-up.",
+      "range": {
+        "startLine": 371,
+        "startChar": 2,
+        "endLine": 371,
+        "endChar": 18
+      },
+      "revId": "7ed930e31955d4ce127e14fed137807433f8bf39",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
