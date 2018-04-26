@@ -55,7 +55,11 @@
     </backend_names>
 
     <pcm_ids>
-        <!-- empty -->
+        <!-- Output devices -->
+        <usecase name="USECASE_VOICE2_CALL" type="out" id="43"/>
+
+        <!-- Input devices -->
+        <usecase name="USECASE_VOICE2_CALL" type="in" id="43"/>
     </pcm_ids>
 
     <device_names>
