@@ -81,7 +81,6 @@ public class SecExtTelephony extends IExtTelephony.Stub {
     private static SubscriptionManager sSubscriptionManager;
     private static TelecomManager sTelecomManager;
     private static TelephonyManager sTelephonyManager;
-    private static int sPreviousDataSlotId;
     private static int sUiccStatus[];
 
     private Handler mHandler;
@@ -96,7 +95,6 @@ public class SecExtTelephony extends IExtTelephony.Stub {
                 Context.TELEPHONY_SUBSCRIPTION_SERVICE);
         sTelecomManager = TelecomManager.from(context);
         sTelephonyManager = TelephonyManager.from(context);
-        sPreviousDataSlotId = -1;
 
         // Assume everything present is provisioned by default
         sUiccStatus = new int[sPhones.length];
@@ -152,20 +150,12 @@ public class SecExtTelephony extends IExtTelephony.Stub {
 
         if (card == null) {
             sUiccStatus[slotId] = CARD_NOT_PRESENT;
-            return;
-        }
-
-        if (sPreviousDataSlotId == slotId) {
-            sUiccStatus[slotId] = PROVISIONED;
-            deactivateUiccCard(slotId);
-            sPreviousDataSlotId = -1;
-        } else if (sUiccStatus[slotId] != NOT_PROVISIONED ||
-                card.getCardState() != CARDSTATE_PRESENT) {
-            if (card.getCardState() == CARDSTATE_PRESENT) {
+        } else {
+            if (card.getCardState() != CARDSTATE_PRESENT) {
+                sUiccStatus[slotId] = CARD_NOT_PRESENT;
+            } else if (sUiccStatus[slotId] == CARD_NOT_PRESENT) {
                 sUiccStatus[slotId] = NOT_PROVISIONED;
                 activateUiccCard(slotId);
-            } else {
-                sUiccStatus[slotId] = CARD_NOT_PRESENT;
             }
         }
 
@@ -271,7 +261,6 @@ public class SecExtTelephony extends IExtTelephony.Stub {
         }
 
         if (sSubscriptionManager.getDefaultDataSubscriptionId() == subIdToDeactivate) {
-            sPreviousDataSlotId = slotId;
             sSubscriptionManager.setDefaultDataSubId(subIdToMakeDefault);
         }
 
