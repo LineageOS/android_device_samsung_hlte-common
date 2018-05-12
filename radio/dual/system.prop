@@ -2,4 +2,3 @@
 persist.radio.multisim.config=dsda
 ro.multisim.simslotcount=2
 ro.multisim.set_audio_params=true
-ro.telephony.ril.config=simactivation

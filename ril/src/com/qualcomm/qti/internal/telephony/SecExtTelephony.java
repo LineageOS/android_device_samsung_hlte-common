@@ -96,16 +96,13 @@ public class SecExtTelephony extends IExtTelephony.Stub {
         sTelecomManager = TelecomManager.from(context);
         sTelephonyManager = TelephonyManager.from(context);
 
-        // Assume everything present is provisioned by default
+        // Assume everything present is not present, so iccStatusChanged activates it
         sUiccStatus = new int[sPhones.length];
         for (int i = 0; i < sPhones.length; i++) {
             if (sPhones[i] == null) {
                 sUiccStatus[i] = INVALID_STATE;
-            } else if (sPhones[i].getUiccCard() == null) {
-                sUiccStatus[i] = CARD_NOT_PRESENT;
             } else {
-                sUiccStatus[i] = sPhones[i].getUiccCard().getCardState() == CARDSTATE_PRESENT
-                        ? PROVISIONED : CARD_NOT_PRESENT;
+                sUiccStatus[i] = CARD_NOT_PRESENT;
             }
         }
     }
