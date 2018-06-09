@@ -53,5 +53,8 @@ ro.telephony.mms_data_profile=5
 # Sensors
 debug.sensors=1
 
+# Vendor security patch level
+ro.lineage.build.vendor_security_patch=2016-06-01
+
 # Wifi
 wifi.interface=wlan0
