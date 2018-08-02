@@ -312,7 +312,7 @@ vendor/lib/libril-qcril-hook-oem.so
 
 # Sensors
 lib/hw/sensorhubs.msm8974.so:vendor/lib/hw/sensorhubs.msm8974.so
-lib/hw/sensors.msm8974.so:vendor/lib/hw/sensors.msm8974.so
+lib/hw/sensors.msm8974.so:vendor/lib/hw/sensors.vendor.msm8974.so
 lib/libsensirion_h_2.so:vendor/lib/libsensirion_h_2.so
 
 # Time services (Samsung klte - G900FXXU1CQE1_G900FPHE1CQE1_PHE)
