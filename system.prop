@@ -3,19 +3,19 @@ dalvik.vm.dex2oat-swap=false
 dalvik.vm.heapminfree=2m
 
 # Audio
-persist.audio.fluence.speaker=true
-persist.audio.fluence.voicecall=true
-persist.audio.fluence.voicerec=false
-ro.qc.sdk.audio.fluencetype=fluence
-mm.enable.smoothstreaming=true
-av.streaming.offload.enable=true
-use.voice.path.for.pcm.voip=true
-audio.offload.multiple.enabled=true
-audio.offload.gapless.enabled=true
-tunnel.audio.encode=true
-media.aac_51_output_enabled=true
 audio.offload.pcm.16bit.enable=true
 audio.offload.pcm.24bit.enable=true
+media.aac_51_output_enabled=true
+mm.enable.smoothstreaming=true
+persist.vendor.audio.fluence.speaker=true
+persist.vendor.audio.fluence.voicecall=true
+persist.vendor.audio.fluence.voicerec=false
+ro.vendor.audio.sdk.fluencetype=fluence
+tunnel.audio.encode=true
+vendor.audio.av.streaming.offload.enable=true
+vendor.audio.offload.gapless.enabled=true
+vendor.audio.offload.multiple.enabled=true
+vendor.voice.path.for.pcm.voip=true
 
 # Camera
 camera2.portability.force_api=1
