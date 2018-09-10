@@ -44,9 +44,6 @@ ro.qc.sdk.izat.service_mask=0x0
 # perf api
 ro.vendor.extension_library=/vendor/lib/libqti-perfd-client.so
 
-# Media
-persist.media.treble_omx=false
-
 # NFC
 ro.nfc.port=I2C
 
