@@ -60,6 +60,10 @@ TARGET_KERNEL_SOURCE := kernel/samsung/msm8974
 TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
 TARGET_LD_SHIM_LIBS += \
     /system/vendor/lib/hw/camera.vendor.msm8974.so|libshim_camera.so
+TARGET_PROCESS_SDK_VERSION_OVERRIDE += \
+    /system/bin/mediaserver=22 \
+    /system/vendor/bin/hw/android.hardware.sensors@1.0-service.samsung8974=22 \
+    /system/vendor/bin/mm-qcamera-daemon=22
 
 # Partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 11534336
