@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "706e42f8_433169a5",
+        "filename": "BoardConfigCommon.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 15346
+      },
+      "writtenOn": "2018-10-12T16:39:23Z",
+      "side": 1,
+      "message": "Delete?",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 46
+      },
+      "revId": "d98a8fcc944be0c441f810d924a315ef9ad1b23d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
