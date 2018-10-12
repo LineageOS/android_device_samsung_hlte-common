@@ -22,6 +22,24 @@
       "revId": "d98a8fcc944be0c441f810d924a315ef9ad1b23d",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "efe371b3_c34aaba7",
+        "filename": "BoardConfigCommon.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 15173
+      },
+      "writtenOn": "2018-10-12T16:51:59Z",
+      "side": 1,
+      "message": "Absolutely not. That is unless you want selinux kicking your butt.",
+      "parentUuid": "706e42f8_433169a5",
+      "revId": "d98a8fcc944be0c441f810d924a315ef9ad1b23d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
