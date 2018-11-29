@@ -158,14 +158,6 @@ on boot
 # Fingerprint
     mkdir /dev/validity 0775 system system
 
-# SEC DVFS sysfs node
-    chown radio system /sys/power/cpufreq_max_limit
-    chown radio system /sys/power/cpufreq_min_limit
-    chown radio system /sys/power/cpufreq_table
-    chmod 664 /sys/power/cpufreq_max_limit
-    chmod 664 /sys/power/cpufreq_min_limit
-    chmod 664 /sys/power/cpufreq_table
-
     chown radio system /sys/devices/system/cpu/kernel_max
     chmod 664 /sys/devices/system/cpu/kernel_max
 
