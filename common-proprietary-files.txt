@@ -1,4 +1,4 @@
-# Samsung Package Version: N9005XXSGBQD5_N9005OJVGBPF1_XSI, unless pinned
+# Samsung Package Version: N9005XXSGBRI2_N9005AUTGBRI1_AUT, unless pinned
 
 # Activity recognition
 vendor/lib/libsensor1.so
