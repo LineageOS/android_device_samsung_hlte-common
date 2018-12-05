@@ -42,9 +42,6 @@ BOARD_HARDWARE_CLASS += $(COMMON_PATH)/lineagehw
 # Encryption
 TARGET_KEYMASTER_SKIP_WAITING_FOR_QSEE := true
 
-# Extended Filesystem Support
-TARGET_EXFAT_DRIVER := sdfat
-
 # HIDL
 DEVICE_MANIFEST_FILE += $(COMMON_PATH)/manifest.xml
 
