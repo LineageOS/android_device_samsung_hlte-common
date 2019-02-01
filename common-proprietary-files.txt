@@ -31,13 +31,8 @@ vendor/lib/rfsa/adsp/libfastcvadsp.so
 vendor/lib/rfsa/adsp/libfastcvadsp_skel.so
 vendor/lib/rfsa/adsp/libscveT2T_skel.so
 
-# Bluetooth firmware (Samsung hlte - N9005XXSGBQA4_N9005VAUGBPA1_VAU)
-vendor/firmware/bcm4335_V0111.0559.hcd|29f07d75c5ada4c89d208f252926300371992736
-vendor/firmware/bcm4335_V0111.0559_murata.hcd|29f07d75c5ada4c89d208f252926300371992736
-vendor/firmware/bcm4335_V0111.0559_semco.hcd|29f07d75c5ada4c89d208f252926300371992736
-vendor/firmware/bcm4335_V0111.0559_semcosh.hcd|29f07d75c5ada4c89d208f252926300371992736
-vendor/firmware/bcm4335_V0111.0559_semcove.hcd|29f07d75c5ada4c89d208f252926300371992736
-vendor/firmware/bcm4335_V0111.0559_wisol.hcd|29f07d75c5ada4c89d208f252926300371992736
+# Bluetooth firmware
+vendor/firmware/bcm4335_V0111.0559.hcd
 
 # Camera
 bin/mm-qcamera-daemon:vendor/bin/mm-qcamera-daemon
