@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba9f88a8_c23ae64a",
+        "filename": "audio/audio_policy_configuration.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 15173
+      },
+      "writtenOn": "2019-02-19T14:23:14Z",
+      "side": 1,
+      "message": "This was introduced from where?",
+      "range": {
+        "startLine": 56,
+        "startChar": 16,
+        "endLine": 56,
+        "endChar": 37
+      },
+      "revId": "7ed8ab4a2b9c786499a6152b904ee77e4048c32f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73e11618_71839caf",
+        "filename": "audio/audio_policy_configuration.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 15173
+      },
+      "writtenOn": "2019-02-19T14:23:14Z",
+      "side": 1,
+      "message": "Same",
+      "range": {
+        "startLine": 144,
+        "startChar": 16,
+        "endLine": 147,
+        "endChar": 29
+      },
+      "revId": "7ed8ab4a2b9c786499a6152b904ee77e4048c32f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9f771f3_056222bb",
+        "filename": "audio/audio_policy_configuration.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 15173
+      },
+      "writtenOn": "2019-02-19T14:23:14Z",
+      "side": 1,
+      "message": "Same",
+      "range": {
+        "startLine": 154,
+        "startChar": 16,
+        "endLine": 158,
+        "endChar": 29
+      },
+      "revId": "7ed8ab4a2b9c786499a6152b904ee77e4048c32f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbaecfad_bd926d2b",
+        "filename": "audio/audio_policy_configuration.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 15173
+      },
+      "writtenOn": "2019-02-19T14:23:14Z",
+      "side": 1,
+      "message": "Same",
+      "range": {
+        "startLine": 196,
+        "startChar": 82,
+        "endLine": 196,
+        "endChar": 91
+      },
+      "revId": "7ed8ab4a2b9c786499a6152b904ee77e4048c32f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25b20020_4313ecd2",
+        "filename": "hlte.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 15173
+      },
+      "writtenOn": "2019-02-19T14:23:14Z",
+      "side": 1,
+      "message": "use TARGET_COPY_OUT_VENDOR for all of these",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 133
+      },
+      "revId": "7ed8ab4a2b9c786499a6152b904ee77e4048c32f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
