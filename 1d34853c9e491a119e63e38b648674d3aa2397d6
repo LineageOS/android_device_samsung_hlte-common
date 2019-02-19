@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1b62cbce_fd538de6",
+        "filename": "system.prop",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 15173
+      },
+      "writtenOn": "2019-02-19T13:36:30Z",
+      "side": 1,
+      "message": "This does nothing, we don\u0027t have the ro.kernel prop so this is just setting the default behavior.\n\nhttps://github.com/LineageOS/android_frameworks_base/blob/lineage-16.0/core/jni/AndroidRuntime.cpp#L653",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 24
+      },
+      "revId": "1d34853c9e491a119e63e38b648674d3aa2397d6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe631535_ff05788e",
+        "filename": "system.prop",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 15173
+      },
+      "writtenOn": "2019-02-19T13:36:30Z",
+      "side": 1,
+      "message": "This does nothing.\n\nhttps://github.com/LineageOS/android_dalvik/blob/lineage-16.0/docs/embedded-vm-control.html#L156",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 31
+      },
+      "revId": "1d34853c9e491a119e63e38b648674d3aa2397d6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84628539_40e6b943",
+        "filename": "system.prop",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 15173
+      },
+      "writtenOn": "2019-02-19T13:36:30Z",
+      "side": 1,
+      "message": "This doesn\u0027t exist (even w/o \"persist.\") in source or blobs.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 30
+      },
+      "revId": "1d34853c9e491a119e63e38b648674d3aa2397d6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
