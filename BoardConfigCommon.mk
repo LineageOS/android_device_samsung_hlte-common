@@ -20,6 +20,8 @@ COMMON_PATH := device/samsung/hlte-common
 
 TARGET_SPECIFIC_HEADER_PATH := $(COMMON_PATH)/include
 
+BUILD_FINGERPRINT := samsung/hltexx/hlte:5.0/LRX21V/N9005XXSGBRI2:user/release-keys
+
 # Audio
 AUDIO_FEATURE_LOW_LATENCY_PRIMARY := true
 AUDIO_FEATURE_ENABLED_HWDEP_CAL := true
