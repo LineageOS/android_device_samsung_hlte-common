@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2054d434_0507c325",
+        "filename": "overlay/frameworks/base/core/res/res/xml/power_profile.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 18205
+      },
+      "writtenOn": "2019-05-24T18:34:39Z",
+      "side": 1,
+      "message": "I\u0027m late, but this also got renamed to cpu.suspend, while cpu.awake got renamed to cpu.idle, in the same commit that commit-msg references",
+      "revId": "c27f8259a8038f7e76d7babab39928af594c1d56",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
