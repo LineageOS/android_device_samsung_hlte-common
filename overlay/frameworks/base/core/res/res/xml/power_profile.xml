@@ -32,7 +32,7 @@
         <value>422400</value>
         <value>300000</value>
     </array>
-    <item name="cpu.idle">4</item>
+    <item name="cpu.suspend">4</item>
     <array name="cpu.core_power.cluster0">
         <value>399</value>
         <value>308</value>
