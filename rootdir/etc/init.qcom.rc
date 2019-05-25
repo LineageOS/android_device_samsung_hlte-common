@@ -323,10 +323,6 @@ on post-fs-data
     chown nfc nfc /data/bcmnfc
     chown nfc nfc /data/bcmnfc/param
 
-# NFC NXP
-    chmod 0660 /dev/pn547
-    chown nfc nfc /dev/pn547
-
 # GPIO DVS
     chown radio system /sys/class/secgpio_check/secgpio_check_all/secgpio_ctrl
 # sensor
