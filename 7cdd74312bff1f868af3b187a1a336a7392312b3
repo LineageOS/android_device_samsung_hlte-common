@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9b477e48_f2c21328",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 15173
+      },
+      "writtenOn": "2019-06-26T01:48:58Z",
+      "side": 1,
+      "message": "This isn\u0027t really a DNM, not in the sense we use it.\n\nHeadline should make clear that this is related to bluetooth (e.g., \"hlte-common: bluetooth: \" or something)",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 60
+      },
+      "revId": "7cdd74312bff1f868af3b187a1a336a7392312b3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0305cce7_79dcced9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 15173
+      },
+      "writtenOn": "2019-06-26T01:48:58Z",
+      "side": 1,
+      "message": "This should explain why we need the change, what it fixes.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 16
+      },
+      "revId": "7cdd74312bff1f868af3b187a1a336a7392312b3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89b1c336_6072ab58",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 15173
+      },
+      "writtenOn": "2019-06-26T01:48:58Z",
+      "side": 1,
+      "message": "If you really want to have this in the commit message, reference a Gerrit change or something -- this specific commit (by SHA) may never hit a shipping branch.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 121
+      },
+      "revId": "7cdd74312bff1f868af3b187a1a336a7392312b3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c25b9060_87bdf1f4",
+        "filename": "bluetooth/vnd_hlte.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 15173
+      },
+      "writtenOn": "2019-06-26T01:48:58Z",
+      "side": 1,
+      "message": "Alphabetical sort -- should go after \"BTHW_DBG\"",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 37
+      },
+      "revId": "7cdd74312bff1f868af3b187a1a336a7392312b3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
