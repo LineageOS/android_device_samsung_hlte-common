@@ -479,7 +479,8 @@ service hcidump /system/bin/sh /system/etc/hcidump.sh
 
 service charger /system/bin/charger
     class charger
-    group system graphics
+    user system
+    group system graphics input
     seclabel u:r:charger:s0
 
 # Disable SSR to SoC restart
