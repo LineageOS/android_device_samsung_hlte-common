@@ -42,6 +42,12 @@ BOARD_HARDWARE_CLASS += $(COMMON_PATH)/lineagehw
 # Encryption
 TARGET_KEYMASTER_SKIP_WAITING_FOR_QSEE := true
 
+# Extended Filesystem Support
+TARGET_EXFAT_DRIVER := sdfat
+
+# Filesystem
+TARGET_FS_CONFIG_GEN += device/samsung/hlte-common/config.fs
+
 # HIDL
 DEVICE_MANIFEST_FILE += $(COMMON_PATH)/manifest.xml
 
@@ -56,6 +62,7 @@ LZMA_RAMDISK_TARGETS := recovery
 BOARD_CUSTOM_BOOTIMG := true
 BOARD_CUSTOM_BOOTIMG_MK := hardware/samsung/mkbootimg.mk
 TARGET_KERNEL_SOURCE := kernel/samsung/msm8974
+BOARD_ROOT_EXTRA_FOLDERS := efs firmware firmware-modem persist
 
 # Legacy BLOB Support
 TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
