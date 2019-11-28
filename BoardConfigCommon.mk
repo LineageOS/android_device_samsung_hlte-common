@@ -70,6 +70,9 @@ TARGET_PROCESS_SDK_VERSION_OVERRIDE += \
     /system/vendor/bin/mm-qcamera-daemon=22 \
     /system/vendor/bin/hw/rild=27
 
+# MDNIE Features
+include device/samsung/msm8974-common/display/board.mk
+
 # Partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 11534336
 BOARD_CACHEIMAGE_PARTITION_SIZE := 262144000
