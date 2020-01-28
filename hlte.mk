@@ -1,6 +1,6 @@
 #
 # Copyright (C) 2014 The CyanogenMod Project
-# Copyright (C) 2017-2018 The LineageOS Project
+# Copyright (C) 2017-2020 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -55,10 +55,6 @@ PRODUCT_PACKAGES += \
 # Input device
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/idc/sec_e-pen.idc:system/usr/idc/sec_e-pen.idc
-
-# IR
-PRODUCT_PACKAGES += \
-    consumerir.msm8974
 
 # Keylayouts
 PRODUCT_COPY_FILES += \
