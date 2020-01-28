@@ -58,7 +58,7 @@ PRODUCT_COPY_FILES += \
 
 # IR
 PRODUCT_PACKAGES += \
-    consumerir.msm8974
+    android.hardware.ir@1.0-service.samsung
 
 # Keylayouts
 PRODUCT_COPY_FILES += \
