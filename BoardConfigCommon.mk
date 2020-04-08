@@ -90,6 +90,7 @@ BOARD_PROVIDES_LIBRIL := true
 TARGET_RIL_VARIANT := caf
 
 # Recovery
+TARGET_RECOVERY_DENSITY := xhdpi
 TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/rootdir/etc/fstab.qcom
 
 # SELinux
