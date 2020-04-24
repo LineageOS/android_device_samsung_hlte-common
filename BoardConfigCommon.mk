@@ -1,5 +1,5 @@
 # Copyright (C) 2014-2016 The CyanogenMod Project
-# Copyright (C) 2017-2018 The LineageOS Project
+# Copyright (C) 2017-2020 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -35,9 +35,6 @@ BOARD_HAVE_BLUETOOTH_BCM := true
 
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := MSM8974
-
-# CMHW
-BOARD_HARDWARE_CLASS += $(COMMON_PATH)/lineagehw
 
 # Encryption
 TARGET_KEYMASTER_SKIP_WAITING_FOR_QSEE := true
