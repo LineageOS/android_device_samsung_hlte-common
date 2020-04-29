@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "337fe7fb_1c6672f7",
+        "filename": "audio/audio_policy_configuration.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2020-04-29T13:42:07Z",
+      "side": 1,
+      "message": "This is actually AUDIO_CHANNEL_IN_5POINT1, not AUDIO_CHANNEL_IN_5POINT like in your edit.",
+      "revId": "943fde6d0ae36105a3695ce1f12045ea488cab62",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
