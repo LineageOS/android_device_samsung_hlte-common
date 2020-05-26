@@ -310,9 +310,6 @@ lib/hw/sensors.msm8974.so:vendor/lib/hw/sensors.vendor.msm8974.so
 lib/libsensirion_h_2.so:vendor/lib/libsensirion_h_2.so
 
 # Time services (Samsung klte - G900FXXU1CQE1_G900FPHE1CQE1_PHE)
--app/TimeService/TimeService.apk|dd8d01ac83aed2908d1cd4799dba90af175b17a7
-bin/time_daemon:vendor/bin/time_daemon|a988427f90ce53b725808258ca29e9e5d1079ac8
-vendor/lib/libTimeService.so|2eaf638faf69a5814e892e6bc38f6616364e4786
 -vendor/lib/libtime_genoff.so|9b130affec781753cdc6dfbbb15768ed8517e03c
 
 # Wi-Fi

@@ -547,11 +547,6 @@ service thermal-engine /vendor/bin/thermal-engine
    socket thermal-recv-passive-client stream 0666 system system
    group root
 
-service time_daemon /vendor/bin/time_daemon
-   class main
-   user root
-   group root
-
 service adsprpcd /vendor/bin/adsprpcd
    class main
    user media
