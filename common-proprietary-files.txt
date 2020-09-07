@@ -309,9 +309,6 @@ lib/hw/sensorhubs.msm8974.so:vendor/lib/hw/sensorhubs.msm8974.so
 lib/hw/sensors.msm8974.so:vendor/lib/hw/sensors.vendor.msm8974.so
 lib/libsensirion_h_2.so:vendor/lib/libsensirion_h_2.so
 
-# Time services (Samsung klte - G900FXXU1CQE1_G900FPHE1CQE1_PHE)
--vendor/lib/libtime_genoff.so|9b130affec781753cdc6dfbbb15768ed8517e03c
-
 # Wi-Fi
 etc/wifi/bcmdhd_apsta.bin:vendor/etc/wifi/bcmdhd_apsta.bin
 etc/wifi/bcmdhd_ibss.bin:vendor/etc/wifi/bcmdhd_ibss.bin
