@@ -56,6 +56,9 @@ rild.libpath=/system/vendor/lib/libsec-ril.so
 ro.ril.telephony.qan_resp_strings=6
 ro.telephony.mms_data_profile=5
 
+# Recovery
+ro.recovery.skip_ev_rel_input=true
+
 # Sensors
 debug.sensors=1
 
