@@ -13,6 +13,10 @@
         <transport>hwbinder</transport>
         <version>1.0</version>
         <interface>
+            <name>IGloveMode</name>
+            <instance>default</instance>
+        </interface>
+        <interface>
             <name>IStylusMode</name>
             <instance>default</instance>
         </interface>
