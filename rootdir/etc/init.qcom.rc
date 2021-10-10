@@ -35,6 +35,9 @@ on early-init
     mount debugfs debugfs /sys/kernel/debug
     chmod 0755 /sys/kernel/debug
 
+on init
+    chown system system /sys/class/sec/sec_touchkey/keypad_enable
+
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
